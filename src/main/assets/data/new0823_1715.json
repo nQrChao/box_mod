@@ -1,0 +1,2490 @@
+{
+  "state": "ok",
+  "msg": "ok",
+  "data": {
+    "module": [
+      "xy_lunbo",
+      "xy_menu",
+      "xy_renqi",
+      "xy_zhongbang",
+      "yx_zuixinshangjia",
+      "yx_chaping",
+      "yx_haoyoutuijian",
+      "yx_mianfeiwan",
+      "yx_gengduohaowan",
+      "xy_lunbo|2",
+      "xy_menu|2",
+      "xy_renqi|2",
+      "xy_zhongbang|2",
+      "yx_zuixinshangjia|2",
+      "yx_chaping|2",
+      "yx_haoyoutuijian|2",
+      "yx_mianfeiwan|2",
+      "yx_gengduohaowan|2"
+    ],
+    "data": {
+      "xy_lunbo": {
+        "id": "1",
+        "module_alias": "xy_lunbo",
+        "module_title": "",
+        "module_title_color": "",
+        "module_sub_title": "",
+        "module_sub_title_color": "",
+        "data": [
+          {
+            "page_type": "gameinfo",
+            "pic": "http://sysimage.tsyule.cn/2021/08/12/6114dd68f18cc.png",
+            "jump_target": "6261",
+            "client_type": "3",
+            "param": {
+              "gameid": "6261",
+              "game_type": "1"
+            }
+          },
+          {
+            "page_type": "gameinfo",
+            "pic": "http://sysimage.tsyule.cn/2021/08/12/6114dd524e5ab.png",
+            "jump_target": "6303",
+            "client_type": "1",
+            "param": {
+              "gameid": "6303",
+              "game_type": "1"
+            }
+          }
+        ]
+      },
+      "xy_menu": {
+        "id": "2",
+        "module_alias": "xy_menu",
+        "module_title": "",
+        "module_title_color": "",
+        "module_sub_title": "",
+        "module_sub_title_color": "",
+        "data": [
+          {
+            "title": "送充值卡",
+            "icon": "http://sysimage.tsyule.cn/2021/08/12/6114de1b3d817.png",
+            "jump_target": "",
+            "page_type": "gonglv",
+            "param": null
+          },
+          {
+            "title": "0元畅玩",
+            "icon": "http://sysimage.tsyule.cn/2021/08/12/6114ddfdb2e37.png",
+            "jump_target": "",
+            "page_type": "reward",
+            "param": {
+              "game_type": 1
+            }
+          },
+          {
+            "title": "免费领券",
+            "icon": "http://sysimage.tsyule.cn/2021/08/12/6114ddde22515.png",
+            "jump_target": "",
+            "page_type": "coupon",
+            "param": null
+          },
+          {
+            "title": "每日首冲",
+            "icon": "http://sysimage.tsyule.cn/2021/08/12/6114ddc34a307.png",
+            "jump_target": "6298",
+            "page_type": "gameinfo",
+            "param": {
+              "gameid": "6298",
+              "game_type": "2"
+            }
+          }
+        ]
+      },
+      "xy_renqi": {
+        "id": "3",
+        "module_alias": "xy_renqi",
+        "module_title": "超人气新游",
+        "module_title_color": "#000000",
+        "module_sub_title": "",
+        "module_sub_title_color": "",
+        "data": [
+          {
+            "gameid": "6288",
+            "gamename": "逆刃（2021打金版）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/11/6113239b262e0.gif",
+            "game_type": "1",
+            "game_summary": "上线就送总计2021元的充值卡",
+            "is_first": 1,
+            "online_time": "1628731500",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 传奇",
+            "coupon_amount": 3774,
+            "game_labels": [
+              {
+                "label_name": "送特权5",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "166666绑元",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "明日 20:00 17服",
+            "discount": 10
+          },
+          {
+            "gameid": "6303",
+            "gamename": "怪兽宝贝（满V无限版）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/11/6113640991ce1.png",
+            "game_type": "1",
+            "game_summary": "上线送满V，畅想超爽VIP特权，开启无限商城，一键无限资源",
+            "is_first": 1,
+            "online_time": "1628729400",
+            "hide_discount_label": 1,
+            "genre_str": "养成 • 口袋精灵",
+            "coupon_amount": 890,
+            "game_labels": [
+              {
+                "label_name": "送满VIP",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "精灵石*128888",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月15日 16服",
+            "discount": 10
+          },
+          {
+            "gameid": "6256",
+            "gamename": "亚瑟神剑（无限商城版）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/06/610d05dc17a32.gif",
+            "game_type": "1",
+            "game_summary": "Q萌塔防，守护你心中的那个梦想",
+            "is_first": 0,
+            "online_time": "1628383800",
+            "hide_discount_label": 1,
+            "genre_str": "塔防 • 休闲",
+            "coupon_amount": 890,
+            "game_labels": [
+              {
+                "label_name": "送满VIP",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "10万钻石",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月18日 28服",
+            "discount": 10
+          },
+          {
+            "gameid": "6298",
+            "gamename": "上古封神（激情国战）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/11/61136ca5126ca.gif",
+            "game_type": "2",
+            "game_summary": "上古仙境浩瀚无边,众仙云集封神九天",
+            "is_first": 1,
+            "online_time": "1628729700",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 仙侠",
+            "coupon_amount": 1871,
+            "game_labels": [
+              {
+                "label_name": "送648元大礼包",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月17日 6服",
+            "discount": 10
+          },
+          {
+            "gameid": "6286",
+            "gamename": "摸金校尉之西夏迷踪（5倍高返送VIP）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/11/611363df85771.gif",
+            "game_type": "2",
+            "game_summary": "首充返5倍元宝，免费送VIP10",
+            "is_first": 1,
+            "online_time": "1628733600",
+            "hide_discount_label": 1,
+            "genre_str": "冒险 • 盗墓",
+            "coupon_amount": 0,
+            "game_labels": [
+              {
+                "label_name": "送任务完送VIP",
+                "text_color": "#FF8426"
+              }
+            ],
+            "server_str": "08月16日 6服",
+            "discount": 10
+          },
+          {
+            "gameid": "6281",
+            "gamename": "武动六界（高爆率高返利）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/09/6110a50cc86ed.gif",
+            "game_type": "2",
+            "game_summary": "登录送时装，多倍返利爆率全开碾压全服。",
+            "is_first": 1,
+            "online_time": "1628560800",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 仙侠",
+            "coupon_amount": 2346,
+            "game_labels": null,
+            "server_str": "08月17日 10服",
+            "discount": 10
+          },
+          {
+            "gameid": "6177",
+            "gamename": "倾世情缘(送百级神装)",
+            "gameicon": "http://sysimage.tsyule.cn/2021/07/23/60fa598f9f73c.png",
+            "game_type": "2",
+            "game_summary": "畅汗淋漓的影像，是任何一个游戏玩家不可不玩的佳作！",
+            "is_first": 0,
+            "online_time": "1626660000",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 玄幻",
+            "coupon_amount": 0,
+            "game_labels": [
+              {
+                "label_name": "送10连抽",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月05日 11服",
+            "discount": 10
+          }
+        ],
+        "additional": {
+          "page_type": "gameinfo",
+          "icon": "http://p1.tsyule.cn/2021/08/12/6114de375cdf9.png",
+          "jump_target": "6261",
+          "param": {
+            "gameid": "6261",
+            "game_type": "1"
+          }
+        }
+      },
+      "xy_zhongbang": {
+        "id": "4",
+        "module_alias": "xy_zhongbang",
+        "module_title": "重磅推荐",
+        "module_title_color": "#000000",
+        "module_sub_title": "",
+        "module_sub_title_color": "",
+        "data": [
+          {
+            "gameid": "6208",
+            "gamename": "铁甲战神（送648充值）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/11/61132df1445d0.png",
+            "game_type": "1",
+            "game_summary": "三职业连斩玩法，点爆你的想象！",
+            "is_first": 1,
+            "online_time": "1628818200",
+            "hide_discount_label": 1,
+            "genre_str": "挂机 • 传奇",
+            "coupon_amount": 0,
+            "game_labels": [
+              {
+                "label_name": "送送648充值卡",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "10倍返充值卡",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "明日 10:00 2服",
+            "discount": 10
+          },
+          {
+            "gameid": "6275",
+            "gamename": "青丘奇缘（真充大乐透）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/10/611233930cd32.gif",
+            "game_type": "1",
+            "game_summary": "唯美国风情缘仙侠",
+            "is_first": 1,
+            "online_time": "1628812800",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 仙侠",
+            "coupon_amount": 15904,
+            "game_labels": [
+              {
+                "label_name": "送送尊享10级",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "58888仙玉",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "明日 02:00 10服",
+            "discount": 10
+          },
+          {
+            "gameid": "6178",
+            "gamename": "全民坦克联盟（登录送VIP8）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/11/611336d3f1dcf.gif",
+            "game_type": "1",
+            "game_summary": "一路冲锋，所向披靡",
+            "is_first": 1,
+            "online_time": "1628820000",
+            "hide_discount_label": 1,
+            "genre_str": "回合 • 军事",
+            "coupon_amount": 376,
+            "game_labels": [
+              {
+                "label_name": "送送VIP8",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "30W钻石",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "明日 10:00 2服",
+            "discount": 10
+          }
+        ]
+      },
+      "yx_zuixinshangjia": {
+        "id": "5",
+        "module_alias": "yx_zuixinshangjia",
+        "module_title": "最新上架",
+        "module_title_color": "#000000",
+        "module_sub_title": "",
+        "module_sub_title_color": "",
+        "data": [
+          {
+            "gameid": "6262",
+            "gamename": "江湖侠客令（送无限真充）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/09/6110df031bd64.gif",
+            "game_type": "1",
+            "game_summary": "创角即送满V，每日送真充",
+            "is_first": "1",
+            "online_time": "1628817900",
+            "hide_discount_label": 1,
+            "coupon_amount": 2286,
+            "vip_label": "送送VIP15",
+            "discount": 10
+          },
+          {
+            "gameid": "6047",
+            "gamename": "美人传（送绝美战姬）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/11/61139f39a721c.gif",
+            "game_type": "1",
+            "game_summary": "全新战姬调教养成手游，上线送满V，新服前7日还有绝美战姬相送",
+            "is_first": "1",
+            "online_time": "1628820000",
+            "hide_discount_label": 1,
+            "coupon_amount": 915,
+            "vip_label": "送满VIP",
+            "discount": 10
+          },
+          {
+            "gameid": "6273",
+            "gamename": "剑御天下（抽充无限送） 删档内测",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/10/6111d4622638f.gif",
+            "game_type": "1",
+            "game_summary": "登陆送VIP9，全民瓜分8亿仙玉豪礼",
+            "is_first": "1",
+            "online_time": "1628820000",
+            "hide_discount_label": 1,
+            "coupon_amount": 0,
+            "vip_label": "送送VIP9",
+            "discount": 10
+          },
+          {
+            "gameid": "6277",
+            "gamename": "真武江湖（红包送神充）删档内测",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/11/61133c29e3c2d.gif",
+            "game_type": "1",
+            "game_summary": "全新3D次世代MMOARPG手游、极致福利、次时代3D仙侠！",
+            "is_first": "1",
+            "online_time": "1628818200",
+            "hide_discount_label": 1,
+            "coupon_amount": 224,
+            "vip_label": "送送VIP9",
+            "discount": 10
+          },
+          {
+            "gameid": "6199",
+            "gamename": "银河守卫队（永恒真充卡）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/11/6113423f86c3f.gif",
+            "game_type": "1",
+            "game_summary": "全新改版福利异世界冒险放置手游",
+            "is_first": "1",
+            "online_time": "1628820000",
+            "hide_discount_label": 1,
+            "coupon_amount": 2795,
+            "vip_label": "送满VIP",
+            "discount": 10
+          },
+          {
+            "gameid": "6257",
+            "gamename": "雷霆英雄（万充无限抽）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/12/6114928c8751f.gif",
+            "game_type": "1",
+            "game_summary": "以魔幻英雄为主题，架空历史年代，乱斗世界",
+            "is_first": "1",
+            "online_time": "1628815800",
+            "hide_discount_label": 1,
+            "coupon_amount": 890,
+            "vip_label": "送送VIP10",
+            "discount": 10
+          },
+          {
+            "gameid": "6265",
+            "gamename": "蜀山御风行（无限铜钱）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/12/61147fafb692c.gif",
+            "game_type": "1",
+            "game_summary": "全新的热血仙侠大世界的游戏体验",
+            "is_first": "1",
+            "online_time": "1628818200",
+            "hide_discount_label": 1,
+            "coupon_amount": 2186,
+            "vip_label": "",
+            "discount": 10
+          },
+          {
+            "gameid": "6064",
+            "gamename": "水浒乱斗（送顶级神将）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/04/610a0db0e3c51.gif",
+            "game_type": "1",
+            "game_summary": "上线送贵宾VIP16，挂机拿充值卡，登陆送两万红包",
+            "is_first": "1",
+            "online_time": "1628726100",
+            "hide_discount_label": 1,
+            "coupon_amount": 3526,
+            "vip_label": "送送贵宾VIP16",
+            "discount": 10
+          },
+          {
+            "gameid": "6183",
+            "gamename": "侠客外传（0氪领万充）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/05/610ba1d4ca806.gif",
+            "game_type": "1",
+            "game_summary": "海量真充劵助你遨游仙界，开局无限福利赠送",
+            "is_first": "1",
+            "online_time": "1628726400",
+            "hide_discount_label": 1,
+            "coupon_amount": 3824,
+            "vip_label": "送送VIP18",
+            "discount": 10
+          },
+          {
+            "gameid": "6261",
+            "gamename": "西游记口袋版（GM无限资源）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/06/610ce57d3dfdc.gif",
+            "game_type": "1",
+            "game_summary": "超爽GM商城，超多资源1元宝无限换！",
+            "is_first": "1",
+            "online_time": "1628726400",
+            "hide_discount_label": 1,
+            "coupon_amount": 14090,
+            "vip_label": "送送VIP15",
+            "discount": 10
+          },
+          {
+            "gameid": "6288",
+            "gamename": "逆刃（2021打金版）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/11/6113239b262e0.gif",
+            "game_type": "1",
+            "game_summary": "上线就送总计2021元的充值卡",
+            "is_first": "1",
+            "online_time": "1628731500",
+            "hide_discount_label": 1,
+            "coupon_amount": 3774,
+            "vip_label": "送特权5",
+            "discount": 10
+          },
+          {
+            "gameid": "6303",
+            "gamename": "怪兽宝贝（满V无限版）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/11/6113640991ce1.png",
+            "game_type": "1",
+            "game_summary": "上线送满V，畅想超爽VIP特权，开启无限商城，一键无限资源",
+            "is_first": "1",
+            "online_time": "1628729400",
+            "hide_discount_label": 1,
+            "coupon_amount": 890,
+            "vip_label": "送满VIP",
+            "discount": 10
+          }
+        ],
+        "additional": {
+          "page_type": "gamelist",
+          "icon": "http://p1.tsyule.cn/2021/08/12/6114de9581866.png",
+          "jump_target": "88",
+          "param": {
+            "game_list_id": "88",
+            "game_type": 1
+          }
+        }
+      },
+      "yx_chaping": {
+        "id": "6",
+        "module_alias": "yx_chaping",
+        "module_title": "",
+        "module_title_color": "",
+        "module_sub_title": "",
+        "module_sub_title_color": "",
+        "data": [
+          {
+            "page_type": "gameinfo",
+            "pic": "http://sysimage.tsyule.cn/2021/08/12/6114dd87ab5f3.png",
+            "jump_target": "6256",
+            "client_type": "3",
+            "param": {
+              "gameid": "6256",
+              "game_type": "1"
+            }
+          }
+        ]
+      },
+      "yx_haoyoutuijian": {
+        "id": "7",
+        "module_alias": "yx_haoyoutuijian",
+        "module_title": "A++级 好游推荐",
+        "module_title_color": "#000000",
+        "module_sub_title": "",
+        "module_sub_title_color": "",
+        "data": [
+          {
+            "gameid": "6261",
+            "gamename": "西游记口袋版（GM无限资源）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/06/610ce57d3dfdc.gif",
+            "game_type": "1",
+            "game_summary": "超爽GM商城，超多资源1元宝无限换！",
+            "is_first": 1,
+            "online_time": "1628726400",
+            "hide_discount_label": 1,
+            "genre_str": "回合 • 西游",
+            "coupon_amount": 14090,
+            "game_labels": [
+              {
+                "label_name": "送送VIP15",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "58888钻石",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "今日 17:00 14服",
+            "discount": 10
+          },
+          {
+            "gameid": "6064",
+            "gamename": "水浒乱斗（送顶级神将）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/04/610a0db0e3c51.gif",
+            "game_type": "1",
+            "game_summary": "上线送贵宾VIP16，挂机拿充值卡，登陆送两万红包",
+            "is_first": 1,
+            "online_time": "1628726100",
+            "hide_discount_label": 1,
+            "genre_str": "卡牌 • 历史",
+            "coupon_amount": 3526,
+            "game_labels": [
+              {
+                "label_name": "送送贵宾VIP16",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "36888元宝",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月16日 19服",
+            "discount": 10
+          },
+          {
+            "gameid": "6183",
+            "gamename": "侠客外传（0氪领万充）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/05/610ba1d4ca806.gif",
+            "game_type": "1",
+            "game_summary": "海量真充劵助你遨游仙界，开局无限福利赠送",
+            "is_first": 1,
+            "online_time": "1628726400",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 仙侠",
+            "coupon_amount": 3824,
+            "game_labels": [
+              {
+                "label_name": "送送VIP18",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "绑元88888",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "今日 20:30 17服",
+            "discount": 10
+          },
+          {
+            "gameid": "6238",
+            "gamename": "机甲护卫队（每日送代金券）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/06/610cfa7898765.png",
+            "game_type": "1",
+            "game_summary": "看游戏介绍图领取多重福利码！",
+            "is_first": 0,
+            "online_time": "1628553600",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 科幻",
+            "coupon_amount": 3150,
+            "game_labels": [
+              {
+                "label_name": "送送VIP15",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "28888钻石",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月16日 20服",
+            "discount": 10
+          },
+          {
+            "gameid": "6181",
+            "gamename": "女神联盟2（送万充女神）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/05/610b6b47d87b7.gif",
+            "game_type": "1",
+            "game_summary": "免费送万元真充、千万钻石、红品质自选女神、橙品质坐骑珍兽·炎",
+            "is_first": 0,
+            "online_time": "1628557200",
+            "hide_discount_label": 1,
+            "genre_str": "回合 • 魔幻",
+            "coupon_amount": 1790,
+            "game_labels": [
+              {
+                "label_name": "送满VIP",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "钻石*20000",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月16日 22服",
+            "discount": 10
+          },
+          {
+            "gameid": "6052",
+            "gamename": "神创九州（送GM万抽）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/09/61109ff41d68e.gif",
+            "game_type": "1",
+            "game_summary": "《神创九州-送GM万抽》是一款修真风格的高自由度的放置游戏",
+            "is_first": 0,
+            "online_time": "1628553600",
+            "hide_discount_label": 1,
+            "genre_str": "挂机 • 休闲",
+            "coupon_amount": 7642,
+            "game_labels": [
+              {
+                "label_name": "送送V8",
+                "text_color": "#FF8426"
+              }
+            ],
+            "server_str": "08月15日 26服",
+            "discount": 10
+          },
+          {
+            "gameid": "6228",
+            "gamename": "纵横无双（充值破解版）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/05/610babda2afd3.gif",
+            "game_type": "1",
+            "game_summary": "《纵横无双-充值破解版》是一款主打单职业特色的BT传奇手游，",
+            "is_first": 0,
+            "online_time": "1628382600",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 传奇",
+            "coupon_amount": 3066,
+            "game_labels": [
+              {
+                "label_name": "送送王者VIP",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "元宝1000w",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "明日 20:00 36服",
+            "discount": 10
+          },
+          {
+            "gameid": "6082",
+            "gamename": "莽荒纪（送GM两万充）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/03/6108e12e81818.gif",
+            "game_type": "1",
+            "game_summary": "一款正版授权改编玄幻修仙ARPG手游大作",
+            "is_first": 0,
+            "online_time": "1628038200",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 玄幻",
+            "coupon_amount": 890,
+            "game_labels": [
+              {
+                "label_name": "送送SVIP2",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "绑元*88万",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月19日 42服",
+            "discount": 10
+          },
+          {
+            "gameid": "6194",
+            "gamename": "龙纪元（真充0元购）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/05/610b88ad45612.gif",
+            "game_type": "1",
+            "game_summary": "沉浸式国风魔幻MMO《龙纪元》",
+            "is_first": 0,
+            "online_time": "1628208000",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 魔幻",
+            "coupon_amount": 3894,
+            "game_labels": [
+              {
+                "label_name": "送送VIP12",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "绑元38888",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月16日 42服",
+            "discount": 10
+          },
+          {
+            "gameid": "6125",
+            "gamename": "鬼剑豪（霸服十万真充）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/07/29/61021dbe2356f.gif",
+            "game_type": "1",
+            "game_summary": "正版授权，全新史诗大作",
+            "is_first": 0,
+            "online_time": "1627779600",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 仙侠",
+            "coupon_amount": 2210,
+            "game_labels": [
+              {
+                "label_name": "送送VIP15",
+                "text_color": "#FF8426"
+              }
+            ],
+            "server_str": "08月17日 46服",
+            "discount": 10
+          },
+          {
+            "gameid": "6204",
+            "gamename": "开心宝贝（送万抽真充）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/03/6108a8d8f2661.gif",
+            "game_type": "1",
+            "game_summary": "《开心宝贝》是一款以宝可梦为题材的动作卡牌类手游",
+            "is_first": 0,
+            "online_time": "1628038800",
+            "hide_discount_label": 1,
+            "genre_str": "卡牌 • 口袋精灵",
+            "coupon_amount": 2550,
+            "game_labels": [
+              {
+                "label_name": "送满VIP",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "钻石*68888",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月15日 41服",
+            "discount": 10
+          },
+          {
+            "gameid": "6155",
+            "gamename": "太乙仙魔录之灵飞纪（送万元真充）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/07/29/6102715894ab1.gif",
+            "game_type": "1",
+            "game_summary": "太乙仙魔录之灵飞纪（送万元真充）是一款唯美玄幻仙侠手游，",
+            "is_first": 0,
+            "online_time": "1627862400",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 仙侠",
+            "coupon_amount": 4236,
+            "game_labels": [
+              {
+                "label_name": "送送vip15",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "元宝*88888",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月04日 27服",
+            "discount": 10
+          },
+          {
+            "gameid": "6172",
+            "gamename": "狂暴之翼（终身资源）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/07/28/6100b83aa0883.gif",
+            "game_type": "1",
+            "game_summary": "超多福利，百人混战，激情争霸",
+            "is_first": 0,
+            "online_time": "1627953900",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 魔幻",
+            "coupon_amount": 1780,
+            "game_labels": [
+              {
+                "label_name": "送送至尊VIP",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "钻石*208888",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月21日 27服",
+            "discount": 10
+          },
+          {
+            "gameid": "6219",
+            "gamename": "魔域迷宫（千充无限版）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/02/610793f371de6.gif",
+            "game_type": "1",
+            "game_summary": "源于《西游记》神话巨著，体验不一样西游的修仙之旅",
+            "is_first": 0,
+            "online_time": "1627951800",
+            "hide_discount_label": 1,
+            "genre_str": "卡牌 • 西游",
+            "coupon_amount": 890,
+            "game_labels": [
+              {
+                "label_name": "送超V",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "元宝*588万",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月20日 34服",
+            "discount": 10
+          },
+          {
+            "gameid": "6209",
+            "gamename": "绝地莽荒（海量福利版）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/04/6109fca3a848b.gif",
+            "game_type": "1",
+            "game_summary": "一款封神题材仙侠传说的幻想ARPG手机游戏",
+            "is_first": 0,
+            "online_time": "1628121600",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 仙侠",
+            "coupon_amount": 376,
+            "game_labels": [
+              {
+                "label_name": "送送王者VIP",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "元宝*188888",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月09日 21服",
+            "discount": 10
+          }
+        ]
+      },
+      "yx_mianfeiwan": {
+        "id": "8",
+        "module_alias": "yx_mianfeiwan",
+        "module_title": "领券免费玩",
+        "module_title_color": "#000000",
+        "module_sub_title": "大额减免券，助你一臂之力",
+        "module_sub_title_color": "#666",
+        "data": [
+          {
+            "gameid": "6064",
+            "gamename": "水浒乱斗（送顶级神将）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/04/610a0db0e3c51.gif",
+            "game_type": "1",
+            "game_summary": "上线送贵宾VIP16，挂机拿充值卡，登陆送两万红包",
+            "is_first": "1",
+            "online_time": "1628726100",
+            "hide_discount_label": 1,
+            "coupon_amount": 3526,
+            "vip_label": "送送贵宾VIP16",
+            "discount": 10
+          },
+          {
+            "gameid": "6183",
+            "gamename": "侠客外传（0氪领万充）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/05/610ba1d4ca806.gif",
+            "game_type": "1",
+            "game_summary": "海量真充劵助你遨游仙界，开局无限福利赠送",
+            "is_first": "1",
+            "online_time": "1628726400",
+            "hide_discount_label": 1,
+            "coupon_amount": 3824,
+            "vip_label": "送送VIP18",
+            "discount": 10
+          },
+          {
+            "gameid": "6261",
+            "gamename": "西游记口袋版（GM无限资源）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/06/610ce57d3dfdc.gif",
+            "game_type": "1",
+            "game_summary": "超爽GM商城，超多资源1元宝无限换！",
+            "is_first": "1",
+            "online_time": "1628726400",
+            "hide_discount_label": 1,
+            "coupon_amount": 14090,
+            "vip_label": "送送VIP15",
+            "discount": 10
+          },
+          {
+            "gameid": "6288",
+            "gamename": "逆刃（2021打金版）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/11/6113239b262e0.gif",
+            "game_type": "1",
+            "game_summary": "上线就送总计2021元的充值卡",
+            "is_first": "1",
+            "online_time": "1628731500",
+            "hide_discount_label": 1,
+            "coupon_amount": 3774,
+            "vip_label": "送特权5",
+            "discount": 10
+          },
+          {
+            "gameid": "6303",
+            "gamename": "怪兽宝贝（满V无限版）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/11/6113640991ce1.png",
+            "game_type": "1",
+            "game_summary": "上线送满V，畅想超爽VIP特权，开启无限商城，一键无限资源",
+            "is_first": "1",
+            "online_time": "1628729400",
+            "hide_discount_label": 1,
+            "coupon_amount": 890,
+            "vip_label": "送满VIP",
+            "discount": 10
+          },
+          {
+            "gameid": "6233",
+            "gamename": "美杜莎传奇（无限合击版）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/06/610cccb9b16b4.gif",
+            "game_type": "1",
+            "game_summary": "天机老人送无限福利，技能超变，热血合击",
+            "is_first": "1",
+            "online_time": "1628641800",
+            "hide_discount_label": 1,
+            "coupon_amount": 1384,
+            "vip_label": "送满VIP",
+            "discount": 10
+          }
+        ],
+        "additional": {
+          "page_type": "coupon",
+          "icon": "http://p1.tsyule.cn/2021/08/12/6114ded568f62.png",
+          "jump_target": "",
+          "param": null
+        }
+      },
+      "yx_gengduohaowan": {
+        "id": "9",
+        "module_alias": "yx_gengduohaowan",
+        "module_title": "更多好玩新游 一网打尽",
+        "module_title_color": "#000000",
+        "module_sub_title": "",
+        "module_sub_title_color": "",
+        "data": [
+          {
+            "gameid": "6303",
+            "gamename": "怪兽宝贝（满V无限版）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/11/6113640991ce1.png",
+            "game_type": "1",
+            "game_summary": "上线送满V，畅想超爽VIP特权，开启无限商城，一键无限资源",
+            "is_first": 1,
+            "online_time": "1628729400",
+            "hide_discount_label": 1,
+            "genre_str": "养成 • 口袋精灵",
+            "coupon_amount": 890,
+            "game_labels": [
+              {
+                "label_name": "送满VIP",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "精灵石*128888",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月15日 16服",
+            "discount": 10
+          },
+          {
+            "gameid": "2656",
+            "gamename": "仙魔变",
+            "gameicon": "http://sysimage.tsyule.cn/2021/07/28/6100b17026919.gif",
+            "game_type": "2",
+            "game_summary": "国风仙侠唯美修仙游戏",
+            "is_first": 0,
+            "online_time": "1627524000",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 仙侠",
+            "coupon_amount": 0,
+            "game_labels": null,
+            "server_str": "08月01日 4服",
+            "discount": 10
+          },
+          {
+            "gameid": "6077",
+            "gamename": "众神风云（躺赢1W真充）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/07/16/60f0f0cc93003.gif",
+            "game_type": "1",
+            "game_summary": "【送大天使之剑1W真充】/【开局送大天使之剑，VIP888领",
+            "is_first": 0,
+            "online_time": "1626656400",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 魔幻",
+            "coupon_amount": 1800,
+            "game_labels": [
+              {
+                "label_name": "送送VIP10",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "38888红钻",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月15日 49服",
+            "discount": 10
+          },
+          {
+            "gameid": "5929",
+            "gamename": "伏魔录（送三国名将）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/07/20/60f625bc2de79.gif",
+            "game_type": "1",
+            "game_summary": "游戏为玩家带来超值福利，大量元宝首日登录就送，正统史诗级三国",
+            "is_first": 0,
+            "online_time": "1627002000",
+            "hide_discount_label": 1,
+            "genre_str": "卡牌 • 三国",
+            "coupon_amount": 3812,
+            "game_labels": [
+              {
+                "label_name": "送送金主7",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "18万金锭",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月17日 43服",
+            "discount": 10
+          },
+          {
+            "gameid": "5924",
+            "gamename": "灵剑传说（送20万真充）删档内测",
+            "gameicon": "http://sysimage.tsyule.cn/2021/07/19/60f525fe5d334.gif",
+            "game_type": "1",
+            "game_summary": "新派超写实风格3D国创仙侠手游",
+            "is_first": 1,
+            "online_time": "1629072000",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 仙侠",
+            "coupon_amount": 2825,
+            "game_labels": [
+              {
+                "label_name": "送送至尊VIP20",
+                "text_color": "#FF8426"
+              }
+            ],
+            "server_str": "08月16日 2服",
+            "discount": 10
+          },
+          {
+            "gameid": "5912",
+            "gamename": "英雄计划（BUG抽悟空）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/07/14/60ee6672e3987.gif",
+            "game_type": "1",
+            "game_summary": "资源全靠挂，一键领取丰厚收益，从此不当游戏打工仔。随玩随停，",
+            "is_first": 0,
+            "online_time": "1626825600",
+            "hide_discount_label": 1,
+            "genre_str": "卡牌 • 魔幻",
+            "coupon_amount": 5738,
+            "game_labels": [
+              {
+                "label_name": "送送vip8",
+                "text_color": "#FF8426"
+              }
+            ],
+            "server_str": "明日 00:05 64服",
+            "discount": 10
+          },
+          {
+            "gameid": "5904",
+            "gamename": "摸金校尉之九幽将军",
+            "gameicon": "http://sysimage.tsyule.cn/2021/07/15/60efffd001eae.png",
+            "game_type": "2",
+            "game_summary": "天下霸唱力荐，探险寻宝生存手游",
+            "is_first": 0,
+            "online_time": "1626400800",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 盗墓",
+            "coupon_amount": 0,
+            "game_labels": null,
+            "server_str": "07月25日 17服",
+            "discount": 10
+          },
+          {
+            "gameid": "5823",
+            "gamename": "漫斗纪元（送GM特权）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/07/28/6100d649cd8b6.gif",
+            "game_type": "2",
+            "game_summary": "全明星魔性激斗放置手游，上线就送五星SSR",
+            "is_first": 0,
+            "online_time": "1627437600",
+            "hide_discount_label": 1,
+            "genre_str": "即时 • Q版",
+            "coupon_amount": 0,
+            "game_labels": null,
+            "server_str": "08月21日 25服",
+            "discount": 10
+          },
+          {
+            "gameid": "6191",
+            "gamename": "天将传（天天送真充）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/07/30/6103c55bb2a5c.gif",
+            "game_type": "1",
+            "game_summary": "《天将传》是一款以恢弘的仙侠世界为背景，颠覆性打造的MMOA",
+            "is_first": 0,
+            "online_time": "1627954200",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 仙侠",
+            "coupon_amount": 0,
+            "game_labels": [
+              {
+                "label_name": "送送VIP20",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "688.88万灵石",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月22日 23服",
+            "discount": 10
+          },
+          {
+            "gameid": "5741",
+            "gamename": "蓬莱（红将全免费）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/07/29/610276119180b.gif",
+            "game_type": "1",
+            "game_summary": "《蓬莱-红将全免费》是一款超BT的回合制挂机游戏",
+            "is_first": 0,
+            "online_time": "1627864200",
+            "hide_discount_label": 1,
+            "genre_str": "卡牌 • 神话",
+            "coupon_amount": 0,
+            "game_labels": [
+              {
+                "label_name": "送送VIP15",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "银两1亿",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月16日 48服",
+            "discount": 10
+          },
+          {
+            "gameid": "5698",
+            "gamename": "霸者大陆（BT版）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/05/610bb74d27dd1.png",
+            "game_type": "1",
+            "game_summary": "全新新高爆超变传奇，上线送千万元宝",
+            "is_first": 0,
+            "online_time": "1628128800",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 传奇",
+            "coupon_amount": 1848,
+            "game_labels": [
+              {
+                "label_name": "送送VIP6",
+                "text_color": "#FF8426"
+              }
+            ],
+            "server_str": "今日 10:00 33服",
+            "discount": 10
+          },
+          {
+            "gameid": "5678",
+            "gamename": "极武尊（集福得万充）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/06/28/60d92e77d3e72.gif",
+            "game_type": "1",
+            "game_summary": "《极武尊-集福得万充》是一款在2021年出品的精品仙侠真爱手",
+            "is_first": 0,
+            "online_time": "1628121600",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 仙侠",
+            "coupon_amount": 0,
+            "game_labels": [
+              {
+                "label_name": "送送VIP8",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "18888元宝",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "今日 12:00 30服",
+            "discount": 10
+          }
+        ]
+      },
+      "xy_lunbo|2": {
+        "id": "1",
+        "module_alias": "xy_lunbo",
+        "module_title": "",
+        "module_title_color": "",
+        "module_sub_title": "",
+        "module_sub_title_color": "",
+        "data": [
+          {
+            "page_type": "gameinfo",
+            "pic": "http://sysimage.tsyule.cn/2021/08/12/6114dd68f18cc.png",
+            "jump_target": "6261",
+            "client_type": "3",
+            "param": {
+              "gameid": "6261",
+              "game_type": "1"
+            }
+          },
+          {
+            "page_type": "gameinfo",
+            "pic": "http://sysimage.tsyule.cn/2021/08/12/6114dd524e5ab.png",
+            "jump_target": "6303",
+            "client_type": "1",
+            "param": {
+              "gameid": "6303",
+              "game_type": "1"
+            }
+          }
+        ]
+      },
+      "xy_menu|2": {
+        "id": "2",
+        "module_alias": "xy_menu",
+        "module_title": "",
+        "module_title_color": "",
+        "module_sub_title": "",
+        "module_sub_title_color": "",
+        "data": [
+          {
+            "title": "送充值卡",
+            "icon": "http://sysimage.tsyule.cn/2021/08/12/6114de1b3d817.png",
+            "jump_target": "",
+            "page_type": "gonglv",
+            "param": null
+          },
+          {
+            "title": "0元畅玩",
+            "icon": "http://sysimage.tsyule.cn/2021/08/12/6114ddfdb2e37.png",
+            "jump_target": "",
+            "page_type": "reward",
+            "param": {
+              "game_type": 1
+            }
+          },
+          {
+            "title": "免费领券",
+            "icon": "http://sysimage.tsyule.cn/2021/08/12/6114ddde22515.png",
+            "jump_target": "",
+            "page_type": "coupon",
+            "param": null
+          },
+          {
+            "title": "每日首冲",
+            "icon": "http://sysimage.tsyule.cn/2021/08/12/6114ddc34a307.png",
+            "jump_target": "6298",
+            "page_type": "gameinfo",
+            "param": {
+              "gameid": "6298",
+              "game_type": "2"
+            }
+          }
+        ]
+      },
+      "xy_renqi|2": {
+        "id": "3",
+        "module_alias": "xy_renqi",
+        "module_title": "超人气新游",
+        "module_title_color": "#000000",
+        "module_sub_title": "",
+        "module_sub_title_color": "",
+        "data": [
+          {
+            "gameid": "6288",
+            "gamename": "逆刃（2021打金版）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/11/6113239b262e0.gif",
+            "game_type": "1",
+            "game_summary": "上线就送总计2021元的充值卡",
+            "is_first": 1,
+            "online_time": "1628731500",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 传奇",
+            "coupon_amount": 3774,
+            "game_labels": [
+              {
+                "label_name": "送特权5",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "166666绑元",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "明日 20:00 17服",
+            "discount": 10
+          },
+          {
+            "gameid": "6303",
+            "gamename": "怪兽宝贝（满V无限版）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/11/6113640991ce1.png",
+            "game_type": "1",
+            "game_summary": "上线送满V，畅想超爽VIP特权，开启无限商城，一键无限资源",
+            "is_first": 1,
+            "online_time": "1628729400",
+            "hide_discount_label": 1,
+            "genre_str": "养成 • 口袋精灵",
+            "coupon_amount": 890,
+            "game_labels": [
+              {
+                "label_name": "送满VIP",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "精灵石*128888",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月15日 16服",
+            "discount": 10
+          },
+          {
+            "gameid": "6256",
+            "gamename": "亚瑟神剑（无限商城版）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/06/610d05dc17a32.gif",
+            "game_type": "1",
+            "game_summary": "Q萌塔防，守护你心中的那个梦想",
+            "is_first": 0,
+            "online_time": "1628383800",
+            "hide_discount_label": 1,
+            "genre_str": "塔防 • 休闲",
+            "coupon_amount": 890,
+            "game_labels": [
+              {
+                "label_name": "送满VIP",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "10万钻石",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月18日 28服",
+            "discount": 10
+          },
+          {
+            "gameid": "6298",
+            "gamename": "上古封神（激情国战）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/11/61136ca5126ca.gif",
+            "game_type": "2",
+            "game_summary": "上古仙境浩瀚无边,众仙云集封神九天",
+            "is_first": 1,
+            "online_time": "1628729700",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 仙侠",
+            "coupon_amount": 1871,
+            "game_labels": [
+              {
+                "label_name": "送648元大礼包",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月17日 6服",
+            "discount": 10
+          },
+          {
+            "gameid": "6286",
+            "gamename": "摸金校尉之西夏迷踪（5倍高返送VIP）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/11/611363df85771.gif",
+            "game_type": "2",
+            "game_summary": "首充返5倍元宝，免费送VIP10",
+            "is_first": 1,
+            "online_time": "1628733600",
+            "hide_discount_label": 1,
+            "genre_str": "冒险 • 盗墓",
+            "coupon_amount": 0,
+            "game_labels": [
+              {
+                "label_name": "送任务完送VIP",
+                "text_color": "#FF8426"
+              }
+            ],
+            "server_str": "08月16日 6服",
+            "discount": 10
+          },
+          {
+            "gameid": "6281",
+            "gamename": "武动六界（高爆率高返利）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/09/6110a50cc86ed.gif",
+            "game_type": "2",
+            "game_summary": "登录送时装，多倍返利爆率全开碾压全服。",
+            "is_first": 1,
+            "online_time": "1628560800",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 仙侠",
+            "coupon_amount": 2346,
+            "game_labels": null,
+            "server_str": "08月17日 10服",
+            "discount": 10
+          },
+          {
+            "gameid": "6177",
+            "gamename": "倾世情缘(送百级神装)",
+            "gameicon": "http://sysimage.tsyule.cn/2021/07/23/60fa598f9f73c.png",
+            "game_type": "2",
+            "game_summary": "畅汗淋漓的影像，是任何一个游戏玩家不可不玩的佳作！",
+            "is_first": 0,
+            "online_time": "1626660000",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 玄幻",
+            "coupon_amount": 0,
+            "game_labels": [
+              {
+                "label_name": "送10连抽",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月05日 11服",
+            "discount": 10
+          }
+        ],
+        "additional": {
+          "page_type": "gameinfo",
+          "icon": "http://p1.tsyule.cn/2021/08/12/6114de375cdf9.png",
+          "jump_target": "6261",
+          "param": {
+            "gameid": "6261",
+            "game_type": "1"
+          }
+        }
+      },
+      "xy_zhongbang|2": {
+        "id": "4",
+        "module_alias": "xy_zhongbang",
+        "module_title": "重磅推荐",
+        "module_title_color": "#000000",
+        "module_sub_title": "",
+        "module_sub_title_color": "",
+        "data": [
+          {
+            "gameid": "6208",
+            "gamename": "铁甲战神（送648充值）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/11/61132df1445d0.png",
+            "game_type": "1",
+            "game_summary": "三职业连斩玩法，点爆你的想象！",
+            "is_first": 1,
+            "online_time": "1628818200",
+            "hide_discount_label": 1,
+            "genre_str": "挂机 • 传奇",
+            "coupon_amount": 0,
+            "game_labels": [
+              {
+                "label_name": "送送648充值卡",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "10倍返充值卡",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "明日 10:00 2服",
+            "discount": 10
+          },
+          {
+            "gameid": "6275",
+            "gamename": "青丘奇缘（真充大乐透）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/10/611233930cd32.gif",
+            "game_type": "1",
+            "game_summary": "唯美国风情缘仙侠",
+            "is_first": 1,
+            "online_time": "1628812800",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 仙侠",
+            "coupon_amount": 15904,
+            "game_labels": [
+              {
+                "label_name": "送送尊享10级",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "58888仙玉",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "明日 02:00 10服",
+            "discount": 10
+          },
+          {
+            "gameid": "6178",
+            "gamename": "全民坦克联盟（登录送VIP8）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/11/611336d3f1dcf.gif",
+            "game_type": "1",
+            "game_summary": "一路冲锋，所向披靡",
+            "is_first": 1,
+            "online_time": "1628820000",
+            "hide_discount_label": 1,
+            "genre_str": "回合 • 军事",
+            "coupon_amount": 376,
+            "game_labels": [
+              {
+                "label_name": "送送VIP8",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "30W钻石",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "明日 10:00 2服",
+            "discount": 10
+          }
+        ]
+      },
+      "yx_zuixinshangjia|2": {
+        "id": "5",
+        "module_alias": "yx_zuixinshangjia",
+        "module_title": "最新上架",
+        "module_title_color": "#000000",
+        "module_sub_title": "",
+        "module_sub_title_color": "",
+        "data": [
+          {
+            "gameid": "6262",
+            "gamename": "江湖侠客令（送无限真充）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/09/6110df031bd64.gif",
+            "game_type": "1",
+            "game_summary": "创角即送满V，每日送真充",
+            "is_first": "1",
+            "online_time": "1628817900",
+            "hide_discount_label": 1,
+            "coupon_amount": 2286,
+            "vip_label": "送送VIP15",
+            "discount": 10
+          },
+          {
+            "gameid": "6047",
+            "gamename": "美人传（送绝美战姬）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/11/61139f39a721c.gif",
+            "game_type": "1",
+            "game_summary": "全新战姬调教养成手游，上线送满V，新服前7日还有绝美战姬相送",
+            "is_first": "1",
+            "online_time": "1628820000",
+            "hide_discount_label": 1,
+            "coupon_amount": 915,
+            "vip_label": "送满VIP",
+            "discount": 10
+          },
+          {
+            "gameid": "6273",
+            "gamename": "剑御天下（抽充无限送） 删档内测",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/10/6111d4622638f.gif",
+            "game_type": "1",
+            "game_summary": "登陆送VIP9，全民瓜分8亿仙玉豪礼",
+            "is_first": "1",
+            "online_time": "1628820000",
+            "hide_discount_label": 1,
+            "coupon_amount": 0,
+            "vip_label": "送送VIP9",
+            "discount": 10
+          },
+          {
+            "gameid": "6277",
+            "gamename": "真武江湖（红包送神充）删档内测",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/11/61133c29e3c2d.gif",
+            "game_type": "1",
+            "game_summary": "全新3D次世代MMOARPG手游、极致福利、次时代3D仙侠！",
+            "is_first": "1",
+            "online_time": "1628818200",
+            "hide_discount_label": 1,
+            "coupon_amount": 224,
+            "vip_label": "送送VIP9",
+            "discount": 10
+          },
+          {
+            "gameid": "6199",
+            "gamename": "银河守卫队（永恒真充卡）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/11/6113423f86c3f.gif",
+            "game_type": "1",
+            "game_summary": "全新改版福利异世界冒险放置手游",
+            "is_first": "1",
+            "online_time": "1628820000",
+            "hide_discount_label": 1,
+            "coupon_amount": 2795,
+            "vip_label": "送满VIP",
+            "discount": 10
+          },
+          {
+            "gameid": "6257",
+            "gamename": "雷霆英雄（万充无限抽）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/12/6114928c8751f.gif",
+            "game_type": "1",
+            "game_summary": "以魔幻英雄为主题，架空历史年代，乱斗世界",
+            "is_first": "1",
+            "online_time": "1628815800",
+            "hide_discount_label": 1,
+            "coupon_amount": 890,
+            "vip_label": "送送VIP10",
+            "discount": 10
+          },
+          {
+            "gameid": "6265",
+            "gamename": "蜀山御风行（无限铜钱）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/12/61147fafb692c.gif",
+            "game_type": "1",
+            "game_summary": "全新的热血仙侠大世界的游戏体验",
+            "is_first": "1",
+            "online_time": "1628818200",
+            "hide_discount_label": 1,
+            "coupon_amount": 2186,
+            "vip_label": "",
+            "discount": 10
+          },
+          {
+            "gameid": "6064",
+            "gamename": "水浒乱斗（送顶级神将）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/04/610a0db0e3c51.gif",
+            "game_type": "1",
+            "game_summary": "上线送贵宾VIP16，挂机拿充值卡，登陆送两万红包",
+            "is_first": "1",
+            "online_time": "1628726100",
+            "hide_discount_label": 1,
+            "coupon_amount": 3526,
+            "vip_label": "送送贵宾VIP16",
+            "discount": 10
+          },
+          {
+            "gameid": "6183",
+            "gamename": "侠客外传（0氪领万充）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/05/610ba1d4ca806.gif",
+            "game_type": "1",
+            "game_summary": "海量真充劵助你遨游仙界，开局无限福利赠送",
+            "is_first": "1",
+            "online_time": "1628726400",
+            "hide_discount_label": 1,
+            "coupon_amount": 3824,
+            "vip_label": "送送VIP18",
+            "discount": 10
+          },
+          {
+            "gameid": "6261",
+            "gamename": "西游记口袋版（GM无限资源）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/06/610ce57d3dfdc.gif",
+            "game_type": "1",
+            "game_summary": "超爽GM商城，超多资源1元宝无限换！",
+            "is_first": "1",
+            "online_time": "1628726400",
+            "hide_discount_label": 1,
+            "coupon_amount": 14090,
+            "vip_label": "送送VIP15",
+            "discount": 10
+          },
+          {
+            "gameid": "6288",
+            "gamename": "逆刃（2021打金版）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/11/6113239b262e0.gif",
+            "game_type": "1",
+            "game_summary": "上线就送总计2021元的充值卡",
+            "is_first": "1",
+            "online_time": "1628731500",
+            "hide_discount_label": 1,
+            "coupon_amount": 3774,
+            "vip_label": "送特权5",
+            "discount": 10
+          },
+          {
+            "gameid": "6303",
+            "gamename": "怪兽宝贝（满V无限版）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/11/6113640991ce1.png",
+            "game_type": "1",
+            "game_summary": "上线送满V，畅想超爽VIP特权，开启无限商城，一键无限资源",
+            "is_first": "1",
+            "online_time": "1628729400",
+            "hide_discount_label": 1,
+            "coupon_amount": 890,
+            "vip_label": "送满VIP",
+            "discount": 10
+          }
+        ],
+        "additional": {
+          "page_type": "gamelist",
+          "icon": "http://p1.tsyule.cn/2021/08/12/6114de9581866.png",
+          "jump_target": "88",
+          "param": {
+            "game_list_id": "88",
+            "game_type": 1
+          }
+        }
+      },
+      "yx_chaping|2": {
+        "id": "6",
+        "module_alias": "yx_chaping",
+        "module_title": "",
+        "module_title_color": "",
+        "module_sub_title": "",
+        "module_sub_title_color": "",
+        "data": [
+          {
+            "page_type": "gameinfo",
+            "pic": "http://sysimage.tsyule.cn/2021/08/12/6114dd87ab5f3.png",
+            "jump_target": "6256",
+            "client_type": "3",
+            "param": {
+              "gameid": "6256",
+              "game_type": "1"
+            }
+          }
+        ]
+      },
+      "yx_haoyoutuijian|2": {
+        "id": "7",
+        "module_alias": "yx_haoyoutuijian",
+        "module_title": "A++级 好游推荐",
+        "module_title_color": "#000000",
+        "module_sub_title": "",
+        "module_sub_title_color": "",
+        "data": [
+          {
+            "gameid": "6261",
+            "gamename": "西游记口袋版（GM无限资源）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/06/610ce57d3dfdc.gif",
+            "game_type": "1",
+            "game_summary": "超爽GM商城，超多资源1元宝无限换！",
+            "is_first": 1,
+            "online_time": "1628726400",
+            "hide_discount_label": 1,
+            "genre_str": "回合 • 西游",
+            "coupon_amount": 14090,
+            "game_labels": [
+              {
+                "label_name": "送送VIP15",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "58888钻石",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "今日 17:00 14服",
+            "discount": 10
+          },
+          {
+            "gameid": "6064",
+            "gamename": "水浒乱斗（送顶级神将）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/04/610a0db0e3c51.gif",
+            "game_type": "1",
+            "game_summary": "上线送贵宾VIP16，挂机拿充值卡，登陆送两万红包",
+            "is_first": 1,
+            "online_time": "1628726100",
+            "hide_discount_label": 1,
+            "genre_str": "卡牌 • 历史",
+            "coupon_amount": 3526,
+            "game_labels": [
+              {
+                "label_name": "送送贵宾VIP16",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "36888元宝",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月16日 19服",
+            "discount": 10
+          },
+          {
+            "gameid": "6183",
+            "gamename": "侠客外传（0氪领万充）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/05/610ba1d4ca806.gif",
+            "game_type": "1",
+            "game_summary": "海量真充劵助你遨游仙界，开局无限福利赠送",
+            "is_first": 1,
+            "online_time": "1628726400",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 仙侠",
+            "coupon_amount": 3824,
+            "game_labels": [
+              {
+                "label_name": "送送VIP18",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "绑元88888",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "今日 20:30 17服",
+            "discount": 10
+          },
+          {
+            "gameid": "6238",
+            "gamename": "机甲护卫队（每日送代金券）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/06/610cfa7898765.png",
+            "game_type": "1",
+            "game_summary": "看游戏介绍图领取多重福利码！",
+            "is_first": 0,
+            "online_time": "1628553600",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 科幻",
+            "coupon_amount": 3150,
+            "game_labels": [
+              {
+                "label_name": "送送VIP15",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "28888钻石",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月16日 20服",
+            "discount": 10
+          },
+          {
+            "gameid": "6181",
+            "gamename": "女神联盟2（送万充女神）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/05/610b6b47d87b7.gif",
+            "game_type": "1",
+            "game_summary": "免费送万元真充、千万钻石、红品质自选女神、橙品质坐骑珍兽·炎",
+            "is_first": 0,
+            "online_time": "1628557200",
+            "hide_discount_label": 1,
+            "genre_str": "回合 • 魔幻",
+            "coupon_amount": 1790,
+            "game_labels": [
+              {
+                "label_name": "送满VIP",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "钻石*20000",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月16日 22服",
+            "discount": 10
+          },
+          {
+            "gameid": "6052",
+            "gamename": "神创九州（送GM万抽）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/09/61109ff41d68e.gif",
+            "game_type": "1",
+            "game_summary": "《神创九州-送GM万抽》是一款修真风格的高自由度的放置游戏",
+            "is_first": 0,
+            "online_time": "1628553600",
+            "hide_discount_label": 1,
+            "genre_str": "挂机 • 休闲",
+            "coupon_amount": 7642,
+            "game_labels": [
+              {
+                "label_name": "送送V8",
+                "text_color": "#FF8426"
+              }
+            ],
+            "server_str": "08月15日 26服",
+            "discount": 10
+          },
+          {
+            "gameid": "6228",
+            "gamename": "纵横无双（充值破解版）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/05/610babda2afd3.gif",
+            "game_type": "1",
+            "game_summary": "《纵横无双-充值破解版》是一款主打单职业特色的BT传奇手游，",
+            "is_first": 0,
+            "online_time": "1628382600",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 传奇",
+            "coupon_amount": 3066,
+            "game_labels": [
+              {
+                "label_name": "送送王者VIP",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "元宝1000w",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "明日 20:00 36服",
+            "discount": 10
+          },
+          {
+            "gameid": "6082",
+            "gamename": "莽荒纪（送GM两万充）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/03/6108e12e81818.gif",
+            "game_type": "1",
+            "game_summary": "一款正版授权改编玄幻修仙ARPG手游大作",
+            "is_first": 0,
+            "online_time": "1628038200",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 玄幻",
+            "coupon_amount": 890,
+            "game_labels": [
+              {
+                "label_name": "送送SVIP2",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "绑元*88万",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月19日 42服",
+            "discount": 10
+          },
+          {
+            "gameid": "6194",
+            "gamename": "龙纪元（真充0元购）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/05/610b88ad45612.gif",
+            "game_type": "1",
+            "game_summary": "沉浸式国风魔幻MMO《龙纪元》",
+            "is_first": 0,
+            "online_time": "1628208000",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 魔幻",
+            "coupon_amount": 3894,
+            "game_labels": [
+              {
+                "label_name": "送送VIP12",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "绑元38888",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月16日 42服",
+            "discount": 10
+          },
+          {
+            "gameid": "6125",
+            "gamename": "鬼剑豪（霸服十万真充）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/07/29/61021dbe2356f.gif",
+            "game_type": "1",
+            "game_summary": "正版授权，全新史诗大作",
+            "is_first": 0,
+            "online_time": "1627779600",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 仙侠",
+            "coupon_amount": 2210,
+            "game_labels": [
+              {
+                "label_name": "送送VIP15",
+                "text_color": "#FF8426"
+              }
+            ],
+            "server_str": "08月17日 46服",
+            "discount": 10
+          },
+          {
+            "gameid": "6204",
+            "gamename": "开心宝贝（送万抽真充）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/03/6108a8d8f2661.gif",
+            "game_type": "1",
+            "game_summary": "《开心宝贝》是一款以宝可梦为题材的动作卡牌类手游",
+            "is_first": 0,
+            "online_time": "1628038800",
+            "hide_discount_label": 1,
+            "genre_str": "卡牌 • 口袋精灵",
+            "coupon_amount": 2550,
+            "game_labels": [
+              {
+                "label_name": "送满VIP",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "钻石*68888",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月15日 41服",
+            "discount": 10
+          },
+          {
+            "gameid": "6155",
+            "gamename": "太乙仙魔录之灵飞纪（送万元真充）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/07/29/6102715894ab1.gif",
+            "game_type": "1",
+            "game_summary": "太乙仙魔录之灵飞纪（送万元真充）是一款唯美玄幻仙侠手游，",
+            "is_first": 0,
+            "online_time": "1627862400",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 仙侠",
+            "coupon_amount": 4236,
+            "game_labels": [
+              {
+                "label_name": "送送vip15",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "元宝*88888",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月04日 27服",
+            "discount": 10
+          },
+          {
+            "gameid": "6172",
+            "gamename": "狂暴之翼（终身资源）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/07/28/6100b83aa0883.gif",
+            "game_type": "1",
+            "game_summary": "超多福利，百人混战，激情争霸",
+            "is_first": 0,
+            "online_time": "1627953900",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 魔幻",
+            "coupon_amount": 1780,
+            "game_labels": [
+              {
+                "label_name": "送送至尊VIP",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "钻石*208888",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月21日 27服",
+            "discount": 10
+          },
+          {
+            "gameid": "6219",
+            "gamename": "魔域迷宫（千充无限版）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/02/610793f371de6.gif",
+            "game_type": "1",
+            "game_summary": "源于《西游记》神话巨著，体验不一样西游的修仙之旅",
+            "is_first": 0,
+            "online_time": "1627951800",
+            "hide_discount_label": 1,
+            "genre_str": "卡牌 • 西游",
+            "coupon_amount": 890,
+            "game_labels": [
+              {
+                "label_name": "送超V",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "元宝*588万",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月20日 34服",
+            "discount": 10
+          },
+          {
+            "gameid": "6209",
+            "gamename": "绝地莽荒（海量福利版）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/04/6109fca3a848b.gif",
+            "game_type": "1",
+            "game_summary": "一款封神题材仙侠传说的幻想ARPG手机游戏",
+            "is_first": 0,
+            "online_time": "1628121600",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 仙侠",
+            "coupon_amount": 376,
+            "game_labels": [
+              {
+                "label_name": "送送王者VIP",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "元宝*188888",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月09日 21服",
+            "discount": 10
+          }
+        ]
+      },
+      "yx_mianfeiwan|2": {
+        "id": "8",
+        "module_alias": "yx_mianfeiwan",
+        "module_title": "领券免费玩",
+        "module_title_color": "#000000",
+        "module_sub_title": "大额减免券，助你一臂之力",
+        "module_sub_title_color": "#666",
+        "data": [
+          {
+            "gameid": "6064",
+            "gamename": "水浒乱斗（送顶级神将）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/04/610a0db0e3c51.gif",
+            "game_type": "1",
+            "game_summary": "上线送贵宾VIP16，挂机拿充值卡，登陆送两万红包",
+            "is_first": "1",
+            "online_time": "1628726100",
+            "hide_discount_label": 1,
+            "coupon_amount": 3526,
+            "vip_label": "送送贵宾VIP16",
+            "discount": 10
+          },
+          {
+            "gameid": "6183",
+            "gamename": "侠客外传（0氪领万充）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/05/610ba1d4ca806.gif",
+            "game_type": "1",
+            "game_summary": "海量真充劵助你遨游仙界，开局无限福利赠送",
+            "is_first": "1",
+            "online_time": "1628726400",
+            "hide_discount_label": 1,
+            "coupon_amount": 3824,
+            "vip_label": "送送VIP18",
+            "discount": 10
+          },
+          {
+            "gameid": "6261",
+            "gamename": "西游记口袋版（GM无限资源）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/06/610ce57d3dfdc.gif",
+            "game_type": "1",
+            "game_summary": "超爽GM商城，超多资源1元宝无限换！",
+            "is_first": "1",
+            "online_time": "1628726400",
+            "hide_discount_label": 1,
+            "coupon_amount": 14090,
+            "vip_label": "送送VIP15",
+            "discount": 10
+          },
+          {
+            "gameid": "6288",
+            "gamename": "逆刃（2021打金版）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/11/6113239b262e0.gif",
+            "game_type": "1",
+            "game_summary": "上线就送总计2021元的充值卡",
+            "is_first": "1",
+            "online_time": "1628731500",
+            "hide_discount_label": 1,
+            "coupon_amount": 3774,
+            "vip_label": "送特权5",
+            "discount": 10
+          },
+          {
+            "gameid": "6303",
+            "gamename": "怪兽宝贝（满V无限版）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/11/6113640991ce1.png",
+            "game_type": "1",
+            "game_summary": "上线送满V，畅想超爽VIP特权，开启无限商城，一键无限资源",
+            "is_first": "1",
+            "online_time": "1628729400",
+            "hide_discount_label": 1,
+            "coupon_amount": 890,
+            "vip_label": "送满VIP",
+            "discount": 10
+          },
+          {
+            "gameid": "6233",
+            "gamename": "美杜莎传奇（无限合击版）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/06/610cccb9b16b4.gif",
+            "game_type": "1",
+            "game_summary": "天机老人送无限福利，技能超变，热血合击",
+            "is_first": "1",
+            "online_time": "1628641800",
+            "hide_discount_label": 1,
+            "coupon_amount": 1384,
+            "vip_label": "送满VIP",
+            "discount": 10
+          }
+        ],
+        "additional": {
+          "page_type": "coupon",
+          "icon": "http://p1.tsyule.cn/2021/08/12/6114ded568f62.png",
+          "jump_target": "",
+          "param": null
+        }
+      },
+      "yx_gengduohaowan|2": {
+        "id": "9",
+        "module_alias": "yx_gengduohaowan",
+        "module_title": "更多好玩新游 一网打尽",
+        "module_title_color": "#000000",
+        "module_sub_title": "",
+        "module_sub_title_color": "",
+        "data": [
+          {
+            "gameid": "6303",
+            "gamename": "怪兽宝贝（满V无限版）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/11/6113640991ce1.png",
+            "game_type": "1",
+            "game_summary": "上线送满V，畅想超爽VIP特权，开启无限商城，一键无限资源",
+            "is_first": 1,
+            "online_time": "1628729400",
+            "hide_discount_label": 1,
+            "genre_str": "养成 • 口袋精灵",
+            "coupon_amount": 890,
+            "game_labels": [
+              {
+                "label_name": "送满VIP",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "精灵石*128888",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月15日 16服",
+            "discount": 10
+          },
+          {
+            "gameid": "2656",
+            "gamename": "仙魔变",
+            "gameicon": "http://sysimage.tsyule.cn/2021/07/28/6100b17026919.gif",
+            "game_type": "2",
+            "game_summary": "国风仙侠唯美修仙游戏",
+            "is_first": 0,
+            "online_time": "1627524000",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 仙侠",
+            "coupon_amount": 0,
+            "game_labels": null,
+            "server_str": "08月01日 4服",
+            "discount": 10
+          },
+          {
+            "gameid": "6077",
+            "gamename": "众神风云（躺赢1W真充）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/07/16/60f0f0cc93003.gif",
+            "game_type": "1",
+            "game_summary": "【送大天使之剑1W真充】/【开局送大天使之剑，VIP888领",
+            "is_first": 0,
+            "online_time": "1626656400",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 魔幻",
+            "coupon_amount": 1800,
+            "game_labels": [
+              {
+                "label_name": "送送VIP10",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "38888红钻",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月15日 49服",
+            "discount": 10
+          },
+          {
+            "gameid": "5929",
+            "gamename": "伏魔录（送三国名将）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/07/20/60f625bc2de79.gif",
+            "game_type": "1",
+            "game_summary": "游戏为玩家带来超值福利，大量元宝首日登录就送，正统史诗级三国",
+            "is_first": 0,
+            "online_time": "1627002000",
+            "hide_discount_label": 1,
+            "genre_str": "卡牌 • 三国",
+            "coupon_amount": 3812,
+            "game_labels": [
+              {
+                "label_name": "送送金主7",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "18万金锭",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月17日 43服",
+            "discount": 10
+          },
+          {
+            "gameid": "5924",
+            "gamename": "灵剑传说（送20万真充）删档内测",
+            "gameicon": "http://sysimage.tsyule.cn/2021/07/19/60f525fe5d334.gif",
+            "game_type": "1",
+            "game_summary": "新派超写实风格3D国创仙侠手游",
+            "is_first": 1,
+            "online_time": "1629072000",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 仙侠",
+            "coupon_amount": 2825,
+            "game_labels": [
+              {
+                "label_name": "送送至尊VIP20",
+                "text_color": "#FF8426"
+              }
+            ],
+            "server_str": "08月16日 2服",
+            "discount": 10
+          },
+          {
+            "gameid": "5912",
+            "gamename": "英雄计划（BUG抽悟空）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/07/14/60ee6672e3987.gif",
+            "game_type": "1",
+            "game_summary": "资源全靠挂，一键领取丰厚收益，从此不当游戏打工仔。随玩随停，",
+            "is_first": 0,
+            "online_time": "1626825600",
+            "hide_discount_label": 1,
+            "genre_str": "卡牌 • 魔幻",
+            "coupon_amount": 5738,
+            "game_labels": [
+              {
+                "label_name": "送送vip8",
+                "text_color": "#FF8426"
+              }
+            ],
+            "server_str": "明日 00:05 64服",
+            "discount": 10
+          },
+          {
+            "gameid": "5904",
+            "gamename": "摸金校尉之九幽将军",
+            "gameicon": "http://sysimage.tsyule.cn/2021/07/15/60efffd001eae.png",
+            "game_type": "2",
+            "game_summary": "天下霸唱力荐，探险寻宝生存手游",
+            "is_first": 0,
+            "online_time": "1626400800",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 盗墓",
+            "coupon_amount": 0,
+            "game_labels": null,
+            "server_str": "07月25日 17服",
+            "discount": 10
+          },
+          {
+            "gameid": "5823",
+            "gamename": "漫斗纪元（送GM特权）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/07/28/6100d649cd8b6.gif",
+            "game_type": "2",
+            "game_summary": "全明星魔性激斗放置手游，上线就送五星SSR",
+            "is_first": 0,
+            "online_time": "1627437600",
+            "hide_discount_label": 1,
+            "genre_str": "即时 • Q版",
+            "coupon_amount": 0,
+            "game_labels": null,
+            "server_str": "08月21日 25服",
+            "discount": 10
+          },
+          {
+            "gameid": "6191",
+            "gamename": "天将传（天天送真充）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/07/30/6103c55bb2a5c.gif",
+            "game_type": "1",
+            "game_summary": "《天将传》是一款以恢弘的仙侠世界为背景，颠覆性打造的MMOA",
+            "is_first": 0,
+            "online_time": "1627954200",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 仙侠",
+            "coupon_amount": 0,
+            "game_labels": [
+              {
+                "label_name": "送送VIP20",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "688.88万灵石",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月22日 23服",
+            "discount": 10
+          },
+          {
+            "gameid": "5741",
+            "gamename": "蓬莱（红将全免费）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/07/29/610276119180b.gif",
+            "game_type": "1",
+            "game_summary": "《蓬莱-红将全免费》是一款超BT的回合制挂机游戏",
+            "is_first": 0,
+            "online_time": "1627864200",
+            "hide_discount_label": 1,
+            "genre_str": "卡牌 • 神话",
+            "coupon_amount": 0,
+            "game_labels": [
+              {
+                "label_name": "送送VIP15",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "银两1亿",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "08月16日 48服",
+            "discount": 10
+          },
+          {
+            "gameid": "5698",
+            "gamename": "霸者大陆（BT版）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/08/05/610bb74d27dd1.png",
+            "game_type": "1",
+            "game_summary": "全新新高爆超变传奇，上线送千万元宝",
+            "is_first": 0,
+            "online_time": "1628128800",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 传奇",
+            "coupon_amount": 1848,
+            "game_labels": [
+              {
+                "label_name": "送送VIP6",
+                "text_color": "#FF8426"
+              }
+            ],
+            "server_str": "今日 10:00 33服",
+            "discount": 10
+          },
+          {
+            "gameid": "5678",
+            "gamename": "极武尊（集福得万充）",
+            "gameicon": "http://sysimage.tsyule.cn/2021/06/28/60d92e77d3e72.gif",
+            "game_type": "1",
+            "game_summary": "《极武尊-集福得万充》是一款在2021年出品的精品仙侠真爱手",
+            "is_first": 0,
+            "online_time": "1628121600",
+            "hide_discount_label": 1,
+            "genre_str": "角色 • 仙侠",
+            "coupon_amount": 0,
+            "game_labels": [
+              {
+                "label_name": "送送VIP8",
+                "text_color": "#FF8426"
+              },
+              {
+                "label_name": "18888元宝",
+                "text_color": "#FF3444"
+              }
+            ],
+            "server_str": "今日 12:00 30服",
+            "discount": 10
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.chaoji.other.blankj.utilcode.util.StringUtils" />
+
+        <variable
+            name="goodDetailBean"
+            type="com.chaoji.im.data.model.ModTradeGoodDetailBean" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="@dimen/idp_80"
+        android:layout_height="wrap_content"
+        android:background="@drawable/item_click_selector"
+        android:orientation="vertical"
+        android:paddingVertical="@dimen/idp_5">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="@dimen/idp_80"
+            android:layout_height="@dimen/idp_80"
+            android:layout_gravity="center"
+            app:loadRound11Image="@{goodDetailBean.gameicon}"
+            tools:src="@mipmap/mod_icon" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/icon"
+            android:background="@drawable/mod_image_cph"
+            android:gravity="center"
+            android:text="成品号"
+            android:textColor="@color/black90"
+            android:textSize="@dimen/isp_10" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/icon"
+            android:layout_marginTop="@dimen/idp_5"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="@{goodDetailBean.gamename}"
+            android:textColor="@color/text_default_color"
+            android:textSize="@dimen/isp_13" />
+
+
+        <TextView
+            android:id="@+id/desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/name"
+            android:layout_marginTop="@dimen/idp_5"
+            android:ellipsize="end"
+            android:gravity="center_horizontal"
+            android:maxLines="1"
+            android:text="@{StringUtils.format(&quot;累充:%s&quot;, goodDetailBean.xh_pay_game_total)}"
+            android:textColor="@color/bbl_999999"
+            android:textSize="@dimen/isp_11"
+            android:visibility="gone"
+            tools:text="12345人在玩" />
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/desc"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="@{StringUtils.format(&quot;￥%s&quot;, goodDetailBean.goods_price)}"
+            android:textColor="#FF2D3F"
+            android:textSize="@dimen/isp_16"
+            android:textStyle="bold"
+            tools:text="￥520" />
+
+    </RelativeLayout>
+
+
+</layout>

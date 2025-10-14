@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.chaoji.mod.ui.activity.modmain.mod5.Mod5Fragment3Model" />
+
+        <variable
+            name="click"
+            type="com.chaoji.mod.ui.activity.modmain.mod5.Mod5Fragment3.ProxyClick" />
+    </data>
+
+    <com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlEnableFooterTranslationContent="true"
+        app:srlEnableHeaderTranslationContent="true"
+        app:srlEnableLoadMore="false"
+        app:srlEnableOverScrollBounce="true"
+        app:srlEnableOverScrollDrag="true"
+        app:srlEnablePureScrollMode="true"
+        app:srlReboundDuration="700">
+
+        <RelativeLayout
+            android:background="#61E3F7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:orientation="horizontal"
+                android:padding="@dimen/idp_10"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_default="wrap"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                bind:itemCount="2"
+                tools:listitem="@layout/mod_item_applets_desc_pro" />
+
+        </RelativeLayout>
+
+    </com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout>
+</layout>

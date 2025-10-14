@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.chaoji.other.blankj.utilcode.util.StringUtils" />
+
+        <variable
+            name="modModelMod"
+            type="com.chaoji.im.data.model.ModModelMod" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mod_main_layout_bg"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/idp_75"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/idp_15">
+
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="@dimen/idp_50"
+                android:layout_height="@dimen/idp_50"
+                android:layout_gravity="center_vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:loadResNameImage="@{modModelMod.appIcon}"
+                tools:src="@mipmap/mod_icon" />
+
+
+            <LinearLayout
+                android:id="@+id/midLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/idp_60"
+                android:layout_marginEnd="@dimen/idp_70"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/icon"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:maxLines="1"
+                    android:text="@{modModelMod.appName}"
+                    android:textColor="@color/text_default_color"
+                    android:textSize="@dimen/isp_15"
+                    android:textStyle="bold"
+                    tools:text="仙剑奇侠传" />
+
+                <TextView
+                    android:id="@+id/name2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/idp_3"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:maxLines="1"
+                    android:text="@{StringUtils.format(&quot;ID:%s&quot;, modModelMod.appUpdateId)}"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/isp_13"
+                    tools:text="ID：5" />
+
+                <TextView
+                    android:id="@+id/tip1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/idp_3"
+                    android:background="#CBEEFF"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:maxLines="1"
+                    android:paddingHorizontal="@dimen/idp_5"
+                    android:paddingVertical="@dimen/idp_2"
+                    android:text="@{StringUtils.format(&quot;包名:%s&quot;, modModelMod.appPackageName)}"
+                    android:textColor="#0054FF"
+                    android:textSize="@dimen/isp_10"
+                    tools:text="包名:com.xiaodianyx.xdhy" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/endLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:gravity="end"
+                    android:maxLines="1"
+                    android:textColor="#FF5757"
+                    android:textSize="@dimen/isp_11"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    tools:text="库存剩余99%" />
+
+                <Button
+                    android:id="@+id/start"
+                    android:layout_width="@dimen/idp_65"
+                    android:layout_height="@dimen/idp_25"
+                    android:background="@drawable/mod_item_libao_btn_bg"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="预览"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/isp_12"
+                    android:textStyle="bold"
+                    tools:text="预览" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+
+</layout>
+

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.chaoji.other.blankj.utilcode.util.StringUtils" />
+
+        <variable
+            name="modLiBaoBean"
+            type="com.chaoji.im.data.model.ModLiBaoBean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mod_main_layout_bg"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/idp_75"
+            android:alpha="@{modLiBaoBean.bgAlpha}"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/idp_15">
+
+            <LinearLayout
+                android:id="@+id/midLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/idp_70"
+                android:layout_marginStart="@dimen/idp_10"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:maxLines="1"
+                    android:text="@{modLiBaoBean.cardname}"
+                    android:textColor="@color/text_default_color"
+                    android:textSize="@dimen/isp_15"
+                    android:textStyle="bold"
+                    tools:text="夏日缤纷礼包" />
+
+                <TextView
+                    android:id="@+id/name2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/idp_3"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:maxLines="1"
+                    android:text="@{modLiBaoBean.cardcontent}"
+                    android:textColor="@color/text_default_color"
+                    android:textSize="@dimen/isp_12"
+                    tools:text="钻石*1000,令牌*100，经验书*1w" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/endLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/idp_10"
+                android:layout_marginTop="@dimen/idp_3"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <Button
+                    android:id="@+id/lingqu"
+                    android:layout_width="@dimen/idp_65"
+                    android:layout_height="@dimen/idp_25"
+                    android:alpha="@{modLiBaoBean.bgAlpha}"
+                    android:background="@drawable/mod_item_libao_btn_bg"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@{modLiBaoBean.itemHasGetText}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/isp_12"
+                    android:textStyle="bold"
+                    tools:text="领取" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+
+</layout>
+

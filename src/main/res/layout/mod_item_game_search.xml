@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.chaoji.other.blankj.utilcode.util.StringUtils" />
+
+        <variable
+            name="gameHallListBean"
+            type="com.chaoji.im.data.model.ModGameHallList" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingHorizontal="@dimen/idp_10"
+        android:paddingVertical="@dimen/idp_10">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="@dimen/idp_60"
+            android:layout_height="@dimen/idp_60"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:loadRound11Image="@{gameHallListBean.gameicon}"
+            tools:src="@mipmap/mod_icon" />
+
+        <LinearLayout
+            android:id="@+id/textLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/idp_10"
+            android:layout_marginEnd="@dimen/idp_70"
+            android:layout_toEndOf="@id/icon"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@id/icon"
+            app:layout_constraintLeft_toRightOf="@id/icon"
+            app:layout_constraintTop_toTopOf="@+id/icon">
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{gameHallListBean.gamename}"
+                android:textColor="@color/text_default_color"
+                android:textSize="@dimen/isp_13"
+                android:textStyle="bold"
+                tools:text="神陵武装神陵武装神陵武装神陵武装" />
+
+            <TextView
+                android:id="@+id/tip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:paddingVertical="@dimen/idp_2"
+                android:singleLine="true"
+                android:text="@{gameHallListBean.game_summary}"
+                android:textColor="@color/bbl_999999"
+                android:textSize="@dimen/isp_12"
+                tools:text="格调1服·榜二高战成品号格调1服*神陵武装神陵武装神陵武装神陵武装" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/idp_3"
+                tools:itemCount="1"
+                tools:listitem="@layout/mod_item_game_label" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/mod_game_detail_zhekou_bg"
+            android:gravity="center"
+            android:paddingBottom="@dimen/idp_4"
+            android:text="@{StringUtils.format(&quot;%s折&quot;,gameHallListBean.discount)}"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+
+
+
+</layout>

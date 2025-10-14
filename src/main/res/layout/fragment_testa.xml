@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.chaoji.mod.ui.activity.about.ModActivityAboutModel" />
+
+        <variable
+            name="click"
+            type="com.chaoji.mod.ui.activity.about.ModActivityTest.ProxyClick" />
+    </data>
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        bind:context=".ui.fragment.HomeFragment">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:elevation="0px">
+
+            <com.chaoji.im.ui.widget.XCollapsingToolbarLayout
+                android:id="@+id/ctl_home_bar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/idp_256"
+                app:contentScrim="@color/white"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+                app:scrimVisibleHeightTrigger="@dimen/idp_100">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    app:layout_collapseMode="parallax"
+                    app:srcCompat="@drawable/mod_jiaoyixuzhi_title" />
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/tb_home_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="?android:attr/actionBarSize"
+                    app:layout_collapseMode="pin" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_home_address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:text="广州"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/isp_15" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_home_hint"
+                            android:layout_width="0px"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/idp_20"
+                            android:layout_weight="1"
+                            android:background="@drawable/ic_call_phone"
+                            android:gravity="center"
+                            android:paddingVertical="@dimen/idp_5"
+                            android:text="完善细节，追求完美"
+                            android:textColor="@color/white60"
+                            android:textSize="@dimen/isp_13" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/iv_home_search"
+                            android:layout_width="@dimen/idp_24"
+                            android:layout_height="@dimen/idp_24"
+                            android:layout_marginEnd="@dimen/idp_10"
+                            app:srcCompat="@drawable/search_ic"
+                            app:tint="@color/white" />
+
+                    </LinearLayout>
+
+                </androidx.appcompat.widget.Toolbar>
+
+            </com.chaoji.im.ui.widget.XCollapsingToolbarLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_home_tab"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                bind:itemCount="2"
+                bind:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                bind:listitem="@layout/tab_item_design"
+                bind:spanCount="2" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1000dp"
+                    android:padding="16dp"
+                    android:text="很长很长的内容..." />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <com.chaoji.im.ui.view.NestedViewPager
+            android:id="@+id/vp_home_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

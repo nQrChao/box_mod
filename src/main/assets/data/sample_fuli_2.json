@@ -1,0 +1,157 @@
+{
+  "title": "重磅推荐，“福利”拉满！",
+  "data_list": [
+    {
+      "gameid": "7001",
+      "gamename": "战三国无双",
+      "game_type": "1",
+      "gameicon": "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fnews.hainan.net%2FEditor%2Fimg%2F201410%2F20141018%2Fbig%2F20141018194519188_9560234.jpg&refer=http%3A%2F%2Fnews.hainan.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1631272449&t=8b12d5f9a7b6b7539d13cba861a2d8ab",
+      "genre_str": "角色 • 传奇",
+      "is_first": "0",
+      "online_time": "1628467200",
+      "server_name": "142服",
+      "screenshot1": "http://p1.tsyule.cn/2021/08/03/6108fa0ef31a4.jpg",
+      "bg_pic": "http://sysimage.tsyule.cn/2021/08/03/6108fa0f006d4.jpg",
+      "client_size": "92.2",
+      "game_title": "“RxJava 的本质可以压缩为异步这一个词”",
+      "game_sub_title": "同样是做异步，为什么人们用它，而不用现成的 AsyncTask / Handler / XXX / ... ",
+      "game_icon_big_color": "#20FD7C7B",
+      "game_icon_middle_color": "#30FD7C7B",
+      "start_num": 5,
+      "game_labels": [
+        {
+          "label_name": "充值1:1000",
+          "text_color": "#3168FF"
+        },
+        {
+          "label_name": "无vip",
+          "text_color": "#FF8426"
+        },
+        {
+          "label_name": "元宝8888",
+          "text_color": "#FF3444"
+        },
+        {
+          "label_name": "金币88万",
+          "text_color": "#9565FE"
+        }
+      ],
+      "game_summary": "《刺沙-真冰雪合击》正版授权的精品MMO传奇手游",
+      "play_count": 9741
+    },
+    {
+      "gameid": "7002",
+      "gamename": "天龙八部",
+      "game_type": "1",
+      "gameicon": "https://img14.360buyimg.com/pop/jfs/t1/151053/38/14523/122031/5ff5b159Ee4a26152/ff25c14d9514ac7d.jpg",
+      "genre_str": "角色 • 传奇",
+      "is_first": "1",
+      "online_time": "1628467200",
+      "server_name": "142服",
+      "screenshot1": "http://p1.tsyule.cn/2021/08/03/6108fa0ef31a4.jpg",
+      "bg_pic": "http://sysimage.tsyule.cn/2021/08/03/6108fa0f006d4.jpg",
+      "client_size": "92.2",
+      "game_title": "“需要注意的是，由于读取图片的这一过程较为耗时”",
+      "game_sub_title": "需要放在后台执行，而图片的显示则必须在 UI 线程执行。常用的实现方式有多种",
+      "game_icon_big_color": "#203168FF",
+      "game_icon_middle_color": "#303168FF",
+      "start_num": 3,
+      "game_labels": [
+        {
+          "label_name": "充值1:1000",
+          "text_color": "#3168FF"
+        },
+        {
+          "label_name": "无vip",
+          "text_color": "#FF8426"
+        },
+        {
+          "label_name": "元宝8888",
+          "text_color": "#FF3444"
+        },
+        {
+          "label_name": "金币88万",
+          "text_color": "#9565FE"
+        }
+      ],
+      "game_summary": "《刺沙-真冰雪合击》正版授权的精品MMO传奇手游",
+      "play_count": 9742
+    },
+    {
+      "gameid": "7003",
+      "gamename": "m梦三国Online",
+      "game_type": "1",
+      "gameicon": "https://img0.baidu.com/it/u=3434365774,3342884301&fm=26&fmt=auto&gp=0.jpg",
+      "genre_str": "角色 • 传奇",
+      "is_first": "1",
+      "online_time": "1628467200",
+      "server_name": "142服",
+      "screenshot1": "http://p1.tsyule.cn/2021/08/03/6108fa0ef31a4.jpg",
+      "bg_pic": "http://sysimage.tsyule.cn/2021/08/03/6108fa0f006d4.jpg",
+      "client_size": "92.2",
+      "game_title": "“我不建议你现在就去学习它”",
+      "game_sub_title": "因为这一节的主要内容就是一步步地说明 RxJava 到底怎样做到了异步",
+      "game_icon_big_color": "#209565FE",
+      "game_icon_middle_color": "#309565FE",
+      "start_num": 4,
+      "game_labels": [
+        {
+          "label_name": "无vip",
+          "text_color": "#3168FF"
+        },
+        {
+          "label_name": "充值1:1000",
+          "text_color": "#FF8426"
+        },
+        {
+          "label_name": "金币88万",
+          "text_color": "#FF3444"
+        },
+        {
+          "label_name": "元宝8888",
+          "text_color": "#9565FE"
+        }
+      ],
+      "game_summary": "《刺沙-真冰雪合击》正版授权的精品MMO传奇手游",
+      "play_count": 9743
+    },
+    {
+      "gameid": "7005",
+      "gamename": "西游记传奇",
+      "game_type": "1",
+      "gameicon": "https://gimg2.baidu.com/image_search/src=http%3A%2F%2F00.minipic.eastday.com%2F20170308%2F20170308131746_3f8407f6dbe8e7d163a6d6191fbcffe8_8.jpeg&refer=http%3A%2F%2F00.minipic.eastday.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1631272449&t=2d4105f6e5269888184cee01cf235fa2",
+      "genre_str": "角色 • 传奇",
+      "is_first": "1",
+      "online_time": "1628467200",
+      "server_name": "142服",
+      "screenshot1": "http://p1.tsyule.cn/2021/08/03/6108fa0ef31a4.jpg",
+      "bg_pic": "http://sysimage.tsyule.cn/2021/08/03/6108fa0f006d4.jpg",
+      "client_size": "92.2",
+      "game_title": "“扩展的观察者模式”",
+      "game_sub_title": "RxJava 的异步实现，是通过一种扩展的观察者模式来实现的",
+      "game_icon_big_color": "#20FF3444",
+      "game_icon_middle_color": "#30FF3444",
+      "start_num": 1,
+      "game_labels": [
+        {
+          "label_name": "充值1:1000",
+          "text_color": "#3168FF"
+        },
+        {
+          "label_name": "无vip",
+          "text_color": "#FF8426"
+        },
+        {
+          "label_name": "元宝8888",
+          "text_color": "#FF3444"
+        },
+        {
+          "label_name": "金币88万",
+          "text_color": "#9565FE"
+        }
+      ],
+      "game_summary": "《刺沙-真冰雪合击》正版授权的精品MMO传奇手游",
+      "play_count": 9744
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="mod_home_bg_color">#F5F9FC</color>
+    <color name="mod_home_navigation_color">#F7FF00</color>
+    <color name="mod_home_game_red_bg_color">#C54836</color>
+    <color name="mod_home_game_green_bg_color">#39C9C0</color>
+
+    <color name="mod_tab_color">#2196F3</color>
+    <color name="mod_navigation_a_color">#7C7C7C</color>
+    <color name="mod_navigation_d_color">#000000</color>
+
+    <color name="mod_f3_bg_color">#FF376A</color>
+    <color name="mod_f3_bg2_color">#FF665A</color>
+
+    <color name="mod_f1_tab_color">#fd7f71</color>
+
+
+</resources>

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:paddingVertical="@dimen/idp_5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/a_rounded_top_b_10">
+
+        <ImageView
+            android:id="@+id/cancel"
+            android:layout_width="@dimen/idp_30"
+            android:layout_height="@dimen/idp_30"
+            android:layout_alignParentEnd="true"
+            android:paddingStart="@dimen/idp_1"
+            android:paddingEnd="@dimen/idp_13"
+            android:src="@drawable/close_black_ic" />
+
+    </RelativeLayout>
+
+    <View style="@style/HorizontalLineStyle2" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingVertical="@dimen/idp_15">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:ellipsize="end"
+                android:gravity="center_horizontal"
+                android:maxLines="1"
+                android:text="优惠券"
+                android:textColor="@color/text_default_color"
+                android:textSize="@dimen/isp_22"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="@dimen/idp_5"
+                android:ellipsize="end"
+                android:gravity="center_horizontal"
+                android:maxLines="1"
+                android:text="· 相关优惠券福利请于游戏内领取使用 ·"
+                android:textColor="#878787"
+                android:textSize="@dimen/isp_12"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <View style="@style/HorizontalLineStyle2" />
+
+        <LinearLayout
+            android:id="@+id/infoLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/idp_10"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/idp_15"
+            android:paddingBottom="@dimen/idp_50">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/mod_f3_youhui_top_item_bg"
+                android:paddingHorizontal="@dimen/idp_5">
+
+                <LinearLayout
+                    android:id="@+id/priceLayout"
+                    android:layout_width="@dimen/idp_55"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:textColor="@color/white90"
+                        android:textSize="@dimen/isp_19"
+                        android:textStyle="bold"
+                        tools:text="￥555" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="center_horizontal"
+                        android:text="满减券"
+                        android:textColor="@color/white90"
+                        android:textSize="@dimen/isp_12"
+                        android:textStyle="bold"
+                        tools:text="满减券" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/titleLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/idp_18"
+                    android:layout_toStartOf="@id/lingqu"
+                    android:layout_toEndOf="@id/priceLayout"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textColor="#FC4F35"
+                        android:textSize="@dimen/isp_16"
+                        android:textStyle="bold"
+                        tools:text="单笔满648元可用" />
+
+                    <TextView
+                        android:id="@+id/title2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/idp_3"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:textColor="@color/text_default_color"
+                        android:textSize="@dimen/isp_12"
+                        android:textStyle="bold"
+                        tools:text="适用于：" />
+
+                    <TextView
+                        android:id="@+id/title3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/idp_3"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="领取后7日内有效"
+                        android:textColor="@color/text_default_color"
+                        android:textSize="@dimen/isp_12"
+                        android:textStyle="bold"
+                        tools:text="领取后7日内有效" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/lingqu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/idp_30"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/idp_5"
+                    android:background="@drawable/mod_f3_top_item_button_bg"
+                    android:text="立即领取"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/isp_12"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/payRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            tools:itemCount="2"
+            tools:listitem="@layout/item_pay_list_v" />
+
+        <Button
+            android:id="@+id/confirm"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/idp_40"
+            android:layout_marginHorizontal="@dimen/idp_40"
+            android:layout_marginVertical="@dimen/idp_30"
+            android:background="@drawable/button_circle_selector"
+            android:gravity="center"
+            android:text="确定支付"
+            android:textColor="@color/white"
+            android:textSize="@dimen/isp_15"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/reg_password2_ll" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

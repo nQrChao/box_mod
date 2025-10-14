@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.chaoji.mod.ui.activity.modmain.mod2.Mod2Fragment3Model" />
+
+        <variable
+            name="click"
+            type="com.chaoji.mod.ui.activity.modmain.mod2.Mod2Fragment3.ProxyClick" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.chaoji.other.hjq.titlebar.TitleBar
+            android:id="@+id/titleBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/idp_40"
+            android:gravity="center"
+            app:leftIcon="@null"
+            app:leftTitleColor="@color/black90"
+            app:leftTitleSize="@dimen/isp_17"
+            app:leftTitleStyle="bold"
+            app:titleColor="@color/black90"
+            app:titleSize="@dimen/isp_16"
+            app:titleStyle="bold" />
+
+        <com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srlEnableFooterTranslationContent="true"
+            app:srlEnableHeaderTranslationContent="true"
+            app:srlEnableLoadMore="false"
+            app:srlEnableOverScrollBounce="true"
+            app:srlEnableOverScrollDrag="true"
+            app:srlEnablePureScrollMode="true"
+            app:srlReboundDuration="700">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/idp_15"
+                    android:text="游戏均为免费游戏，无广告纯净版"
+                    android:textColor="@color/black50"
+                    android:textSize="@dimen/isp_14"
+                    android:textStyle="bold" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="18dp"
+                        android:layout_marginVertical="15dp"
+                        android:background="@drawable/bg_game1_right_radius_100"
+                        android:paddingVertical="17dp"
+                        android:paddingLeft="30dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/tv_game_name1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="见缝插针"
+                            android:textColor="@color/color_26A8FF"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_btn1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/bg_26a8ff_radius_90"
+                            android:onClick="@{()-> click.game1()}"
+                            android:paddingHorizontal="18dp"
+                            android:paddingVertical="7dp"
+                            android:text="立即开始"
+                            android:textColor="@color/color_FFFFFF"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="@+id/tv_game_name1"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_game_name1" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <ImageView
+                        android:id="@+id/iv_game_icon1"
+                        android:layout_width="80dp"
+                        android:layout_height="90dp"
+                        android:layout_marginEnd="60dp"
+                        android:src="@drawable/ic_moyou_game_jfcz"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="18dp"
+                        android:layout_marginVertical="15dp"
+                        android:background="@drawable/bg_game2_right_radius_100"
+                        android:paddingVertical="17dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/tv_game_name2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="50dp"
+                            android:text="超级冷笑话"
+                            android:textColor="@color/color_26A8FF"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_btn2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/bg_26a8ff_radius_90"
+                            android:onClick="@{()-> click.game2()}"
+                            android:paddingHorizontal="18dp"
+                            android:paddingVertical="7dp"
+                            android:text="立即开始"
+                            android:textColor="@color/color_FFFFFF"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="@+id/tv_game_name2"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_game_name2" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <ImageView
+                        android:id="@+id/iv_game_icon2"
+                        android:layout_width="80dp"
+                        android:layout_height="90dp"
+                        android:layout_marginStart="60dp"
+                        android:src="@drawable/ic_moyou_game_cjlxh"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="18dp"
+                        android:layout_marginVertical="15dp"
+                        android:background="@drawable/bg_game1_right_radius_100"
+                        android:paddingVertical="17dp"
+                        android:paddingLeft="30dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/tv_game_name3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="成语猜猜猜"
+                            android:textColor="@color/color_26A8FF"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_btn3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/bg_26a8ff_radius_90"
+                            android:onClick="@{()-> click.game3()}"
+                            android:paddingHorizontal="18dp"
+                            android:paddingVertical="7dp"
+                            android:text="立即开始"
+                            android:textColor="@color/color_FFFFFF"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="@+id/tv_game_name3"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_game_name3" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <ImageView
+                        android:id="@+id/iv_game_icon3"
+                        android:layout_width="80dp"
+                        android:layout_height="90dp"
+                        android:layout_marginEnd="60dp"
+                        android:src="@drawable/ic_moyou_game_cyccc"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:visibility="gone">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="18dp"
+                        android:layout_marginVertical="15dp"
+                        android:background="@drawable/bg_game2_right_radius_100"
+                        android:paddingVertical="17dp"
+                        android:paddingLeft="30dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/tv_game_name4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="50dp"
+                            android:text="合成大西瓜"
+                            android:textColor="@color/color_26A8FF"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_btn4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/bg_26a8ff_radius_90"
+                            android:onClick="@{()-> click.game4()}"
+                            android:paddingHorizontal="18dp"
+                            android:paddingVertical="7dp"
+                            android:text="立即开始"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="@+id/tv_game_name4"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_game_name4" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <ImageView
+                        android:id="@+id/iv_game_icon4"
+                        android:layout_width="80dp"
+                        android:layout_height="90dp"
+                        android:layout_marginStart="60dp"
+                        android:src="@drawable/ic_moyou_game_hcdxg"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+        </com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout>
+    </LinearLayout>
+
+</layout>

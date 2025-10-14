@@ -1,0 +1,155 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.chaoji.mod.ui.activity.image.ModActivityPreviewImageVideoModel" />
+
+        <variable
+            name="click"
+            type="com.chaoji.mod.ui.activity.image.ModActivityPreviewImageVideo.ProxyClick" />
+    </data>
+
+    <FrameLayout
+        android:id="@+id/m_root_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/easy_photos_bg_primary">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="@dimen/idp_40"
+            android:id="@+id/rv_photos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <FrameLayout
+            android:id="@+id/m_bar_root_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true">
+
+            <FrameLayout
+                android:id="@+id/m_top_bar_layout"
+                style="?metaButtonBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/easy_photos_status_bar">
+
+                <RelativeLayout
+                    android:id="@+id/m_top_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/idp_40"
+                    android:layout_gravity="top"
+                    android:background="@color/easy_photos_bar_primary"
+                    android:clickable="true"
+                    android:fitsSystemWindows="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:id="@+id/iv_back"
+                        android:layout_width="@dimen/idp_40"
+                        android:layout_height="match_parent"
+                        android:onClick="@{()->click.finishActivity()}"
+                        android:layout_alignParentStart="true"
+                        android:padding="@dimen/idp_10"
+                        app:srcCompat="@drawable/easy_photos_ic_arrow_back" />
+
+                    <View
+                        android:id="@+id/m_back_line"
+                        android:layout_width="@dimen/idp_1"
+                        android:layout_height="@dimen/idp_20"
+                        android:layout_alignEnd="@+id/iv_back"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/easy_photos_bar_primary_dark" />
+
+                    <com.chaoji.other.huantansheng.easyphotos.ui.widget.PressedTextView
+                        android:id="@+id/tv_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_toEndOf="@+id/m_back_line"
+                        android:gravity="center"
+                        android:paddingLeft="@dimen/idp_15"
+                        android:paddingRight="@dimen/idp_15"
+                        android:textColor="@color/easy_photos_fg_primary" />
+
+                    <com.chaoji.other.huantansheng.easyphotos.ui.widget.PressedTextView
+                        android:id="@+id/tv_save"
+                        android:visibility="gone"
+                        android:layout_width="@dimen/idp_45"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/idp_10"
+                        android:background="@drawable/easy_photos_bg_menu_done"
+                        android:gravity="center"
+                        android:maxWidth="@dimen/idp_200"
+                        android:onClick="@{()->click.savePhoto()}"
+                        android:padding="@dimen/idp_5"
+                        android:text="保存"
+                        android:textColor="@color/menu_text_easy_photos"
+                        android:textSize="@dimen/isp_12"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+            </FrameLayout>
+
+
+            <RelativeLayout
+                android:visibility="gone"
+                android:id="@+id/m_bottom_bar"
+                style="?metaButtonBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@color/easy_photos_bar_primary"
+                android:clickable="true"
+                android:fitsSystemWindows="true"
+                android:focusable="true">
+
+                <FrameLayout
+                    android:id="@+id/fl_fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:visibility="gone">
+
+                    <fragment
+                        android:id="@+id/fragment_preview"
+                        android:name="com.chaoji.other.huantansheng.easyphotos.ui.PreviewFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </FrameLayout>
+
+                <com.chaoji.other.huantansheng.easyphotos.ui.widget.PressedTextView
+                    android:id="@+id/tv_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/idp_40"
+                    android:layout_below="@+id/fl_fragment"
+                    android:layout_alignParentStart="true"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/idp_15"
+                    android:paddingRight="@dimen/idp_15"
+                    android:text="@string/edit_easy_photos"
+                    android:textColor="@color/easy_photos_fg_primary"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tv_original"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/idp_40"
+                    android:layout_below="@+id/fl_fragment"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="@string/original_easy_photos"
+                    android:textColor="@color/easy_photos_fg_primary"
+                    android:textStyle="bold" />
+
+
+            </RelativeLayout>
+        </FrameLayout>
+    </FrameLayout>
+</layout>

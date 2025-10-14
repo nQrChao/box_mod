@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.chaoji.mod.ui.activity.jiaoyi.ModActivityShouCangModel" />
+
+        <variable
+            name="click"
+            type="com.chaoji.mod.ui.activity.jiaoyi.ModActivityShouCang.ProxyClick" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/rootView"
+        android:background="@color/mod_home_bg_color"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{vm.hasTradeGoods?View.VISIBLE:View.GONE}"
+            app:srlEnableFooterTranslationContent="true"
+            app:srlEnableHeaderTranslationContent="true"
+            app:srlEnableLoadMore="false"
+            app:srlEnableOverScrollBounce="true"
+            app:srlEnableOverScrollDrag="true"
+            app:srlEnablePureScrollMode="true"
+            app:srlReboundDuration="700"
+            app:tab_draw_divider="true">
+
+            <LinearLayout
+                android:id="@+id/centerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/idp_10"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:listitem="@layout/mod_item_jiaoyi_shoucang" />
+
+            </LinearLayout>
+        </com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="@{vm.hasTradeGoods?View.GONE:View.VISIBLE}">
+
+            <ImageView
+                android:id="@+id/pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/idp_80"
+                android:src="@drawable/status_empty_ic" />
+
+            <TextView
+                android:id="@+id/modPreviewPic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/idp_20"
+                android:text="暂无收藏"
+                android:textColor="@color/bbl_999999"
+                android:textSize="@dimen/isp_16" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</layout>

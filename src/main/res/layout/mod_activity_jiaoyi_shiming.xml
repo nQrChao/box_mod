@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.chaoji.mod.ui.activity.jiaoyi.ModActivityJiaoYiShiMingModel" />
+
+        <variable
+            name="click"
+            type="com.chaoji.mod.ui.activity.jiaoyi.ModActivityJiaoYiShiMing.ProxyClick" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/rootView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/mod_home_bg_color"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_tips"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/idp_40"
+            android:layout_marginTop="@dimen/idp_15"
+            android:layout_marginBottom="@dimen/idp_5"
+            android:background="#FFF3E8"
+            android:gravity="center_vertical"
+            android:lineSpacingMultiplier="1.2"
+            android:paddingHorizontal="@dimen/idp_10"
+            android:text="根据相关法律要求，需要核实您的真实身份。该信息仅为认证您的身份，请您放心进行填写。"
+            android:textColor="@color/color_272727"
+            android:textSize="@dimen/isp_12" />
+
+        <TextView
+            android:id="@+id/tv_tips_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/idp_5"
+            android:lineSpacingMultiplier="1.2"
+            android:text="（例：张三 440106198202020555）"
+            android:textColor="@color/color_9b9b9b"
+            android:textSize="@dimen/isp_11" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/idp_60"
+            android:layout_marginHorizontal="@dimen/idp_10"
+            android:layout_marginTop="@dimen/idp_10"
+            android:background="@mipmap/mod_shadow_edit_item"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/idp_15">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/mod_certification_user_name" />
+
+            <com.chaoji.im.ui.view.ClearEditText
+                android:id="@+id/edit_real_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/idp_10"
+                android:background="@null"
+                android:hint="请输入您的真实姓名"
+                android:paddingHorizontal="@dimen/idp_10"
+                android:text="@={vm.rName}"
+                android:textColor="#666666"
+                android:textColorHint="@color/color_c7c6cb"
+                android:textSize="@dimen/isp_14" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/idp_60"
+            android:layout_marginHorizontal="@dimen/idp_10"
+            android:layout_marginTop="@dimen/idp_10"
+            android:background="@mipmap/mod_shadow_edit_item"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/idp_15">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/mod_certification_user_id_card" />
+
+            <com.chaoji.im.ui.view.ClearEditText
+                android:id="@+id/edit_id_card_number"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginStart="@dimen/idp_10"
+                android:background="@null"
+                android:digits="0123456789xX"
+                android:hint="请输入本人真实身份证号码"
+                android:inputType="textVisiblePassword"
+                android:paddingHorizontal="@dimen/idp_10"
+                android:text="@={vm.cardId}"
+                android:textColor="#666666"
+                android:textColorHint="@color/color_c7c6cb"
+                android:textSize="@dimen/isp_14" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginRight="18dp"
+            android:text="注：根据国家法律，未满18周岁的实名用戸将不提供充值服务！"
+            android:textColor="@color/color_ff0000"
+            android:textSize="12sp" />
+
+
+        <RelativeLayout
+            android:id="@+id/fl_good_bottom_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/idp_100"
+            android:layout_gravity="bottom"
+            android:paddingHorizontal="@dimen/idp_10"
+            android:paddingTop="@dimen/idp_30">
+
+            <Button
+                android:id="@+id/btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/idp_45"
+                android:layout_marginStart="@dimen/idp_10"
+                android:background="@drawable/mod_btn_confirm_selector"
+                android:onClick="@{()->click.shiMing()}"
+                android:text="确定"
+                android:textColor="@color/white"
+                android:textSize="@dimen/isp_15"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>

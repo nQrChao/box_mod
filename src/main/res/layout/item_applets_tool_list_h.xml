@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="appletTool"
+            type="com.chaoji.im.data.model.AppletsToolInfo" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="@dimen/idp_62"
+        android:layout_height="wrap_content"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="@dimen/idp_36"
+            android:layout_height="@dimen/idp_36"
+            android:layout_gravity="center_horizontal"
+            app:loadResImage="@{appletTool.icon}" />
+
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="@dimen/idp_62"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/idp_5"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="@{appletTool.name}"
+            android:textColor="@color/text_more_dialog_color"
+            android:textSize="@dimen/isp_12" />
+
+    </LinearLayout>
+</layout>
+

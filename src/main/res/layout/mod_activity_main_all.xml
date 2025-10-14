@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.chaoji.mod.ui.activity.ModActivityMainModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/mod_home_bg_color"
+        android:orientation="vertical"
+        tools:context="com.chaoji.mod.ui.activity.ModActivityMain">
+
+        <com.chaoji.other.hjq.titlebar.TitleBar
+            android:id="@+id/titleBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/idp_0_1"
+            android:background="@color/mod_home_bg_color"
+            android:gravity="center"
+            android:visibility="invisible"
+            app:leftIcon="@null"
+            app:title=""
+            app:titleColor="@color/text_default_color"
+            app:titleSize="@dimen/isp_16"
+            app:titleStyle="bold" />
+
+        <com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srlEnableFooterTranslationContent="true"
+            app:srlEnableHeaderTranslationContent="true"
+            app:srlEnableLoadMore="false"
+            app:srlEnableOverScrollBounce="true"
+            app:srlEnableOverScrollDrag="true"
+            app:srlEnablePureScrollMode="true"
+            app:srlReboundDuration="700">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/idp_10"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:itemCount="5"
+                    tools:listitem="@layout/mod_item_model" />
+
+            </LinearLayout>
+        </com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout>
+    </LinearLayout>
+</layout>

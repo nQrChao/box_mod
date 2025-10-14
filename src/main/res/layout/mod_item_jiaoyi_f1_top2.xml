@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="appletTool"
+            type="com.chaoji.im.data.model.AppletsToolInfo" />
+
+    </data>
+
+    <LinearLayout
+        android:paddingVertical="@dimen/idp_20"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/idp_170"
+        android:background="@drawable/bg_f1_top_2"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/idp_15"
+        android:weightSum="9">
+
+
+        <RelativeLayout
+            android:id="@+id/f1_top2_item1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="@dimen/idp_100"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/f1_top2_item1_icon"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="-35dp"
+                android:background="@drawable/a_rounded_15"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/idp_10"
+                android:paddingVertical="@dimen/idp_20">
+
+                <TextView
+                    android:id="@+id/f1_top2_item1_name1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="游交易"
+                    android:textColor="@color/text_default_color"
+                    android:textSize="@dimen/isp_15"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/f1_top2_item1_name2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/idp_5"
+                    android:ellipsize="end"
+                    android:gravity="center_horizontal"
+                    android:maxLines="1"
+                    android:text="海量商品"
+                    android:textColor="@color/bbl_999999"
+                    android:textSize="@dimen/isp_12" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/f1_top2_item1_icon"
+                android:layout_width="@dimen/idp_100"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@mipmap/mod_tyf_f1_ic1" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/f1_top2_item2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/idp_10"
+            android:layout_weight="3"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="@dimen/idp_100"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/f1_top2_item2_icon"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="-35dp"
+                android:background="@drawable/a_rounded_15"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/idp_10"
+                android:paddingVertical="@dimen/idp_20">
+
+                <TextView
+                    android:id="@+id/f1_top2_item2_name1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="讯乐园"
+                    android:textColor="@color/text_default_color"
+                    android:textSize="@dimen/isp_15"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/f1_top2_item2_name2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/idp_5"
+                    android:ellipsize="end"
+                    android:gravity="center_horizontal"
+                    android:maxLines="1"
+                    android:text="更多资讯"
+                    android:textColor="@color/bbl_999999"
+                    android:textSize="@dimen/isp_12" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/f1_top2_item2_icon"
+                android:layout_width="@dimen/idp_100"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@mipmap/mod_tyf_f1_ic2" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/f1_top2_item3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/idp_10"
+            android:layout_weight="3"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="@dimen/idp_100"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/f1_top2_item3_icon"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="-35dp"
+                android:background="@drawable/a_rounded_15"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/idp_10"
+                android:paddingVertical="@dimen/idp_20">
+
+                <TextView
+                    android:id="@+id/f1_top2_item3_name1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="热聊吧"
+                    android:textColor="@color/text_default_color"
+                    android:textSize="@dimen/isp_15"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/f1_top2_item3_name2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/idp_5"
+                    android:ellipsize="end"
+                    android:gravity="center_horizontal"
+                    android:maxLines="1"
+                    android:text="论坛互动"
+                    android:textColor="@color/bbl_999999"
+                    android:textSize="@dimen/isp_12" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/f1_top2_item3_icon"
+                android:layout_width="@dimen/idp_100"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@mipmap/mod_tyf_f1_ic3" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>
+

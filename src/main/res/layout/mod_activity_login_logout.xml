@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.chaoji.mod.ui.activity.login.ModActivityLogoutModel" />
+
+        <variable
+            name="click"
+            type="com.chaoji.mod.ui.activity.login.ModActivityLogout.ProxyClick" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="@{vm.zhuxiaoShowView==0?View.VISIBLE:View.GONE}"
+            tools:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/idp_10"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/idp_10"
+                android:paddingVertical="@dimen/idp_10">
+
+                <com.chaoji.im.ui.view.DrawableTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/idp_12"
+                    android:gravity="center_vertical"
+                    android:text="为保证您的账户安全，在您提交的注销申请生效前，需同时满足以下条件："
+                    android:textColor="@color/common_red"
+                    android:textSize="@dimen/isp_15"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/idp_15"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="@dimen/idp_10">
+
+                    <TextView
+                        style="@style/QuestionTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1、账号处于安全状态" />
+
+                    <TextView
+                        style="@style/AnswerTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="* 账号处于正常使用状态，无被盗风险\n* 最近7天内无绑定手机、换绑手机、找回密码、修改密码等操作" />
+
+                    <TextView
+                        style="@style/QuestionTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/idp_15"
+                        android:text="2、账号财产已结清" />
+
+                    <TextView
+                        style="@style/AnswerTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="* 没有资产、欠款、未结清的资金和虚拟权益，本账号没有未完成或存在争议的服务" />
+
+                    <TextView
+                        style="@style/QuestionTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/idp_15"
+                        android:text="3、账号权限解除" />
+
+                    <TextView
+                        style="@style/AnswerTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="* 账号已解除与其他产品的绑定关系" />
+
+                    <TextView
+                        style="@style/QuestionTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/idp_15"
+                        android:text="4、账户无任何纠纷，包括投诉举报" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_agree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/confirm_button"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/idp_10"
+                android:paddingVertical="@dimen/idp_10">
+
+                <CheckBox
+                    android:id="@+id/agreementButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@null"
+                    android:button="@drawable/radiobutton_selector"
+                    android:checked="false"
+                    bind:checkChange="@{click.agreementButtonChangeListener}" />
+
+                <TextView
+                    android:id="@+id/tv_agree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/idp_10"
+                    android:textColor="#999999"
+                    android:textSize="@dimen/isp_14"
+                    tools:text="我已阅读并同意注销协议" />
+
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/confirm_button"
+                android:layout_width="@dimen/idp_150"
+                android:layout_height="@dimen/idp_40"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginEnd="@dimen/idp_10"
+                android:layout_marginBottom="@dimen/idp_40"
+                android:background="@{vm.agreementChecked?@drawable/button_circle_selector:@drawable/button_cancel_selector_2}"
+                android:gravity="center"
+                android:onClick="@{()->click.logout()}"
+                android:text="下一步"
+                android:textColor="@color/white"
+                android:textSize="@dimen/isp_15"
+                app:layout_constraintStart_toStartOf="parent" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="@{vm.zhuxiaoShowView==1?View.VISIBLE:View.GONE}">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/idp_10"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/idp_10"
+                android:paddingVertical="@dimen/idp_10">
+
+
+                <com.chaoji.im.ui.view.DrawableTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/idp_12"
+                    android:gravity="center_vertical"
+                    android:text="请输入密码验证身份"
+                    android:textColor="@color/text_default_color"
+                    android:textSize="@dimen/isp_15"
+                    android:textStyle="bold" />
+
+                <com.chaoji.im.ui.view.PasswordEditText
+                    android:id="@+id/pwd_et1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/idp_15"
+                    android:background="@drawable/bg_huanjia_edit"
+                    android:gravity="top|start"
+                    android:hint="@string/common_password_input_hint"
+                    android:inputType="text"
+                    android:lines="1"
+                    android:maxLength="18"
+                    android:paddingHorizontal="@dimen/idp_10"
+                    android:paddingVertical="@dimen/idp_10"
+                    android:text="@={vm.password}"
+                    android:textColor="@color/text_default_color"
+                    android:textColorHint="@color/text_hit_color"
+                    android:textSize="@dimen/isp_14" />
+
+
+                <com.chaoji.im.ui.view.DrawableTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/idp_30"
+                    android:drawablePadding="@dimen/idp_12"
+                    android:gravity="center_vertical"
+                    android:text="注销账号为不可恢复操作，一旦注销，你自愿承担其可能的所有结果，该结果包括但不限于如下结果："
+                    android:textColor="@color/common_red"
+                    android:textSize="@dimen/isp_14"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/idp_15"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="@dimen/idp_10">
+
+                    <TextView
+                        style="@style/QuestionTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1、注销后，账号将无法登录、找回" />
+
+                    <TextView
+                        style="@style/AnswerTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="* 账号无法登录本APP及旗下相关产品\n* 你的实名信息、手机号等绑定关系将解除\n* 账号相关资料无法找回（包括但不限于头像，用户名、发布信息、收藏信息等）" />
+
+                    <TextView
+                        style="@style/QuestionTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/idp_15"
+                        android:text="2、注销后，账号权益将无法找回" />
+
+                    <TextView
+                        style="@style/AnswerTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="* 账号内的资产与权益（包括但不限于平台币、代金券、积分等）将视为你自愿放弃且无法继续使用。" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginEnd="@dimen/idp_10"
+                android:layout_marginBottom="@dimen/idp_40"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:layout_width="@dimen/idp_150"
+                    android:layout_height="@dimen/idp_40"
+                    android:background="@drawable/button_circle_selector"
+                    android:gravity="center"
+                    android:onClick="@{()->click.logout2()}"
+                    android:text="下一步"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/isp_15"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</layout>

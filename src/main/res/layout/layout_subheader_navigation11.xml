@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/mod_home_bg_color"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:paddingHorizontal="@dimen/idp_10"
+        android:paddingTop="@dimen/idp_10"
+        android:paddingBottom="@dimen/idp_10"
+        android:text="最新上架"
+        android:textColor="@color/text_default_color"
+        android:textSize="@dimen/isp_17"
+        android:textStyle="bold" />
+</layout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="QuestionTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#333333</item>
+        <item name="android:textSize">@dimen/isp_13</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">@dimen/idp_8</item>
+    </style>
+
+    <style name="AnswerTextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#666666</item>
+        <item name="android:textSize">@dimen/isp_13</item>
+        <item name="android:layout_marginTop">@dimen/idp_2</item>
+    </style>
+
+</resources>

@@ -1,0 +1,41 @@
+<?xml  version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="mod_string_app_opinion">感谢168位提出宝贵建议的用户</string>
+
+    <string name="publish_title">商品发布</string>
+
+    <string name="label_game_name"><![CDATA[<font color=\'#FF0000\'>*</font> 游戏名称]]></string>
+    <string name="label_platform"><![CDATA[<font color=\'#FF0000\'>*</font> 所属平台]]></string>
+    <string name="label_client"><![CDATA[<font color=\'#FF0000\'>*</font> 客户端]]></string>
+    <string name="label_product_type"><![CDATA[<font color=\'#FF0000\'>*</font> 商品类型]]></string>
+    <string name="label_game_account"><![CDATA[<font color=\'#FF0000\'>*</font> 游戏账号]]></string>
+    <string name="label_title"><![CDATA[<font color=\'#FF0000\'>*</font> 商品标题]]></string>
+    <string name="label_product_intro"><![CDATA[<font color=\'#FF0000\'>*</font> 商品介绍]]></string>
+    <string name="label_screenshots"><![CDATA[<font color=\'#FF0000\'>*</font> 商品截图]]></string>
+    <string name="label_price"><![CDATA[<font color=\'#FF0000\'>*</font> 商品售价]]></string>
+
+    <string name="hint_game_name">请填写准确的游戏名称</string>
+    <string name="hint_platform">请填写准确的游戏平台</string>
+    <string name="hint_game_account">请填写游戏账号或UID</string>
+    <string name="hint_title">请填写一个响亮的商品标题吧</string>
+    <string name="hint_product_intro">请描述您所售商品的属性介绍，例如累充金额、战斗力、排行榜等等，或其他您认为需要描述的介绍。</string>
+    <string name="hint_screenshots">请上传3张与商品相关的游戏内容截图</string>
+    <string name="hint_price">请填写您的出售金额</string>
+
+    <string name="reminder_title">温馨提示：</string>
+    <string name="reminder_content">· 发布账号时无需填写密码，仅供商品展示，请自行确保商品的真实性;\n· 如有买家产生购买意向，平台客服会介入并进行担保交易;
+        \n· 如过您发布的商品账号为虚假内容，您的二次发布权限将受到限制;\n· 如因玩家保管不当，如账号共享、线下交易等转移账号，导致账号被他人出售或购买的，本平台不承担相关责任；</string>
+
+    <string name="btn_confirm_publish">确认发布</string>
+
+    <string-array name="client_options">
+        <item>Android</item>
+        <item>iOS</item>
+    </string-array>
+    <string-array name="product_type_options">
+        <item>账号</item>
+        <item>游戏币</item>
+        <item>道具</item>
+    </string-array>
+
+</resources>

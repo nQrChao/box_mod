@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.chaoji.mod.ui.activity.modmain.mod5.ModActivityMainModel5" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#61E3F7"
+        android:orientation="vertical"
+        tools:context="com.chaoji.mod.ui.activity.modmain.mod5.ModActivityMain5">
+
+        <com.chaoji.other.hjq.titlebar.TitleBar
+            android:id="@+id/titleBar"
+            android:visibility="invisible"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/idp_1"
+            android:background="#61E3F7"
+            android:gravity="center"
+            app:leftIcon="@null"
+            app:title=""
+            app:titleColor="@color/text_default_color"
+            app:titleSize="@dimen/isp_16"
+            app:titleStyle="bold" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/mod_home_bg_color" />
+
+        <com.chaoji.im.ui.widget.bottombar.BottomBarLayout
+            android:id="@+id/bbl"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/idp_60"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.chaoji.im.ui.widget.bottombar.BottomBarItem
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:iconHeight="@dimen/idp_27"
+                app:iconNormal="@mipmap/mod_navigation_bg1"
+                app:iconSelected="@mipmap/mod_navigation_bg1_1"
+                app:iconWidth="@dimen/idp_27"
+                app:itemMarginTop="-5dp"
+                app:itemText="导航1"
+                app:itemTextBold="true"
+                app:itemTextSize="@dimen/isp_13"
+                app:openTouchBg="true"
+                app:textColorNormal="@color/mod_navigation_d_color"
+                app:textColorSelected="@color/mod_navigation_a_color"
+                app:touchDrawable="@drawable/transparent_selector" />
+
+            <com.chaoji.im.ui.widget.bottombar.BottomBarItem
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:iconHeight="@dimen/idp_27"
+                app:iconNormal="@mipmap/mod_navigation_bg2"
+                app:iconSelected="@mipmap/mod_navigation_bg2_2"
+                app:iconWidth="@dimen/idp_27"
+                app:itemMarginTop="-5dp"
+                app:itemText="导航2"
+                app:itemTextBold="true"
+                app:itemTextSize="@dimen/isp_13"
+                app:openTouchBg="true"
+                app:textColorNormal="@color/mod_navigation_d_color"
+                app:textColorSelected="@color/mod_navigation_a_color"
+                app:touchDrawable="@drawable/transparent_selector"
+                app:unreadThreshold="99" />
+
+
+            <com.chaoji.im.ui.widget.bottombar.BottomBarItem
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:iconHeight="@dimen/idp_27"
+                app:iconNormal="@mipmap/mod_navigation_bg3"
+                app:iconSelected="@mipmap/mod_navigation_bg3_3"
+                app:iconWidth="@dimen/idp_27"
+                app:itemMarginTop="-5dp"
+                app:itemText="导航3"
+                app:itemTextBold="true"
+                app:itemTextSize="@dimen/isp_13"
+                app:openTouchBg="true"
+                app:textColorNormal="@color/mod_navigation_d_color"
+                app:textColorSelected="@color/mod_navigation_a_color"
+                app:touchDrawable="@drawable/transparent_selector" />
+
+            <com.chaoji.im.ui.widget.bottombar.BottomBarItem
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:iconHeight="@dimen/idp_27"
+                app:iconNormal="@mipmap/mod_navigation_bg4"
+                app:iconSelected="@mipmap/mod_navigation_bg4_4"
+                app:iconWidth="@dimen/idp_27"
+                app:itemMarginTop="-5dp"
+                app:itemText="导航4"
+                app:itemTextBold="true"
+                app:itemTextSize="@dimen/isp_13"
+                app:openTouchBg="true"
+                app:textColorNormal="@color/mod_navigation_d_color"
+                app:textColorSelected="@color/mod_navigation_a_color"
+                app:touchDrawable="@drawable/transparent_selector" />
+
+
+            <com.chaoji.im.ui.widget.bottombar.BottomBarItem
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:iconHeight="@dimen/idp_27"
+                app:iconNormal="@mipmap/mod_navigation_bg5"
+                app:iconSelected="@mipmap/mod_navigation_bg5_5"
+                app:iconWidth="@dimen/idp_27"
+                app:itemMarginTop="-5dp"
+                app:itemText="导航5"
+                app:itemTextBold="true"
+                app:itemTextSize="@dimen/isp_13"
+                app:openTouchBg="true"
+                app:textColorNormal="@color/mod_navigation_d_color"
+                app:textColorSelected="@color/mod_navigation_a_color"
+                app:touchDrawable="@drawable/transparent_selector" />
+        </com.chaoji.im.ui.widget.bottombar.BottomBarLayout>
+    </LinearLayout>
+</layout>

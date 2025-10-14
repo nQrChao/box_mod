@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.chaoji.other.blankj.utilcode.util.StringUtils" />
+
+        <variable
+            name="meYouHuiQuan"
+            type="com.chaoji.im.data.model.ModMeYouHuiQuanBean" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/idp_10"
+        android:background="@drawable/a_rounded_20"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/idp_15"
+        android:paddingVertical="@dimen/idp_10">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/idp_5">
+
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="@dimen/idp_80"
+                android:layout_height="@dimen/idp_80"
+                android:layout_marginTop="@dimen/idp_3"
+                app:loadRound11Image="@{meYouHuiQuan.gameicon}"
+                tools:src="@mipmap/mod_icon" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/idp_15"
+                android:layout_marginTop="@dimen/idp_5"
+                android:layout_toEndOf="@id/icon"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{meYouHuiQuan.gamename}"
+                android:textColor="@color/text_default_color"
+                android:textSize="@dimen/isp_16"
+                android:textStyle="bold"
+                tools:text="神陵武装神陵武装" />
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/name"
+                android:layout_marginStart="@dimen/idp_15"
+                android:layout_marginTop="@dimen/idp_5"
+                android:layout_toEndOf="@id/icon"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{meYouHuiQuan.genre_str}"
+                android:textColor="@color/text_default_color"
+                android:textSize="@dimen/isp_14"
+                tools:text="角色·仙侠" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/price"
+                android:layout_marginStart="@dimen/idp_15"
+                android:layout_marginTop="@dimen/idp_4"
+                android:layout_toEndOf="@id/icon"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:overScrollMode="never"
+                    android:scrollbars="none"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/mod_item_game_label" />
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <View
+            style="@style/HorizontalLineStyle2"
+            android:layout_marginTop="@dimen/idp_10" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/idp_10"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/idp_10"
+                android:layout_marginTop="@dimen/idp_5"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{StringUtils.format(&quot;￥%s&quot;, meYouHuiQuan.amount)}"
+                android:textColor="#FF2D3F"
+                android:textSize="@dimen/isp_18"
+                android:textStyle="bold"
+                tools:text="￥520" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/idp_40"
+                android:layout_toEndOf="@id/price"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/coupon_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@{meYouHuiQuan.coupon_name}"
+                    android:textColor="@color/text_default_color"
+                    android:textSize="@dimen/isp_13"
+                    tools:text="满648可用" />
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@{meYouHuiQuan.expiry}"
+                    android:textColor="@color/text_default_color"
+                    android:textSize="@dimen/isp_13"
+                    tools:text="07-21 23:59过期" />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/cancel_shoucang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingHorizontal="@dimen/idp_15"
+                android:paddingVertical="@dimen/idp_5"
+                android:text="游戏内使用"
+                android:textColor="#FF3937"
+                android:textSize="@dimen/isp_11"
+                tools:text="游戏内使用" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</layout>

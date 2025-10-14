@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.chaoji.other.blankj.utilcode.util.StringUtils" />
+
+        <variable
+            name="goodDetailBean"
+            type="com.chaoji.im.data.model.ModTradeGoodDetailBean" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/idp_10"
+        android:background="@drawable/a_rounded_20"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/idp_15"
+        android:paddingVertical="@dimen/idp_10">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/idp_5">
+
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="@dimen/idp_80"
+                android:layout_height="@dimen/idp_80"
+                android:layout_marginTop="@dimen/idp_3"
+                app:loadRound11Image="@{goodDetailBean.gameicon}"
+                tools:src="@mipmap/mod_icon" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/idp_10"
+                android:layout_marginTop="@dimen/idp_5"
+                android:layout_toEndOf="@id/icon"
+                android:ellipsize="end"
+                android:maxLength="5"
+                android:maxLines="1"
+                android:text="@{goodDetailBean.gamename}"
+                android:textColor="@color/text_default_color"
+                android:textSize="@dimen/isp_13"
+                android:textStyle="bold"
+                tools:text="神陵武装神陵武装" />
+
+            <TextView
+                android:id="@+id/tip1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/name"
+                android:layout_marginStart="@dimen/idp_10"
+                android:layout_marginTop="@dimen/idp_5"
+                android:layout_toEndOf="@id/icon"
+                android:background="@drawable/bg_ffffff_4e76ff_stroke_2_radius"
+                android:ellipsize="end"
+                android:gravity="start"
+                android:maxLines="1"
+                android:paddingHorizontal="@dimen/idp_5"
+                android:paddingVertical="@dimen/idp_2"
+                android:text="天天送6480"
+                android:textColor="#4E76FF"
+                android:textSize="@dimen/isp_10" />
+
+            <TextView
+                android:id="@+id/tip2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/name"
+                android:layout_marginStart="@dimen/idp_5"
+                android:layout_marginTop="@dimen/idp_4"
+                android:layout_toEndOf="@id/tip1"
+                android:ellipsize="end"
+                android:gravity="start"
+                android:maxLines="1"
+                android:paddingHorizontal="@dimen/idp_5"
+                android:paddingVertical="@dimen/idp_2"
+                android:text="@{goodDetailBean.server_info}"
+                android:textColor="@color/bbl_999999"
+                android:textSize="@dimen/isp_12"
+                tools:text="格调1服·榜二高战成品号" />
+
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tip1"
+                android:layout_marginStart="@dimen/idp_10"
+                android:layout_marginTop="@dimen/idp_5"
+                android:layout_toEndOf="@id/icon"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{StringUtils.format(&quot;￥%s&quot;, goodDetailBean.goods_price)}"
+                android:textColor="#FF2D3F"
+                android:textSize="@dimen/isp_18"
+                android:textStyle="bold"
+                tools:text="￥520" />
+        </RelativeLayout>
+
+        <View
+            style="@style/HorizontalLineStyle2"
+            android:layout_marginTop="@dimen/idp_10" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/idp_10"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/shoucang_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="已收藏"
+                android:textColor="@color/text_default_color"
+                android:textSize="@dimen/isp_13"
+                tools:text="已收藏" />
+
+            <TextView
+
+                android:id="@+id/shoucang_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/idp_10"
+                android:layout_toEndOf="@id/shoucang_text"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{goodDetailBean.localSaveTime}"
+                android:textColor="@color/bbl_999999"
+                android:textSize="@dimen/isp_13"
+                tools:text="(06-12:17:00)" />
+
+
+            <TextView
+                android:id="@+id/cancel_shoucang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/btn_cancel_selector"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingHorizontal="@dimen/idp_15"
+                android:paddingVertical="@dimen/idp_5"
+                android:text="取消收藏"
+                android:textColor="@color/bbl_999999"
+                android:textSize="@dimen/isp_13"
+                tools:text="取消收藏" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</layout>

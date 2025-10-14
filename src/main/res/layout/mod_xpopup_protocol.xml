@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_settingbar_top_selector"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingVertical="@dimen/idp_15">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="发现新版本"
+                android:textColor="@color/black"
+                android:textSize="@dimen/isp_17"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+        <View style="@style/HorizontalLineStyle" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:paddingHorizontal="@dimen/idp_20"
+            android:paddingVertical="@dimen/idp_5"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/dialog_bottom_bg"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="123"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/isp_14"
+                    app:layout_constraintStart_toStartOf="@+id/tv_title"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingVertical="@dimen/idp_10"
+            android:paddingHorizontal="@dimen/idp_10"
+            android:weightSum="10">
+
+            <TextView
+                android:id="@+id/tv_cancel"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/idp_40"
+                android:layout_margin="@dimen/idp_10"
+                android:layout_weight="5"
+                android:background="@drawable/mod_btn_cancel_selector"
+                android:gravity="center"
+                android:text="拒绝并退出"
+                android:textColor="@color/white"
+                android:textSize="@dimen/isp_14" />
+
+            <TextView
+                android:id="@+id/tv_confirm"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/idp_40"
+                android:layout_margin="@dimen/idp_10"
+                android:layout_weight="5"
+                android:background="@drawable/mod_btn_confirm_selector"
+                android:gravity="center"
+                android:text="同意并继续"
+                android:textColor="@color/white"
+                android:textSize="@dimen/isp_14" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

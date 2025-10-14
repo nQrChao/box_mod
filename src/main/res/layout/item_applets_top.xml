@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="com.chaoji.other.blankj.utilcode.util.StringUtils" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="applet"
+            type="com.chaoji.im.data.model.AppletsInfo" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/gameBox"
+            android:layout_width="@dimen/idp_39"
+            android:layout_height="@dimen/idp_39"
+            android:background="@drawable/current_shape_checked">
+
+            <ImageView
+                android:id="@+id/icon"
+                android:scaleType="fitXY"
+                android:layout_width="@dimen/idp_36"
+                android:layout_height="@dimen/idp_36"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:loadRoundImage="@{applet.pic}" />
+
+            <ImageView
+                android:id="@+id/gameMain"
+                android:layout_width="@dimen/idp_22"
+                android:layout_height="@dimen/idp_22"
+                android:visibility="gone"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/idp_2"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:maxLength="4"
+            android:text="@{applet.title}"
+            android:textColor="@color/white90"
+            android:textSize="@dimen/isp_12"
+            android:visibility="@{StringUtils.isEmpty(applet.title)?View.GONE:View.VISIBLE}"/>
+    </LinearLayout>
+
+</layout>

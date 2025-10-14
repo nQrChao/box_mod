@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 默认按钮样式 -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 禁用状态 -->
+    <item android:state_enabled="false">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/button_circle_size" />
+            <solid android:color="@color/common_button_disable_color" />
+        </shape>
+    </item>
+
+    <!-- 按压状态 -->
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/idp_90"/>
+            <gradient
+                android:angle="0"
+                android:endColor="#AAFF3E01"
+                android:startColor="#AAFF8933"/>
+        </shape>
+    </item>
+
+    <!-- 焦点状态 -->
+    <item android:state_focused="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/idp_90"/>
+            <gradient
+                android:angle="0"
+                android:endColor="#AAFF3E01"
+                android:startColor="#AAFF8933"/>
+        </shape>
+    </item>
+
+    <!-- 默认状态 -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/idp_90"/>
+            <gradient
+                android:angle="0"
+                android:endColor="#FF3E01"
+                android:startColor="#FF8933"/>
+        </shape>
+    </item>
+
+</selector>

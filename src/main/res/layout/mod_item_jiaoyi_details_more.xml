@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.chaoji.other.blankj.utilcode.util.StringUtils" />
+
+        <variable
+            name="goodDetailBean"
+            type="com.chaoji.im.data.model.ModTradeGoodDetailBean" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_ffffff_10_radius"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/idp_15"
+        android:paddingVertical="@dimen/idp_10">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="@dimen/idp_50"
+                android:layout_height="@dimen/idp_50"
+                app:loadRound11Image="@{goodDetailBean.gameicon}" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/idp_10"
+                android:layout_toEndOf="@id/icon"
+                android:ellipsize="end"
+                android:maxLength="5"
+                android:maxLines="1"
+                android:text="@{goodDetailBean.gamename}"
+                android:textColor="@color/text_default_color"
+                android:textSize="@dimen/isp_13"
+                android:textStyle="bold"
+                tools:text="神陵武装神陵武装" />
+
+            <TextView
+                android:id="@+id/tip1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/name"
+                android:layout_marginStart="@dimen/idp_10"
+                android:layout_marginTop="@dimen/idp_5"
+                android:layout_toEndOf="@id/icon"
+                android:ellipsize="end"
+                android:gravity="start"
+                android:maxLines="1"
+                android:paddingVertical="@dimen/idp_2"
+                android:text="@{goodDetailBean.server_info}"
+                android:textColor="@color/bbl_999999"
+                android:textSize="@dimen/isp_12"
+                tools:text="格调1服·榜二高战成品号" />
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{StringUtils.format(&quot;￥%s&quot;, goodDetailBean.goods_price)}"
+                android:textColor="#FF2D3F"
+                android:textSize="@dimen/isp_22"
+                android:textStyle="bold"
+                tools:text="￥520" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/idp_100"
+            android:layout_marginTop="@dimen/idp_10"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <ImageView
+                android:id="@+id/pic1"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/idp_100"
+                android:layout_weight="1"
+                app:loadRound11Image="@{goodDetailBean.pic.get(0).pic_path}"
+                tools:src="@mipmap/mod_icon" />
+
+            <ImageView
+                android:id="@+id/pic2"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/idp_100"
+                android:layout_marginHorizontal="@dimen/idp_5"
+                android:layout_weight="1"
+                app:loadRound11Image="@{goodDetailBean.pic.get(1).pic_path}"
+                tools:src="@mipmap/mod_icon" />
+
+            <ImageView
+                android:id="@+id/pic3"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/idp_100"
+                android:layout_weight="1"
+                app:loadRound11Image="@{goodDetailBean.pic.get(2).pic_path}"
+                tools:src="@mipmap/mod_icon" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</layout>

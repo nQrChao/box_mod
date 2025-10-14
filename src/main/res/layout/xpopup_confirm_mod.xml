@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_settingbar_top_selector"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/idp_30"
+    android:paddingBottom="@dimen/idp_20">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/idp_20"
+        android:ellipsize="end"
+        android:gravity="center_horizontal"
+        android:lines="1"
+        android:paddingBottom="@dimen/idp_5"
+        android:text="我是标题"
+        android:textColor="@color/text_default_color"
+        android:textSize="@dimen/isp_16" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/idp_20"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/idp_10"
+            android:paddingBottom="@dimen/idp_10">
+
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingBottom="@dimen/idp_5"
+                android:text="我是内容"
+                android:textColor="@color/text_default_color"
+                android:textSize="@dimen/isp_14" />
+
+            <com.chaoji.im.ui.view.ClearEditText
+                android:id="@+id/et_input"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/idp_40"
+                android:background="@null"
+                android:textColor="@color/_xpopup_content_color"
+                android:textColorHint="#999999"
+                android:textSize="@dimen/isp_14"
+                android:visibility="gone"
+                tools:visibility="visible" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <View
+        android:id="@+id/xpopup_divider1"
+        android:layout_width="match_parent"
+        android:layout_height=".5dp"
+        android:background="@color/_xpopup_list_divider"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/idp_60"
+        android:gravity="end"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/idp_20"
+        android:paddingVertical="@dimen/idp_10">
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/mod_btn_cancel_selector"
+            android:gravity="center"
+            android:paddingVertical="@dimen/idp_10"
+            android:text="取消"
+            android:textColor="@color/white"
+            android:textSize="@dimen/isp_14" />
+
+
+        <View
+            android:id="@+id/xpopup_divider2"
+            android:layout_width="@dimen/idp_1"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/idp_10"
+            android:background="@color/transparent" />
+
+        <TextView
+            android:id="@+id/tv_confirm"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/mod_btn_confirm_selector"
+            android:gravity="center"
+            android:paddingVertical="@dimen/idp_10"
+            android:text="确定"
+            android:textColor="@color/white95"
+            android:textSize="@dimen/isp_14" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.chaoji.other.blankj.utilcode.util.StringUtils" />
+
+        <variable
+            name="gameLabel"
+            type="com.chaoji.im.data.model.ModGameLabelBean" />
+
+    </data>
+
+    <TextView
+        android:id="@+id/tv_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mod_game_label_bg"
+        android:ellipsize="end"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:text="@{gameLabel.label_name}"
+        android:paddingHorizontal="@dimen/idp_3"
+        android:paddingVertical="@dimen/idp_2"
+        android:textColor="#666666"
+        android:textSize="@dimen/isp_10"
+        tools:text="AAAAAAAAA" />
+
+
+</layout>

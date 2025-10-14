@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.chaoji.mod.ui.activity.ModActivityYouHuiQuanModel" />
+
+        <variable
+            name="click"
+            type="com.chaoji.mod.ui.activity.ModActivityYouHuiQuan.ProxyClick" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/mod_home_bg_color"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/rootView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="@{vm.hasData?View.GONE:View.VISIBLE}">
+
+            <ImageView
+                android:id="@+id/pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/idp_80"
+                android:src="@drawable/status_empty_ic" />
+
+            <TextView
+                android:id="@+id/modPreviewPic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/idp_20"
+                android:text="暂无可用优惠券"
+                android:textColor="@color/bbl_999999"
+                android:textSize="@dimen/isp_16" />
+
+        </LinearLayout>
+
+        <com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{vm.hasData?View.VISIBLE:View.GONE}"
+            app:srlEnableFooterTranslationContent="true"
+            app:srlEnableHeaderTranslationContent="true"
+            app:srlEnableLoadMore="false"
+            app:srlEnableOverScrollBounce="true"
+            app:srlEnableOverScrollDrag="true"
+            app:srlEnablePureScrollMode="true"
+            app:srlReboundDuration="700"
+            app:tab_draw_divider="true">
+
+            <LinearLayout
+                android:id="@+id/centerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.chaoji.other.tablayout.DslTabLayout
+                        android:id="@+id/tab"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:minHeight="@dimen/idp_30"
+                        android:paddingHorizontal="@dimen/idp_10"
+                        android:paddingVertical="@dimen/idp_5"
+                        android:visibility="gone"
+                        app:tab_border_radius_size="@dimen/idp_5"
+                        app:tab_border_stroke_color="@color/red"
+                        app:tab_deselect_color="@color/common_text_color_sec_gray"
+                        app:tab_draw_border="false"
+                        app:tab_icon_view_id="@id/text_view"
+                        app:tab_indicator_height="5dp"
+                        app:tab_indicator_style="STYLE_NONE"
+                        app:tab_indicator_width="WRAP_CONTENT"
+                        app:tab_item_is_equ_width="true"
+                        tools:tab_default_index="0">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@{vm.isSelect() == 0 ? @drawable/mod_tab_b_item_bg : @drawable/mod_tab_b_item_bg2}"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:paddingVertical="@dimen/idp_5"
+                            android:tag="hot"
+                            android:text="未使用"
+                            android:textColor="@{vm.isSelect() == 0?@color/white:@color/common_text_color_sec_gray}"
+                            android:textSize="@dimen/isp_13"
+                            tools:textColor="@color/text_default_color" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/idp_5"
+                            android:layout_weight="1"
+                            android:background="@{vm.isSelect() == 1 ? @drawable/mod_tab_b_item_bg : @drawable/mod_tab_b_item_bg2}"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:paddingVertical="@dimen/idp_5"
+                            android:tag="newest"
+                            android:text="已失效"
+                            android:textColor="@{vm.isSelect() == 1?@color/white:@color/common_text_color_sec_gray}"
+                            android:textSize="@dimen/isp_13"
+                            tools:textColor="@color/text_default_color" />
+                    </com.chaoji.other.tablayout.DslTabLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/idp_10"
+                        app:layout_constraintStart_toStartOf="parent"
+                        bind:itemCount="2"
+                        tools:listitem="@layout/mod_item_applets_pic" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout>
+    </LinearLayout>
+</layout>

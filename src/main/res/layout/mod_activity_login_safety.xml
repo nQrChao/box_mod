@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.chaoji.mod.ui.activity.login.ModActivitySafetyModel" />
+
+        <variable
+            name="click"
+            type="com.chaoji.mod.ui.activity.login.ModActivitySafety.ProxyClick" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/anchor_sell_faq"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/idp_10"
+            android:background="@drawable/a_rounded_10"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/idp_10"
+            android:paddingVertical="@dimen/idp_15">
+
+            <com.chaoji.im.ui.layout.SettingBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/idp_5"
+                android:onClick="@{()-> click.uXy()}"
+                app:bar_leftText="用户协议"
+                app:bar_rightDrawable="@drawable/arrows_right_ic" />
+
+            <com.chaoji.im.ui.layout.SettingBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/idp_15"
+                android:onClick="@{()-> click.yXy()}"
+                app:bar_leftText="隐私政策"
+                app:bar_rightDrawable="@drawable/arrows_right_ic" />
+
+            <com.chaoji.im.ui.layout.SettingBar
+                android:id="@+id/user_setting_6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/idp_15"
+                android:onClick="@{()-> click.uZx()}"
+                android:visibility="@{vm.isLogin?View.VISIBLE:View.GONE}"
+                app:bar_leftText="账号注销"
+                app:bar_rightDrawable="@drawable/arrows_right_ic" />
+
+
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

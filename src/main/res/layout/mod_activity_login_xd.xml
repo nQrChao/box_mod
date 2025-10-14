@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.chaoji.mod.ui.activity.login.ModActivityXDLoginModel" />
+
+        <variable
+            name="click"
+            type="com.chaoji.mod.ui.activity.login.ModActivityXDLogin.ProxyClick" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/ll_content_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rl_logo_bg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/idp_45">
+
+                <ImageView
+                    android:layout_width="@dimen/idp_70"
+                    android:layout_height="@dimen/idp_70"
+                    android:src="@drawable/shape_white_radius_stroke_1c000000" />
+
+                <ImageView
+                    android:id="@+id/iv_login_logo"
+                    android:layout_width="@dimen/idp_70"
+                    android:layout_height="@dimen/idp_70"
+                    android:layout_centerInParent="true"
+                    android:onClick="@{()->click.bindPassword()}"
+                    android:src="@mipmap/mod_icon" />
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/iv_login_splash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rl_logo_bg"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/idp_5"
+                android:src="@mipmap/ic_login_splash1"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_login_splash"
+                android:layout_marginHorizontal="@dimen/idp_15"
+                android:layout_marginTop="@dimen/idp_15"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/idp_45"
+                    android:background="@drawable/mod_edit_bg"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.chaoji.im.ui.view.ClearEditText
+                        android:id="@+id/login_name"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="@{vm.loginType == 1?@string/mod_login_edit_name:@string/mod_login_edit_phone}"
+                        android:inputType="@{vm.loginType == 1?0x00000021:0x00000003}"
+                        android:lines="1"
+                        android:maxLength="11"
+                        android:paddingHorizontal="@dimen/idp_10"
+                        android:singleLine="true"
+                        android:text="@={vm.mobileNum}"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/text_hit_color"
+                        android:textSize="@dimen/isp_14"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/login_password_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/idp_45"
+                    android:layout_marginTop="@dimen/idp_15"
+                    android:background="@drawable/mod_edit_bg"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:visibility="@{vm.loginType==1?View.VISIBLE:View.GONE}">
+
+                    <com.chaoji.im.ui.view.PasswordEditText
+                        android:id="@+id/login_password"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="请输入密码"
+                        android:inputType="text"
+                        android:lines="1"
+                        android:maxLines="18"
+                        android:paddingHorizontal="@dimen/idp_10"
+                        android:text="@={vm.password}"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/text_hit_color"
+                        android:textSize="@dimen/isp_14" />
+
+
+                    <TextView
+                        android:visibility="gone"
+                        android:id="@+id/loginForget"
+                        style="@style/CountdownViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="end"
+                        android:gravity="center_vertical"
+                        android:onClick="@{()-> click.forgetPwd()}"
+                        android:text="忘记密码"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/isp_13"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/password_ll" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/idp_45"
+                    android:layout_marginTop="@dimen/idp_15"
+                    android:background="@drawable/mod_edit_bg"
+                    android:orientation="horizontal"
+                    android:visibility="@{vm.loginType==2?View.VISIBLE:View.GONE}">
+
+                    <com.chaoji.im.ui.view.ClearEditText
+                        android:id="@+id/login_verification"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="请输入验证码"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:maxLines="6"
+                        android:paddingHorizontal="@dimen/idp_10"
+                        android:text="@={vm.verificationCode}"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/text_hit_color"
+                        android:textSize="@dimen/isp_14" />
+
+
+                    <com.chaoji.im.ui.view.CountdownView
+                        android:id="@+id/cv_verification_countdown"
+                        style="@style/CountdownViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:onClick="@{()-> click.getVerificationCode()}"
+                        android:padding="@dimen/idp_5"
+                        android:textSize="@dimen/isp_13" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/idp_45"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/idp_30"
+                    android:background="@drawable/mod_btn_confirm_selector"
+                    android:onClick="@{()->click.login()}"
+                    android:paddingHorizontal="@dimen/idp_80"
+                    android:text="立即登录"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/isp_15" />
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/other_login_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/idp_10"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_auto_login"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{()-> click.oneKeyLogin()}"
+                        android:paddingHorizontal="@dimen/idp_10"
+                        android:paddingVertical="@dimen/idp_15"
+                        android:text="本机一键登录"
+                        android:textColor="@color/text_default_color"
+                        android:textSize="@dimen/isp_14"
+                        android:visibility="@{vm.hasOneKeyLogin?View.VISIBLE:View.GONE}"
+                        tools:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tv_line"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="@dimen/idp_15"
+                        android:text="  |  "
+                        android:textColor="#E5E5E5"
+                        android:textSize="@dimen/isp_14"
+                        android:visibility="@{vm.hasOneKeyLogin?View.VISIBLE:View.GONE}"
+                        tools:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tv_verify_login"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{()-> click.phoneLogin()}"
+                        android:paddingHorizontal="@dimen/idp_10"
+                        android:paddingVertical="@dimen/idp_15"
+                        android:text="验证码登录"
+                        android:textColor="@color/text_default_color"
+                        android:textSize="@dimen/isp_14"
+                        android:visibility="@{vm.loginType==1?View.VISIBLE:View.GONE}" />
+
+                    <TextView
+                        android:id="@+id/tv_name_login"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{()-> click.nameLogin()}"
+                        android:paddingHorizontal="@dimen/idp_10"
+                        android:paddingVertical="@dimen/idp_15"
+                        android:text="账号登录"
+                        android:textColor="@color/text_default_color"
+                        android:textSize="@dimen/isp_14"
+                        android:visibility="@{vm.loginType==2?View.VISIBLE:View.GONE}" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_agree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/idp_10"
+                android:paddingVertical="@dimen/idp_20">
+
+                <CheckBox
+                    android:id="@+id/agreementButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@null"
+                    android:button="@drawable/radiobutton_selector"
+                    android:checked="false"
+                    app:checkChange="@{click.agreementButtonChangeListener}" />
+
+                <TextView
+                    android:id="@+id/tv_agree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/idp_10"
+                    android:text="我已阅读并同意《隐私协议》、《用户协议》"
+                    android:textColor="@color/text_default_color"
+                    android:textSize="@dimen/isp_13" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>

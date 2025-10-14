@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.chaoji.other.blankj.utilcode.util.StringUtils" />
+
+        <variable
+            name="tagName"
+            type="java.lang.String" />
+
+    </data>
+
+    <Button
+        android:id="@+id/tag_button"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/idp_30"
+        android:layout_margin="@dimen/idp_2"
+        android:background="@drawable/tag_button_background"
+        android:paddingStart="@dimen/idp_15"
+        android:paddingEnd="@dimen/idp_15"
+        android:stateListAnimator="@null"
+        android:text="@{tagName}"
+        android:textAllCaps="false"
+        android:textColor="#3E99FD"
+        android:textSize="@dimen/isp_12"
+        tools:text="少年三国志：零" />
+
+
+</layout>
+

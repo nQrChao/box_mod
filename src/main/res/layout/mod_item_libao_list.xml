@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.chaoji.other.blankj.utilcode.util.StringUtils" />
+
+        <variable
+            name="gameHallListBean"
+            type="com.chaoji.im.data.model.ModGameHallList" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/mod_main_layout_bg"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/idp_85"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/idp_15">
+
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="@dimen/idp_60"
+                android:layout_height="@dimen/idp_60"
+                android:layout_gravity="center_vertical"
+                android:src="@mipmap/mod_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:loadRound11Image="@{gameHallListBean.gameicon}" />
+
+
+            <LinearLayout
+                android:id="@+id/midLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/idp_10"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/icon"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:maxLines="1"
+                    android:text="@{gameHallListBean.displayName}"
+                    android:textColor="@color/text_default_color"
+                    android:textSize="@dimen/isp_15"
+                    android:textStyle="bold"
+                    tools:text="仙剑奇侠传" />
+
+                <TextView
+                    android:id="@+id/name2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/idp_3"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:maxLines="1"
+                    android:text="@{gameHallListBean.genre_str}"
+                    android:textColor="@color/text_default_color"
+                    android:textSize="@dimen/isp_12"
+                    tools:text="回合 武侠" />
+
+                <TextView
+                    android:id="@+id/tip1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/idp_3"
+                    android:background="#CBEEFF"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:maxLines="1"
+                    android:text="@{StringUtils.format(&quot;可免费领取%s款礼包&quot;, gameHallListBean.card_count)}"
+                    android:paddingHorizontal="@dimen/idp_5"
+                    android:paddingVertical="@dimen/idp_2"
+                    android:textColor="#0054FF"
+                    android:textSize="@dimen/isp_10"
+                    tools:text="可免费领取36款礼包" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/endLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/idp_10"
+                android:layout_marginTop="@dimen/idp_3"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:gravity="end"
+                    android:visibility="gone"
+                    android:maxLines="1"
+                    android:textColor="#FF5757"
+                    android:textSize="@dimen/isp_11"
+                    android:textStyle="bold"
+                    tools:text="库存剩余99%" />
+
+                <Button
+                    android:id="@+id/lingqu"
+                    android:layout_width="@dimen/idp_65"
+                    android:layout_height="@dimen/idp_25"
+                    android:background="@drawable/mod_item_libao_btn_bg"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="领取"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/isp_12"
+                    android:textStyle="bold"
+                    tools:text="领取" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+
+</layout>
+

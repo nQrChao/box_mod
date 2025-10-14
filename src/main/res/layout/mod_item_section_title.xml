@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="title"
+            type="java.lang.String" />
+
+        <variable
+            name="showIcon"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="showMore"
+            type="java.lang.Boolean" />
+
+        <variable
+            name="clickHandler"
+            type="com.chaoji.mod.ui.fragment.fragment1.Nav1ClickHandler" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/idp_40"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/idp_15">
+
+        <com.chaoji.im.ui.view.DrawableTextView
+            android:id="@+id/titleView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/idp_7"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:onClick="@{(view) -> clickHandler.onSearchTitleClick(view)}"
+            android:text="@{title}"
+            android:textColor="@color/text_default_color"
+            android:textSize="@dimen/isp_16"
+            android:textStyle="bold"
+            app:diyDrawableEndCompat="@{showIcon?@drawable/arrows_right_ic_black:null}"
+            app:drawableHeight="@dimen/idp_16"
+            app:drawableTint="@color/black80"
+            app:drawableWidth="@dimen/idp_16"
+            tools:textColor="@color/white" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <com.chaoji.im.ui.view.DrawableTextView
+            android:id="@+id/search_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:drawablePadding="@dimen/idp_10"
+            android:gravity="center_vertical"
+            android:hint="更多 >>"
+            android:lines="1"
+            android:onClick="@{() -> clickHandler.onSearchClick()}"
+            android:paddingHorizontal="@dimen/idp_15"
+            android:singleLine="true"
+            android:textColorHint="@color/text_hit_color"
+            android:textSize="@dimen/isp_14"
+            android:textStyle="bold"
+            android:visibility="@{showMore?View.VISIBLE:View.GONE}"
+            app:drawableHeight="@dimen/idp_17"
+            app:drawableTint="#575757"
+            app:drawableWidth="@dimen/idp_17" />
+
+    </LinearLayout>
+</layout>

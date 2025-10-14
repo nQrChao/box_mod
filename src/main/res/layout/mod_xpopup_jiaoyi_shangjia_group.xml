@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="@dimen/idp_200"
+        android:layout_height="wrap_content"
+        android:background="@drawable/common_color_white_background"
+        android:gravity="center"
+        android:paddingVertical="@dimen/idp_15"
+        android:paddingHorizontal="@dimen/idp_15"
+        android:orientation="vertical">
+
+        <com.chaoji.im.ui.view.DrawableTextView
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="最新上架"
+            android:textColor="@color/text_default_color"
+            android:textSize="@dimen/isp_14"/>
+
+        <View
+            style="@style/HorizontalLineStyle"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="@dimen/idp_10"  />
+
+        <com.chaoji.im.ui.view.DrawableTextView
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="价格升序"
+            android:textColor="@color/text_default_color"
+            android:textSize="@dimen/isp_14" />
+
+        <View
+            style="@style/HorizontalLineStyle"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="@dimen/idp_10" />
+
+        <com.chaoji.im.ui.view.DrawableTextView
+            android:id="@+id/view3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="价格降序"
+            android:textColor="@color/text_default_color"
+            android:textSize="@dimen/isp_14"/>
+
+
+        <View
+            style="@style/HorizontalLineStyle"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="@dimen/idp_10"  />
+
+        <com.chaoji.im.ui.view.DrawableTextView
+            android:id="@+id/view4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="近期成交"
+            android:textColor="@color/text_default_color"
+            android:textSize="@dimen/isp_14" />
+
+
+    </LinearLayout>
+</layout>

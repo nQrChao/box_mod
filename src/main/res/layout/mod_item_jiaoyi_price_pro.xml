@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.chaoji.other.blankj.utilcode.util.StringUtils" />
+
+        <variable
+            name="goodDetailBean"
+            type="com.chaoji.im.data.model.ModTradeGoodDetailBean" />
+
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/idp_8"
+        android:layout_marginVertical="@dimen/idp_5"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/pic1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/idp_130"
+            android:layout_gravity="center_horizontal"
+            app:loadRound11UrlImage="@{goodDetailBean.pic.get(0).pic_path}"
+            tools:src="@mipmap/mod_icon" />
+
+        <LinearLayout
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pic1"
+            android:layout_marginTop="@dimen/idp_8"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/idp_5">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/mod_image_cph_new"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/idp_10"
+                android:text="成品号"
+                android:textColor="@color/white90"
+                android:textSize="@dimen/isp_12"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/idp_6"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{goodDetailBean.goods_title}"
+                android:textColor="@color/text_default_color"
+                android:textSize="@dimen/isp_12"
+                android:textStyle="bold"
+                tools:text="神陵武装神陵（啊啊啊）" />
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/priceLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="@dimen/idp_10"
+            android:layout_marginBottom="@dimen/idp_10"
+            android:paddingHorizontal="@dimen/idp_5">
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{StringUtils.format(&quot;￥%s&quot;, goodDetailBean.goods_price)}"
+                android:textColor="#FF2D3F"
+                android:textSize="@dimen/isp_15"
+                android:textStyle="bold"
+                tools:text="￥520" />
+
+            <RelativeLayout
+                android:id="@+id/goumai_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/ic_slanted_black_vector_details"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/ic_shandian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingStart="@dimen/idp_8"
+                    android:src="@drawable/mod_wuxianzhe_shandian" />
+
+                <TextView
+                    android:id="@+id/goumai"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_toEndOf="@id/ic_shandian"
+                    android:ellipsize="end"
+                    android:gravity="end"
+                    android:maxLines="1"
+                    android:text="即买即到"
+                    android:textColor="#004EFF"
+                    android:textSize="@dimen/isp_10"
+                    android:textStyle="bold"
+                    tools:text="即买即到" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/priceLayout"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_chengjiao"
+            android:visibility="@{goodDetailBean.goods_status == 10?View.VISIBLE:View.GONE}" />
+    </RelativeLayout>
+
+</layout>
