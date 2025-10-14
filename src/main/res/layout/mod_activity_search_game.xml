@@ -7,11 +7,11 @@
 
         <variable
             name="vm"
-            type="com.chaoji.mod.ui.activity.ModActivitySearchGameModel" />
+            type="com.box.mod.ui.activity.ModActivitySearchGameModel" />
 
         <variable
             name="click"
-            type="com.chaoji.mod.ui.activity.ModActivitySearchGame.ProxyClick" />
+            type="com.box.mod.ui.activity.ModActivitySearchGame.ProxyClick" />
 
     </data>
 
@@ -38,7 +38,7 @@
                 android:paddingEnd="@dimen/idp_15"
                 android:src="@drawable/arrows_left_b_ic" />
 
-            <com.chaoji.im.ui.view.ClearEditText
+            <com.box.common.ui.view.ClearEditText
                 android:id="@+id/search_edit"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -124,14 +124,14 @@
 
         </LinearLayout>
 
-        <com.chaoji.im.ui.layout.StatusLayout
+        <com.box.common.ui.layout.StatusLayout
             android:id="@+id/hl_hint"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/idp_10"
             android:background="@color/white">
 
-            <com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout
+            <com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout
                 android:id="@+id/refresh_Layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -139,7 +139,7 @@
                 app:srlEnableLoadMore="true"
                 app:srlEnableRefresh="true">
 
-                <com.chaoji.other.scwang.smart.refresh.header.ClassicsHeader
+                <com.box.other.scwang.smart.refresh.header.ClassicsHeader
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
@@ -152,11 +152,11 @@
                     tools:listitem="@layout/mod_item_game_search"
                     tools:text="test" />
 
-                <com.chaoji.other.scwang.smart.refresh.footer.ClassicsFooter
+                <com.box.other.scwang.smart.refresh.footer.ClassicsFooter
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
-            </com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout>
-        </com.chaoji.im.ui.layout.StatusLayout>
+            </com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout>
+        </com.box.common.ui.layout.StatusLayout>
 
 
     </LinearLayout>

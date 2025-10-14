@@ -8,11 +8,11 @@
 
         <variable
             name="vm"
-            type="com.chaoji.mod.ui.fragment.fragment1.Navigation14Model" />
+            type="com.box.mod.ui.fragment.fragment1.Navigation14Model" />
 
         <variable
             name="click"
-            type="com.chaoji.mod.ui.fragment.fragment1.FragmentNavigation14.ProxyClick" />
+            type="com.box.mod.ui.fragment.fragment1.FragmentNavigation14.ProxyClick" />
     </data>
 
     <RelativeLayout
@@ -21,7 +21,7 @@
         android:background="@color/white"
         android:orientation="vertical">
 
-        <com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout
+        <com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/refreshLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -33,7 +33,7 @@
             app:srlEnablePureScrollMode="true"
             app:srlReboundDuration="700">
 
-            <com.chaoji.im.ui.layout.StatusLayout
+            <com.box.common.ui.layout.StatusLayout
                 android:id="@+id/hl_hint"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -51,9 +51,9 @@
                     bind:itemCount="2"
                     tools:listitem="@layout/mod_item_applets_reliao" />
 
-            </com.chaoji.im.ui.layout.StatusLayout>
+            </com.box.common.ui.layout.StatusLayout>
 
-        </com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout>
+        </com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout>
 
         <LinearLayout
             android:id="@+id/fasong"
@@ -64,7 +64,7 @@
             android:orientation="horizontal">
 
 
-            <com.chaoji.im.ui.view.ClearEditText
+            <com.box.common.ui.view.ClearEditText
                 android:id="@+id/send_edit"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"

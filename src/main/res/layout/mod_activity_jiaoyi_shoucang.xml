@@ -9,11 +9,11 @@
 
         <variable
             name="vm"
-            type="com.chaoji.mod.ui.activity.jiaoyi.ModActivityShouCangModel" />
+            type="com.box.mod.ui.activity.jiaoyi.ModActivityShouCangModel" />
 
         <variable
             name="click"
-            type="com.chaoji.mod.ui.activity.jiaoyi.ModActivityShouCang.ProxyClick" />
+            type="com.box.mod.ui.activity.jiaoyi.ModActivityShouCang.ProxyClick" />
     </data>
 
     <LinearLayout
@@ -23,7 +23,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout
+        <com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/refreshLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -53,7 +53,7 @@
                     tools:listitem="@layout/mod_item_jiaoyi_shoucang" />
 
             </LinearLayout>
-        </com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout>
+        </com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

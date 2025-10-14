@@ -9,7 +9,7 @@
 
         <variable
             name="appletInfoLeYuan"
-            type="com.chaoji.im.data.model.AppletsLeYuan" />
+            type="com.box.common.data.model.AppletsLeYuan" />
     </data>
 
     <LinearLayout

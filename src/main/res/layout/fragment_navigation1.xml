@@ -7,7 +7,7 @@
 
         <variable
             name="viewmodel"
-            type="com.chaoji.mod.ui.fragment.fragment1.Navigation1Model" />
+            type="com.box.mod.ui.fragment.fragment1.Navigation1Model" />
     </data>
 
     <LinearLayout
@@ -17,7 +17,7 @@
         android:background="@color/mod_home_bg_color"
         android:orientation="vertical">
 
-        <com.chaoji.other.hjq.titlebar.TitleBar
+        <com.box.other.hjq.titlebar.TitleBar
             android:id="@+id/titleBar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/idp_40"
@@ -30,12 +30,12 @@
             app:titleSize="@dimen/isp_16"
             app:titleStyle="bold" />
 
-        <com.chaoji.im.ui.layout.StatusLayout
+        <com.box.common.ui.layout.StatusLayout
             android:id="@+id/hl_hint"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout
+            <com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout
                 android:id="@+id/refreshLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -43,7 +43,7 @@
                 app:srlEnableLoadMore="true"
                 app:srlEnableRefresh="true">
 
-                <com.chaoji.other.scwang.smart.refresh.header.ClassicsHeader
+                <com.box.other.scwang.smart.refresh.header.ClassicsHeader
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
@@ -53,11 +53,11 @@
                     android:layout_height="match_parent"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-                <com.chaoji.other.scwang.smart.refresh.footer.ClassicsFooter
+                <com.box.other.scwang.smart.refresh.footer.ClassicsFooter
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
-            </com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout>
+            </com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout>
 
-        </com.chaoji.im.ui.layout.StatusLayout>
+        </com.box.common.ui.layout.StatusLayout>
     </LinearLayout>
 </layout>

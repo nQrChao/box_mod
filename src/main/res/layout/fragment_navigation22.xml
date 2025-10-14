@@ -8,11 +8,11 @@
 
         <variable
             name="vm"
-            type="com.chaoji.mod.ui.fragment.Navigation22Model" />
+            type="com.box.mod.ui.fragment.Navigation22Model" />
 
         <variable
             name="click"
-            type="com.chaoji.mod.ui.fragment.FragmentNavigation22.ProxyClick" />
+            type="com.box.mod.ui.fragment.FragmentNavigation22.ProxyClick" />
     </data>
 
     <LinearLayout
@@ -83,7 +83,7 @@
             </LinearLayout>
 
 
-            <com.chaoji.other.tablayout.DslTabLayout
+            <com.box.other.tablayout.DslTabLayout
                 android:id="@+id/tab"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -138,7 +138,7 @@
                     android:textStyle="bold"
                     tools:textColor="@color/mod_tab_text_select_color" />
 
-                <com.chaoji.im.ui.view.DrawableTextView
+                <com.box.common.ui.view.DrawableTextView
                     android:id="@+id/tabText3"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -174,9 +174,9 @@
                     android:textStyle="bold"
                     tools:textColor="@color/mod_tab_text_select_color" />
 
-            </com.chaoji.other.tablayout.DslTabLayout>
+            </com.box.other.tablayout.DslTabLayout>
 
-            <com.chaoji.other.tablayout.DslTabLayout
+            <com.box.other.tablayout.DslTabLayout
                 android:id="@+id/tab2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -230,7 +230,7 @@
                     android:textSize="@dimen/isp_13"
                     android:textStyle="bold"/>
 
-                <com.chaoji.im.ui.view.DrawableTextView
+                <com.box.common.ui.view.DrawableTextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/idp_3"
@@ -264,16 +264,16 @@
                     android:textSize="@dimen/isp_13"
                     android:textStyle="bold"/>
 
-            </com.chaoji.other.tablayout.DslTabLayout>
+            </com.box.other.tablayout.DslTabLayout>
 
-            <com.chaoji.im.ui.layout.StatusLayout
+            <com.box.common.ui.layout.StatusLayout
                 android:id="@+id/hl_hint"
                 android:background="@color/transparent"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/idp_10">
 
-                <com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout
+                <com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout
                     android:id="@+id/refresh_Layout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -281,7 +281,7 @@
                     app:srlEnableLoadMore="true"
                     app:srlEnableRefresh="true">
 
-                    <com.chaoji.other.scwang.smart.refresh.header.ClassicsHeader
+                    <com.box.other.scwang.smart.refresh.header.ClassicsHeader
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
@@ -294,11 +294,11 @@
                         tools:listitem="@layout/mod_item_rank"
                         tools:text="test" />
 
-                    <com.chaoji.other.scwang.smart.refresh.footer.ClassicsFooter
+                    <com.box.other.scwang.smart.refresh.footer.ClassicsFooter
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
-                </com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout>
-            </com.chaoji.im.ui.layout.StatusLayout>
+                </com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout>
+            </com.box.common.ui.layout.StatusLayout>
 
         </LinearLayout>
     </LinearLayout>

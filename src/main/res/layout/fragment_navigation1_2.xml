@@ -8,11 +8,11 @@
 
         <variable
             name="vm"
-            type="com.chaoji.mod.ui.fragment.fragment1.Navigation12Model" />
+            type="com.box.mod.ui.fragment.fragment1.Navigation12Model" />
 
         <variable
             name="click"
-            type="com.chaoji.mod.ui.fragment.fragment1.FragmentNavigation12.ProxyClick" />
+            type="com.box.mod.ui.fragment.fragment1.FragmentNavigation12.ProxyClick" />
     </data>
 
     <LinearLayout
@@ -36,7 +36,7 @@
                 android:orientation="horizontal">
 
 
-                <com.chaoji.im.ui.view.ClearEditText
+                <com.box.common.ui.view.ClearEditText
                     android:id="@+id/search_edit"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -82,7 +82,7 @@
             </LinearLayout>
 
 
-            <com.chaoji.other.tablayout.DslTabLayout
+            <com.box.other.tablayout.DslTabLayout
                 android:id="@+id/tab"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -166,9 +166,9 @@
                     tools:background="@drawable/mod_tab_bg_1"
                     tools:textColor="@color/text_default_color" />
 
-            </com.chaoji.other.tablayout.DslTabLayout>
+            </com.box.other.tablayout.DslTabLayout>
 
-            <com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout
+            <com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout
                 android:id="@+id/refresh_Layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -177,7 +177,7 @@
                 app:srlEnableLoadMore="true"
                 app:srlEnableRefresh="true">
 
-                <com.chaoji.other.scwang.smart.refresh.header.ClassicsHeader
+                <com.box.other.scwang.smart.refresh.header.ClassicsHeader
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
@@ -189,10 +189,10 @@
                     bind:itemCount="2"
                     tools:listitem="@layout/mod_item_jiaoyi_price_pro" />
 
-                <com.chaoji.other.scwang.smart.refresh.footer.ClassicsFooter
+                <com.box.other.scwang.smart.refresh.footer.ClassicsFooter
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
-            </com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout>
+            </com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout>
 
         </LinearLayout>
     </LinearLayout>

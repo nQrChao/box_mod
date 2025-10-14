@@ -10,11 +10,11 @@
 
         <variable
             name="vm"
-            type="com.chaoji.mod.ui.activity.login.ModActivityLogoutModel" />
+            type="com.box.mod.ui.activity.login.ModActivityLogoutModel" />
 
         <variable
             name="click"
-            type="com.chaoji.mod.ui.activity.login.ModActivityLogout.ProxyClick" />
+            type="com.box.mod.ui.activity.login.ModActivityLogout.ProxyClick" />
     </data>
 
     <LinearLayout
@@ -38,7 +38,7 @@
                 android:paddingHorizontal="@dimen/idp_10"
                 android:paddingVertical="@dimen/idp_10">
 
-                <com.chaoji.im.ui.view.DrawableTextView
+                <com.box.common.ui.view.DrawableTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="@dimen/idp_12"
@@ -168,7 +168,7 @@
                 android:paddingVertical="@dimen/idp_10">
 
 
-                <com.chaoji.im.ui.view.DrawableTextView
+                <com.box.common.ui.view.DrawableTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawablePadding="@dimen/idp_12"
@@ -178,7 +178,7 @@
                     android:textSize="@dimen/isp_15"
                     android:textStyle="bold" />
 
-                <com.chaoji.im.ui.view.PasswordEditText
+                <com.box.common.ui.view.PasswordEditText
                     android:id="@+id/pwd_et1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -197,7 +197,7 @@
                     android:textSize="@dimen/isp_14" />
 
 
-                <com.chaoji.im.ui.view.DrawableTextView
+                <com.box.common.ui.view.DrawableTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/idp_30"

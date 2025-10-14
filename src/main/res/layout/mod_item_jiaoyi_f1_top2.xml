@@ -8,7 +8,7 @@
 
         <variable
             name="appletTool"
-            type="com.chaoji.im.data.model.AppletsToolInfo" />
+            type="com.box.common.data.model.AppletsToolInfo" />
 
     </data>
 

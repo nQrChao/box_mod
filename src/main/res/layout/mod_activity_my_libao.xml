@@ -10,11 +10,11 @@
 
         <variable
             name="vm"
-            type="com.chaoji.mod.ui.activity.ModActivityMyLiBaoModel" />
+            type="com.box.mod.ui.activity.ModActivityMyLiBaoModel" />
 
         <variable
             name="click"
-            type="com.chaoji.mod.ui.activity.ModActivityMyLiBao.ProxyClick" />
+            type="com.box.mod.ui.activity.ModActivityMyLiBao.ProxyClick" />
     </data>
 
     <LinearLayout
@@ -50,7 +50,7 @@
 
         </LinearLayout>
 
-        <com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout
+        <com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/refreshLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -75,7 +75,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <com.chaoji.other.tablayout.DslTabLayout
+                    <com.box.other.tablayout.DslTabLayout
                         android:id="@+id/tab"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -125,7 +125,7 @@
                             android:textColor="@{vm.isSelect() == 1?@color/white:@color/common_text_color_sec_gray}"
                             android:textSize="@dimen/isp_13"
                             tools:textColor="@color/text_default_color" />
-                    </com.chaoji.other.tablayout.DslTabLayout>
+                    </com.box.other.tablayout.DslTabLayout>
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerView"
@@ -141,6 +141,6 @@
 
 
             </LinearLayout>
-        </com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout>
+        </com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout>
     </LinearLayout>
 </layout>

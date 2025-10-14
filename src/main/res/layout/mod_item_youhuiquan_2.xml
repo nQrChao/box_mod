@@ -7,15 +7,15 @@
 
         <import type="android.view.View" />
 
-        <import type="com.chaoji.other.blankj.utilcode.util.StringUtils" />
+        <import type="com.box.other.blankj.utilcode.util.StringUtils" />
 
         <variable
             name="clickHandler"
-            type="com.chaoji.mod.ui.fragment.fragment1.Nav1ClickHandler" />
+            type="com.box.mod.ui.fragment.fragment1.Nav1ClickHandler" />
 
         <variable
             name="youhuiquanBean"
-            type="com.chaoji.im.data.model.ModYouHuiQuanBean" />
+            type="com.box.common.data.model.ModYouHuiQuanBean" />
     </data>
 
     <LinearLayout

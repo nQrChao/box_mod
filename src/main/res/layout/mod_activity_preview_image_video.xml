@@ -5,11 +5,11 @@
 
         <variable
             name="viewmodel"
-            type="com.chaoji.mod.ui.activity.image.ModActivityPreviewImageVideoModel" />
+            type="com.box.mod.ui.activity.image.ModActivityPreviewImageVideoModel" />
 
         <variable
             name="click"
-            type="com.chaoji.mod.ui.activity.image.ModActivityPreviewImageVideo.ProxyClick" />
+            type="com.box.mod.ui.activity.image.ModActivityPreviewImageVideo.ProxyClick" />
     </data>
 
     <FrameLayout
@@ -65,7 +65,7 @@
                         android:layout_gravity="center_vertical"
                         android:background="@color/easy_photos_bar_primary_dark" />
 
-                    <com.chaoji.other.huantansheng.easyphotos.ui.widget.PressedTextView
+                    <com.box.other.huantansheng.easyphotos.ui.widget.PressedTextView
                         android:id="@+id/tv_number"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -75,7 +75,7 @@
                         android:paddingRight="@dimen/idp_15"
                         android:textColor="@color/easy_photos_fg_primary" />
 
-                    <com.chaoji.other.huantansheng.easyphotos.ui.widget.PressedTextView
+                    <com.box.other.huantansheng.easyphotos.ui.widget.PressedTextView
                         android:id="@+id/tv_save"
                         android:visibility="gone"
                         android:layout_width="@dimen/idp_45"
@@ -118,12 +118,12 @@
 
                     <fragment
                         android:id="@+id/fragment_preview"
-                        android:name="com.chaoji.other.huantansheng.easyphotos.ui.PreviewFragment"
+                        android:name="com.box.other.huantansheng.easyphotos.ui.PreviewFragment"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
                 </FrameLayout>
 
-                <com.chaoji.other.huantansheng.easyphotos.ui.widget.PressedTextView
+                <com.box.other.huantansheng.easyphotos.ui.widget.PressedTextView
                     android:id="@+id/tv_edit"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/idp_40"

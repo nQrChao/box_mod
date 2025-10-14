@@ -21,7 +21,7 @@
 
         <variable
             name="clickHandler"
-            type="com.chaoji.mod.ui.fragment.fragment1.Nav1ClickHandler" />
+            type="com.box.mod.ui.fragment.fragment1.Nav1ClickHandler" />
     </data>
 
     <LinearLayout
@@ -31,7 +31,7 @@
         android:orientation="horizontal"
         android:paddingHorizontal="@dimen/idp_15">
 
-        <com.chaoji.im.ui.view.DrawableTextView
+        <com.box.common.ui.view.DrawableTextView
             android:id="@+id/titleView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
             android:layout_height="0dp"
             android:layout_weight="1" />
 
-        <com.chaoji.im.ui.view.DrawableTextView
+        <com.box.common.ui.view.DrawableTextView
             android:id="@+id/search_edit"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

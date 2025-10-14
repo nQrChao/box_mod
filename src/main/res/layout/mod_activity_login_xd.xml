@@ -9,11 +9,11 @@
 
         <variable
             name="vm"
-            type="com.chaoji.mod.ui.activity.login.ModActivityXDLoginModel" />
+            type="com.box.mod.ui.activity.login.ModActivityXDLoginModel" />
 
         <variable
             name="click"
-            type="com.chaoji.mod.ui.activity.login.ModActivityXDLogin.ProxyClick" />
+            type="com.box.mod.ui.activity.login.ModActivityXDLogin.ProxyClick" />
     </data>
 
     <LinearLayout
@@ -74,7 +74,7 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <com.chaoji.im.ui.view.ClearEditText
+                    <com.box.common.ui.view.ClearEditText
                         android:id="@+id/login_name"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -104,7 +104,7 @@
                     android:orientation="horizontal"
                     android:visibility="@{vm.loginType==1?View.VISIBLE:View.GONE}">
 
-                    <com.chaoji.im.ui.view.PasswordEditText
+                    <com.box.common.ui.view.PasswordEditText
                         android:id="@+id/login_password"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -146,7 +146,7 @@
                     android:orientation="horizontal"
                     android:visibility="@{vm.loginType==2?View.VISIBLE:View.GONE}">
 
-                    <com.chaoji.im.ui.view.ClearEditText
+                    <com.box.common.ui.view.ClearEditText
                         android:id="@+id/login_verification"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -163,7 +163,7 @@
                         android:textSize="@dimen/isp_14" />
 
 
-                    <com.chaoji.im.ui.view.CountdownView
+                    <com.box.common.ui.view.CountdownView
                         android:id="@+id/cv_verification_countdown"
                         style="@style/CountdownViewStyle"
                         android:layout_width="wrap_content"

@@ -8,14 +8,14 @@
 
         <variable
             name="vm"
-            type="com.chaoji.mod.ui.fragment.MainFragment5Model" />
+            type="com.box.mod.ui.fragment.MainFragment5Model" />
 
         <variable
             name="click"
-            type="com.chaoji.mod.ui.fragment.MainFragment5.ProxyClick" />
+            type="com.box.mod.ui.fragment.MainFragment5.ProxyClick" />
     </data>
 
-    <com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout
+    <com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/refreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -77,7 +77,7 @@
                     android:orientation="vertical"
                     android:padding="@dimen/idp_10">
 
-                    <com.chaoji.im.ui.layout.SettingBar
+                    <com.box.common.ui.layout.SettingBar
                         android:id="@+id/user_setting_1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -86,7 +86,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/friend_disturb_setting">
 
-                        <com.chaoji.im.ui.view.SwitchButton
+                        <com.box.common.ui.view.SwitchButton
                             android:id="@+id/user_setting_1_switch"
                             android:layout_width="@dimen/idp_40"
                             android:layout_height="@dimen/idp_18"
@@ -94,9 +94,9 @@
                             android:layout_marginHorizontal="@dimen/idp_15"
                             app:switchButtonState="@{vm.tuiSong}" />
 
-                    </com.chaoji.im.ui.layout.SettingBar>
+                    </com.box.common.ui.layout.SettingBar>
 
-                    <com.chaoji.im.ui.layout.SettingBar
+                    <com.box.common.ui.layout.SettingBar
                         android:id="@+id/user_setting_2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -105,7 +105,7 @@
                         app:bar_leftText="意见反馈"
                         app:bar_rightDrawable="@drawable/arrows_right_ic" />
 
-                    <com.chaoji.im.ui.layout.SettingBar
+                    <com.box.common.ui.layout.SettingBar
                         android:id="@+id/user_setting_3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -114,7 +114,7 @@
                         app:bar_leftText="联系客服"
                         app:bar_rightDrawable="@drawable/arrows_right_ic" />
 
-                    <com.chaoji.im.ui.layout.SettingBar
+                    <com.box.common.ui.layout.SettingBar
                         android:id="@+id/user_setting_4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -124,7 +124,7 @@
                         app:bar_rightDrawable="@drawable/arrows_right_ic"
                         app:bar_rightTextSize="@dimen/isp_11" />
 
-                    <com.chaoji.im.ui.layout.SettingBar
+                    <com.box.common.ui.layout.SettingBar
                         android:id="@+id/user_setting_5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -133,7 +133,7 @@
                         app:bar_leftText="用户协议"
                         app:bar_rightDrawable="@drawable/arrows_right_ic" />
 
-                    <com.chaoji.im.ui.layout.SettingBar
+                    <com.box.common.ui.layout.SettingBar
                         android:id="@+id/user_setting_6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -142,7 +142,7 @@
                         app:bar_leftText="隐私政策"
                         app:bar_rightDrawable="@drawable/arrows_right_ic" />
 
-                    <com.chaoji.im.ui.layout.SettingBar
+                    <com.box.common.ui.layout.SettingBar
                         android:id="@+id/user_setting_7"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -154,5 +154,5 @@
 
             </androidx.core.widget.NestedScrollView>
         </LinearLayout>
-    </com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout>
+    </com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout>
 </layout>

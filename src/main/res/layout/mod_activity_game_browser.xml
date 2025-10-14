@@ -6,11 +6,11 @@
     <data>
         <variable
             name="vm"
-            type="com.chaoji.mod.ui.activity.game.ModActivityGameBrowserModel" />
+            type="com.box.mod.ui.activity.game.ModActivityGameBrowserModel" />
 
         <variable
             name="click"
-            type="com.chaoji.mod.ui.activity.game.ModActivityGameBrowser.ProxyClick" />
+            type="com.box.mod.ui.activity.game.ModActivityGameBrowser.ProxyClick" />
     </data>
 
 <LinearLayout
@@ -19,18 +19,18 @@
     android:orientation="vertical"
     tools:context=".ui.activity.browser.ModActivityGameBrowser">
 
-    <com.chaoji.im.ui.layout.StatusLayout
+    <com.box.common.ui.layout.StatusLayout
         android:id="@+id/hl_browser_hint"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-            <com.chaoji.im.ui.view.BrowserView
+            <com.box.common.ui.view.BrowserView
                 android:id="@+id/wv_browser_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
 
-    </com.chaoji.im.ui.layout.StatusLayout>
+    </com.box.common.ui.layout.StatusLayout>
 
 </LinearLayout>
 

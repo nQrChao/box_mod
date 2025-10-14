@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainfragment"
-        android:name="com.chaoji.mod.ui.fragment.main.FragmentModMain"
+        android:name="com.box.mod.ui.fragment.main.FragmentModMain"
         android:label="MainFragment"
         tools:layout="@layout/mod_fragment_main">
 
@@ -30,7 +30,7 @@
 
     <fragment
         android:id="@+id/meFragment"
-        android:name="com.chaoji.mod.ui.fragment.MainFragment5"
+        android:name="com.box.mod.ui.fragment.MainFragment5"
         android:label="setting"
         tools:layout="@layout/main_fragment_5">
     </fragment>

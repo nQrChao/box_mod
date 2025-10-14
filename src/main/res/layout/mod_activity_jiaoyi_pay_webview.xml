@@ -7,11 +7,11 @@
 
         <variable
             name="vm"
-            type="com.chaoji.mod.ui.activity.jiaoyi.ModActivityPayWebModel" />
+            type="com.box.mod.ui.activity.jiaoyi.ModActivityPayWebModel" />
 
         <variable
             name="click"
-            type="com.chaoji.mod.ui.activity.jiaoyi.ModActivityPayWeb.ProxyClick" />
+            type="com.box.mod.ui.activity.jiaoyi.ModActivityPayWeb.ProxyClick" />
     </data>
 
 
@@ -46,7 +46,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <com.chaoji.other.wang.avi.AVLoadingIndicatorView
+            <com.box.other.wang.avi.AVLoadingIndicatorView
                 android:id="@+id/avi"
                 style="@style/AVLoadingIndicatorView.Small"
                 android:layout_width="50dp"

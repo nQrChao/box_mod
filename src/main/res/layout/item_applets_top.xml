@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <import type="com.chaoji.other.blankj.utilcode.util.StringUtils" />
+        <import type="com.box.other.blankj.utilcode.util.StringUtils" />
 
         <import type="android.view.View" />
 
         <variable
             name="applet"
-            type="com.chaoji.im.data.model.AppletsInfo" />
+            type="com.box.common.data.model.AppletsInfo" />
 
     </data>
 

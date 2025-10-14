@@ -10,13 +10,13 @@
 
         <variable
             name="vm"
-            type="com.chaoji.mod.ui.fragment.MainFragment4Model" />
+            type="com.box.mod.ui.fragment.MainFragment4Model" />
 
         <variable
             name="click"
-            type="com.chaoji.mod.ui.fragment.MainFragment4.ProxyClick" />
+            type="com.box.mod.ui.fragment.MainFragment4.ProxyClick" />
 
-        <import type="com.chaoji.other.blankj.utilcode.util.StringUtils" />
+        <import type="com.box.other.blankj.utilcode.util.StringUtils" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-            <com.chaoji.im.ui.widget.XCollapsingToolbarLayout
+            <com.box.common.ui.widget.XCollapsingToolbarLayout
                 android:id="@+id/ctl_bar"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
@@ -148,7 +148,7 @@
 
                     </LinearLayout>
                 </androidx.appcompat.widget.Toolbar>
-            </com.chaoji.im.ui.widget.XCollapsingToolbarLayout>
+            </com.box.common.ui.widget.XCollapsingToolbarLayout>
 
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -177,7 +177,7 @@
                     android:visibility="gone"
                     android:weightSum="9">
 
-                    <com.chaoji.im.ui.view.DrawableTextView
+                    <com.box.common.ui.view.DrawableTextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
@@ -187,7 +187,7 @@
                         android:onClick="@{()-> click.top1()}"
                         android:text="交易记录" />
 
-                    <com.chaoji.im.ui.view.DrawableTextView
+                    <com.box.common.ui.view.DrawableTextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
@@ -197,7 +197,7 @@
                         android:onClick="@{()-> click.top2()}"
                         android:text="我的收藏" />
 
-                    <com.chaoji.im.ui.view.DrawableTextView
+                    <com.box.common.ui.view.DrawableTextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
@@ -209,7 +209,7 @@
 
                 </LinearLayout>
 
-                <com.chaoji.im.ui.view.DrawableTextView
+                <com.box.common.ui.view.DrawableTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/idp_10"
@@ -239,7 +239,7 @@
                         android:paddingHorizontal="@dimen/idp_5"
                         android:paddingVertical="@dimen/idp_5">
 
-                        <com.chaoji.im.ui.layout.SettingBar
+                        <com.box.common.ui.layout.SettingBar
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:onClick="@{()-> click.jiaoyi()}"
@@ -259,9 +259,9 @@
                                 android:text="查看"
                                 android:textColor="@color/white" />
 
-                        </com.chaoji.im.ui.layout.SettingBar>
+                        </com.box.common.ui.layout.SettingBar>
 
-                        <com.chaoji.im.ui.layout.SettingBar
+                        <com.box.common.ui.layout.SettingBar
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingVertical="@dimen/idp_5"
@@ -282,7 +282,7 @@
                                 android:text="去聊他"
                                 android:textColor="@color/white" />
 
-                        </com.chaoji.im.ui.layout.SettingBar>
+                        </com.box.common.ui.layout.SettingBar>
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -332,7 +332,7 @@
                 </LinearLayout>
 
 
-                <com.chaoji.im.ui.view.DrawableTextView
+                <com.box.common.ui.view.DrawableTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/idp_10"
@@ -357,7 +357,7 @@
                         android:orientation="vertical"
                         android:padding="@dimen/idp_5">
 
-                        <com.chaoji.im.ui.layout.SettingBar
+                        <com.box.common.ui.layout.SettingBar
                             android:id="@+id/user_setting_1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -368,7 +368,7 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/friend_disturb_setting">
 
-                            <com.chaoji.im.ui.view.SwitchButton
+                            <com.box.common.ui.view.SwitchButton
                                 android:id="@+id/user_setting_1_switch"
                                 android:layout_width="@dimen/idp_40"
                                 android:layout_height="@dimen/idp_18"
@@ -376,9 +376,9 @@
                                 android:layout_marginHorizontal="@dimen/idp_15"
                                 app:switchButtonState="@{vm.tuiSong}" />
 
-                        </com.chaoji.im.ui.layout.SettingBar>
+                        </com.box.common.ui.layout.SettingBar>
 
-                        <com.chaoji.im.ui.layout.SettingBar
+                        <com.box.common.ui.layout.SettingBar
                             android:id="@+id/user_setting_2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -388,7 +388,7 @@
                             app:bar_leftText="意见反馈"
                             app:bar_rightDrawable="@drawable/arrows_right_ic" />
 
-                        <com.chaoji.im.ui.layout.SettingBar
+                        <com.box.common.ui.layout.SettingBar
                             android:id="@+id/user_setting_3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -398,7 +398,7 @@
                             app:bar_leftText="联系客服"
                             app:bar_rightDrawable="@drawable/arrows_right_ic" />
 
-                        <com.chaoji.im.ui.layout.SettingBar
+                        <com.box.common.ui.layout.SettingBar
                             android:id="@+id/user_setting_4"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -409,7 +409,7 @@
                             app:bar_rightDrawable="@drawable/arrows_right_ic"
                             app:bar_rightTextSize="@dimen/isp_11" />
 
-                        <com.chaoji.im.ui.layout.SettingBar
+                        <com.box.common.ui.layout.SettingBar
                             android:id="@+id/user_setting_7"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -419,7 +419,7 @@
                             app:bar_leftText="防沉迷政策"
                             app:bar_rightDrawable="@drawable/arrows_right_ic" />
 
-                        <com.chaoji.im.ui.layout.SettingBar
+                        <com.box.common.ui.layout.SettingBar
                             android:id="@+id/user_setting_8"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -429,7 +429,7 @@
                             app:bar_leftText="隐私权限安全"
                             app:bar_rightDrawable="@drawable/arrows_right_ic" />
 
-                        <com.chaoji.im.ui.layout.SettingBar
+                        <com.box.common.ui.layout.SettingBar
                             android:id="@+id/user_setting_9"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

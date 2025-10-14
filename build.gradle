@@ -5,7 +5,7 @@ plugins {
     id 'kotlin-parcelize'
 }
 
-apply from: '../xdyx_common/base.gradle'
+apply from: '../mod_common/base.gradle'
 
 android {
     namespace "com.chaoji.mod"

@@ -8,11 +8,11 @@
 
         <variable
             name="viewmodel"
-            type="com.chaoji.mod.ui.activity.modmain.mod2.Mod2Fragment1Model" />
+            type="com.box.mod.ui.activity.modmain.mod2.Mod2Fragment1Model" />
 
         <variable
             name="click"
-            type="com.chaoji.mod.ui.activity.modmain.mod2.Mod2Fragment1.ProxyClick" />
+            type="com.box.mod.ui.activity.modmain.mod2.Mod2Fragment1.ProxyClick" />
 
         <import type="android.view.View" />
     </data>
@@ -24,7 +24,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.chaoji.other.hjq.titlebar.TitleBar
+        <com.box.other.hjq.titlebar.TitleBar
             android:id="@+id/titleBar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/idp_40"

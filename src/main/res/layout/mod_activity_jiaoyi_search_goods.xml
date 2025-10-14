@@ -7,11 +7,11 @@
 
         <variable
             name="vm"
-            type="com.chaoji.mod.ui.activity.ModActivitySearchGoodsModel" />
+            type="com.box.mod.ui.activity.ModActivitySearchGoodsModel" />
 
         <variable
             name="click"
-            type="com.chaoji.mod.ui.activity.ModActivitySearchGoods.ProxyClick" />
+            type="com.box.mod.ui.activity.ModActivitySearchGoods.ProxyClick" />
 
     </data>
 
@@ -38,7 +38,7 @@
                 android:paddingEnd="@dimen/idp_15"
                 android:src="@drawable/arrows_left_b_ic" />
 
-            <com.chaoji.im.ui.view.ClearEditText
+            <com.box.common.ui.view.ClearEditText
                 android:id="@+id/search_edit"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"

@@ -10,7 +10,7 @@
 
         <variable
             name="youhuiquanBean"
-            type="com.chaoji.im.data.model.ModYouHuiQuanBean" />
+            type="com.box.common.data.model.ModYouHuiQuanBean" />
 
     </data>
 

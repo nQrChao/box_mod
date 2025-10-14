@@ -8,7 +8,7 @@
 
         <variable
             name="localGame"
-            type="com.chaoji.im.data.model.LocalGameInfo" />
+            type="com.box.common.data.model.LocalGameInfo" />
 
     </data>
 

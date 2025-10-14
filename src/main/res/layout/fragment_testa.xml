@@ -6,11 +6,11 @@
     <data>
         <variable
             name="vm"
-            type="com.chaoji.mod.ui.activity.about.ModActivityAboutModel" />
+            type="com.box.mod.ui.activity.about.ModActivityAboutModel" />
 
         <variable
             name="click"
-            type="com.chaoji.mod.ui.activity.about.ModActivityTest.ProxyClick" />
+            type="com.box.mod.ui.activity.about.ModActivityTest.ProxyClick" />
     </data>
 
 
@@ -26,7 +26,7 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:elevation="0px">
 
-            <com.chaoji.im.ui.widget.XCollapsingToolbarLayout
+            <com.box.common.ui.widget.XCollapsingToolbarLayout
                 android:id="@+id/ctl_home_bar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/idp_256"
@@ -87,7 +87,7 @@
 
                 </androidx.appcompat.widget.Toolbar>
 
-            </com.chaoji.im.ui.widget.XCollapsingToolbarLayout>
+            </com.box.common.ui.widget.XCollapsingToolbarLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_home_tab"
@@ -120,7 +120,7 @@
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 
-        <com.chaoji.im.ui.view.NestedViewPager
+        <com.box.common.ui.view.NestedViewPager
             android:id="@+id/vp_home_pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

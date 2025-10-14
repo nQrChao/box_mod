@@ -7,11 +7,11 @@
 
         <import type="android.view.View" />
 
-        <import type="com.chaoji.other.blankj.utilcode.util.StringUtils" />
+        <import type="com.box.other.blankj.utilcode.util.StringUtils" />
 
         <variable
             name="gameHallListBean"
-            type="com.chaoji.im.data.model.ModGameHallList" />
+            type="com.box.common.data.model.ModGameHallList" />
     </data>
 
     <LinearLayout

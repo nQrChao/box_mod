@@ -10,11 +10,11 @@
 
         <variable
             name="vm"
-            type="com.chaoji.mod.ui.activity.ModActivityLiBaoInfoModel" />
+            type="com.box.mod.ui.activity.ModActivityLiBaoInfoModel" />
 
         <variable
             name="click"
-            type="com.chaoji.mod.ui.activity.ModActivityLiBaoInfo.ProxyClick" />
+            type="com.box.mod.ui.activity.ModActivityLiBaoInfo.ProxyClick" />
     </data>
 
     <LinearLayout
@@ -23,7 +23,7 @@
         android:background="@color/mod_home_bg_color"
         android:orientation="vertical">
 
-        <com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout
+        <com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/refreshLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -118,7 +118,7 @@
                             android:layout_gravity="center_vertical"
                             android:src="@drawable/mod_item_libao_btn_bg" />
 
-                        <com.chaoji.im.ui.view.DrawableTextView
+                        <com.box.common.ui.view.DrawableTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
@@ -147,6 +147,6 @@
 
 
             </LinearLayout>
-        </com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout>
+        </com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout>
     </LinearLayout>
 </layout>

@@ -8,17 +8,17 @@
 
         <import type="android.view.View" />
 
-        <import type="com.chaoji.im.utils.UtilTime" />
+        <import type="com.box.common.utils.UtilTime" />
 
-        <import type="com.chaoji.other.blankj.utilcode.util.StringUtils" />
+        <import type="com.box.other.blankj.utilcode.util.StringUtils" />
 
         <variable
             name="vm"
-            type="com.chaoji.mod.ui.activity.ModActivityGameDetailsModel" />
+            type="com.box.mod.ui.activity.ModActivityGameDetailsModel" />
 
         <variable
             name="click"
-            type="com.chaoji.mod.ui.activity.ModActivityGameDetails.ProxyClick" />
+            type="com.box.mod.ui.activity.ModActivityGameDetails.ProxyClick" />
     </data>
 
     <RelativeLayout
@@ -27,7 +27,7 @@
         android:background="@color/mod_home_bg_color"
         android:orientation="vertical">
 
-        <com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout
+        <com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/refreshLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -233,7 +233,7 @@
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent" />
 
-                            <com.chaoji.im.ui.view.DrawableTextView
+                            <com.box.common.ui.view.DrawableTextView
                                 android:id="@+id/youhuiText"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -250,7 +250,7 @@
                                 app:layout_constraintStart_toEndOf="@id/xingLine"
                                 app:layout_constraintTop_toTopOf="parent" />
 
-                            <com.chaoji.im.ui.view.DrawableTextView
+                            <com.box.common.ui.view.DrawableTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/idp_30"
@@ -322,7 +322,7 @@
 
                 </LinearLayout>
             </androidx.core.widget.NestedScrollView>
-        </com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout>
+        </com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout>
 
         <RelativeLayout
             android:id="@+id/fl_good_bottom_view"

@@ -7,7 +7,7 @@
 
         <variable
             name="appletInfoLunTan"
-            type="com.chaoji.im.data.model.AppletsLunTan" />
+            type="com.box.common.data.model.AppletsLunTan" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

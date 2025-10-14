@@ -8,11 +8,11 @@
 
         <variable
             name="vm"
-            type="com.chaoji.mod.ui.activity.modmain.mod2.Mod2Fragment2Model" />
+            type="com.box.mod.ui.activity.modmain.mod2.Mod2Fragment2Model" />
 
         <variable
             name="click"
-            type="com.chaoji.mod.ui.activity.modmain.mod2.Mod2Fragment2.ProxyClick" />
+            type="com.box.mod.ui.activity.modmain.mod2.Mod2Fragment2.ProxyClick" />
     </data>
 
     <LinearLayout
@@ -20,7 +20,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.chaoji.other.hjq.titlebar.TitleBar
+        <com.box.other.hjq.titlebar.TitleBar
             android:id="@+id/titleBar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/idp_40"
@@ -57,7 +57,7 @@
                     tools:listitem="@layout/mod_item_applets" />
 
 
-                <com.chaoji.other.tablayout.DslTabLayout
+                <com.box.other.tablayout.DslTabLayout
                     android:id="@+id/tab"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -153,7 +153,7 @@
                     </LinearLayout>
 
 
-                </com.chaoji.other.tablayout.DslTabLayout>
+                </com.box.other.tablayout.DslTabLayout>
 
 
                 <androidx.recyclerview.widget.RecyclerView

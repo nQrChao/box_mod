@@ -1,0 +1,16 @@
+package com.box.mod.ui.adapter
+
+import com.chad.library.adapter.base.BaseQuickAdapter
+import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
+import com.box.common.data.model.AppletsInfo
+import com.box.mod.BR
+import com.box.mod.R
+import com.box.mod.databinding.ModItemAppletsBinding
+
+class AppletsAdapter constructor(list: MutableList<AppletsInfo>) : BaseQuickAdapter<AppletsInfo, BaseDataBindingHolder<ModItemAppletsBinding>>(
+    R.layout.mod_item_applets, list) {
+    override fun convert(holder: BaseDataBindingHolder<ModItemAppletsBinding>, item: AppletsInfo) {
+        holder.dataBinding?.setVariable(BR.applet, item)
+    }
+
+}

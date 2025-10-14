@@ -6,11 +6,11 @@
 
         <variable
             name="vm"
-            type="com.chaoji.mod.ui.activity.login.ModActivityXDRegisterModel" />
+            type="com.box.mod.ui.activity.login.ModActivityXDRegisterModel" />
 
         <variable
             name="click"
-            type="com.chaoji.mod.ui.activity.login.ModActivityXDRegister.ProxyClick" />
+            type="com.box.mod.ui.activity.login.ModActivityXDRegister.ProxyClick" />
     </data>
 
     <LinearLayout
@@ -70,7 +70,7 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <com.chaoji.im.ui.view.ClearEditText
+                    <com.box.common.ui.view.ClearEditText
                         android:id="@+id/login_name"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -96,7 +96,7 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <com.chaoji.im.ui.view.PasswordEditText
+                    <com.box.common.ui.view.PasswordEditText
                         android:id="@+id/password1"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
@@ -122,7 +122,7 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <com.chaoji.im.ui.view.PasswordEditText
+                    <com.box.common.ui.view.PasswordEditText
                         android:id="@+id/password2"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"

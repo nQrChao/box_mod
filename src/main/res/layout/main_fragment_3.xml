@@ -8,11 +8,11 @@
 
         <variable
             name="vm"
-            type="com.chaoji.mod.ui.fragment.MainFragment3Model" />
+            type="com.box.mod.ui.fragment.MainFragment3Model" />
 
         <variable
             name="click"
-            type="com.chaoji.mod.ui.fragment.MainFragment3.ProxyClick" />
+            type="com.box.mod.ui.fragment.MainFragment3.ProxyClick" />
     </data>
 
     <LinearLayout
@@ -20,7 +20,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.chaoji.other.hjq.titlebar.TitleBar
+        <com.box.other.hjq.titlebar.TitleBar
             android:id="@+id/titleBar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/idp_40"
@@ -39,7 +39,7 @@
             android:layout_height="match_parent">
 
 
-            <com.chaoji.im.ui.layout.StatusLayout
+            <com.box.common.ui.layout.StatusLayout
                 android:id="@+id/hl_hint"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -65,7 +65,7 @@
                 </LinearLayout>
 
 
-            </com.chaoji.im.ui.layout.StatusLayout>
+            </com.box.common.ui.layout.StatusLayout>
 
         </androidx.core.widget.NestedScrollView>
 

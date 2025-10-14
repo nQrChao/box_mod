@@ -8,17 +8,17 @@
 
         <import type="android.view.View" />
 
-        <import type="com.chaoji.im.utils.UtilTime" />
+        <import type="com.box.common.utils.UtilTime" />
 
-        <import type="com.chaoji.other.blankj.utilcode.util.StringUtils" />
+        <import type="com.box.other.blankj.utilcode.util.StringUtils" />
 
         <variable
             name="vm"
-            type="com.chaoji.mod.ui.activity.jiaoyi.ModActivityTradeDetailsModel" />
+            type="com.box.mod.ui.activity.jiaoyi.ModActivityTradeDetailsModel" />
 
         <variable
             name="click"
-            type="com.chaoji.mod.ui.activity.jiaoyi.ModActivityTradeDetails.ProxyClick" />
+            type="com.box.mod.ui.activity.jiaoyi.ModActivityTradeDetails.ProxyClick" />
     </data>
 
     <RelativeLayout
@@ -27,7 +27,7 @@
         android:background="@color/mod_home_bg_color"
         android:orientation="vertical">
 
-        <com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout
+        <com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/refreshLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -222,7 +222,7 @@
                         android:paddingTop="@dimen/idp_15"
                         android:paddingBottom="@dimen/idp_15">
 
-                        <com.chaoji.im.ui.view.DrawableTextView
+                        <com.box.common.ui.view.DrawableTextView
                             android:id="@+id/info_title"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -395,7 +395,7 @@
                         android:paddingTop="@dimen/idp_15"
                         android:paddingBottom="@dimen/idp_15">
 
-                        <com.chaoji.im.ui.view.DrawableTextView
+                        <com.box.common.ui.view.DrawableTextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_alignParentEnd="true"
@@ -414,7 +414,7 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
 
-                        <com.chaoji.im.ui.view.DrawableTextView
+                        <com.box.common.ui.view.DrawableTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center_vertical"
@@ -446,7 +446,7 @@
                         android:paddingTop="@dimen/idp_15"
                         android:paddingBottom="@dimen/idp_15">
 
-                        <com.chaoji.im.ui.view.DrawableTextView
+                        <com.box.common.ui.view.DrawableTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center_vertical"
@@ -472,7 +472,7 @@
 
                 </LinearLayout>
             </androidx.core.widget.NestedScrollView>
-        </com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout>
+        </com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout>
 
         <RelativeLayout
             android:id="@+id/fl_good_bottom_view"

@@ -8,14 +8,14 @@
 
         <variable
             name="vm"
-            type="com.chaoji.mod.ui.activity.modmain.mod5.Mod5Fragment3Model" />
+            type="com.box.mod.ui.activity.modmain.mod5.Mod5Fragment3Model" />
 
         <variable
             name="click"
-            type="com.chaoji.mod.ui.activity.modmain.mod5.Mod5Fragment3.ProxyClick" />
+            type="com.box.mod.ui.activity.modmain.mod5.Mod5Fragment3.ProxyClick" />
     </data>
 
-    <com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout
+    <com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/refreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -49,5 +49,5 @@
 
         </RelativeLayout>
 
-    </com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout>
+    </com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout>
 </layout>

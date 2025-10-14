@@ -50,7 +50,7 @@
     native <methods>;
 }
 -keepclassmembers class * {
-    @com.chaoji.other.blankj.utilcode.util.BusUtils$Bus <methods>;
+    @com.box.other.blankj.utilcode.util.BusUtils$Bus <methods>;
     @android.webkit.JavascriptInterface <methods>;
     @androidx.annotation.Keep <methods>;
 }
@@ -97,17 +97,17 @@
 # =========================================================
 
 # --- 1. 项目基础库 (base, im.data, im.sdk 等) ---
--keep class com.chaoji.base.** { *; }
--keepclassmembers class com.chaoji.base.** { *; }
--keep class com.chaoji.im.data.** { *; }
--keepclassmembers class com.chaoji.im.data.** { *; }
--keep class com.chaoji.im.sdk.ImSDK { *; }
--keepclassmembers class com.chaoji.im.sdk.ImSDK { *; }
--keep class com.chaoji.im.sdk.ImSDK$Companion { *; }
+-keep class com.box.base.** { *; }
+-keepclassmembers class com.box.base.** { *; }
+-keep class com.box.common.data.** { *; }
+-keepclassmembers class com.box.common.data.** { *; }
+-keep class com.box.common.sdk.ImSDK { *; }
+-keepclassmembers class com.box.common.sdk.ImSDK { *; }
+-keep class com.box.common.sdk.ImSDK$Companion { *; }
 
 # --- 2. ViewModel 和 LiveData 核心规则 ---
--keepnames class * implements com.chaoji.base.base.viewmodel.BaseViewModel
--keep class com.chaoji.mod.ui.activity.ModSplashModel { *; }
+-keepnames class * implements com.box.base.base.viewmodel.BaseViewModel
+-keep class com.box.mod.ui.activity.ModSplashModel { *; }
 -keep class androidx.lifecycle.** { *; }
 -keep interface androidx.lifecycle.** { *; }
 -keepclassmembers class * extends androidx.lifecycle.ViewModel {
@@ -124,47 +124,47 @@
     void onChanged(java.lang.Object);
 }
 # 关键: 保留 Activity 中由 Lambda 生成的匿名 Observer 类
--keep class com.chaoji.mod.ui.activity.ModSplashActivity$createObserver$* { *; }
+-keep class com.box.mod.ui.activity.ModSplashActivity$createObserver$* { *; }
 
 # --- 3. 数据模型和扩展函数 ---
--keep class com.chaoji.base.state.ResultState { *; }
--keepclassmembers class com.chaoji.base.state.ResultState { *; }
--keep class com.chaoji.im.data.model.AppletsData { *; }
--keepclassmembers class com.chaoji.im.data.model.AppletsData { *; }
+-keep class com.box.base.state.ResultState { *; }
+-keepclassmembers class com.box.base.state.ResultState { *; }
+-keep class com.box.common.data.model.AppletsData { *; }
+-keepclassmembers class com.box.common.data.model.AppletsData { *; }
 
 # 保留扩展函数所在的Kt文件编译后的类
--keepnames class * implements com.chaoji.base.ext.BaseViewModelExtKt
--keep class com.chaoji.base.ext.BaseViewModelExtKt { *; }
--keep class com.chaoji.base.ext.AnyExtKt { *; }
+-keepnames class * implements com.box.base.ext.BaseViewModelExtKt
+-keep class com.box.base.ext.BaseViewModelExtKt { *; }
+-keep class com.box.base.ext.AnyExtKt { *; }
 
 # --- 4. XPopup 弹窗库及自定义弹窗 ---
--keep class com.chaoji.other.xpopup.** { *; }
--keep interface com.chaoji.other.xpopup.** { *; }
--keepnames class * implements com.chaoji.other.xpopup.core.CenterPopupView
--keep class * implements com.chaoji.other.xpopup.core.BasePopupView { *; }
--keep class com.chaoji.mod.ui.xpop.** { *; }
--keepclassmembers class com.chaoji.mod.ui.xpop.** { *; }
--keep class com.chaoji.mod.ui.xpop.ModXPopupCenterProtocol { *; }
--keepclassmembers class com.chaoji.mod.ui.xpop.ModXPopupCenterProtocol {
+-keep class com.box.other.xpopup.** { *; }
+-keep interface com.box.other.xpopup.** { *; }
+-keepnames class * implements com.box.other.xpopup.core.CenterPopupView
+-keep class * implements com.box.other.xpopup.core.BasePopupView { *; }
+-keep class com.box.mod.ui.xpop.** { *; }
+-keepclassmembers class com.box.mod.ui.xpop.** { *; }
+-keep class com.box.mod.ui.xpop.ModXPopupCenterProtocol { *; }
+-keepclassmembers class com.box.mod.ui.xpop.ModXPopupCenterProtocol {
     <init>(...);
     *;
 }
 
 # --- 5. 全局 ViewModel ---
--keep class com.chaoji.im.event.AppViewModel { *; }
--keepclassmembers class com.chaoji.im.event.AppViewModel { *; }
--keep class com.chaoji.im.event.EventViewModel { *; }
--keepclassmembers class com.chaoji.im.event.EventViewModel { *; }
+-keep class com.box.common.event.AppViewModel { *; }
+-keepclassmembers class com.box.common.event.AppViewModel { *; }
+-keep class com.box.common.event.EventViewModel { *; }
+-keepclassmembers class com.box.common.event.EventViewModel { *; }
 
 # --- 6. 项目依赖的工具库 ---
 # Chaoji Other & Blankj Utils & Toaster & MMKV
--keep class com.chaoji.other.** { *; }
--keepclassmembers class com.chaoji.other.** { *; }
--dontwarn com.chaoji.other.**
--dontwarn com.chaoji.other.blankj.utilcode.**
--keep class com.chaoji.other.hjq.toast.Toaster { *; }
--keep class com.chaoji.im.utils.MMKVUtil { *; }
--keepclassmembers class com.chaoji.im.utils.MMKVUtil { *; }
+-keep class com.box.other.** { *; }
+-keepclassmembers class com.box.other.** { *; }
+-dontwarn com.box.other.**
+-dontwarn com.box.other.blankj.utilcode.**
+-keep class com.box.other.hjq.toast.Toaster { *; }
+-keep class com.box.common.utils.MMKVUtil { *; }
+-keepclassmembers class com.box.common.utils.MMKVUtil { *; }
 
 # Retrofit & OkHttp & Gson
 -keep class retrofit2.** { *; }
@@ -272,13 +272,13 @@
 # =========================================================
 
 # 【关键补充】保留 Retrofit 使用的 ApiService 接口及其所有方法，防止反射调用失败
--keep interface com.chaoji.im.network.ApiService { *; }
+-keep interface com.box.common.network.ApiService { *; }
 
 # 【关键补充】保留所有网络数据模型（请求体和响应体）及其成员，防止序列化/反序列化失败
 # 虽然已有 com.chaoji.im.data.** 规则，但这条更通用，可以覆盖其他可能的数据类
--keepclassmembers class com.chaoji.base.network.BaseResponse { *; }
--keep class com.chaoji.im.network.** { *; }
--keepclassmembers class com.chaoji.im.network.** { *; }
+-keepclassmembers class com.box.base.network.BaseResponse { *; }
+-keep class com.box.common.network.** { *; }
+-keepclassmembers class com.box.common.network.** { *; }
 
 # 以下是您已有的网络规则，保持不变
 -keep class retrofit2.** { *; }

@@ -9,11 +9,11 @@
 
         <variable
             name="vm"
-            type="com.chaoji.mod.ui.activity.jiaoyi.ModActivityJiaoYiXuZhiModel" />
+            type="com.box.mod.ui.activity.jiaoyi.ModActivityJiaoYiXuZhiModel" />
 
         <variable
             name="click"
-            type="com.chaoji.mod.ui.activity.jiaoyi.ModActivityJiaoYiTip.ProxyClick" />
+            type="com.box.mod.ui.activity.jiaoyi.ModActivityJiaoYiTip.ProxyClick" />
     </data>
 
 
@@ -29,7 +29,7 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:elevation="0px">
 
-            <com.chaoji.im.ui.widget.XCollapsingToolbarLayout
+            <com.box.common.ui.widget.XCollapsingToolbarLayout
                 android:id="@+id/ctl_bar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/idp_220"
@@ -91,7 +91,7 @@
 
                 </androidx.appcompat.widget.Toolbar>
 
-            </com.chaoji.im.ui.widget.XCollapsingToolbarLayout>
+            </com.box.common.ui.widget.XCollapsingToolbarLayout>
 
             <LinearLayout
                 android:id="@+id/tabLayout"
@@ -202,7 +202,7 @@
                     android:paddingHorizontal="@dimen/idp_10"
                     android:paddingVertical="@dimen/idp_10">
 
-                    <com.chaoji.im.ui.view.DrawableTextView
+                    <com.box.common.ui.view.DrawableTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableStart="@mipmap/mod_title_left_tip"
@@ -243,7 +243,7 @@
                     android:paddingHorizontal="@dimen/idp_10"
                     android:paddingVertical="@dimen/idp_10">
 
-                    <com.chaoji.im.ui.view.DrawableTextView
+                    <com.box.common.ui.view.DrawableTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableStart="@mipmap/mod_title_left_tip"
@@ -282,7 +282,7 @@
                     android:paddingHorizontal="@dimen/idp_10"
                     android:paddingVertical="@dimen/idp_10">
 
-                    <com.chaoji.im.ui.view.DrawableTextView
+                    <com.box.common.ui.view.DrawableTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableStart="@mipmap/mod_title_left_tip"
@@ -320,7 +320,7 @@
                     android:paddingHorizontal="@dimen/idp_10"
                     android:paddingVertical="@dimen/idp_10">
 
-                    <com.chaoji.im.ui.view.DrawableTextView
+                    <com.box.common.ui.view.DrawableTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableStart="@mipmap/mod_title_left_tip"
@@ -448,7 +448,7 @@
                     android:paddingHorizontal="@dimen/idp_10"
                     android:paddingVertical="@dimen/idp_10">
 
-                    <com.chaoji.im.ui.view.DrawableTextView
+                    <com.box.common.ui.view.DrawableTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableStart="@mipmap/mod_title_left_tip"

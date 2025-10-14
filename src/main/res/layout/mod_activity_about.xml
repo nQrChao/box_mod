@@ -6,15 +6,15 @@
     <data>
         <variable
             name="vm"
-            type="com.chaoji.mod.ui.activity.about.ModActivityAboutModel" />
+            type="com.box.mod.ui.activity.about.ModActivityAboutModel" />
 
         <variable
             name="click"
-            type="com.chaoji.mod.ui.activity.about.ModActivityAbout.ProxyClick" />
+            type="com.box.mod.ui.activity.about.ModActivityAbout.ProxyClick" />
 
     </data>
 
-    <com.chaoji.other.scwang.smart.refresh.layout.SmartRefreshLayout
+    <com.box.other.scwang.smart.refresh.layout.SmartRefreshLayout
         android:id="@+id/refreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -26,7 +26,7 @@
         app:srlEnableRefresh="true"
         app:srlPrimaryColor="@color/colorPrimary">
 
-        <com.chaoji.other.scwang.smart.refresh.header.MaterialHeader
+        <com.box.other.scwang.smart.refresh.header.MaterialHeader
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -69,7 +69,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/about_icon" />
 
-            <com.chaoji.im.ui.layout.SettingBar
+            <com.box.common.ui.layout.SettingBar
                 android:id="@+id/about_xieyi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/about_version" />
 
-            <com.chaoji.im.ui.layout.SettingBar
+            <com.box.common.ui.layout.SettingBar
                 android:id="@+id/about_yinsi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/about_xieyi" />
 
-            <com.chaoji.im.ui.layout.SettingBar
+            <com.box.common.ui.layout.SettingBar
                 android:id="@+id/about_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -104,5 +104,5 @@
                 app:layout_constraintTop_toBottomOf="@+id/about_yinsi" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.chaoji.other.scwang.smart.refresh.layout.SmartRefreshLayout>
+    </com.box.other.scwang.smart.refresh.layout.SmartRefreshLayout>
 </layout>

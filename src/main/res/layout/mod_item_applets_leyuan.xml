@@ -6,11 +6,11 @@
     <data>
         <variable
             name="appletLeYuan"
-            type="com.chaoji.im.data.model.AppletsLeYuan" />
+            type="com.box.common.data.model.AppletsLeYuan" />
 
         <import type="android.view.View" />
 
-        <import type="com.chaoji.im.utils.UtilTime" />
+        <import type="com.box.common.utils.UtilTime" />
 
     </data>
 

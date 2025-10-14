@@ -16,7 +16,7 @@
         android:paddingHorizontal="@dimen/idp_15"
         android:orientation="vertical">
 
-        <com.chaoji.im.ui.view.DrawableTextView
+        <com.box.common.ui.view.DrawableTextView
             android:id="@+id/view1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
             android:layout_height="1dp"
             android:layout_marginVertical="@dimen/idp_10"  />
 
-        <com.chaoji.im.ui.view.DrawableTextView
+        <com.box.common.ui.view.DrawableTextView
             android:id="@+id/view2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
             android:layout_height="1dp"
             android:layout_marginVertical="@dimen/idp_10" />
 
-        <com.chaoji.im.ui.view.DrawableTextView
+        <com.box.common.ui.view.DrawableTextView
             android:id="@+id/view3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
             android:layout_height="1dp"
             android:layout_marginVertical="@dimen/idp_10"  />
 
-        <com.chaoji.im.ui.view.DrawableTextView
+        <com.box.common.ui.view.DrawableTextView
             android:id="@+id/view4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

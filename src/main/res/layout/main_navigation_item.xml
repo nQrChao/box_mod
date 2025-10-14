@@ -14,7 +14,7 @@
         android:layout_height="@dimen/idp_22"
         tools:srcCompat="@drawable/nav_btn1_selector" />
 
-    <com.chaoji.other.hjq.shape.view.ShapeTextView
+    <com.box.other.hjq.shape.view.ShapeTextView
         android:id="@+id/tv_home_navigation_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

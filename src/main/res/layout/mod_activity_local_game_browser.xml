@@ -9,11 +9,11 @@
 
         <variable
             name="vm"
-            type="com.chaoji.mod.ui.activity.game.ModActivityLocalGameBrowserModel" />
+            type="com.box.mod.ui.activity.game.ModActivityLocalGameBrowserModel" />
 
         <variable
             name="click"
-            type="com.chaoji.mod.ui.activity.game.ModActivityLocalGameBrowser.ProxyClick" />
+            type="com.box.mod.ui.activity.game.ModActivityLocalGameBrowser.ProxyClick" />
     </data>
 
     <FrameLayout
@@ -24,7 +24,7 @@
         android:onClick="@{()-> click.text()}"
         android:orientation="vertical">
 
-        <com.chaoji.im.ui.view.BrowserView
+        <com.box.common.ui.view.BrowserView
             android:id="@+id/wv_browser_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

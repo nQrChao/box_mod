@@ -8,15 +8,15 @@
 
         <import type="android.view.View" />
 
-        <import type="com.chaoji.other.blankj.utilcode.util.StringUtils" />
+        <import type="com.box.other.blankj.utilcode.util.StringUtils" />
 
         <variable
             name="vm"
-            type="com.chaoji.mod.ui.fragment.Navigation23Model" />
+            type="com.box.mod.ui.fragment.Navigation23Model" />
 
         <variable
             name="click"
-            type="com.chaoji.mod.ui.fragment.FragmentNavigation23.ProxyClick" />
+            type="com.box.mod.ui.fragment.FragmentNavigation23.ProxyClick" />
     </data>
 
     <LinearLayout

@@ -7,11 +7,11 @@
 
         <variable
             name="vm"
-            type="com.chaoji.mod.ui.activity.jiaoyi.ModActivityJiaoYiShiMingModel" />
+            type="com.box.mod.ui.activity.jiaoyi.ModActivityJiaoYiShiMingModel" />
 
         <variable
             name="click"
-            type="com.chaoji.mod.ui.activity.jiaoyi.ModActivityJiaoYiShiMing.ProxyClick" />
+            type="com.box.mod.ui.activity.jiaoyi.ModActivityJiaoYiShiMing.ProxyClick" />
     </data>
 
     <LinearLayout
@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:src="@mipmap/mod_certification_user_name" />
 
-            <com.chaoji.im.ui.view.ClearEditText
+            <com.box.common.ui.view.ClearEditText
                 android:id="@+id/edit_real_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -90,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:src="@mipmap/mod_certification_user_id_card" />
 
-            <com.chaoji.im.ui.view.ClearEditText
+            <com.box.common.ui.view.ClearEditText
                 android:id="@+id/edit_id_card_number"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"

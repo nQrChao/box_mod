@@ -99,7 +99,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.chaoji.im.ui.view.ClearEditText
+            <com.box.common.ui.view.ClearEditText
                 android:id="@+id/edit_liuyan"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/idp_80"

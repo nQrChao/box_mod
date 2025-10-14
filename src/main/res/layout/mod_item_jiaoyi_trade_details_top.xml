@@ -8,11 +8,11 @@
 
         <variable
             name="viewmodel"
-            type="com.chaoji.mod.ui.fragment.fragment1.Navigation11Model" />
+            type="com.box.mod.ui.fragment.fragment1.Navigation11Model" />
 
         <variable
             name="goodDetailBean"
-            type="com.chaoji.im.data.model.ModTradeGoodDetailBean" />
+            type="com.box.common.data.model.ModTradeGoodDetailBean" />
 
     </data>
 

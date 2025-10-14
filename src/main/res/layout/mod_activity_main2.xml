@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="com.chaoji.mod.ui.activity.ModActivityMainModel" />
+            type="com.box.mod.ui.activity.ModActivityMainModel" />
     </data>
 
     <LinearLayout
@@ -15,9 +15,9 @@
         android:layout_height="match_parent"
         android:background="@color/mod_home_bg_color"
         android:orientation="vertical"
-        tools:context="com.chaoji.mod.ui.activity.ModActivityMain">
+        tools:context="com.box.mod.ui.activity.ModActivityMain">
 
-        <com.chaoji.other.hjq.titlebar.TitleBar
+        <com.box.other.hjq.titlebar.TitleBar
             android:id="@+id/titleBar"
             android:visibility="invisible"
             android:layout_width="match_parent"
@@ -37,7 +37,7 @@
             android:layout_weight="1"
             android:background="@color/mod_home_bg_color" />
 
-        <com.chaoji.im.ui.widget.bottombar.BottomBarLayout
+        <com.box.common.ui.widget.bottombar.BottomBarLayout
             android:id="@+id/bbl"
             android:layout_width="match_parent"
             android:layout_height="@dimen/idp_60"
@@ -45,7 +45,7 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <com.chaoji.im.ui.widget.bottombar.BottomBarItem
+            <com.box.common.ui.widget.bottombar.BottomBarItem
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -62,7 +62,7 @@
                 app:textColorSelected="@color/mod_navigation_a_color"
                 app:touchDrawable="@drawable/transparent_selector" />
 
-            <com.chaoji.im.ui.widget.bottombar.BottomBarItem
+            <com.box.common.ui.widget.bottombar.BottomBarItem
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -81,7 +81,7 @@
                 app:unreadThreshold="99" />
 
 
-            <com.chaoji.im.ui.widget.bottombar.BottomBarItem
+            <com.box.common.ui.widget.bottombar.BottomBarItem
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -98,7 +98,7 @@
                 app:textColorSelected="@color/mod_navigation_a_color"
                 app:touchDrawable="@drawable/transparent_selector" />
 
-            <com.chaoji.im.ui.widget.bottombar.BottomBarItem
+            <com.box.common.ui.widget.bottombar.BottomBarItem
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -115,6 +115,6 @@
                 app:textColorSelected="@color/mod_navigation_a_color"
                 app:touchDrawable="@drawable/transparent_selector" />
 
-        </com.chaoji.im.ui.widget.bottombar.BottomBarLayout>
+        </com.box.common.ui.widget.bottombar.BottomBarLayout>
     </LinearLayout>
 </layout>

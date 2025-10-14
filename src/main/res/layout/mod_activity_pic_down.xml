@@ -7,11 +7,11 @@
 
         <variable
             name="vm"
-            type="com.chaoji.mod.ui.activity.ModActivityPicDownModel" />
+            type="com.box.mod.ui.activity.ModActivityPicDownModel" />
 
         <variable
             name="click"
-            type="com.chaoji.mod.ui.activity.ModActivityPicDown.ProxyClick" />
+            type="com.box.mod.ui.activity.ModActivityPicDown.ProxyClick" />
     </data>
 
     <LinearLayout

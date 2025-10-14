@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="com.chaoji.mod.ui.activity.ModActivityMainModel" />
+            type="com.box.mod.ui.activity.ModActivityMainModel" />
     </data>
 
     <LinearLayout
@@ -15,9 +15,9 @@
         android:layout_height="match_parent"
         android:background="@color/mod_home_bg_color"
         android:orientation="vertical"
-        tools:context="com.chaoji.mod.ui.activity.ModActivityMain">
+        tools:context="com.box.mod.ui.activity.ModActivityMain">
 
-        <com.chaoji.other.hjq.titlebar.TitleBar
+        <com.box.other.hjq.titlebar.TitleBar
             android:id="@+id/titleBar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/idp_0_1"
@@ -30,7 +30,7 @@
             app:titleSize="@dimen/isp_16"
             app:titleStyle="bold" />
 
-        <com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout
+        <com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout
             android:id="@+id/refreshLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -58,6 +58,6 @@
                     tools:listitem="@layout/mod_item_model" />
 
             </LinearLayout>
-        </com.chaoji.other.scwang.smartrefresh.layout.SmartRefreshLayout>
+        </com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout>
     </LinearLayout>
 </layout>

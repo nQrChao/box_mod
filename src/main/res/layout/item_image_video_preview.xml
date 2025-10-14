@@ -6,14 +6,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.chaoji.other.subscaleview.SubsamplingScaleImageView
+        <com.box.other.subscaleview.SubsamplingScaleImageView
             android:id="@+id/iv_long_photo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="gone" />
 
 
-        <com.chaoji.other.chrisbanes.photoview.PhotoView
+        <com.box.other.chrisbanes.photoview.PhotoView
             android:id="@+id/iv_photo_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

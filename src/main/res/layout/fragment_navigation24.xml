@@ -8,11 +8,11 @@
 
         <variable
             name="vm"
-            type="com.chaoji.mod.ui.fragment.Navigation24Model" />
+            type="com.box.mod.ui.fragment.Navigation24Model" />
 
         <variable
             name="click"
-            type="com.chaoji.mod.ui.fragment.FragmentNavigation24.ProxyClick" />
+            type="com.box.mod.ui.fragment.FragmentNavigation24.ProxyClick" />
     </data>
 
     <LinearLayout

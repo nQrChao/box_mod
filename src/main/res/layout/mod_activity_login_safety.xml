@@ -10,11 +10,11 @@
 
         <variable
             name="vm"
-            type="com.chaoji.mod.ui.activity.login.ModActivitySafetyModel" />
+            type="com.box.mod.ui.activity.login.ModActivitySafetyModel" />
 
         <variable
             name="click"
-            type="com.chaoji.mod.ui.activity.login.ModActivitySafety.ProxyClick" />
+            type="com.box.mod.ui.activity.login.ModActivitySafety.ProxyClick" />
     </data>
 
     <RelativeLayout
@@ -32,7 +32,7 @@
             android:paddingHorizontal="@dimen/idp_10"
             android:paddingVertical="@dimen/idp_15">
 
-            <com.chaoji.im.ui.layout.SettingBar
+            <com.box.common.ui.layout.SettingBar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/idp_5"
@@ -40,7 +40,7 @@
                 app:bar_leftText="用户协议"
                 app:bar_rightDrawable="@drawable/arrows_right_ic" />
 
-            <com.chaoji.im.ui.layout.SettingBar
+            <com.box.common.ui.layout.SettingBar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/idp_15"
@@ -48,7 +48,7 @@
                 app:bar_leftText="隐私政策"
                 app:bar_rightDrawable="@drawable/arrows_right_ic" />
 
-            <com.chaoji.im.ui.layout.SettingBar
+            <com.box.common.ui.layout.SettingBar
                 android:id="@+id/user_setting_6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
