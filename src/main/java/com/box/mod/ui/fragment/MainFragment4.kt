@@ -26,7 +26,7 @@ import com.box.mod.ui.activity.ModActivityMessage
 import com.box.mod.ui.activity.login.ModActivitySafety
 import com.box.mod.ui.activity.jiaoyi.ModActivityShouCang
 import com.box.mod.ui.activity.login.ModActivityXDLogin
-import com.box.common.R as RC
+import com.box.com.R as RC
 import com.box.other.blankj.utilcode.util.ClipboardUtils
 import com.box.other.blankj.utilcode.util.ColorUtils
 import com.box.other.blankj.utilcode.util.Logs
@@ -216,7 +216,7 @@ class MainFragment4 : BaseTitleBarFragment<MainFragment4Model, MainFragment4Bind
                         .isDestroyOnDismiss(true)
                         .hasStatusBar(true)
                         .animationDuration(5)
-                        .navigationBarColor(ColorUtils.getColor(com.box.common.R.color.xpop_shadow_color))
+                        .navigationBarColor(ColorUtils.getColor(com.box.com.R.color.xpop_shadow_color))
                         .isLightStatusBar(true)
                         .hasNavigationBar(true)
                         .asConfirm(
@@ -288,7 +288,7 @@ class MainFragment4 : BaseTitleBarFragment<MainFragment4Model, MainFragment4Bind
                 .isDestroyOnDismiss(true)
                 .hasStatusBar(true)
                 .animationDuration(5)
-                .navigationBarColor(ColorUtils.getColor(com.box.common.R.color.xpop_shadow_color))
+                .navigationBarColor(ColorUtils.getColor(com.box.com.R.color.xpop_shadow_color))
                 .isLightStatusBar(true)
                 .hasNavigationBar(true)
                 .asConfirm(
@@ -300,7 +300,7 @@ class MainFragment4 : BaseTitleBarFragment<MainFragment4Model, MainFragment4Bind
                         mViewModel.modUser.postValue(null)
                         appViewModel.modUserInfo.postValue(null)
                         eventViewModel.isLogin.postValue(false)
-                    }, null, false, com.box.common.R.layout.xpopup_confirm
+                    }, null, false, com.box.com.R.layout.xpopup_confirm
                 ).show()
         }
 

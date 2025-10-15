@@ -19,7 +19,7 @@ import com.box.common.ui.activity.CommonActivityBrowser
 import com.box.mod.ui.activity.ModActivityFanKui
 import com.box.common.ui.view.SwitchButton
 import com.box.mod.R
-import com.box.common.R as RC
+import com.box.com.R as RC
 import com.box.mod.databinding.Mod2Fragment4Binding
 import com.box.other.blankj.utilcode.util.ClipboardUtils
 import com.box.other.blankj.utilcode.util.ColorUtils

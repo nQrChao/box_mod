@@ -60,7 +60,7 @@ import com.box.other.xpopup.enums.PopupAnimation
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.system.exitProcess
-import com.box.common.R as RC
+import com.box.com.R as RC
 
 class ModActivityGameBrowser :
     BaseVmDbActivity<ModActivityGameBrowserModel, ModActivityGameBrowserBinding>(), ModGameBridgeHost {

@@ -33,7 +33,7 @@ import com.box.mod.R
 import com.box.mod.databinding.Mod5Fragment2Binding
 import com.box.mod.ui.activity.ModActivityPicDown
 import com.box.mod.ui.adapter.AppletPicAdapter
-import com.box.common.R as RC
+import com.box.com.R as RC
 
 class Mod5Fragment2 : BaseTitleBarFragment<Mod5Fragment2Model, Mod5Fragment2Binding>() {
     var tabOrientation = LinearLayout.HORIZONTAL

@@ -20,7 +20,7 @@ import com.box.common.sdk.appViewModel
 import com.box.common.ui.activity.CommonActivityBrowser
 import com.box.mod.R
 import com.box.mod.databinding.ModActivityLoginRegisterXdBinding
-import com.box.common.R as RC
+import com.box.com.R as RC
 import com.box.other.blankj.utilcode.util.ActivityUtils
 import com.box.other.hjq.titlebar.TitleBar
 import com.box.other.hjq.toast.Toaster

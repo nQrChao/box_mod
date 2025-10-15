@@ -13,7 +13,7 @@ import com.box.mod.ui.xpop.ModXPopupCenterProtocol
 import com.box.mod.ui.xpop.ModXPopupCenterTip
 import com.box.common.utils.MMKVUtil
 import com.box.mod.R
-import com.box.common.R as RC
+import com.box.com.R as RC
 import com.box.mod.databinding.ModActivitySplashBinding
 import com.box.other.blankj.utilcode.util.ColorUtils
 import com.box.other.blankj.utilcode.util.Logs

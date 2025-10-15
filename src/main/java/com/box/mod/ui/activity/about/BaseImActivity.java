@@ -44,7 +44,7 @@ public abstract class BaseImActivity extends AppCompatActivity {
      */
     protected void initImmersionBar() {
         //设置共同沉浸式样式
-        ImmersionBar.with(this).navigationBarColor(com.box.common.R.color.white).init();
+        ImmersionBar.with(this).navigationBarColor(com.box.com.R.color.white).init();
     }
 
     protected void initData() {

@@ -108,7 +108,7 @@ class ModXPopupJiaoyiBottomGouMai(context: Context, private var cancel: (() -> U
 
             R.id.confirm_button -> {
                 if (!checkView.isChecked) {
-                    checkLayout.startAnimation(AnimationUtils.loadAnimation(appContext, com.box.common.R.anim.shake_anim))
+                    checkLayout.startAnimation(AnimationUtils.loadAnimation(appContext, com.box.com.R.anim.shake_anim))
                     Toaster.show("请先阅读买家须知")
                     return
                 }

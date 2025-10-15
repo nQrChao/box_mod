@@ -28,7 +28,7 @@ import com.box.common.sdk.ImSDK.Companion.appViewModelInstance
 import com.box.common.sdk.ImSDK.Companion.eventViewModelInstance
 import com.box.common.sdk.ImSDK.Companion.isCreateMainActivity
 import com.box.mod.R
-import com.box.common.R as RC
+import com.box.com.R as RC
 import com.box.common.sdk.appViewModel
 import com.box.common.sdk.eventViewModel
 import com.box.common.ui.widget.bottombar.BottomBarItem

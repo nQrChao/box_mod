@@ -21,7 +21,7 @@ import com.box.common.ui.activity.CommonActivityBrowser
 import com.box.mod.R
 import com.box.mod.databinding.ModActivityLoginXdBinding
 import com.box.mod.game.ModManager
-import com.box.common.R as RC
+import com.box.com.R as RC
 import com.box.other.blankj.utilcode.util.ActivityUtils
 import com.box.other.blankj.utilcode.util.ColorUtils
 import com.box.other.blankj.utilcode.util.GsonUtils
@@ -157,7 +157,7 @@ class ModActivityXDLogin : BaseVmDbActivity<ModActivityXDLoginModel, ModActivity
             .isLightStatusBar(true)
             .autoFocusEditText(false)
             .autoOpenSoftInput(false)
-            .navigationBarColor(ColorUtils.getColor(com.box.common.R.color.white))
+            .navigationBarColor(ColorUtils.getColor(com.box.com.R.color.white))
             .hasNavigationBar(true)
             .asCustom(
                 ModXPopupLoginBottomXieYi(this@ModActivityXDLogin, {
@@ -274,7 +274,7 @@ class ModActivityXDLogin : BaseVmDbActivity<ModActivityXDLoginModel, ModActivity
             .isLightStatusBar(true)
             .autoFocusEditText(false)
             .autoOpenSoftInput(false)
-            .navigationBarColor(ColorUtils.getColor(com.box.common.R.color.white))
+            .navigationBarColor(ColorUtils.getColor(com.box.com.R.color.white))
             .hasNavigationBar(true)
             .asCustom(
                 ModXPopupLoginBottomBindPassword(this@ModActivityXDLogin, {

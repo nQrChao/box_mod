@@ -9,7 +9,7 @@ import com.box.base.ext.parseModStateWithMsg
 import com.box.base.network.NetState
 import com.box.common.data.model.ModMeYouHuiQuanBean
 import com.box.common.ui.adapter.SpacingItemDecorator
-import com.box.common.R as RC
+import com.box.com.R as RC
 import com.box.mod.R
 import com.box.mod.databinding.ModActivityYouhuiquanBinding
 import com.box.mod.ui.adapter.ModMeYouHuiQuanAdapter

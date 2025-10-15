@@ -19,7 +19,7 @@ import com.box.common.sdk.ImSDK.Companion.eventViewModelInstance
 import com.box.mod.ui.activity.ModActivityPicDown
 import com.box.common.ui.adapter.SpacingItemDecorator
 import com.box.mod.R
-import com.box.common.R as RC
+import com.box.com.R as RC
 import com.box.mod.databinding.Mod2Fragment2Binding
 import com.box.mod.ui.activity.ModActivityPicList
 import com.box.mod.ui.adapter.AppletsAdapter

@@ -13,7 +13,7 @@ import com.box.base.network.NetState
 import com.box.common.appContext
 import com.box.common.data.model.ModTradeGoodDetailBean
 import com.box.common.sdk.appViewModel
-import com.box.common.R as RC
+import com.box.com.R as RC
 import com.box.mod.R
 import com.box.mod.databinding.ModActivityJiaoyiGoumaiBinding
 import com.box.other.blankj.utilcode.util.ActivityUtils
@@ -85,7 +85,7 @@ class ModActivityGouMai : BaseVmDbActivity<ModActivityGouMaiModel, ModActivityJi
             .isLightStatusBar(true)
             .autoFocusEditText(false)
             .autoOpenSoftInput(false)
-            .navigationBarColor(ColorUtils.getColor(com.box.common.R.color.white))
+            .navigationBarColor(ColorUtils.getColor(com.box.com.R.color.white))
             .hasNavigationBar(true)
             .asCustom(
                 ModXPopupJiaoyiBottomGouMai(this@ModActivityGouMai, {

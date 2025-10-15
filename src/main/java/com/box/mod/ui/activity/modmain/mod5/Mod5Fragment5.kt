@@ -32,7 +32,7 @@ import com.box.other.kongzue.baseokhttp.util.Parameter
 import com.box.other.xpopup.XPopup
 import com.hjq.permissions.XXPermissions
 import java.util.UUID
-import com.box.common.R as RC
+import com.box.com.R as RC
 
 class Mod5Fragment5 : BaseTitleBarFragment<Mod5Fragment5Model, Mod5Fragment5Binding>() {
     override fun layoutId(): Int = R.layout.mod5_fragment_5

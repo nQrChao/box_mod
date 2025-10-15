@@ -44,7 +44,7 @@ import com.youth.banner.BannerConfig
 import com.youth.banner.Transformer
 import com.youth.banner.listener.OnBannerListener
 import com.youth.banner.loader.ImageLoader
-import com.box.common.R as RC
+import com.box.com.R as RC
 
 class ModActivityGameDetails : BaseVmDbActivity<ModActivityGameDetailsModel, ModActivityGameDetailsBinding>() {
     var gameId = ""
@@ -177,7 +177,7 @@ class ModActivityGameDetails : BaseVmDbActivity<ModActivityGameDetailsModel, Mod
                             .isDestroyOnDismiss(true)
                             .hasStatusBar(true)
                             .animationDuration(10)
-                            .navigationBarColor(ColorUtils.getColor(com.box.common.R.color.xpop_shadow_color))
+                            .navigationBarColor(ColorUtils.getColor(com.box.com.R.color.xpop_shadow_color))
                             .isLightStatusBar(true)
                             .hasNavigationBar(true)
                             .asConfirm(
@@ -242,7 +242,7 @@ class ModActivityGameDetails : BaseVmDbActivity<ModActivityGameDetailsModel, Mod
                 .isLightStatusBar(true)
                 .autoFocusEditText(false)
                 .autoOpenSoftInput(false)
-                .navigationBarColor(ColorUtils.getColor(com.box.common.R.color.white))
+                .navigationBarColor(ColorUtils.getColor(com.box.com.R.color.white))
                 .hasNavigationBar(true)
                 .asCustom(
                     ModXPopupJiaoyiBottomHuanJia(this@ModActivityGameDetails, {
@@ -253,14 +253,14 @@ class ModActivityGameDetails : BaseVmDbActivity<ModActivityGameDetailsModel, Mod
                                 .isDestroyOnDismiss(true)
                                 .hasStatusBar(true)
                                 .animationDuration(5)
-                                .navigationBarColor(ColorUtils.getColor(com.box.common.R.color.xpop_shadow_color))
+                                .navigationBarColor(ColorUtils.getColor(com.box.com.R.color.xpop_shadow_color))
                                 .isLightStatusBar(true)
                                 .hasNavigationBar(true)
                                 .asConfirm(
                                     "提示", it,
                                     "取消", "确定",
                                     {
-                                    }, null, true, com.box.common.R.layout.xpopup_confirm
+                                    }, null, true, com.box.com.R.layout.xpopup_confirm
                                 ).show()
                         } else {
                             Toaster.show("请先登录")
@@ -291,8 +291,8 @@ class ModActivityGameDetails : BaseVmDbActivity<ModActivityGameDetailsModel, Mod
                 .isLightStatusBar(true)
                 .autoFocusEditText(false)
                 .autoOpenSoftInput(false)
-                .shadowBgColor(ColorUtils.getColor(com.box.common.R.color.black50))
-                .navigationBarColor(ColorUtils.getColor(com.box.common.R.color.white))
+                .shadowBgColor(ColorUtils.getColor(com.box.com.R.color.black50))
+                .navigationBarColor(ColorUtils.getColor(com.box.com.R.color.white))
                 .hasNavigationBar(true)
                 .asCustom(
                     mViewModel.modFuLiInfo.value?.let {

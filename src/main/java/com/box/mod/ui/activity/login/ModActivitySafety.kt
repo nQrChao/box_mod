@@ -12,7 +12,7 @@ import com.box.common.sdk.eventViewModel
 import com.box.common.ui.activity.CommonActivityBrowser
 import com.box.mod.R
 import com.box.mod.databinding.ModActivityLoginSafetyBinding
-import com.box.common.R as RC
+import com.box.com.R as RC
 import com.box.other.blankj.utilcode.util.ActivityUtils
 import com.box.other.immersionbar.immersionBar
 

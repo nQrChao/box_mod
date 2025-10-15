@@ -6,7 +6,7 @@ import com.box.other.blankj.utilcode.util.ClipboardUtils
 import com.box.other.blankj.utilcode.util.ColorUtils
 import com.box.other.hjq.toast.Toaster
 import com.box.other.xpopup.XPopup
-import com.box.common.R as RC
+import com.box.com.R as RC
 
 
 fun copyCodeX(context: Context, codeText: String) {

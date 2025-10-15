@@ -28,7 +28,7 @@ import com.box.other.xpopup.XPopup
 import com.box.mod.ui.activity.game.ModActivityGameBrowser
 import com.box.mod.R
 import com.box.mod.databinding.Mod5Fragment1Binding
-import com.box.common.R as RC
+import com.box.com.R as RC
 
 
 class Mod5Fragment1 : BaseTitleBarFragment<Mod5Fragment1Model, Mod5Fragment1Binding>() {

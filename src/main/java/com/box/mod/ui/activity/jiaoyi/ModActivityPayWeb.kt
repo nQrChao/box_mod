@@ -29,7 +29,7 @@ import com.box.other.blankj.utilcode.util.Logs
 import com.box.other.hjq.titlebar.TitleBar
 import com.box.other.hjq.toast.Toaster
 import com.box.other.immersionbar.immersionBar
-import com.box.common.R as RC
+import com.box.com.R as RC
 
 class ModActivityPayWeb : BaseVmDbActivity<ModActivityPayWebModel, ModActivityJiaoyiPayWebviewBinding>() {
     override fun layoutId(): Int = R.layout.mod_activity_jiaoyi_pay_webview

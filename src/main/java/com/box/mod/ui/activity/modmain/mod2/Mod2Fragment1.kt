@@ -23,7 +23,7 @@ import com.box.mod.ui.activity.game.ModActivityGameBrowser
 import com.box.other.hjq.toast.Toaster
 import com.box.other.immersionbar.immersionBar
 import com.box.other.xpopup.XPopup
-import com.box.common.R as RC
+import com.box.com.R as RC
 
 class Mod2Fragment1 : BaseTitleBarFragment<Mod2Fragment1Model, Mod2Fragment1Binding>() {
     var appDescList: MutableList<AppletsInfo> = mutableListOf()

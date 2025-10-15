@@ -29,7 +29,7 @@ import com.box.other.blankj.utilcode.util.StringUtils
 import com.box.other.hjq.toast.Toaster
 import com.box.other.immersionbar.immersionBar
 import com.box.other.xpopup.XPopup
-import com.box.common.R as RC
+import com.box.com.R as RC
 
 
 class MainFragment2 : BaseTitleBarFragment<MainFragment2Model, MainFragment2Binding>() {
@@ -181,7 +181,7 @@ class MainFragment2 : BaseTitleBarFragment<MainFragment2Model, MainFragment2Bind
                     .isDestroyOnDismiss(true)
                     .hasStatusBar(true)
                     .animationDuration(5)
-                    .navigationBarColor(ColorUtils.getColor(com.box.common.R.color.xpop_shadow_color))
+                    .navigationBarColor(ColorUtils.getColor(com.box.com.R.color.xpop_shadow_color))
                     .isLightStatusBar(true)
                     .hasNavigationBar(true)
                     .asConfirm(
@@ -190,7 +190,7 @@ class MainFragment2 : BaseTitleBarFragment<MainFragment2Model, MainFragment2Bind
                         {
                             //返回首页
                             ImSDK.eventViewModelInstance.setMainCurrentItem.value = 0
-                        }, null, true, com.box.common.R.layout.xpopup_confirm
+                        }, null, true, com.box.com.R.layout.xpopup_confirm
                     ).show()
             } else {
                 Toaster.show("您还未登录，请先登录")

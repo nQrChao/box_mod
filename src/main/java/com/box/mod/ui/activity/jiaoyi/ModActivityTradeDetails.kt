@@ -19,7 +19,7 @@ import com.box.mod.BR
 import com.box.common.appContext
 import com.box.common.ui.adapter.SpacingItemDecorator
 import com.box.common.utils.MMKVUtil
-import com.box.common.R as RC
+import com.box.com.R as RC
 import com.box.mod.R
 import com.box.common.data.model.ModTradeGoodDetailBean
 import com.box.common.glide.GlideApp
@@ -200,7 +200,7 @@ class ModActivityTradeDetails : BaseVmDbActivity<ModActivityTradeDetailsModel, M
                 .isLightStatusBar(true)
                 .autoFocusEditText(false)
                 .autoOpenSoftInput(false)
-                .navigationBarColor(ColorUtils.getColor(com.box.common.R.color.white))
+                .navigationBarColor(ColorUtils.getColor(com.box.com.R.color.white))
                 .hasNavigationBar(true)
                 .asCustom(
                     ModXPopupJiaoyiBottomHuanJia(this@ModActivityTradeDetails, {
@@ -211,14 +211,14 @@ class ModActivityTradeDetails : BaseVmDbActivity<ModActivityTradeDetailsModel, M
                                 .isDestroyOnDismiss(true)
                                 .hasStatusBar(true)
                                 .animationDuration(5)
-                                .navigationBarColor(ColorUtils.getColor(com.box.common.R.color.xpop_shadow_color))
+                                .navigationBarColor(ColorUtils.getColor(com.box.com.R.color.xpop_shadow_color))
                                 .isLightStatusBar(true)
                                 .hasNavigationBar(true)
                                 .asConfirm(
                                     "提示", it,
                                     "取消", "确定",
                                     {
-                                    }, null, true, com.box.common.R.layout.xpopup_confirm
+                                    }, null, true, com.box.com.R.layout.xpopup_confirm
                                 ).show()
                         } else {
                             Toaster.show("请先登录")

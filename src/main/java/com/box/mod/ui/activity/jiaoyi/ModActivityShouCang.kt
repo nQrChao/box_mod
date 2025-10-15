@@ -17,7 +17,7 @@ import com.box.mod.BR
 import com.box.mod.R
 import com.box.mod.databinding.ModActivityJiaoyiShoucangBinding
 import com.box.mod.databinding.ModItemJiaoyiShoucangBinding
-import com.box.common.R as RC
+import com.box.com.R as RC
 import com.box.other.blankj.utilcode.util.ActivityUtils
 import com.box.other.hjq.toast.Toaster
 import com.box.other.immersionbar.immersionBar

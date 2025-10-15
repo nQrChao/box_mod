@@ -15,7 +15,7 @@ import com.box.base.network.NetState
 import com.box.common.STORAGEPermission
 import com.box.common.glide.GlideApp
 import com.box.common.utils.MMKVUtil
-import com.box.common.R as RC
+import com.box.com.R as RC
 import com.box.mod.R
 import com.box.mod.databinding.ModActivityPicDownBinding
 import com.box.mod.view.xpop.ModXPopupCenterPermissions

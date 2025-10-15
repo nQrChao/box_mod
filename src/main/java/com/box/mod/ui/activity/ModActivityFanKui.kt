@@ -22,7 +22,7 @@ import com.box.common.STORAGEPermission
 import com.box.common.appContext
 import com.box.common.countClick
 import com.box.mod.R
-import com.box.common.R as RC
+import com.box.com.R as RC
 import com.box.mod.databinding.ModActivityFankuiBinding
 import com.box.mod.ui.xpop.ModXPopupCenterUpdate
 import com.box.other.blankj.utilcode.util.ActivityUtils

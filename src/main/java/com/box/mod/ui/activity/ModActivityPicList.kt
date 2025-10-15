@@ -12,7 +12,7 @@ import com.box.base.network.NetState
 import com.box.common.appContext
 import com.box.common.data.model.AppletsInfo
 import com.box.common.ui.adapter.SpacingItemDecorator
-import com.box.common.R as RC
+import com.box.com.R as RC
 import com.box.mod.R
 import com.box.mod.databinding.ModActivityPicListBinding
 import com.box.mod.ui.adapter.AppletPicAdapter

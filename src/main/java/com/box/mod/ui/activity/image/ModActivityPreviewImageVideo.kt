@@ -21,7 +21,7 @@ import com.box.common.data.PictureElem
 import com.box.common.glide.EasyGlideEngine
 import com.box.common.utils.MMKVUtil
 import com.box.mod.R
-import com.box.common.R as RC
+import com.box.com.R as RC
 import com.box.mod.databinding.ModActivityPreviewImageVideoBinding
 import com.box.mod.view.xpop.ModXPopupCenterPermissions
 import com.box.other.blankj.utilcode.util.ActivityUtils

@@ -35,7 +35,7 @@ import com.box.other.kongzue.baseokhttp.listener.OnDownloadListener
 import com.box.other.xpopup.XPopup
 import com.hjq.permissions.XXPermissions
 import java.io.File
-import com.box.common.R as RC
+import com.box.com.R as RC
 
 class ModActivityJiaoYiXuZhi : BaseVmDbActivity<ModActivityJiaoYiXuZhiModel, ModActivityJiaoyiXuzhiBinding>() {
     // 用于防止点击Tab滚动时，滚动监听又反过来触发Tab切换

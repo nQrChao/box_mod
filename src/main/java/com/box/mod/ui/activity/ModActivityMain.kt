@@ -67,7 +67,7 @@ import kotlinx.coroutines.launch
 import java.io.File
 import java.lang.ref.WeakReference
 import kotlin.system.exitProcess
-import com.box.common.R as RC
+import com.box.com.R as RC
 
 
 class ModActivityMain : BaseVmDbActivity<ModActivityMainModel, ModActivityMainBinding>(),HandlerAction {

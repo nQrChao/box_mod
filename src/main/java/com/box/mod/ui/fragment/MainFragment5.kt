@@ -22,7 +22,7 @@ import com.box.common.ui.activity.CommonActivityBrowser
 import com.box.mod.ui.activity.ModActivityFanKui
 import com.box.common.ui.view.SwitchButton
 import com.box.mod.R
-import com.box.common.R as RC
+import com.box.com.R as RC
 import com.box.mod.databinding.MainFragment5Binding
 import com.box.other.hjq.toast.Toaster
 import com.box.other.kongzue.baseokhttp.HttpRequest

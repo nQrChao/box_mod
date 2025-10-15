@@ -30,7 +30,7 @@ import com.box.other.blankj.utilcode.util.Logs
 import com.box.other.hjq.toast.Toaster
 import com.box.other.immersionbar.immersionBar
 import com.box.other.xpopup.XPopup
-import com.box.common.R as RC
+import com.box.com.R as RC
 
 class ModActivityLogout : BaseVmDbActivity<ModActivityLogoutModel, ModActivityLoginLogoutBinding>() {
     private var contentText = "我已阅读并同意《注销协议》"

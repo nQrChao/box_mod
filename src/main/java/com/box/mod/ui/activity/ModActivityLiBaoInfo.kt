@@ -28,7 +28,7 @@ import com.box.other.blankj.utilcode.util.Logs
 import com.box.other.blankj.utilcode.util.StringUtils
 import com.box.other.hjq.toast.Toaster
 import com.box.other.immersionbar.immersionBar
-import com.box.common.R as RC
+import com.box.com.R as RC
 
 
 class ModActivityLiBaoInfo : BaseVmDbActivity<ModActivityLiBaoInfoModel, ModActivityLibaoInfoBinding>() {

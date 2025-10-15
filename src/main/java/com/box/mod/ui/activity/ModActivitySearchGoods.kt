@@ -8,7 +8,7 @@ import com.box.base.base.activity.BaseVmDbActivity
 import com.box.base.network.NetState
 import com.box.mod.R
 import com.box.mod.databinding.ModActivityJiaoyiSearchGoodsBinding
-import com.box.common.R as RC
+import com.box.com.R as RC
 import com.box.other.blankj.utilcode.util.ActivityUtils
 import com.box.other.immersionbar.immersionBar
 

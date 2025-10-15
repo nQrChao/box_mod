@@ -29,7 +29,7 @@ import com.box.other.hjq.toast.Toaster
 import com.box.other.immersionbar.immersionBar
 import com.box.other.xpopup.XPopup
 import kotlinx.coroutines.launch
-import com.box.common.R as RC
+import com.box.com.R as RC
 
 class FragmentNavigation1 : BaseTitleBarFragment<Navigation1Model, FragmentNavigation1Binding>(), Nav1ClickHandler, StatusAction {
     private val unifiedAdapter = Navigation11Adapter()

@@ -25,7 +25,7 @@ import com.box.common.STORAGEPermission
 import com.box.common.countClick
 import com.box.common.generateTotpNumber
 import com.box.mod.R
-import com.box.common.R as RC
+import com.box.com.R as RC
 import com.box.mod.databinding.ModActivityAboutBinding
 import com.box.other.blankj.utilcode.util.ActivityUtils
 import com.box.other.hjq.toast.Toaster

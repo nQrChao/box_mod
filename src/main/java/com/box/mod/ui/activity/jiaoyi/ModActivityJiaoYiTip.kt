@@ -39,7 +39,7 @@ import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
 import com.hjq.permissions.XXPermissions
 import java.io.File
-import com.box.common.R as RC
+import com.box.com.R as RC
 
 class ModActivityJiaoYiTip : BaseVmDbActivity<ModActivityJiaoYiXuZhiModel, ModActivityJiaoyiTipBinding>(), XCollapsingToolbarLayout.OnScrimsListener, ClickAction {
     private var isTabClickScrolling = false

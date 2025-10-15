@@ -27,7 +27,7 @@ import com.box.mod.databinding.ItemHotSearchTagBinding
 import com.box.mod.databinding.ModActivitySearchGameBinding
 import com.box.mod.databinding.ModItemGameSearchBinding
 import com.box.mod.ui.adapter.ModGameLabelAdapter
-import com.box.common.R as RC
+import com.box.com.R as RC
 import com.box.other.blankj.utilcode.util.ActivityUtils
 import com.box.other.hjq.toast.Toaster
 import com.box.other.immersionbar.immersionBar

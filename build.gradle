@@ -8,7 +8,7 @@ plugins {
 apply from: '../mod_common/base.gradle'
 
 android {
-    namespace "com.chaoji.mod"
+    namespace "com.box.mod"
     compileSdk 34
     defaultConfig {
         minSdkVersion 21

@@ -40,7 +40,7 @@ import com.box.common.utils.floattoast.draggable.SpringHideTimeDraggable
 import com.box.common.utils.logcat.LogcatDialog
 import com.box.mod.R
 import com.box.mod.databinding.ModActivityMain2Binding
-import com.box.common.R as RC
+import com.box.com.R as RC
 import com.box.other.blankj.utilcode.util.SizeUtils
 import com.box.other.hjq.toast.Toaster
 import com.box.other.xpopup.XPopup
