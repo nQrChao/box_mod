@@ -15,7 +15,7 @@ import com.box.base.base.action.ClickAction
 import com.box.base.base.action.KeyboardAction
 import com.box.common.appContext
 import com.box.common.countClick
-import com.box.common.data.model.AppletsData
+import com.box.common.data.model.ProtocolInit
 import com.box.common.getDetailedInformation
 import com.box.common.sdk.ImSDK
 import com.box.common.ui.activity.CommonActivityBrowser
@@ -30,7 +30,7 @@ import kotlinx.coroutines.launch
 import java.io.File
 
 @SuppressLint("ViewConstructor")
-class ModXPopupCenterProtocol(context: Context, var xyInit: AppletsData, private var cancel: (() -> Unit)?, private var sure: (() -> Unit)?) :
+class ModXPopupCenterProtocol(context: Context, var xyInit: ProtocolInit, private var cancel: (() -> Unit)?, private var sure: (() -> Unit)?) :
     CenterPopupView(context), ClickAction, KeyboardAction {
     override fun getImplLayoutId(): Int = R.layout.mod_xpopup_protocol
 

@@ -6,13 +6,11 @@ import com.box.base.ext.request
 import com.box.base.ext.requestFlow
 import com.box.base.state.ModResultStateWithMsg
 import com.box.base.state.ResultState
+import com.box.common.MMKVConfig
 import com.box.common.data.model.ModUserInfoBean
 import com.box.common.data.model.ModUserRealName
 import com.box.common.network.NetworkApi
 import com.box.common.network.apiService
-import com.box.common.sdk.appViewModel
-import com.box.common.sdk.eventViewModel
-import com.box.common.utils.MMKVUtil
 import com.box.other.blankj.utilcode.util.GsonUtils
 import com.box.other.blankj.utilcode.util.Logs
 import com.google.gson.Gson
@@ -28,7 +26,7 @@ class ModActivityMainModel : BaseViewModel(titleLine = false) {
     val modUserRealName = MutableLiveData<ModResultStateWithMsg<ModUserRealName>>()
 
     fun modAuthLogin() {
-        val user = MMKVUtil.getModUser()
+        val user = MMKVConfig.userInfo
         Logs.e("USER:${GsonUtils.toJson(user)}")
         if (user != null) {
             requestFlow {
@@ -56,7 +54,8 @@ class ModActivityMainModel : BaseViewModel(titleLine = false) {
                 )
 
                 modUser.token = login.token
-                MMKVUtil.saveModUser(modUser)
+                MMKVConfig.userInfo = modUser
+
                 appViewModel.modUserInfo.postValue(modUser)
                 eventViewModel.isLogin.value = true
                 val realName = step(

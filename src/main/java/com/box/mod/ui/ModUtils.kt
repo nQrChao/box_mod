@@ -8,7 +8,6 @@ import com.box.other.hjq.toast.Toaster
 import com.box.other.xpopup.XPopup
 import com.box.com.R as RC
 
-
 fun copyCodeX(context: Context, codeText: String) {
     XPopup.Builder(context)
         .dismissOnTouchOutside(false)

@@ -23,7 +23,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.box.base.base.action.HandlerAction
-import com.box.base.base.activity.BaseVmDbActivity
+import com.box.base.base.activity.BaseModVmDbActivity
 import com.box.base.ext.parseModStateWithMsg
 import com.box.base.network.NetState
 import com.box.common.INTENT_KEY_OUT_IMAGE_LIST
@@ -39,7 +39,6 @@ import com.box.common.toBrowser
 import com.box.common.ui.view.InfoView
 import com.box.common.ui.widget.bottombar.BottomBarItem
 import com.box.common.ui.widget.bottombar.BottomBarLayout
-import com.box.common.utils.MMKVUtil
 import com.box.common.utils.floattoast.XToast
 import com.box.common.utils.floattoast.draggable.SpringHideTimeDraggable
 import com.box.common.utils.logcat.LogcatDialog
@@ -47,11 +46,7 @@ import com.box.mod.R
 import com.box.mod.databinding.ModActivityMainBinding
 import com.box.mod.ui.activity.login.ModActivityXDLogin
 import com.box.mod.ui.activity.login.ModActivityXDRegister
-import com.box.mod.ui.fragment.MainFragment1
-import com.box.mod.ui.fragment.MainFragment2
-import com.box.mod.ui.fragment.MainFragment3
-import com.box.mod.ui.fragment.MainFragment4
-import com.box.mod.ui.fragment.MainFragment5
+import com.box.mod.ui.fragment.ModFragment1
 import com.box.other.blankj.utilcode.util.ActivityUtils
 import com.box.other.blankj.utilcode.util.AppUtils
 import com.box.other.blankj.utilcode.util.ColorUtils
@@ -70,7 +65,7 @@ import kotlin.system.exitProcess
 import com.box.com.R as RC
 
 
-class ModActivityMain : BaseVmDbActivity<ModActivityMainModel, ModActivityMainBinding>(),HandlerAction {
+class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMainBinding>(),HandlerAction {
     private val mainTabConfig = """
         [
             {
@@ -282,11 +277,11 @@ class ModActivityMain : BaseVmDbActivity<ModActivityMainModel, ModActivityMainBi
         for (config in tabConfigList) {
             // 根据配置的 fragmentId 创建对应的 Fragment 实例
             val fragment = when (config.fragmentId) {
-                1 -> MainFragment1.newInstance()
-                2 -> MainFragment2.newInstance()
-                3 -> MainFragment3.newInstance()
-                4 -> MainFragment4.newInstance()
-                5 -> MainFragment5.newInstance()
+                1 -> ModFragment1.newInstance()
+                2 -> ModFragment2.newInstance()
+                3 -> ModFragment3.newInstance()
+                4 -> ModFragment4.newInstance()
+                5 -> ModFragment5.newInstance()
                 else -> throw IllegalArgumentException("Invalid fragmentId: ${config.fragmentId}")
             }
             fragments.add(fragment)
@@ -414,9 +409,6 @@ class ModActivityMain : BaseVmDbActivity<ModActivityMainModel, ModActivityMainBi
         }
 
         eventViewModelInstance.onKickedOffline.observe(this) {
-            MMKVUtil.saveModUser(null)
-            MMKVUtil.saveJwtToken(null)
-            MMKVUtil.saveJwtRefreshToken(null)
 
             eventViewModelInstance.isLogin.value = false
             appViewModelInstance.userInfo.value = null
@@ -449,9 +441,6 @@ class ModActivityMain : BaseVmDbActivity<ModActivityMainModel, ModActivityMainBi
         }
 
         mViewModel.loginOutResult.observe(this) {
-            MMKVUtil.saveModUser(null)
-            MMKVUtil.saveJwtToken(null)
-            MMKVUtil.saveJwtRefreshToken(null)
             eventViewModelInstance.isLogin.value = false
             appViewModelInstance.userInfo.value = null
             AppUtils.relaunchApp(true)

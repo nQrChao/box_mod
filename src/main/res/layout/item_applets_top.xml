@@ -9,7 +9,7 @@
 
         <variable
             name="applet"
-            type="com.box.common.data.model.AppletsInfo" />
+            type="com.box.common.data.model.ModInfo" />
 
     </data>
 

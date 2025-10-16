@@ -7,7 +7,7 @@ import com.box.base.callback.databind.IntObservableField
 import com.box.base.callback.databind.StringObservableField
 
 
-class MainFragment1Model : BaseViewModel(title = "商品发布") {
+class ModFragment1Model : BaseViewModel(title = "商品发布") {
     var pic = IntObservableField(0)
     var pic1Uri  = ObservableField<Uri>()
     var pic2Uri  = ObservableField<Uri>()

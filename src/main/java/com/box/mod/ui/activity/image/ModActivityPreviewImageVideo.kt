@@ -11,15 +11,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.OnScrollListener
-import com.box.base.base.activity.BaseVmDbActivity
+import com.box.base.base.activity.BaseModVmDbActivity
+import com.box.base.base.viewmodel.BaseViewModel
 import com.box.base.network.NetState
 import com.box.common.INTENT_KEY_INT
 import com.box.common.INTENT_KEY_OUT_IMAGE_ARRAYLIST
 import com.box.common.INTENT_KEY_STRING
+import com.box.common.MMKVConfig
 import com.box.common.STORAGEPermission
 import com.box.common.data.PictureElem
 import com.box.common.glide.EasyGlideEngine
-import com.box.common.utils.MMKVUtil
 import com.box.mod.R
 import com.box.com.R as RC
 import com.box.mod.databinding.ModActivityPreviewImageVideoBinding
@@ -29,7 +30,6 @@ import com.box.other.blankj.utilcode.util.ColorUtils
 import com.box.other.blankj.utilcode.util.GsonUtils
 import com.box.other.blankj.utilcode.util.ImageUtils
 import com.box.other.blankj.utilcode.util.Logs
-import com.box.other.blankj.utilcode.util.StringUtils
 import com.box.other.chrisbanes.photoview.PhotoView
 import com.box.other.hjq.toast.Toaster
 import com.box.other.huantansheng.easyphotos.ui.PreviewFragment
@@ -38,7 +38,7 @@ import com.box.other.xpopup.XPopup
 import com.hjq.permissions.XXPermissions
 
 
-class ModActivityPreviewImageVideo : BaseVmDbActivity<ModActivityPreviewImageVideoModel, ModActivityPreviewImageVideoBinding>(), View.OnClickListener,
+class ModActivityPreviewImageVideo : BaseModVmDbActivity<ModActivityPreviewImageVideo.Model, ModActivityPreviewImageVideoBinding>(), View.OnClickListener,
     PreviewFragment.OnPreviewFragmentClickListener {
     override fun layoutId(): Int = R.layout.mod_activity_preview_image_video
 
@@ -173,7 +173,7 @@ class ModActivityPreviewImageVideo : BaseVmDbActivity<ModActivityPreviewImageVid
         }
 
         fun savePhoto() {
-            if(StringUtils.isEmpty(MMKVUtil.getSTORAGE())){
+            if (MMKVConfig.EXTERNAL_STORAGE) {
                 XPopup.Builder(this@ModActivityPreviewImageVideo)
                     .dismissOnTouchOutside(false)
                     .dismissOnBackPressed(false)
@@ -187,7 +187,7 @@ class ModActivityPreviewImageVideo : BaseVmDbActivity<ModActivityPreviewImageVid
                         ModXPopupCenterPermissions(this@ModActivityPreviewImageVideo, "存储", "用于实现图片存储功能", {
                             XXPermissions.with(this@ModActivityPreviewImageVideo).permission(STORAGEPermission).request { _, all ->
                                 if (all) {
-                                    MMKVUtil.saveSTORAGE("saveSTORAGE")
+                                    MMKVConfig.EXTERNAL_STORAGE = true
                                     val item = previewPhotosAdapter.data[lastPosition]
                                     try {
                                         val picView: PhotoView = previewPhotosAdapter.getViewByPosition(lastPosition, RC.id.iv_photo_view) as PhotoView
@@ -204,7 +204,7 @@ class ModActivityPreviewImageVideo : BaseVmDbActivity<ModActivityPreviewImageVid
 
                         })
                     .show()
-            }else{
+            } else {
                 try {
                     val picView: PhotoView = previewPhotosAdapter.getViewByPosition(lastPosition, RC.id.iv_photo_view) as PhotoView
                     ImageUtils.save2Album(picView.drawable.toBitmap(), Bitmap.CompressFormat.PNG, true)
@@ -232,5 +232,9 @@ class ModActivityPreviewImageVideo : BaseVmDbActivity<ModActivityPreviewImageVid
 
     override fun onDestroy() {
         super.onDestroy()
+    }
+
+    class Model : BaseViewModel() {
+
     }
 }

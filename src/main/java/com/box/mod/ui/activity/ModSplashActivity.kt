@@ -1,12 +1,14 @@
 package com.box.mod.ui.activity
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.WindowManager
-import com.box.base.base.activity.BaseVmDbActivity
+import androidx.activity.viewModels
+import com.box.base.base.activity.BaseModVmDbActivity
 import com.box.base.ext.parseState
 import com.box.base.network.NetState
+import com.box.common.AppInit
 import com.box.common.getOAIDWithRetry
-import com.box.common.sdk.ImSDK
 import com.box.common.sdk.appViewModel
 import com.box.common.sdk.eventViewModel
 import com.box.mod.ui.xpop.ModXPopupCenterProtocol
@@ -21,7 +23,9 @@ import com.box.other.blankj.utilcode.util.StringUtils
 import com.box.other.hjq.toast.Toaster
 import com.box.other.xpopup.XPopup
 
-class ModSplashActivity : BaseVmDbActivity<ModSplashModel, ModActivitySplashBinding>() {
+@SuppressLint("CustomSplashScreen")
+class ModSplashActivity : BaseModVmDbActivity<ModSplashModel, ModActivitySplashBinding>() {
+    override val mViewModel: ModSplashModel by viewModels()
     override fun layoutId(): Int {
         return R.layout.mod_activity_splash
     }
@@ -96,9 +100,7 @@ class ModSplashActivity : BaseVmDbActivity<ModSplashModel, ModActivitySplashBind
 
     private fun agreeInit() {
         MMKVUtil.saveShouQuan("SQ")
-        ImSDK.instance.initDeviceInfo()
-        ImSDK.instance.initUmeng(application)
-        ImSDK.instance.initCNOAID()
+        AppInit.initCNOAID()
         getOAIDWithRetry(this) {
             Logs.e("getOAIDWithRetry:$it")
         }

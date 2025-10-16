@@ -32,13 +32,10 @@ class ExpandHeaderBehavior(context: Context, attrs: AttributeSet) :
     ): Boolean {
         // 监控 AppBarLayout 的状态
         val appBar = findAppBarLayout(coordinatorLayout.getDependencies(child))
-        if (appBar != null) {
-            // 监听 AppBarLayout 的偏移量变化
-            appBar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { layout, verticalOffset ->
-                // verticalOffset == 0 表示完全展开
-                isAppBarExpanded = (verticalOffset == 0)
-            })
-        }
+        appBar?.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { layout, verticalOffset ->
+            // verticalOffset == 0 表示完全展开
+            isAppBarExpanded = (verticalOffset == 0)
+        })
         // 我们关心垂直滚动
         return (axes and ViewCompat.SCROLL_AXIS_VERTICAL) != 0
     }

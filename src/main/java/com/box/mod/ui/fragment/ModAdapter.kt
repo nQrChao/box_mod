@@ -102,7 +102,6 @@ class Navigation11Adapter : BaseProviderMultiAdapter<ModItemList>() {
         override fun convert(holder: BaseViewHolder, item: ModItemList) {
             val binding = ModItemSectionTitleBinding.bind(holder.itemView)
             val titleItem = item as ModItemList.TitleItem
-
             binding.clickHandler = clickHandler
             binding.title = titleItem.title
             binding.showIcon = titleItem.showIcon

@@ -10,11 +10,11 @@
 
         <variable
             name="vm"
-            type="com.box.mod.ui.fragment.MainFragment4Model" />
+            type="com.box.mod.ui.fragment.ModFragment4Model" />
 
         <variable
             name="click"
-            type="com.box.mod.ui.fragment.MainFragment4.ProxyClick" />
+            type="com.box.mod.ui.fragment.ModFragment4.ProxyClick" />
 
         <import type="com.box.other.blankj.utilcode.util.StringUtils" />
     </data>

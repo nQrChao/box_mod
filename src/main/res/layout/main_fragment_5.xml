@@ -8,11 +8,11 @@
 
         <variable
             name="vm"
-            type="com.box.mod.ui.fragment.MainFragment5Model" />
+            type="com.box.mod.ui.fragment.ModFragment5Model" />
 
         <variable
             name="click"
-            type="com.box.mod.ui.fragment.MainFragment5.ProxyClick" />
+            type="com.box.mod.ui.fragment.ModFragment5.ProxyClick" />
     </data>
 
     <com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout

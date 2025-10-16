@@ -30,7 +30,7 @@
 
     <fragment
         android:id="@+id/meFragment"
-        android:name="com.box.mod.ui.fragment.MainFragment5"
+        android:name="com.box.mod.ui.fragment.ModFragment5"
         android:label="setting"
         tools:layout="@layout/main_fragment_5">
     </fragment>

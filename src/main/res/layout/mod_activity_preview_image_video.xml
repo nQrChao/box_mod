@@ -5,7 +5,7 @@
 
         <variable
             name="viewmodel"
-            type="com.box.mod.ui.activity.image.ModActivityPreviewImageVideoModel" />
+            type="com.box.mod.ui.activity.image.ModActivityPreviewImageVideo.Model" />
 
         <variable
             name="click"

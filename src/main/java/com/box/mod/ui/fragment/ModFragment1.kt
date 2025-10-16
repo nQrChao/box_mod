@@ -3,21 +3,25 @@ package com.box.mod.ui.fragment
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.viewModels
 import com.box.base.base.fragment.BaseTitleBarFragment
 import com.box.base.network.NetState
+import com.box.common.ui.activity.ademo.ActivityDemoModel
 import com.box.mod.R
-import com.box.mod.databinding.MainFragment1Binding
+import com.box.mod.databinding.ModFragment1Binding
 import com.box.other.immersionbar.immersionBar
 
 
-class MainFragment1 : BaseTitleBarFragment<MainFragment1Model, MainFragment1Binding>() {
+class ModFragment1 : BaseTitleBarFragment<ModFragment1Model, ModFragment1Binding>() {
+    override val mViewModel: ModFragment1Model by viewModels()
 
-    override fun layoutId(): Int = R.layout.main_fragment_1
+    override fun layoutId(): Int = R.layout.mod_fragment_1
 
     companion object {
-        fun newInstance(): MainFragment1 {
-            return MainFragment1()
+        fun newInstance(): ModFragment1 {
+            return ModFragment1()
         }
     }
 
@@ -34,9 +38,6 @@ class MainFragment1 : BaseTitleBarFragment<MainFragment1Model, MainFragment1Bind
 
     }
 
-    override fun initData() {
-
-    }
 
     override fun createObserver() {
 
