@@ -6,6 +6,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.View
+import androidx.activity.viewModels
 import androidx.core.graphics.drawable.toBitmap
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
@@ -36,10 +37,12 @@ import com.box.other.huantansheng.easyphotos.ui.PreviewFragment
 import com.box.other.immersionbar.immersionBar
 import com.box.other.xpopup.XPopup
 import com.hjq.permissions.XXPermissions
+import kotlin.getValue
 
 
 class ModActivityPreviewImageVideo : BaseModVmDbActivity<ModActivityPreviewImageVideo.Model, ModActivityPreviewImageVideoBinding>(), View.OnClickListener,
     PreviewFragment.OnPreviewFragmentClickListener {
+    override val mViewModel: Model by viewModels()
     override fun layoutId(): Int = R.layout.mod_activity_preview_image_video
 
     var index = 0

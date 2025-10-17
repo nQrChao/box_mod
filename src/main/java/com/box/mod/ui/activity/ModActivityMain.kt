@@ -14,11 +14,13 @@ import android.view.animation.RotateAnimation
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
+import com.angcyo.dsladapter.L.it
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
@@ -28,13 +30,9 @@ import com.box.base.ext.parseModStateWithMsg
 import com.box.base.network.NetState
 import com.box.common.INTENT_KEY_OUT_IMAGE_LIST
 import com.box.common.RESULT_CODE_SELECT_PHOTO
+import com.box.common.appViewModel
 import com.box.common.data.model.ModMainTabConfig
-import com.box.common.sdk.ImSDK.Companion.appViewModelInstance
-import com.box.common.sdk.ImSDK.Companion.eventViewModelInstance
-import com.box.common.sdk.ImSDK.Companion.isCreateMainActivity
-import com.box.common.sdk.ImSDK.Companion.mainActivityRef
-import com.box.common.sdk.appViewModel
-import com.box.common.sdk.eventViewModel
+import com.box.common.eventViewModel
 import com.box.common.toBrowser
 import com.box.common.ui.view.InfoView
 import com.box.common.ui.widget.bottombar.BottomBarItem
@@ -44,8 +42,6 @@ import com.box.common.utils.floattoast.draggable.SpringHideTimeDraggable
 import com.box.common.utils.logcat.LogcatDialog
 import com.box.mod.R
 import com.box.mod.databinding.ModActivityMainBinding
-import com.box.mod.ui.activity.login.ModActivityXDLogin
-import com.box.mod.ui.activity.login.ModActivityXDRegister
 import com.box.mod.ui.fragment.ModFragment1
 import com.box.other.blankj.utilcode.util.ActivityUtils
 import com.box.other.blankj.utilcode.util.AppUtils
@@ -61,11 +57,14 @@ import com.google.gson.Gson
 import kotlinx.coroutines.launch
 import java.io.File
 import java.lang.ref.WeakReference
+import kotlin.getValue
+import kotlin.jvm.java
 import kotlin.system.exitProcess
 import com.box.com.R as RC
 
 
 class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMainBinding>(),HandlerAction {
+    override val mViewModel: ModActivityMainModel by viewModels()
     private val mainTabConfig = """
         [
             {
@@ -278,10 +277,10 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
             // 根据配置的 fragmentId 创建对应的 Fragment 实例
             val fragment = when (config.fragmentId) {
                 1 -> ModFragment1.newInstance()
-                2 -> ModFragment2.newInstance()
-                3 -> ModFragment3.newInstance()
-                4 -> ModFragment4.newInstance()
-                5 -> ModFragment5.newInstance()
+                2 -> ModFragment1.newInstance()
+                3 -> ModFragment1.newInstance()
+                4 -> ModFragment1.newInstance()
+                5 -> ModFragment1.newInstance()
                 else -> throw IllegalArgumentException("Invalid fragmentId: ${config.fragmentId}")
             }
             fragments.add(fragment)
@@ -345,8 +344,7 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
 
     override fun createObserver() {
         eventViewModel.isLogin.observe(this) {
-            ActivityUtils.finishActivity(ModActivityXDLogin::class.java)
-            ActivityUtils.finishActivity(ModActivityXDRegister::class.java)
+            
 
         }
         mViewModel.postModAuthLoginResult.observe(this) { resultState ->
@@ -380,18 +378,18 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
         }
 
 
-        eventViewModelInstance.showLogView.observe(this) {
+        eventViewModel.showLogView.observe(this) {
             showLogView(it)
         }
-        eventViewModelInstance.showInfoView.observe(this) {
+        eventViewModel.showInfoView.observe(this) {
             showInfoView(it)
         }
 
 
-        eventViewModelInstance.setMainCurrentItem.observe(this) {
+        eventViewModel.setMainCurrentItem.observe(this) {
             mDataBinding.bbl.currentItem = it
         }
-        eventViewModelInstance.showMainCurrentItem.observe(this) {
+        eventViewModel.showMainCurrentItem.observe(this) {
             if (it) {
                 lifecycleScope.launch {
                     mDataBinding.bbl.animate().alpha(1f).setDuration(500).start()
@@ -408,10 +406,10 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
             }
         }
 
-        eventViewModelInstance.onKickedOffline.observe(this) {
+        eventViewModel.onKickedOffline.observe(this) {
 
-            eventViewModelInstance.isLogin.value = false
-            appViewModelInstance.userInfo.value = null
+            eventViewModel.isLogin.value = false
+            appViewModel.userInfo.value = null
             XPopup.Builder(this@ModActivityMain)
                 .dismissOnBackPressed(false)
                 .dismissOnTouchOutside(false)
@@ -436,20 +434,17 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
                 ).show()
         }
 
-        eventViewModelInstance.onUserTokenExpired.observe(this) {
+        eventViewModel.onUserTokenExpired.observe(this) {
             mViewModel.loginOut()
         }
 
         mViewModel.loginOutResult.observe(this) {
-            eventViewModelInstance.isLogin.value = false
-            appViewModelInstance.userInfo.value = null
+            eventViewModel.isLogin.value = false
+            appViewModel.userInfo.value = null
             AppUtils.relaunchApp(true)
             ActivityUtils.finishAllActivities()
         }
 
-
-        mainActivityRef = WeakReference(this)
-        isCreateMainActivity = true
 
     }
 

@@ -7,8 +7,10 @@ import com.box.base.ext.requestFlow
 import com.box.base.state.ModResultStateWithMsg
 import com.box.base.state.ResultState
 import com.box.common.MMKVConfig
+import com.box.common.appViewModel
 import com.box.common.data.model.ModUserInfoBean
 import com.box.common.data.model.ModUserRealName
+import com.box.common.eventViewModel
 import com.box.common.network.NetworkApi
 import com.box.common.network.apiService
 import com.box.other.blankj.utilcode.util.GsonUtils

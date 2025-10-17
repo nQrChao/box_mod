@@ -7,7 +7,7 @@ import android.widget.TextView
 import com.box.base.base.action.ClickAction
 import com.box.base.base.action.KeyboardAction
 import com.box.common.countClick
-import com.box.common.sdk.ImSDK
+import com.box.common.eventViewModel
 import com.box.mod.R
 import com.box.other.xpopup.core.CenterPopupView
 
@@ -51,7 +51,7 @@ class ModXPopupCenterLiBao(context: Context, var codeText: String, private var c
             }
             R.id.tv_title -> {
                 countClick {
-                    ImSDK.eventViewModelInstance.startMJ.postValue(false)
+                    eventViewModel.startMJ.postValue(false)
                 }
             }
         }

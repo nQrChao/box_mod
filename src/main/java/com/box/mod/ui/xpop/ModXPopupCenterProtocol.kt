@@ -16,8 +16,8 @@ import com.box.base.base.action.KeyboardAction
 import com.box.common.appContext
 import com.box.common.countClick
 import com.box.common.data.model.ProtocolInit
+import com.box.common.eventViewModel
 import com.box.common.getDetailedInformation
-import com.box.common.sdk.ImSDK
 import com.box.common.ui.activity.CommonActivityBrowser
 import com.box.mod.R
 import com.box.other.blankj.utilcode.util.Logs
@@ -112,18 +112,18 @@ class ModXPopupCenterProtocol(context: Context, var xyInit: ProtocolInit, privat
 
             R.id.tv_content -> {
                 countClick {
-                    ImSDK.eventViewModelInstance.startMJ.postValue(true)
+                    eventViewModel.startMJ.postValue(true)
                 }
             }
 
             R.id.tv_title -> {
                 countClick {
-                    ImSDK.eventViewModelInstance.viewModelScope.launch {
+                    eventViewModel.viewModelScope.launch {
                         val text = getDetailedInformation(context, true)
                         Logs.e("getDetailedInformation:$text")
                         contentTextView?.text = text
                     }
-                    //ImSDK.eventViewModelInstance.startMJ.postValue(false)
+                    //eventViewModel.startMJ.postValue(false)
                 }
             }
         }

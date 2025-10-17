@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.View
 import android.widget.TextView
 import com.box.base.base.action.ClickAction
-import com.box.common.sdk.ImSDK.Companion.eventViewModelInstance
+import com.box.common.eventViewModel
 import com.box.mod.R
 import com.box.other.xpopup.core.AttachPopupView
 
@@ -25,11 +25,11 @@ class ModXPopupClientType(context: Context) :
     override fun onClick(view: View) {
         when (view) {
             view1 -> {
-                eventViewModelInstance.clientType.postValue("view1")
+                eventViewModel.clientType.postValue("view1")
             }
 
             view2 -> {
-                eventViewModelInstance.clientType.postValue("view2")
+                eventViewModel.clientType.postValue("view2")
             }
 
         }

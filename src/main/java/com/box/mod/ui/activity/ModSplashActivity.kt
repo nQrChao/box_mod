@@ -8,9 +8,9 @@ import com.box.base.base.activity.BaseModVmDbActivity
 import com.box.base.ext.parseState
 import com.box.base.network.NetState
 import com.box.common.AppInit
+import com.box.common.appViewModel
+import com.box.common.eventViewModel
 import com.box.common.getOAIDWithRetry
-import com.box.common.sdk.appViewModel
-import com.box.common.sdk.eventViewModel
 import com.box.mod.ui.xpop.ModXPopupCenterProtocol
 import com.box.mod.ui.xpop.ModXPopupCenterTip
 import com.box.common.utils.MMKVUtil
@@ -69,7 +69,7 @@ class ModSplashActivity : BaseModVmDbActivity<ModSplashModel, ModActivitySplashB
                                         .asCustom(
                                             ModXPopupCenterTip(this@ModSplashActivity, it, {
                                                 //浏览
-                                                ModActivityPreview.start(this@ModSplashActivity)
+
                                             }) {
                                                 //返回
                                             })
