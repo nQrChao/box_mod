@@ -61,6 +61,8 @@ import kotlin.getValue
 import kotlin.jvm.java
 import kotlin.system.exitProcess
 import com.box.com.R as RC
+import androidx.core.graphics.toColorInt
+import com.box.common.utils.loge
 
 
 class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMainBinding>(),HandlerAction {
@@ -285,14 +287,17 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
             }
             fragments.add(fragment)
 
+
+
+
             // 使用 BottomBarItem.Builder 模式创建并配置 Builder 对象
             val builder = BottomBarItem.Builder(this)
                 .normalIcon(ResourceUtils.getDrawable(config.normalIcon))
                 .selectedIcon(ResourceUtils.getDrawable(config.selectedIcon))
                 .title(config.title)
                 .titleTextSize(SizeUtils.px2sp(resources.getDimension(RC.dimen.isp_13)))
-                .titleNormalColor(Color.parseColor("#${config.titleNormalColor}"))
-                .titleSelectedColor(Color.parseColor("#${config.titleSelectedColor}"))
+                .setTitleNormalColor("#${config.titleNormalColor}".toColorInt())
+                .setTitleSelectedColor("#${config.titleSelectedColor}".toColorInt())
                 .marginTop(SizeUtils.dp2px(-5f))
                 .openTouchBg(true)
                 .touchDrawable(ContextCompat.getDrawable(this, RC.drawable.transparent_selector))
@@ -465,7 +470,7 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
      */
     private fun initFloatView() {
         floatToast = XToast<XToast<*>>(this).apply {
-            setContentView(R.layout.item_floatview)
+            setContentView(R.layout.item_image_video_preview)
             setGravity(Gravity.START or Gravity.TOP)
             setAnimStyle(RC.style.IOSAnimStyle)
             setYOffset(SizeUtils.dp2px(80f))

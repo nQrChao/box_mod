@@ -31,7 +31,6 @@ class ModFragment1 : BaseTitleBarFragment<ModFragment1Model, ModFragment1Binding
         mDataBinding.vm = mViewModel
         mDataBinding.click = ProxyClick()
         immersionBar {
-            titleBar(mDataBinding.titleBar)
             statusBarDarkFont(true)
             init()
         }

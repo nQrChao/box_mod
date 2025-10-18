@@ -16,18 +16,6 @@
         android:orientation="vertical"
         tools:context="com.box.mod.ui.activity.ModActivityMain">
 
-        <com.box.other.hjq.titlebar.TitleBar
-            android:id="@+id/titleBar"
-            android:visibility="invisible"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/idp_0_1"
-            android:background="@color/mod_home_bg_color"
-            android:gravity="center"
-            app:leftIcon="@null"
-            app:title=""
-            app:titleColor="@color/text_default_color"
-            app:titleSize="@dimen/isp_16"
-            app:titleStyle="bold" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/vp_content"
