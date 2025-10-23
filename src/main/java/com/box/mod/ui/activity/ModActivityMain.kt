@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.Gravity
@@ -20,7 +19,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
-import com.angcyo.dsladapter.L.it
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
@@ -56,13 +54,11 @@ import com.box.other.xpopup.XPopup
 import com.google.gson.Gson
 import kotlinx.coroutines.launch
 import java.io.File
-import java.lang.ref.WeakReference
 import kotlin.getValue
 import kotlin.jvm.java
 import kotlin.system.exitProcess
 import com.box.com.R as RC
 import androidx.core.graphics.toColorInt
-import com.box.common.utils.loge
 
 
 class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMainBinding>(),HandlerAction {

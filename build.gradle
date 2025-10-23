@@ -42,17 +42,14 @@ android {
     }
 
     buildFeatures {
+        buildConfig = true
         dataBinding = true
         viewBinding = true
     }
 
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
-
     compileOptions {
-        targetCompatibility JavaVersion.VERSION_1_8
-        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_17
     }
     sourceSets {
         main {
@@ -60,11 +57,11 @@ android {
         }
     }
 
+
 }
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
-    implementation 'com.youth.banner:banner:1.4.10'
     implementation libs.flexbox
 
 }

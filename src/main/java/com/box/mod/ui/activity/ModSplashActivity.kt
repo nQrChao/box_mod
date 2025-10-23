@@ -8,12 +8,12 @@ import com.box.base.base.activity.BaseModVmDbActivity
 import com.box.base.ext.parseState
 import com.box.base.network.NetState
 import com.box.common.AppInit
+import com.box.common.MMKVConfig
 import com.box.common.appViewModel
 import com.box.common.eventViewModel
 import com.box.common.getOAIDWithRetry
 import com.box.mod.ui.xpop.ModXPopupCenterProtocol
 import com.box.mod.ui.xpop.ModXPopupCenterTip
-import com.box.common.utils.MMKVUtil
 import com.box.mod.R
 import com.box.com.R as RC
 import com.box.mod.databinding.ModActivitySplashBinding
@@ -40,7 +40,7 @@ class ModSplashActivity : BaseModVmDbActivity<ModSplashModel, ModActivitySplashB
         mViewModel.marketInitResult.observe(this) { it ->
             parseState(it, {
                 appViewModel.appInfo.postValue(it)
-                if (!StringUtils.isEmpty(MMKVUtil.getShouQuan())) {
+                if (MMKVConfig.shouQuan) {
                     //已同意
                     agreeInit()
                 } else {
@@ -99,11 +99,11 @@ class ModSplashActivity : BaseModVmDbActivity<ModSplashModel, ModActivitySplashB
     }
 
     private fun agreeInit() {
-        MMKVUtil.saveShouQuan("SQ")
+        MMKVConfig.shouQuan = true
         AppInit.initCNOAID()
-        getOAIDWithRetry(this) {
-            Logs.e("getOAIDWithRetry:$it")
-        }
+
+
+
         startMain()
     }
 

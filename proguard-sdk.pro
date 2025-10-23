@@ -163,8 +163,6 @@
 -dontwarn com.box.other.**
 -dontwarn com.box.other.blankj.utilcode.**
 -keep class com.box.other.hjq.toast.Toaster { *; }
--keep class com.box.common.utils.MMKVUtil { *; }
--keepclassmembers class com.box.common.utils.MMKVUtil { *; }
 
 # Retrofit & OkHttp & Gson
 -keep class retrofit2.** { *; }

@@ -83,13 +83,5 @@ class ModActivityMainModel : BaseViewModel(titleLine = false) {
     }
 
 
-    fun marketInit() {
-        request({
-            val map = mutableMapOf<String, Any>()
-            map["device"] = 21
-            val body = RequestBody.create("application/json; charset=utf-8".toMediaTypeOrNull(), Gson().toJson(map))
-            apiService.register(body)
-        }, registerResult)
-    }
 
 }
