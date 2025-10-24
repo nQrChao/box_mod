@@ -1,5 +1,0 @@
-{
-  "gameid": "4",
-  "platform": "",
-  "channel": "GEN-zcygw"
-}

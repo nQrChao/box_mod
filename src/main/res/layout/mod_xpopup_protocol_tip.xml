@@ -39,7 +39,7 @@
             android:layout_gravity="center"
             android:layout_width="@dimen/idp_150"
             android:layout_height="@dimen/idp_150"
-            android:src="@mipmap/ic_splash_visitors_icon" />
+            android:src="@drawable/status_network_ic" />
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"

@@ -80,7 +80,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/mod_f3_youhui_top_item_bg"
+                android:background="@drawable/a_rounded_bottom_white_10"
                 android:paddingHorizontal="@dimen/idp_5">
 
                 <LinearLayout

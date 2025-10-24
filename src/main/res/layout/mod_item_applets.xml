@@ -45,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/mod_f3_youhui_top_item_jiantou"
+            android:src="@drawable/mod_icon"
             android:visibility="@{applet.isSelect ? View.VISIBLE : View.GONE}" />
 
     </LinearLayout>

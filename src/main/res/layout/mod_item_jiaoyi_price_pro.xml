@@ -106,7 +106,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:paddingStart="@dimen/idp_8"
-                    android:src="@drawable/mod_wuxianzhe_shandian" />
+                    android:src="@drawable/ic_shandian" />
 
                 <TextView
                     android:id="@+id/goumai"
