@@ -15,13 +15,11 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.toColorInt
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.CustomTarget
-import com.bumptech.glide.request.transition.Transition
 import com.box.base.base.action.HandlerAction
 import com.box.base.base.activity.BaseModVmDbActivity
 import com.box.base.ext.parseModStateWithMsg
@@ -51,14 +49,14 @@ import com.box.other.blankj.utilcode.util.SizeUtils
 import com.box.other.blankj.utilcode.util.TimeUtils
 import com.box.other.hjq.toast.Toaster
 import com.box.other.xpopup.XPopup
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.transition.Transition
 import com.google.gson.Gson
 import kotlinx.coroutines.launch
 import java.io.File
-import kotlin.getValue
-import kotlin.jvm.java
 import kotlin.system.exitProcess
 import com.box.com.R as RC
-import androidx.core.graphics.toColorInt
 
 
 class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMainBinding>(),HandlerAction {
@@ -136,8 +134,9 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
     }
 
     override fun initView(savedInstanceState: Bundle?) {
+        mDataBinding.vm = mViewModel
+        supportActionBar?.hide()
         activity = this
-
         bottomBarLayout = findViewById(R.id.bbl)
         loadDynamicBottomBar()
 

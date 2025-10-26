@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="vm"
-            type="com.box.mod.ui.fragment.ModFragment1Model" />
+            type="com.box.mod.ui.fragment.ModFragment2Model" />
 
         <variable
             name="click"
-            type="com.box.mod.ui.fragment.ModFragment1.ProxyClick" />
+            type="com.box.mod.ui.fragment.ModFragment2.ProxyClick" />
     </data>
 
     <LinearLayout
@@ -24,20 +23,26 @@
         <com.box.other.tablayout.DslTabLayout
             android:id="@+id/tab"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/idp_40"
+            android:layout_height="@dimen/idp_50"
+            android:background="@drawable/mod_main_layout_bg"
             android:paddingHorizontal="@dimen/idp_5"
             android:paddingVertical="@dimen/idp_5"
-            app:dynamicTabsBean="@{vm.titlesBean}"
-            app:tab_draw_divider="true"
-            app:tab_divider_drawable="@color/transparent"
-            app:tab_deselect_color="@color/mod_tab_color_default"
+            app:tab_deselect_color="@color/black70"
             app:tab_enable_text_bold="true"
             app:tab_orientation="HORIZONTAL"
-            app:tab_divider_width="@dimen/idp_10"
-            app:tab_select_color="@color/mod_tab_color_select"
-            app:tab_text_max_size="@dimen/isp_13"
-            app:tab_text_min_size="@dimen/isp_13"
+            app:tab_select_color="@color/black85"
+            app:tab_text_max_size="@dimen/isp_17"
+            app:tab_text_min_size="@dimen/isp_15"
             tools:tab_default_index="0" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/idp_50"
+            android:background="@drawable/mod_main_layout_bg"
+            android:paddingHorizontal="@dimen/idp_5"
+            android:paddingVertical="@dimen/idp_5" />
+
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/vp_pager"

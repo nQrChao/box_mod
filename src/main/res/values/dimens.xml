@@ -1,0 +1,6 @@
+<resources   xmlns:tools="http://schemas.android.com/tools">
+    <dimen name="mod_edit_title_size">@dimen/isp_15</dimen>
+    <dimen name="mod_button_size">@dimen/isp_15</dimen>
+    <dimen name="mod_edit_edittext_size">@dimen/isp_14</dimen>
+
+</resources>

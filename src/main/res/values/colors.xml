@@ -5,7 +5,8 @@
     <color name="mod_home_game_red_bg_color">#C54836</color>
     <color name="mod_home_game_green_bg_color">#39C9C0</color>
 
-    <color name="mod_tab_color">#2196F3</color>
+    <color name="mod_tab_color_default">#8A8A8A</color>
+    <color name="mod_tab_color_select">@color/white</color>
 
 
 </resources>

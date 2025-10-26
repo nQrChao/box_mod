@@ -15,8 +15,8 @@
             <corners android:radius="@dimen/idp_90"/>
             <gradient
                 android:angle="0"
-                android:endColor="#AAEE1403"
-                android:startColor="#AAFD894C" />
+                android:endColor="#AA66C5FF"
+                android:startColor="#AA5788FF" />
         </shape>
     </item>
 
@@ -26,8 +26,8 @@
             <corners android:radius="@dimen/idp_90"/>
             <gradient
                 android:angle="0"
-                android:endColor="#AAEE1403"
-                android:startColor="#AAFD894C" />
+                android:endColor="#AA66C5FF"
+                android:startColor="#AA5788FF" />
         </shape>
     </item>
 
@@ -37,8 +37,8 @@
             <corners android:radius="@dimen/idp_90"/>
             <gradient
                 android:angle="0"
-                android:endColor="#EE1403"
-                android:startColor="#FD894C" />
+                android:endColor="#66C5FF"
+                android:startColor="#5788FF" />
         </shape>
     </item>
 
