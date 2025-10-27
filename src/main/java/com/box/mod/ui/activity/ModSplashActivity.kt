@@ -102,8 +102,6 @@ class ModSplashActivity : BaseModVmDbActivity<ModSplashModel, ModActivitySplashB
         MMKVConfig.shouQuan = true
         AppInit.initCNOAID()
 
-
-
         startMain()
     }
 

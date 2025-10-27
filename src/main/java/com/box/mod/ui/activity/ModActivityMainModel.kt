@@ -2,7 +2,6 @@ package com.box.mod.ui.activity
 
 import androidx.lifecycle.MutableLiveData
 import com.box.base.base.viewmodel.BaseViewModel
-import com.box.base.ext.request
 import com.box.base.ext.requestFlow
 import com.box.base.state.ModResultStateWithMsg
 import com.box.base.state.ResultState
@@ -15,9 +14,6 @@ import com.box.common.network.NetworkApi
 import com.box.common.network.apiService
 import com.box.other.blankj.utilcode.util.GsonUtils
 import com.box.other.blankj.utilcode.util.Logs
-import com.google.gson.Gson
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.RequestBody
 
 class ModActivityMainModel : BaseViewModel(titleLine = false) {
     var loginOutResult = MutableLiveData<Boolean>()
@@ -38,7 +34,7 @@ class ModActivityMainModel : BaseViewModel(titleLine = false) {
                         map["api"] = "auto_login"
                         map["uid"] = user.uid
                         map["auth"] = user.auth
-                        apiService.postAuthLogin("auto_login", NetworkApi.INSTANCE.createModPostData(map)!!)
+                        apiService.postAuthLogin("auto_login", NetworkApi.INSTANCE.createVirtualUserPostData(map)!!)
                     },
                     resultState = postModAuthLoginResult,
                 )
@@ -50,7 +46,7 @@ class ModActivityMainModel : BaseViewModel(titleLine = false) {
                         map["get_super_user"] = "y"
                         map["uid"] = login.uid
                         map["token"] = login.token
-                        apiService.postUserInfo(NetworkApi.INSTANCE.createModPostData(map)!!)
+                        apiService.postUserInfo(NetworkApi.INSTANCE.createVirtualUserPostData(map)!!)
                     },
                     resultState = userInfoBeanResult
                 )
@@ -66,7 +62,7 @@ class ModActivityMainModel : BaseViewModel(titleLine = false) {
                         map["api"] = "market_tradeusercert"
                         map["uid"] = login.uid
                         map["token"] = login.token
-                        apiService.postModUserRealName(NetworkApi.INSTANCE.createModPostData(map)!!)
+                        apiService.postModUserRealName(NetworkApi.INSTANCE.createVirtualUserPostData(map)!!)
                     },
                     resultState = modUserRealName
                 )
