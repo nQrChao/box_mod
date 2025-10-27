@@ -32,8 +32,8 @@ class ModActivityMainModel : BaseViewModel(titleLine = false) {
                     block = {
                         val map = mutableMapOf<String, String>()
                         map["api"] = "auto_login"
-                        map["uid"] = user.uid
-                        map["auth"] = user.auth
+                        map["uid"] = user.userId
+                        map["auth"] = user.userAuthLoginToken
                         apiService.postAuthLogin("auto_login", NetworkApi.INSTANCE.createVirtualUserPostData(map)!!)
                     },
                     resultState = postModAuthLoginResult,
@@ -44,14 +44,14 @@ class ModActivityMainModel : BaseViewModel(titleLine = false) {
                         val map = mutableMapOf<String, String>()
                         map["api"] = "get_userinfo"
                         map["get_super_user"] = "y"
-                        map["uid"] = login.uid
-                        map["token"] = login.token
+                        map["uid"] = login.userId
+                        map["token"] = login.userToken
                         apiService.postUserInfo(NetworkApi.INSTANCE.createVirtualUserPostData(map)!!)
                     },
                     resultState = userInfoBeanResult
                 )
 
-                modUser.token = login.token
+                modUser.userToken = login.userToken
                 MMKVConfig.userInfo = modUser
 
                 appViewModel.modUserInfo.postValue(modUser)
@@ -60,8 +60,8 @@ class ModActivityMainModel : BaseViewModel(titleLine = false) {
                     block = {
                         val map = mutableMapOf<String, String>()
                         map["api"] = "market_tradeusercert"
-                        map["uid"] = login.uid
-                        map["token"] = login.token
+                        map["uid"] = login.userId
+                        map["token"] = login.userToken
                         apiService.postModUserRealName(NetworkApi.INSTANCE.createVirtualUserPostData(map)!!)
                     },
                     resultState = modUserRealName

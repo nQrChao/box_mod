@@ -18,9 +18,10 @@ android {
         buildConfigField "String", "GAME_O_ID", MOD_GAME_O_ID
         buildConfigField "String", "GAME_O_CHANNEL_NAME", MOD_GAME_O_CHANNEL_NAME
         buildConfigField "String", "APP_FILING", MOD_APP_FILING
-        buildConfigField "String", "API_VERSION", MOD_APP_API_VERSION
         buildConfigField "String", "MOD_ID", MOD_ID
-        buildConfigField "String", "DEFAULE_CHANNEL_VASID", MOD_APP_DEFAULT_VASID
+        buildConfigField "String", "MOD_NAME", MOD_NAME
+        buildConfigField "String", "MOD_VASID", MOD_VASID
+        buildConfigField "String", "MOD_API_VERSION", MOD_API_VERSION
         buildConfigField "String", "AUTH_LOGIN_SIGN_INFO", MOD_APP_AUTH_LOGIN_SIGN
         buildConfigField "int", "APP_TEMPLATE", MOD_APP_OLD_TEMPLATE
         buildConfigField "String", "TENCENT_APP_ID", MOD_APP_TENCENT_ID
