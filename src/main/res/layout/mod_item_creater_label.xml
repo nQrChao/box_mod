@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.box.other.blankj.utilcode.util.StringUtils" />
+
+        <variable
+            name="position"
+            type="int" />
+
+        <variable
+            name="createType"
+            type="com.box.mod.ui.data.ModCreateTypeBean" />
+
+    </data>
+
+    <TextView
+        android:id="@+id/tv_label"
+        android:layout_width="@dimen/idp_130"
+        android:layout_height="@dimen/idp_60"
+        android:background="@drawable/mod_game_label_bg"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:paddingHorizontal="@dimen/idp_3"
+        android:paddingVertical="@dimen/idp_2"
+        android:text="@{createType.name}"
+        android:textColor="@color/white"
+        android:textSize="@dimen/isp_16"
+        android:textStyle="bold"
+        app:dynamicBackground="@{position}"
+        tools:background="@drawable/bg_item_color_1"
+        tools:text="国风" />
+
+
+</layout>

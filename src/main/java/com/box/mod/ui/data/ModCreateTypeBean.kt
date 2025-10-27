@@ -4,7 +4,7 @@ import androidx.databinding.ObservableBoolean
 import com.box.mod.R // 确保导入你的R文件
 
 
-data class ModCreatTypeBean(
+data class ModCreateTypeBean(
     val name: String,
     var select: ObservableBoolean = ObservableBoolean(false)
 ) {

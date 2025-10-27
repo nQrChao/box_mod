@@ -80,21 +80,21 @@
                             android:gravity="end"
                             android:text="游戏名："
                             android:textColor="@color/text_default_color"
-                            android:textSize="@dimen/mod_edit_title_size" />
+                            android:textSize="@dimen/mod_edit_title_text_size" />
 
                         <com.box.common.ui.view.ClearEditText
                             android:id="@+id/gameNameEdit"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="6.5"
-                            android:background="@drawable/bg_item_tab_text_default"
+                            android:background="@drawable/bg_item_edit_text"
                             android:gravity="start"
                             android:hint="请填写游戏名"
                             android:paddingHorizontal="@dimen/idp_10"
-                            android:paddingVertical="@dimen/idp_5"
+                            android:paddingVertical="@dimen/idp_8"
                             android:text="@={vm.gameName}"
                             android:textColor="@color/text_default_color"
-                            android:textSize="@dimen/mod_edit_edittext_size" />
+                            android:textSize="@dimen/mod_edit_edit_text_size" />
 
                         <TextView
                             android:layout_width="0dp"
@@ -103,7 +103,7 @@
                             android:gravity="center"
                             android:text="*"
                             android:textColor="@color/text_default_color"
-                            android:textSize="@dimen/mod_edit_title_size" />
+                            android:textSize="@dimen/mod_edit_title_text_size" />
 
 
                     </LinearLayout>
@@ -126,21 +126,21 @@
                             android:gravity="end"
                             android:text="角色名："
                             android:textColor="@color/text_default_color"
-                            android:textSize="@dimen/mod_edit_title_size" />
+                            android:textSize="@dimen/mod_edit_title_text_size" />
 
                         <com.box.common.ui.view.ClearEditText
                             android:id="@+id/gameNickNameEdit"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="6.5"
-                            android:background="@drawable/bg_item_tab_text_default"
+                            android:background="@drawable/bg_item_edit_text"
                             android:gravity="start"
                             android:hint="请填写角色名"
                             android:paddingHorizontal="@dimen/idp_10"
-                            android:paddingVertical="@dimen/idp_5"
+                            android:paddingVertical="@dimen/idp_8"
                             android:text="@={vm.gameNickName}"
                             android:textColor="@color/text_default_color"
-                            android:textSize="@dimen/mod_edit_edittext_size" />
+                            android:textSize="@dimen/mod_edit_edit_text_size" />
 
                         <TextView
                             android:layout_width="0dp"
@@ -149,7 +149,7 @@
                             android:gravity="center"
                             android:text="*"
                             android:textColor="@color/text_default_color"
-                            android:textSize="@dimen/mod_edit_title_size" />
+                            android:textSize="@dimen/mod_edit_title_text_size" />
 
                     </LinearLayout>
 
@@ -171,21 +171,21 @@
                             android:gravity="end"
                             android:text="区服名："
                             android:textColor="@color/text_default_color"
-                            android:textSize="@dimen/mod_edit_title_size" />
+                            android:textSize="@dimen/mod_edit_title_text_size" />
 
                         <com.box.common.ui.view.ClearEditText
                             android:id="@+id/gameServerEdit"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="6.5"
-                            android:background="@drawable/bg_item_tab_text_default"
+                            android:background="@drawable/bg_item_edit_text"
                             android:gravity="start"
                             android:hint="请填写区服名"
                             android:paddingHorizontal="@dimen/idp_10"
-                            android:paddingVertical="@dimen/idp_5"
+                            android:paddingVertical="@dimen/idp_8"
                             android:text="@={vm.gameServerName}"
                             android:textColor="@color/text_default_color"
-                            android:textSize="@dimen/mod_edit_edittext_size" />
+                            android:textSize="@dimen/mod_edit_edit_text_size" />
 
                         <TextView
                             android:layout_width="0dp"
@@ -194,7 +194,7 @@
                             android:gravity="center"
                             android:text="*"
                             android:textColor="@color/text_default_color"
-                            android:textSize="@dimen/mod_edit_title_size" />
+                            android:textSize="@dimen/mod_edit_title_text_size" />
 
                     </LinearLayout>
 
@@ -216,21 +216,21 @@
                             android:gravity="end"
                             android:text="实充金额："
                             android:textColor="@color/text_default_color"
-                            android:textSize="@dimen/mod_edit_title_size" />
+                            android:textSize="@dimen/mod_edit_title_text_size" />
 
                         <com.box.common.ui.view.ClearEditText
                             android:id="@+id/gamePriceEdit"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="6.5"
-                            android:background="@drawable/bg_item_tab_text_default"
+                            android:background="@drawable/bg_item_edit_text"
                             android:gravity="start"
                             android:hint="请填写实充金额"
                             android:paddingHorizontal="@dimen/idp_10"
-                            android:paddingVertical="@dimen/idp_5"
+                            android:paddingVertical="@dimen/idp_8"
                             android:text="@={vm.gamePrice}"
                             android:textColor="@color/text_default_color"
-                            android:textSize="@dimen/mod_edit_edittext_size" />
+                            android:textSize="@dimen/mod_edit_edit_text_size" />
 
                         <TextView
                             android:layout_width="0dp"
@@ -239,7 +239,7 @@
                             android:gravity="center"
                             android:text="*"
                             android:textColor="@color/text_default_color"
-                            android:textSize="@dimen/mod_edit_title_size" />
+                            android:textSize="@dimen/mod_edit_title_text_size" />
 
                     </LinearLayout>
 
@@ -253,7 +253,7 @@
                         android:gravity="start"
                         android:text="角色信息截图："
                         android:textColor="@color/text_default_color"
-                        android:textSize="@dimen/mod_edit_title_size"
+                        android:textSize="@dimen/mod_edit_title_text_size"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/gamePriceLayout" />
@@ -307,7 +307,7 @@
                         android:gravity="center"
                         android:text="建议上传1-3张角色信息截图"
                         android:textColor="@color/text_default_color"
-                        android:textSize="@dimen/mod_edit_title_size"
+                        android:textSize="@dimen/mod_edit_title_text_size"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/gameAddPicLayout" />
@@ -348,7 +348,7 @@
                 android:onClick="@{()->click.confirm()}"
                 android:text="一键估算"
                 android:textColor="@color/white"
-                android:textSize="@dimen/mod_button_size"
+                android:textSize="@dimen/mod_button_text_size"
                 android:textStyle="bold"
                 tools:text="一键估算" />
         </LinearLayout>
