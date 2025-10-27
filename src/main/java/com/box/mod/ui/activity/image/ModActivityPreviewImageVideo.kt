@@ -176,7 +176,7 @@ class ModActivityPreviewImageVideo : BaseModVmDbActivity<ModActivityPreviewImage
         }
 
         fun savePhoto() {
-            if (MMKVConfig.EXTERNAL_STORAGE) {
+            if (MMKVConfig.permissionsStorage) {
                 XPopup.Builder(this@ModActivityPreviewImageVideo)
                     .dismissOnTouchOutside(false)
                     .dismissOnBackPressed(false)
@@ -190,7 +190,7 @@ class ModActivityPreviewImageVideo : BaseModVmDbActivity<ModActivityPreviewImage
                         ModXPopupCenterPermissions(this@ModActivityPreviewImageVideo, "存储", "用于实现图片存储功能", {
                             XXPermissions.with(this@ModActivityPreviewImageVideo).permission(STORAGEPermission).request { _, all ->
                                 if (all) {
-                                    MMKVConfig.EXTERNAL_STORAGE = true
+                                    MMKVConfig.permissionsStorage = true
                                     val item = previewPhotosAdapter.data[lastPosition]
                                     try {
                                         val picView: PhotoView = previewPhotosAdapter.getViewByPosition(lastPosition, RC.id.iv_photo_view) as PhotoView

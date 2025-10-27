@@ -11,15 +11,12 @@ import com.box.common.AppInit
 import com.box.common.MMKVConfig
 import com.box.common.appViewModel
 import com.box.common.eventViewModel
-import com.box.common.getOAIDWithRetry
 import com.box.mod.ui.xpop.ModXPopupCenterProtocol
 import com.box.mod.ui.xpop.ModXPopupCenterTip
 import com.box.mod.R
 import com.box.com.R as RC
 import com.box.mod.databinding.ModActivitySplashBinding
 import com.box.other.blankj.utilcode.util.ColorUtils
-import com.box.other.blankj.utilcode.util.Logs
-import com.box.other.blankj.utilcode.util.StringUtils
 import com.box.other.hjq.toast.Toaster
 import com.box.other.xpopup.XPopup
 
@@ -40,7 +37,7 @@ class ModSplashActivity : BaseModVmDbActivity<ModSplashModel, ModActivitySplashB
         mViewModel.marketInitResult.observe(this) { it ->
             parseState(it, {
                 appViewModel.appInfo.postValue(it)
-                if (MMKVConfig.shouQuan) {
+                if (MMKVConfig.permissionsUser) {
                     //已同意
                     agreeInit()
                 } else {
@@ -99,7 +96,7 @@ class ModSplashActivity : BaseModVmDbActivity<ModSplashModel, ModActivitySplashB
     }
 
     private fun agreeInit() {
-        MMKVConfig.shouQuan = true
+        MMKVConfig.permissionsUser = true
         AppInit.initCNOAID()
 
         startMain()

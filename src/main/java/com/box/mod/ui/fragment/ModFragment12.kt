@@ -125,7 +125,7 @@ class ModFragment12 : BaseTitleBarFragment<ModFragment12Model, ModFragment12Bind
     }
 
     private fun selectPhoto(pic: Int) {
-        if(!MMKVConfig.picPermissions){
+        if(!MMKVConfig.permissionsAlbum){
             XPopup.Builder(context)
                 .dismissOnTouchOutside(false)
                 .dismissOnBackPressed(false)
@@ -137,7 +137,7 @@ class ModFragment12 : BaseTitleBarFragment<ModFragment12Model, ModFragment12Bind
                 .hasNavigationBar(true)
                 .asCustom(
                     ModXPopupCenterPermissions(mActivity, "相册", "用于实现图片选择功能", {
-                        MMKVConfig.picPermissions = true
+                        MMKVConfig.permissionsAlbum = true
                         mViewModel.pic.set(pic)
                         pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
                     }) {
