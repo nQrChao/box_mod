@@ -10,13 +10,13 @@
         <import type="com.box.other.blankj.utilcode.util.StringUtils" />
 
         <variable
-            name="goodDetailBean"
-            type="com.box.common.data.model.ModTradeGoodDetailBean" />
+            name="modData"
+            type="com.box.common.data.model.ModDataBean" />
 
     </data>
 
 
-    <RelativeLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/idp_180"
         android:background="@color/white"
@@ -25,58 +25,63 @@
         <ImageView
             android:id="@+id/pic1"
             android:layout_width="match_parent"
-            android:scaleType="centerCrop"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            app:loadRound11UrlImage="@{goodDetailBean.pic.get(0).pic_path}"
+            android:importantForAccessibility="no"
+            android:scaleType="centerCrop"
+            app:loadRound11UrlImage="@{modData.image}"
             tools:src="@drawable/mod_test_pic2" />
-
 
         <ImageView
             android:id="@+id/bg_black_bottom"
             android:layout_width="match_parent"
-            android:scaleType="centerCrop"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
-            tools:src="@drawable/bg_black_trans_bottom" />
+            android:importantForAccessibility="no"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_black_trans_bottom" />
 
 
         <LinearLayout
+            android:layout_gravity="bottom"
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/pic1"
-            android:orientation="horizontal"
             android:layout_marginBottom="@dimen/idp_10"
-            android:paddingHorizontal="@dimen/idp_5">
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/idp_10"
+            android:weightSum="10">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginStart="@dimen/idp_10"
-                android:text=""
-                tools:text="《英雄联盟》2025总决赛！"
-                android:textColor="@color/white90"
-                android:textSize="@dimen/isp_14" />
+                android:layout_weight="7"
+                android:ellipsize="end"
+                android:gravity="start"
+                android:maxLines="1"
+                android:text="@{modData.title}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/isp_13"
+                android:textStyle="bold"
+                tools:text="《英雄联盟》2025总决赛！" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:gravity="end"
-                android:layout_marginEnd="@dimen/idp_15"
+                android:layout_weight="3"
                 android:ellipsize="end"
+                android:gravity="end"
                 android:maxLines="1"
-                android:text="@{goodDetailBean.goods_title}"
+                android:text="了解赛事"
                 android:textColor="@color/white"
-                android:textSize="@dimen/isp_14"
+                android:textSize="@dimen/isp_13"
                 android:textStyle="bold"
                 tools:text="了解赛事" />
 
 
         </LinearLayout>
 
-          </RelativeLayout>
+    </FrameLayout>
 
 </layout>
