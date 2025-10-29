@@ -8,6 +8,8 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import com.box.base.base.fragment.BaseTitleBarFragment
+import com.box.base.base.viewmodel.BaseViewModel
+import com.box.base.callback.databind.IntObservableField
 import com.box.base.network.NetState
 import com.box.common.ui.adapter.SpacingItemDecorator
 import com.box.mod.BR.createType
@@ -22,10 +24,10 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 
 
-class ModFragment13 : BaseTitleBarFragment<ModFragment13Model, ModFragment13Binding>() {
+class ModFragment13 : BaseTitleBarFragment<ModFragment13.Model, ModFragment13Binding>() {
     private var createTypeAdapter = ItemCreateTypeAdapter(mutableListOf())
 
-    override val mViewModel: ModFragment13Model by viewModels()
+    override val mViewModel: Model by viewModels()
 
     override fun layoutId(): Int = R.layout.mod_fragment_13
 
@@ -99,6 +101,14 @@ class ModFragment13 : BaseTitleBarFragment<ModFragment13Model, ModFragment13Bind
         override fun areContentsTheSame(oldItem: ModCreateTypeBean, newItem: ModCreateTypeBean): Boolean {
             return oldItem == newItem
         }
+    }
+
+
+    /**********************************************Model**************************************************/
+    class Model : BaseViewModel(title = "") {
+        var pic = IntObservableField(0)
+        var isSelect = IntObservableField(0)
+
     }
 
 

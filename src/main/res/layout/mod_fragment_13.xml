@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="com.box.mod.ui.fragment.ModFragment13Model" />
+            type="com.box.mod.ui.fragment.ModFragment13.Model" />
 
         <variable
             name="click"

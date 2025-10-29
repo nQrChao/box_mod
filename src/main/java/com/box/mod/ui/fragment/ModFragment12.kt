@@ -9,8 +9,12 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
+import androidx.databinding.ObservableField
 import androidx.fragment.app.viewModels
 import com.box.base.base.fragment.BaseTitleBarFragment
+import com.box.base.base.viewmodel.BaseViewModel
+import com.box.base.callback.databind.IntObservableField
+import com.box.base.callback.databind.StringObservableField
 import com.box.base.network.NetState
 import com.box.common.MMKVConfig
 import com.box.common.appContext
@@ -25,7 +29,7 @@ import com.box.other.xpopup.XPopup
 import com.box.com.R as RC
 
 
-class ModFragment12 : BaseTitleBarFragment<ModFragment12Model, ModFragment12Binding>() {
+class ModFragment12 : BaseTitleBarFragment<ModFragment12.Model, ModFragment12Binding>() {
     private val pickMedia: ActivityResultLauncher<PickVisualMediaRequest> =
         registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri: Uri? ->
             if (uri != null) {
@@ -39,7 +43,7 @@ class ModFragment12 : BaseTitleBarFragment<ModFragment12Model, ModFragment12Bind
             }
         }
 
-    override val mViewModel: ModFragment12Model by viewModels()
+    override val mViewModel: Model by viewModels()
 
     override fun layoutId(): Int = R.layout.mod_fragment_12
 
@@ -149,6 +153,51 @@ class ModFragment12 : BaseTitleBarFragment<ModFragment12Model, ModFragment12Bind
             pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
         }
 
+    }
+
+    /**********************************************Model**************************************************/
+    class Model : BaseViewModel(title = "游戏账号估值") {
+        var pic = IntObservableField(0)
+        var gameName  = StringObservableField()
+        var gameNickName  = StringObservableField()
+        var gameServerName  = StringObservableField()
+        var gamePrice  = StringObservableField()
+        var pic1Uri  = ObservableField<Uri>()
+        var pic2Uri  = ObservableField<Uri>()
+        var pic3Uri  = ObservableField<Uri>()
+
+        fun clearData() {
+            gameName.set("")
+            gameNickName.set("")
+            gameServerName.set("")
+            gamePrice.set("")
+            pic1Uri.set(null)
+            pic2Uri.set(null)
+            pic3Uri.set(null)
+        }
+
+        /**
+         * 数据校验方法
+         * @return 返回null表示校验通过，否则返回错误提示信息
+         */
+        fun getValidationError(): String? {
+            // 使用一个“规则列表”来定义所有校验
+            val validationRules = listOf(
+                Pair( { gameName.get().isEmpty() }, "请填写游戏名" ),
+                Pair( { gameNickName.get().isEmpty() }, "请填写角色名" ),
+                Pair( { gameServerName.get().isEmpty() }, "请填写区服名" ),
+                Pair( { gamePrice.get().isEmpty() }, "请填写实充金额" ),
+                Pair( { pic1Uri.get() == null && pic2Uri.get() == null && pic3Uri.get() == null}, "请上传角色信息截图，至少上传1张截图" ),
+            )
+            // 遍历规则，找到第一个不满足的并返回错误信息
+            for ((condition, message) in validationRules) {
+                if (condition()) {
+                    return message
+                }
+            }
+            // 所有规则都通过
+            return null
+        }
 
     }
 

@@ -4,22 +4,27 @@ import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import androidx.annotation.RequiresApi
+import androidx.databinding.ObservableBoolean
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.viewpager2.widget.ViewPager2
 import com.box.base.base.fragment.BaseTitleBarFragment
 import com.box.base.base.fragment.BaseVmDbFragment
+import com.box.base.base.viewmodel.BaseViewModel
 import com.box.base.network.NetState
 import com.box.common.ui.adapter.ViewPager2FragmentAdapter
 import com.box.mod.R
 import com.box.mod.databinding.ModFragment1Binding
+import com.box.mod.ui.data.ModTabTextBean
 import com.box.other.immersionbar.immersionBar
 
 
-class ModFragment1 : BaseTitleBarFragment<ModFragment1Model, ModFragment1Binding>() {
+class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Binding>() {
     //val titles = listOf("热门游戏赛事", "游戏账号估值", "角色名生成器", "小游戏排行榜")
     private var pagerAdapter: ViewPager2FragmentAdapter<BaseVmDbFragment<*, *>>? = null
 
-    override val mViewModel: ModFragment1Model by viewModels()
+    override val mViewModel: Model by viewModels()
 
     override fun layoutId(): Int = R.layout.mod_fragment_1
 
@@ -105,6 +110,17 @@ class ModFragment1 : BaseTitleBarFragment<ModFragment1Model, ModFragment1Binding
     }
 
 
+    /**********************************************Model**************************************************/
+    class Model : BaseViewModel(title = "") {
+        val titlesBean: LiveData<List<ModTabTextBean>> = MutableLiveData(
+            listOf(
+                ModTabTextBean(name = "热门游戏赛事", select = ObservableBoolean(true)),
+                ModTabTextBean(name = "游戏账号估值", select = ObservableBoolean(false)),
+                ModTabTextBean(name = "角色名生成器", select = ObservableBoolean(false)),
+                ModTabTextBean(name = "小游戏排行榜", select = ObservableBoolean(false))
+            )
+        )
+    }
 }
 
 

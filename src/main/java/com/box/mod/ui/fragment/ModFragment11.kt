@@ -3,14 +3,20 @@ package com.box.mod.ui.fragment
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import com.box.base.base.action.StatusAction
 import com.box.base.base.fragment.BaseTitleBarFragment
+import com.box.base.base.viewmodel.BaseViewModel
+import com.box.base.callback.databind.IntObservableField
+import com.box.base.ext.modRequestWithMsg
 import com.box.base.ext.parseModStateWithMsg
 import com.box.base.network.NetState
+import com.box.base.state.ModResultStateWithMsg
 import com.box.common.appContext
 import com.box.common.data.model.ModDataBean
+import com.box.common.network.apiService
 import com.box.common.ui.activity.CommonActivityRichText
 import com.box.common.ui.adapter.SpacingItemDecorator
 import com.box.common.ui.layout.StatusLayout
@@ -26,9 +32,9 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 
 
-class ModFragment11 : BaseTitleBarFragment<ModFragment11Model, ModFragment11Binding>(),
+class ModFragment11 : BaseTitleBarFragment<ModFragment11.Model, ModFragment11Binding>(),
     StatusAction {
-    override val mViewModel: ModFragment11Model by viewModels()
+    override val mViewModel: Model by viewModels()
     override fun layoutId(): Int = R.layout.mod_fragment_11
 
     companion object {
@@ -178,6 +184,27 @@ class ModFragment11 : BaseTitleBarFragment<ModFragment11Model, ModFragment11Bind
         override fun areContentsTheSame(oldItem: ModDataBean, newItem: ModDataBean): Boolean {
             return oldItem == newItem
         }
+    }
+
+
+    /**********************************************Model**************************************************/
+    class Model : BaseViewModel(title = "") {
+        var pic = IntObservableField(0)
+        var newsListResult = MutableLiveData<ModResultStateWithMsg<MutableList<ModDataBean>>>()
+        var newsDetailResult = MutableLiveData<ModResultStateWithMsg<ModDataBean>>()
+
+        fun getNewsListData(pageNum: Int, pageSize: Int) {
+            modRequestWithMsg({
+                apiService.getNewsList(pageNum, pageSize)
+            }, newsListResult)
+        }
+
+        fun getNewsDetailData(id: Int) {
+            modRequestWithMsg({
+                apiService.getNewsDetailById(id)
+            }, newsDetailResult)
+        }
+
     }
 
 

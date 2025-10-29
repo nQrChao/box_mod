@@ -6,7 +6,7 @@
     <data>
         <variable
             name="vm"
-            type="com.box.mod.ui.fragment.ModFragment14Model" />
+            type="com.box.mod.ui.fragment.ModFragment14.Model" />
 
         <variable
             name="click"
