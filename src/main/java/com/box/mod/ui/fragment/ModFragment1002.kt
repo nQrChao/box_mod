@@ -19,7 +19,7 @@ import com.box.base.network.NetState
 import com.box.common.MMKVConfig
 import com.box.common.appContext
 import com.box.mod.R
-import com.box.mod.databinding.ModFragment12Binding
+import com.box.mod.databinding.ModFragment1002Binding
 import com.box.mod.view.xpop.ModXPopupCenterPermissions
 import com.box.other.blankj.utilcode.util.ColorUtils
 import com.box.other.hjq.titlebar.TitleBar
@@ -29,7 +29,7 @@ import com.box.other.xpopup.XPopup
 import com.box.com.R as RC
 
 
-class ModFragment12 : BaseTitleBarFragment<ModFragment12.Model, ModFragment12Binding>() {
+class ModFragment1002 : BaseTitleBarFragment<ModFragment1002.Model, ModFragment1002Binding>() {
     private val pickMedia: ActivityResultLauncher<PickVisualMediaRequest> =
         registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri: Uri? ->
             if (uri != null) {
@@ -45,11 +45,11 @@ class ModFragment12 : BaseTitleBarFragment<ModFragment12.Model, ModFragment12Bin
 
     override val mViewModel: Model by viewModels()
 
-    override fun layoutId(): Int = R.layout.mod_fragment_12
+    override fun layoutId(): Int = R.layout.mod_fragment_1002
 
     companion object {
-        fun newInstance(): ModFragment12 {
-            return ModFragment12()
+        fun newInstance(): ModFragment1002 {
+            return ModFragment1002()
         }
     }
 

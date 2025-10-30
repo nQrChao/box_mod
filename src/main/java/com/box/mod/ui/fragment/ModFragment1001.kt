@@ -23,7 +23,7 @@ import com.box.common.ui.layout.StatusLayout
 import com.box.common.utils.logsE
 import com.box.mod.BR.modData
 import com.box.mod.R
-import com.box.mod.databinding.ModFragment11Binding
+import com.box.mod.databinding.ModFragment1001Binding
 import com.box.mod.databinding.ModItemNewsBinding
 import com.box.other.blankj.utilcode.util.GsonUtils
 import com.box.other.hjq.toast.Toaster
@@ -32,14 +32,14 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 
 
-class ModFragment11 : BaseTitleBarFragment<ModFragment11.Model, ModFragment11Binding>(),
+class ModFragment1001 : BaseTitleBarFragment<ModFragment1001.Model, ModFragment1001Binding>(),
     StatusAction {
     override val mViewModel: Model by viewModels()
-    override fun layoutId(): Int = R.layout.mod_fragment_11
+    override fun layoutId(): Int = R.layout.mod_fragment_1001
 
     companion object {
-        fun newInstance(): ModFragment11 {
-            return ModFragment11()
+        fun newInstance(): ModFragment1001 {
+            return ModFragment1001()
         }
     }
 

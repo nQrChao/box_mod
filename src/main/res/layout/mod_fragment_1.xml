@@ -19,31 +19,247 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/mod_home_bg_color"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/idp_10">
 
-        <com.box.other.tablayout.DslTabLayout
-            android:id="@+id/tab"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/titleBar"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/idp_40"
-            android:paddingHorizontal="@dimen/idp_5"
-            android:paddingVertical="@dimen/idp_5"
-            app:dynamicTabsBean="@{vm.titlesBean}"
-            app:tab_draw_divider="true"
-            app:tab_divider_drawable="@color/transparent"
-            app:tab_deselect_color="@color/mod_tab_color_default"
-            app:tab_enable_text_bold="true"
-            app:tab_orientation="HORIZONTAL"
-            app:tab_divider_width="@dimen/idp_10"
-            app:tab_select_color="@color/mod_tab_color_select"
-            app:tab_text_max_size="@dimen/isp_13"
-            app:tab_text_min_size="@dimen/isp_13"
-            tools:tab_default_index="0" />
+            android:layout_height="@dimen/idp_70"
+            android:paddingVertical="@dimen/idp_8">
 
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/vp_pager"
+            <ImageView
+                android:id="@+id/f1_title_user_img"
+                android:layout_width="@dimen/idp_50"
+                android:layout_height="@dimen/idp_50"
+                android:onClick="@{()->click.user()}"
+                android:layout_centerVertical="true"
+                android:src="@drawable/mod_1_ic_user_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/f1_title_user_account_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/idp_10"
+                android:layout_toEndOf="@id/f1_title_user_img"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="@id/f1_title_user_img"
+                app:layout_constraintStart_toEndOf="@id/f1_title_user_img"
+                app:layout_constraintTop_toTopOf="@id/f1_title_user_img">
+
+                <TextView
+                    android:id="@+id/f1_title_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="兜兜里的糖糖"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/isp_13"
+                    android:textStyle="bold"
+                    tools:text="兜兜里的糖糖" />
+
+                <TextView
+                    android:id="@+id/f1_title_user_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="ID：23279"
+                    android:textColor="#8A8A8A"
+                    android:textSize="@dimen/isp_13"
+                    tools:text="ID：23279" />
+            </LinearLayout>
+
+            <com.box.common.ui.view.DrawableTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/mod_bg_f1_title_user_soucang"
+                android:drawableStart="@drawable/mod_1_ic_shoucang"
+                android:drawablePadding="@dimen/idp_5"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:onClick="@{()->click.shoucang()}"
+                android:paddingHorizontal="@dimen/idp_15"
+                android:paddingVertical="@dimen/idp_6"
+                android:text="收藏"
+                android:textColor="@color/black"
+                android:textSize="@dimen/isp_13"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/f1_title_user_img"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/f1_title_user_img"
+                tools:text="收藏" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.box.common.ui.layout.StatusLayout
+            android:id="@+id/status_loading"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/black70" />
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
+            <com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout
+                android:id="@+id/refreshLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                app:srlEnableLoadMore="true"
+                app:srlEnableRefresh="true">
+
+                <com.box.other.scwang.smart.refresh.header.MaterialHeader
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <androidx.core.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/idp_10">
+
+                            <androidx.constraintlayout.widget.Guideline
+                                android:id="@+id/guideline_vertical_55"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                app:layout_constraintGuide_percent="0.58" />
+
+                            <ImageView
+                                android:id="@+id/image_discover"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:onClick="@{()->click.img1()}"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/mod_ic_f1_bg1"
+                                app:layout_constraintDimensionRatio="930:400"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/image_estimate"
+                                android:layout_width="0dp"
+                                android:onClick="@{()->click.img2()}"
+                                android:layout_height="0dp"
+                                android:layout_marginEnd="@dimen/idp_5"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/mod_ic_f1_bg2"
+                                app:layout_constraintBottom_toBottomOf="@id/image_ranking"
+                                app:layout_constraintEnd_toStartOf="@id/guideline_vertical_55"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/image_discover" />
+
+                            <ImageView
+                                android:id="@+id/image_generator"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:onClick="@{()->click.img3()}"
+                                android:layout_marginStart="@dimen/idp_5"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/mod_ic_f1_bg3"
+                                app:layout_constraintDimensionRatio="1:1"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@id/guideline_vertical_55"
+                                app:layout_constraintTop_toBottomOf="@id/image_discover" />
+
+                            <ImageView
+                                android:id="@+id/image_ranking"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:onClick="@{()->click.img4()}"
+                                android:layout_marginStart="@dimen/idp_5"
+                                android:layout_marginTop="@dimen/idp_5"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/mod_ic_f1_bg4"
+                                app:layout_constraintDimensionRatio="1:1"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@id/guideline_vertical_55"
+                                app:layout_constraintTop_toBottomOf="@id/image_generator" />
+
+                            <TextView
+                                android:layout_width="@dimen/idp_180"
+                                android:layout_height="wrap_content"
+                                android:text="热门游戏赛事"
+                                android:textColor="@android:color/white"
+                                android:textSize="@dimen/isp_24"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@id/image_discover"
+                                app:layout_constraintEnd_toEndOf="@id/image_discover"
+                                app:layout_constraintTop_toTopOf="@id/image_discover" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/idp_60"
+                                android:gravity="center"
+                                android:text="游戏账号估值"
+                                android:textColor="@android:color/white"
+                                android:textSize="@dimen/isp_21"
+                                android:textStyle="bold"
+                                app:layout_constraintEnd_toEndOf="@id/image_estimate"
+                                app:layout_constraintStart_toStartOf="@id/image_estimate"
+                                app:layout_constraintTop_toTopOf="@id/image_estimate" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/idp_25"
+                                android:text="角色名生成器"
+                                android:textColor="@android:color/white"
+                                android:textSize="@dimen/isp_15"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@id/image_generator"
+                                app:layout_constraintEnd_toEndOf="@id/image_generator"
+                                app:layout_constraintStart_toStartOf="@id/image_generator" />
+
+                            <TextView
+                                android:id="@+id/text_ranking"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/idp_25"
+                                android:text="小游戏排行榜"
+                                android:textColor="@android:color/white"
+                                android:textSize="@dimen/isp_15"
+                                android:textStyle="bold"
+                                app:layout_constraintBottom_toBottomOf="@id/image_ranking"
+                                app:layout_constraintEnd_toEndOf="@id/image_ranking"
+                                app:layout_constraintStart_toStartOf="@id/image_ranking" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerView"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/idp_20"
+                                android:nestedScrollingEnabled="false"
+                                android:overScrollMode="never"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/text_ranking"
+                                tools:itemCount="10"
+                                tools:listitem="@layout/mod_item_news" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
+                </androidx.core.widget.NestedScrollView>
+
+                <com.box.other.scwang.smart.refresh.footer.BallPulseFooter
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+        </com.box.common.ui.layout.StatusLayout>
     </LinearLayout>
 </layout>

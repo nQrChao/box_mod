@@ -39,6 +39,10 @@ import com.box.common.utils.logcat.LogcatDialog
 import com.box.mod.R
 import com.box.mod.databinding.ModActivityMainBinding
 import com.box.mod.ui.fragment.ModFragment1
+import com.box.mod.ui.fragment.ModFragment1001
+import com.box.mod.ui.fragment.ModFragment1002
+import com.box.mod.ui.fragment.ModFragment1003
+import com.box.mod.ui.fragment.ModFragment1004
 import com.box.other.blankj.utilcode.util.ActivityUtils
 import com.box.other.blankj.utilcode.util.AppUtils
 import com.box.other.blankj.utilcode.util.ColorUtils
@@ -65,8 +69,8 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
         [
             {
                 "title": "首页",
-                "normalIcon": ${R.mipmap.mod_navigation_bg1},
-                "selectedIcon": ${R.mipmap.mod_navigation_bg1_1},
+                "normalIcon": ${R.drawable.mod_ic_fragment_1},
+                "selectedIcon": ${R.drawable.mod_ic_fragment_1_1},
                 "normalIconUrl": "",
                 "selectedIconUrl": "",
                 "titleNormalColor": "000000",
@@ -74,9 +78,9 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
                 "fragmentId": 1
             },
             {
-                "title": "视频",
-                "normalIcon": ${R.mipmap.mod_navigation_bg2},
-                "selectedIcon": ${R.mipmap.mod_navigation_bg2_2},
+                "title": "账号估价",
+                "normalIcon": ${R.drawable.mod_ic_fragment_2},
+                "selectedIcon": ${R.drawable.mod_ic_fragment_2_1},
                 "normalIconUrl": "",
                 "selectedIconUrl": "",
                 "titleNormalColor": "000000",
@@ -84,9 +88,9 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
                 "fragmentId": 2
             },
             {
-                "title": "排行榜",
-                "normalIcon": ${R.mipmap.mod_navigation_bg3},
-                "selectedIcon": ${R.mipmap.mod_navigation_bg3_3},
+                "title": "角色起名",
+                "normalIcon": ${R.drawable.mod_ic_fragment_3},
+                "selectedIcon": ${R.drawable.mod_ic_fragment_3_1},
                 "normalIconUrl": "",
                 "selectedIconUrl": "",
                 "titleNormalColor": "000000",
@@ -94,14 +98,24 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
                 "fragmentId": 3
             },
             {
-                "title": "个人中心",
-                "normalIcon": ${R.mipmap.mod_navigation_bg4},
-                "selectedIcon": ${R.mipmap.mod_navigation_bg4_4},
+                "title": "游戏排行",
+                "normalIcon": ${R.drawable.mod_ic_fragment_4},
+                "selectedIcon": ${R.drawable.mod_ic_fragment_4_1},
                 "normalIconUrl": "",
                 "selectedIconUrl": "",
                 "titleNormalColor": "000000",
                 "titleSelectedColor": "7C7C7C",
                 "fragmentId": 4
+            },
+            {
+                "title": "我的",
+                "normalIcon": ${R.drawable.mod_ic_fragment_5},
+                "selectedIcon": ${R.drawable.mod_ic_fragment_5_1},
+                "normalIconUrl": "",
+                "selectedIconUrl": "",
+                "titleNormalColor": "000000",
+                "titleSelectedColor": "7C7C7C",
+                "fragmentId": 5
             }
         ]
     """.trimIndent()
@@ -274,10 +288,10 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
             // 根据配置的 fragmentId 创建对应的 Fragment 实例
             val fragment = when (config.fragmentId) {
                 1 -> ModFragment1.newInstance()
-                2 -> ModFragment1.newInstance()
-                3 -> ModFragment1.newInstance()
-                4 -> ModFragment1.newInstance()
-                5 -> ModFragment1.newInstance()
+                2 -> ModFragment1001.newInstance()
+                3 -> ModFragment1002.newInstance()
+                4 -> ModFragment1003.newInstance()
+                5 -> ModFragment1004.newInstance()
                 else -> throw IllegalArgumentException("Invalid fragmentId: ${config.fragmentId}")
             }
             fragments.add(fragment)

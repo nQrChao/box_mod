@@ -15,7 +15,7 @@ import com.box.common.ui.adapter.SpacingItemDecorator
 import com.box.mod.BR.createType
 import com.box.mod.BR.position
 import com.box.mod.R
-import com.box.mod.databinding.ModFragment13Binding
+import com.box.mod.databinding.ModFragment1003Binding
 import com.box.mod.databinding.ModItemCreaterLabelBinding
 import com.box.mod.ui.data.ModCreateTypeBean
 import com.box.other.hjq.toast.Toaster
@@ -24,16 +24,16 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 
 
-class ModFragment13 : BaseTitleBarFragment<ModFragment13.Model, ModFragment13Binding>() {
+class ModFragment1003 : BaseTitleBarFragment<ModFragment1003.Model, ModFragment1003Binding>() {
     private var createTypeAdapter = ItemCreateTypeAdapter(mutableListOf())
 
     override val mViewModel: Model by viewModels()
 
-    override fun layoutId(): Int = R.layout.mod_fragment_13
+    override fun layoutId(): Int = R.layout.mod_fragment_1003
 
     companion object {
-        fun newInstance(): ModFragment13 {
-            return ModFragment13()
+        fun newInstance(): ModFragment1003 {
+            return ModFragment1003()
         }
     }
 

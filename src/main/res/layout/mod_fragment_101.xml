@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.box.mod.ui.fragment.ModFragment101.Model" />
+
+        <variable
+            name="click"
+            type="com.box.mod.ui.fragment.ModFragment101.ProxyClick" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/rootView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/mod_home_bg_color"
+        android:orientation="vertical">
+
+        <com.box.other.tablayout.DslTabLayout
+            android:id="@+id/tab"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/idp_40"
+            android:paddingHorizontal="@dimen/idp_5"
+            android:paddingVertical="@dimen/idp_5"
+            app:dynamicTabsBean="@{vm.titlesBean}"
+            app:tab_draw_divider="true"
+            app:tab_divider_drawable="@color/transparent"
+            app:tab_deselect_color="@color/mod_tab_color_default"
+            app:tab_enable_text_bold="true"
+            app:tab_orientation="HORIZONTAL"
+            app:tab_divider_width="@dimen/idp_10"
+            app:tab_select_color="@color/mod_tab_color_select"
+            app:tab_text_max_size="@dimen/isp_13"
+            app:tab_text_min_size="@dimen/isp_13"
+            tools:tab_default_index="0" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black70" />
+
+    </LinearLayout>
+</layout>

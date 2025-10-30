@@ -7,11 +7,11 @@
 
         <variable
             name="vm"
-            type="com.box.mod.ui.fragment.ModFragment12.Model" />
+            type="com.box.mod.ui.fragment.ModFragment1002.Model" />
 
         <variable
             name="click"
-            type="com.box.mod.ui.fragment.ModFragment12.ProxyClick" />
+            type="com.box.mod.ui.fragment.ModFragment1002.ProxyClick" />
     </data>
 
     <RelativeLayout

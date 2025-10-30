@@ -10,18 +10,18 @@ import com.box.base.base.viewmodel.BaseViewModel
 import com.box.base.callback.databind.IntObservableField
 import com.box.base.network.NetState
 import com.box.mod.R
-import com.box.mod.databinding.ModFragment14Binding
+import com.box.mod.databinding.ModFragment1004Binding
 import com.box.other.immersionbar.immersionBar
 
 
-class ModFragment14 : BaseTitleBarFragment<ModFragment14.Model, ModFragment14Binding>() {
+class ModFragment1004 : BaseTitleBarFragment<ModFragment1004.Model, ModFragment1004Binding>() {
     override val mViewModel: Model by viewModels()
 
-    override fun layoutId(): Int = R.layout.mod_fragment_14
+    override fun layoutId(): Int = R.layout.mod_fragment_1004
 
     companion object {
-        fun newInstance(): ModFragment14 {
-            return ModFragment14()
+        fun newInstance(): ModFragment1004 {
+            return ModFragment1004()
         }
     }
 

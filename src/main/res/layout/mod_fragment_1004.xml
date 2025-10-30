@@ -6,11 +6,11 @@
     <data>
         <variable
             name="vm"
-            type="com.box.mod.ui.fragment.ModFragment14.Model" />
+            type="com.box.mod.ui.fragment.ModFragment1004.Model" />
 
         <variable
             name="click"
-            type="com.box.mod.ui.fragment.ModFragment14.ProxyClick" />
+            type="com.box.mod.ui.fragment.ModFragment1004.ProxyClick" />
     </data>
 
     <LinearLayout
