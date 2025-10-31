@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.box.other.blankj.utilcode.util.StringUtils" />
+
+        <variable
+            name="position"
+            type="int" />
+
+        <variable
+            name="modData"
+            type="com.box.common.data.model.ModDataBean" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_label"
+            android:layout_width="@dimen/idp_130"
+            android:layout_height="@dimen/idp_60"
+            android:background="@drawable/mod_game_label_bg"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="@{modData.dictLabel}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/isp_16"
+            android:textStyle="bold"
+            app:setDynamicBackground="@{position}"
+            tools:background="@drawable/bg_item_color_1"
+            tools:text="国风" />
+
+        <ImageView
+            android:layout_width="@dimen/idp_130"
+            android:layout_height="@dimen/idp_60"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/bg_item_create_text_00000000"
+            android:visibility="@{modData.isSelect ? View.VISIBLE : View.GONE}"
+            tools:src="@drawable/bg_item_create_text_00000000" />
+
+    </FrameLayout>
+
+
+</layout>

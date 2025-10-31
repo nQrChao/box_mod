@@ -34,8 +34,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 
 
-class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Binding>(),
-    StatusAction {
+class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Binding>(), StatusAction {
     override val mViewModel: Model by viewModels()
     override fun layoutId(): Int = R.layout.mod_fragment_1
 

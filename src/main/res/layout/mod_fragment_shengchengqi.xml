@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.box.mod.ui.fragment.ModFragmentShengChengQi.Model" />
+
+        <variable
+            name="click"
+            type="com.box.mod.ui.fragment.ModFragmentShengChengQi.ProxyClick" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/rootView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/mod_home_bg_color"
+        android:orientation="vertical">
+
+        <com.box.other.hjq.titlebar.TitleBar
+            android:id="@+id/titleBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/idp_40"
+            android:background="@color/mod_home_bg_color"
+            android:gravity="center"
+            app:leftIcon="@null"
+            app:leftTitleColor="@color/black90"
+            app:leftTitleSize="@dimen/isp_17"
+            app:leftTitleStyle="bold"
+            app:lineVisible="false"
+            app:titleColor="@color/black90"
+            app:titleSize="@dimen/isp_16"
+            app:titleStyle="bold" />
+
+        <com.box.common.ui.layout.StatusLayout
+            android:id="@+id/status_loading"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/idp_5"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/idp_10">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/mod_item_role_type" />
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/idp_10"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/label1"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/idp_60"
+                        android:layout_weight="3"
+                        android:background="@drawable/bg_item_create_text_2"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:text="三字"
+                        android:textColor="@color/text_default_color"
+                        android:textSize="@dimen/isp_16"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/label2"
+                        app:layout_constraintHorizontal_weight="1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:background="@drawable/bg_item_create_text_2"
+                        tools:text="三字" />
+
+                    <TextView
+                        android:id="@+id/label2"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/idp_60"
+                        android:layout_weight="3"
+                        android:background="@drawable/bg_item_create_text_2"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:paddingHorizontal="@dimen/idp_10"
+                        android:text="四字"
+                        android:textColor="@color/text_default_color"
+                        android:textSize="@dimen/isp_16"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/label3"
+                        app:layout_constraintHorizontal_weight="1"
+                        app:layout_constraintStart_toEndOf="@+id/label1"
+                        app:layout_constraintTop_toTopOf="@+id/label1"
+                        tools:background="@drawable/bg_item_create_text_2"
+                        tools:text="四字" />
+
+                    <TextView
+                        android:id="@+id/label3"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/idp_60"
+                        android:layout_weight="3"
+                        android:background="@drawable/bg_item_create_text_2"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:text="五字以上"
+                        android:textColor="@color/text_default_color"
+                        android:textSize="@dimen/isp_16"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_weight="1"
+                        app:layout_constraintStart_toEndOf="@+id/label2"
+                        app:layout_constraintTop_toTopOf="@+id/label1"
+                        tools:background="@drawable/bg_item_create_text_2"
+                        tools:text="五字以上" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/idp_10">
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="@dimen/idp_110"
+                        android:layout_height="@dimen/idp_60"
+                        android:background="@{vm.isSelect() == 0 ? @drawable/bg_item_create_text_000000 : @drawable/bg_item_create_text_dddddd}"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:onClick="@{()->click.text3()}"
+                        android:text="三字"
+                        android:textColor="@{vm.isSelect() == 0?@color/text_default_color:@color/common_text_color_sec_gray}"
+                        android:textSize="@dimen/isp_16"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/textView2"
+                        app:layout_constraintHorizontal_chainStyle="spread_inside"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:background="@drawable/bg_item_create_text_000000"
+                        tools:textColor="@color/text_default_color" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="@dimen/idp_110"
+                        android:layout_height="@dimen/idp_60"
+                        android:background="@{vm.isSelect() == 1 ? @drawable/bg_item_create_text_000000 : @drawable/bg_item_create_text_dddddd}"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:onClick="@{()->click.text4()}"
+                        android:text="四字"
+                        android:textColor="@{vm.isSelect() == 1?@color/text_default_color:@color/common_text_color_sec_gray}"
+                        android:textSize="@dimen/isp_16"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/textView3"
+                        app:layout_constraintStart_toEndOf="@+id/textView1"
+                        app:layout_constraintTop_toTopOf="@+id/textView1"
+                        tools:background="@drawable/bg_item_create_text_dddddd" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="@dimen/idp_110"
+                        android:layout_height="@dimen/idp_60"
+                        android:background="@{vm.isSelect() == 2 ? @drawable/bg_item_create_text_000000 : @drawable/bg_item_create_text_dddddd}"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:onClick="@{()->click.text5()}"
+                        android:text="五字以上"
+                        android:textColor="@{vm.isSelect() == 2?@color/text_default_color:@color/common_text_color_sec_gray}"
+                        android:textSize="@dimen/isp_16"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textView2"
+                        app:layout_constraintTop_toTopOf="@+id/textView1"
+                        tools:background="@drawable/bg_item_create_text_dddddd" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <Button
+                    android:id="@+id/btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/idp_45"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/idp_15"
+                    android:background="@drawable/mod_btn_confirm_selector"
+                    android:onClick="@{()->click.confirm()}"
+                    android:text="一键生成"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/mod_button_text_size"
+                    android:textStyle="bold"
+                    tools:text="一键生成" />
+
+
+            </LinearLayout>
+        </com.box.common.ui.layout.StatusLayout>
+    </LinearLayout>
+</layout>

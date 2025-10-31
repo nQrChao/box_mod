@@ -43,6 +43,8 @@ import com.box.mod.ui.fragment.ModFragment1001
 import com.box.mod.ui.fragment.ModFragment1002
 import com.box.mod.ui.fragment.ModFragment1003
 import com.box.mod.ui.fragment.ModFragment1004
+import com.box.mod.ui.fragment.ModFragmentGuJia
+import com.box.mod.ui.fragment.ModFragmentShengChengQi
 import com.box.other.blankj.utilcode.util.ActivityUtils
 import com.box.other.blankj.utilcode.util.AppUtils
 import com.box.other.blankj.utilcode.util.ColorUtils
@@ -288,8 +290,8 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
             // 根据配置的 fragmentId 创建对应的 Fragment 实例
             val fragment = when (config.fragmentId) {
                 1 -> ModFragment1.newInstance()
-                2 -> ModFragment1001.newInstance()
-                3 -> ModFragment1002.newInstance()
+                2 -> ModFragmentGuJia.newInstance()
+                3 -> ModFragmentShengChengQi.newInstance()
                 4 -> ModFragment1003.newInstance()
                 5 -> ModFragment1004.newInstance()
                 else -> throw IllegalArgumentException("Invalid fragmentId: ${config.fragmentId}")
