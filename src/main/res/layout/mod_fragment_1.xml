@@ -32,8 +32,8 @@
                 android:id="@+id/f1_title_user_img"
                 android:layout_width="@dimen/idp_50"
                 android:layout_height="@dimen/idp_50"
-                android:onClick="@{()->click.user()}"
                 android:layout_centerVertical="true"
+                android:onClick="@{()->click.user()}"
                 android:src="@drawable/mod_1_ic_user_icon"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -75,27 +75,48 @@
                     tools:text="ID：23279" />
             </LinearLayout>
 
-            <com.box.common.ui.view.DrawableTextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
                 android:background="@drawable/mod_bg_f1_title_user_soucang"
-                android:drawableStart="@drawable/mod_1_ic_shoucang"
-                android:drawablePadding="@dimen/idp_5"
-                android:ellipsize="end"
-                android:gravity="center_vertical"
-                android:maxLines="1"
-                android:onClick="@{()->click.shoucang()}"
-                android:paddingHorizontal="@dimen/idp_15"
-                android:paddingVertical="@dimen/idp_6"
-                android:text="收藏"
-                android:textColor="@color/black"
-                android:textSize="@dimen/isp_13"
-                android:textStyle="bold"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/idp_12"
+                android:paddingEnd="@dimen/idp_15"
+                android:paddingVertical="@dimen/idp_3"
                 app:layout_constraintBottom_toBottomOf="@id/f1_title_user_img"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/f1_title_user_img"
-                tools:text="收藏" />
+                app:layout_constraintTop_toTopOf="@id/f1_title_user_img">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/lottieShoucang"
+                    android:layout_width="@dimen/idp_30"
+                    android:layout_height="@dimen/idp_30"
+                    android:layout_gravity="center"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/star" />
+
+                <com.box.common.ui.view.DrawableTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:ellipsize="end"
+                    android:layout_marginStart="@dimen/idp_5"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:onClick="@{()->click.shoucang()}"
+                    android:text="收藏"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/isp_13"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/f1_title_user_img"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/f1_title_user_img"
+                    tools:text="收藏" />
+
+            </LinearLayout>
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.box.common.ui.layout.StatusLayout
@@ -117,6 +138,7 @@
                     android:layout_height="wrap_content" />
 
                 <androidx.core.widget.NestedScrollView
+                    android:id="@+id/nestedScrollView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -152,9 +174,9 @@
                             <ImageView
                                 android:id="@+id/image_estimate"
                                 android:layout_width="0dp"
-                                android:onClick="@{()->click.img2()}"
                                 android:layout_height="0dp"
                                 android:layout_marginEnd="@dimen/idp_5"
+                                android:onClick="@{()->click.img2()}"
                                 android:scaleType="fitCenter"
                                 android:src="@drawable/mod_ic_f1_bg2"
                                 app:layout_constraintBottom_toBottomOf="@id/image_ranking"
@@ -166,8 +188,8 @@
                                 android:id="@+id/image_generator"
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
-                                android:onClick="@{()->click.img3()}"
                                 android:layout_marginStart="@dimen/idp_5"
+                                android:onClick="@{()->click.img3()}"
                                 android:scaleType="fitCenter"
                                 android:src="@drawable/mod_ic_f1_bg3"
                                 app:layout_constraintDimensionRatio="1:1"
@@ -179,9 +201,9 @@
                                 android:id="@+id/image_ranking"
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
-                                android:onClick="@{()->click.img4()}"
                                 android:layout_marginStart="@dimen/idp_5"
                                 android:layout_marginTop="@dimen/idp_5"
+                                android:onClick="@{()->click.img4()}"
                                 android:scaleType="fitCenter"
                                 android:src="@drawable/mod_ic_f1_bg4"
                                 app:layout_constraintDimensionRatio="1:1"
@@ -189,7 +211,20 @@
                                 app:layout_constraintStart_toEndOf="@id/guideline_vertical_55"
                                 app:layout_constraintTop_toBottomOf="@id/image_generator" />
 
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:layout_width="163dp"
+                                android:layout_height="183dp"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="55dp"
+                                app:layout_constraintStart_toStartOf="@+id/image_discover"
+                                app:lottie_autoPlay="true"
+                                app:lottie_loop="true"
+                                app:lottie_rawRes="@raw/startop"
+                                tools:layout_editor_absoluteY="7dp" />
+
                             <TextView
+                                android:id="@+id/title"
                                 android:layout_width="@dimen/idp_180"
                                 android:layout_height="wrap_content"
                                 android:text="热门游戏赛事"
@@ -238,16 +273,34 @@
                                 app:layout_constraintEnd_toEndOf="@id/image_ranking"
                                 app:layout_constraintStart_toStartOf="@id/image_ranking" />
 
+
+                            <TextView
+                                android:layout_marginStart="@dimen/idp_10"
+                                android:id="@+id/saishiText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/idp_35"
+                                android:ellipsize="end"
+                                android:gravity="center_vertical"
+                                android:maxLines="1"
+                                android:text="热门游戏赛事"
+                                android:textColor="@color/text_default_color"
+                                android:textSize="@dimen/isp_18"
+                                android:textStyle="bold"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@id/text_ranking"/>
+
+
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/recyclerView"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/idp_20"
+                                android:layout_marginTop="@dimen/idp_10"
                                 android:nestedScrollingEnabled="false"
                                 android:overScrollMode="never"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/text_ranking"
+                                app:layout_constraintTop_toBottomOf="@id/saishiText"
                                 tools:itemCount="10"
                                 tools:listitem="@layout/mod_item_news" />
 
@@ -255,7 +308,7 @@
                     </LinearLayout>
                 </androidx.core.widget.NestedScrollView>
 
-                <com.box.other.scwang.smart.refresh.footer.BallPulseFooter
+                <com.box.other.scwang.smart.refresh.footer.ClassicsFooter
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout>

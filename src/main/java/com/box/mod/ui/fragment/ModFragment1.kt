@@ -171,7 +171,10 @@ class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Bindin
         }
 
         fun img1() {
-            Toaster.show("img1")
+            val targetView = mDataBinding.saishiText
+            val scrollView = mDataBinding.nestedScrollView
+            val yPosition = targetView.top
+            scrollView.smoothScrollTo(0, yPosition)
         }
 
         fun img2() {

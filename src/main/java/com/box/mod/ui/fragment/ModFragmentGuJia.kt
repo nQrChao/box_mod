@@ -16,16 +16,20 @@ import com.box.base.base.viewmodel.BaseViewModel
 import com.box.base.callback.databind.IntObservableField
 import com.box.base.callback.databind.StringObservableField
 import com.box.base.network.NetState
+import com.box.common.DecimalDigitsInputFilter
 import com.box.common.MMKVConfig
 import com.box.common.appContext
 import com.box.mod.R
 import com.box.mod.databinding.ModFragmentGujiaBinding
+import com.box.mod.ui.xpop.ModXPopupCenterGuJia
 import com.box.mod.view.xpop.ModXPopupCenterPermissions
 import com.box.other.blankj.utilcode.util.ColorUtils
 import com.box.other.hjq.titlebar.TitleBar
 import com.box.other.hjq.toast.Toaster
 import com.box.other.immersionbar.immersionBar
 import com.box.other.xpopup.XPopup
+import kotlin.math.roundToInt
+import kotlin.random.Random
 import com.box.com.R as RC
 
 
@@ -63,6 +67,13 @@ class ModFragmentGuJia : BaseTitleBarFragment<ModFragmentGuJia.Model, ModFragmen
             statusBarDarkFont(true)
             init()
         }
+        val gamePriceEdit = mDataBinding.gamePriceEdit
+        val existingFilters = gamePriceEdit.filters
+        val newFilters = existingFilters.toMutableList()
+        newFilters.add(DecimalDigitsInputFilter(2))
+        gamePriceEdit.filters = newFilters.toTypedArray()
+
+
     }
 
     override fun isStatusBarEnabled(): Boolean {
@@ -103,25 +114,47 @@ class ModFragmentGuJia : BaseTitleBarFragment<ModFragmentGuJia.Model, ModFragmen
             selectPhoto(3)
         }
         fun confirm() {
-
+            val priceText = mViewModel.getCalculatedPrice(mViewModel.gamePrice.get())
             val errorMessage = mViewModel.getValidationError()
             if (errorMessage != null) {
                 if (mViewModel.gameName.get().isEmpty()) {
                     mDataBinding.gameNameEdit.startAnimation(AnimationUtils.loadAnimation(appContext, RC.anim.shake_anim))
                 } else if (mViewModel.gameNickName.get().isEmpty()) {
                     mDataBinding.gameNickNameEdit.startAnimation(AnimationUtils.loadAnimation(appContext, RC.anim.shake_anim))
-                }  else if (mViewModel.gameServerName.get().isEmpty()) {
+                }  else if (mViewModel.gameServerName.get().isEmpty() ) {
                     mDataBinding.gameServerEdit.startAnimation(AnimationUtils.loadAnimation(appContext, RC.anim.shake_anim))
-                } else if (mViewModel.gamePrice.get().isEmpty()) {
+                } else if (mViewModel.gamePrice.get().isEmpty() )  {
+                    mDataBinding.gamePriceEdit.startAnimation(AnimationUtils.loadAnimation(appContext, RC.anim.shake_anim))
+                }  else if (priceText == null)  {
                     mDataBinding.gamePriceEdit.startAnimation(AnimationUtils.loadAnimation(appContext, RC.anim.shake_anim))
                 } else if (mViewModel.pic1Uri.get() == null && mViewModel.pic2Uri.get() == null && mViewModel.pic3Uri.get() == null) {
                     mDataBinding.gameAddPicLayout.startAnimation(AnimationUtils.loadAnimation(appContext, RC.anim.shake_anim))
                 }
-
                 Toaster.show(errorMessage)
                 return
             }
-            mViewModel.clearData()
+
+            val contentText = mViewModel.gameName.get()+","+
+                    mViewModel.gameNickName.get()+","+
+                    mViewModel.gameServerName.get()+",实充"+mViewModel.gamePrice.get()
+
+            XPopup.Builder(context)
+                .dismissOnTouchOutside(false)
+                .dismissOnBackPressed(false)
+                .isDestroyOnDismiss(true)
+                .hasStatusBar(true)
+                .isLightStatusBar(true)
+                .animationDuration(5)
+                .navigationBarColor(ColorUtils.getColor(RC.color.xpop_shadow_color))
+                .hasNavigationBar(true)
+                .asCustom(
+                    ModXPopupCenterGuJia(mActivity, contentText,priceText.toString(),{
+                    }) {
+
+                    })
+                .show()
+
+            //mViewModel.clearData()
 
 
 
@@ -187,7 +220,8 @@ class ModFragmentGuJia : BaseTitleBarFragment<ModFragmentGuJia.Model, ModFragmen
                 Pair( { gameName.get().isEmpty() }, "请填写游戏名" ),
                 Pair( { gameNickName.get().isEmpty() }, "请填写角色名" ),
                 Pair( { gameServerName.get().isEmpty() }, "请填写区服名" ),
-                Pair( { gamePrice.get().isEmpty() }, "请填写实充金额" ),
+                Pair( { getCalculatedPrice(gamePrice.get()) == null}, "请填写实充金额" ),
+                Pair( { gamePrice.get().isEmpty() }, "请填写正确的实充金额" ),
                 Pair( { pic1Uri.get() == null && pic2Uri.get() == null && pic3Uri.get() == null}, "请上传角色信息截图，至少上传1张截图" ),
             )
             // 遍历规则，找到第一个不满足的并返回错误信息
@@ -198,6 +232,24 @@ class ModFragmentGuJia : BaseTitleBarFragment<ModFragmentGuJia.Model, ModFragmen
             }
             // 所有规则都通过
             return null
+        }
+
+        /**
+         * 计算随机折扣价
+         *
+         * @param priceString 可能是整数或Double的原始价格字符串
+         * @return 计算后的价格 (Double)，如果输入无效则返回 null
+         */
+        fun getCalculatedPrice(priceString: String?): Double? {
+            val priceNumber: Double? = priceString?.toDoubleOrNull()
+            if (priceNumber == null) {
+                // 字符串是 null 或是无效数字 (如 "abc")
+                println("无法解析价格: $priceString")
+                return null
+            }
+            val randomMultiplier = Random.nextDouble(0.1, 0.4)
+            val roundedResult = (priceNumber * randomMultiplier * 100.00).roundToInt() / 100.00
+            return roundedResult
         }
 
     }

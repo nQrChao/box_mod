@@ -88,6 +88,7 @@
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:textStyle="bold"
                                 android:layout_weight="2.5"
                                 android:gravity="end"
                                 android:paddingEnd="@dimen/idp_10"
@@ -125,7 +126,7 @@
                             android:id="@+id/gameNickNameLayout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/idp_15"
+                            android:layout_marginTop="@dimen/idp_18"
                             android:orientation="horizontal"
                             android:weightSum="10"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -135,6 +136,7 @@
                             <TextView
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:textStyle="bold"
                                 android:layout_weight="2.5"
                                 android:gravity="end"
                                 android:paddingEnd="@dimen/idp_10"
@@ -171,7 +173,7 @@
                             android:id="@+id/gameServerNameLayout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/idp_15"
+                            android:layout_marginTop="@dimen/idp_18"
                             android:orientation="horizontal"
                             android:weightSum="10"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -184,6 +186,7 @@
                                 android:layout_weight="2.5"
                                 android:gravity="end"
                                 android:paddingEnd="@dimen/idp_10"
+                                android:textStyle="bold"
                                 android:text="区服名"
                                 android:textColor="@color/text_default_color"
                                 android:textSize="@dimen/mod_edit_title_text_size" />
@@ -217,7 +220,7 @@
                             android:id="@+id/gamePriceLayout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/idp_15"
+                            android:layout_marginTop="@dimen/idp_18"
                             android:orientation="horizontal"
                             android:weightSum="10"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -231,6 +234,7 @@
                                 android:gravity="end"
                                 android:paddingEnd="@dimen/idp_10"
                                 android:text="实充金额"
+                                android:textStyle="bold"
                                 android:textColor="@color/text_default_color"
                                 android:textSize="@dimen/mod_edit_title_text_size" />
 
@@ -242,6 +246,7 @@
                                 android:background="@drawable/bg_item_edit_text"
                                 android:gravity="start"
                                 android:hint="请填写实充金额"
+                                android:inputType="numberDecimal"
                                 android:paddingHorizontal="@dimen/idp_10"
                                 android:paddingVertical="@dimen/idp_8"
                                 android:text="@={vm.gamePrice}"
@@ -280,6 +285,8 @@
                             android:id="@+id/gamePicTitle"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="@dimen/idp_10"
                             android:layout_marginHorizontal="@dimen/idp_11"
                             android:layout_weight="5"
                             android:gravity="start"
@@ -290,7 +297,7 @@
                         <LinearLayout
                             android:id="@+id/gameAddPicLayout"
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/idp_110"
+                            android:layout_height="@dimen/idp_120"
                             android:layout_marginHorizontal="@dimen/idp_10"
                             android:layout_marginTop="@dimen/idp_12"
                             android:background="@drawable/bg_item_pic_layout"
@@ -303,16 +310,16 @@
 
                             <ImageView
                                 android:id="@+id/addPic1"
-                                android:layout_width="@dimen/idp_75"
-                                android:layout_height="@dimen/idp_75"
+                                android:layout_width="@dimen/idp_70"
+                                android:layout_height="@dimen/idp_70"
                                 android:onClick="@{() -> click.addPic1()}"
                                 app:loadImagePickMediaUri="@{vm.pic1Uri}"
                                 tools:src="@drawable/mod_add_pic_2" />
 
                             <ImageView
                                 android:id="@+id/addPic2"
-                                android:layout_width="@dimen/idp_75"
-                                android:layout_height="@dimen/idp_75"
+                                android:layout_width="@dimen/idp_70"
+                                android:layout_height="@dimen/idp_70"
                                 android:layout_marginHorizontal="@dimen/idp_30"
                                 android:onClick="@{() -> click.addPic2()}"
                                 app:loadImagePickMediaUri="@{vm.pic2Uri}"
@@ -320,8 +327,8 @@
 
                             <ImageView
                                 android:id="@+id/addPic3"
-                                android:layout_width="@dimen/idp_75"
-                                android:layout_height="@dimen/idp_75"
+                                android:layout_width="@dimen/idp_70"
+                                android:layout_height="@dimen/idp_70"
                                 android:onClick="@{() -> click.addPic3()}"
                                 app:loadImagePickMediaUri="@{vm.pic3Uri}"
                                 tools:src="@drawable/mod_add_pic_2" />
@@ -332,7 +339,7 @@
                             android:id="@+id/gamePicTitle2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/idp_12"
+                            android:layout_marginTop="@dimen/idp_15"
                             android:gravity="center"
                             android:text="建议上传1-3张角色信息截图"
                             android:textColor="@color/text_default_color"
@@ -345,7 +352,7 @@
                             android:id="@+id/gameDataTips"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/idp_3"
+                            android:layout_marginTop="@dimen/idp_5"
                             android:gravity="center"
                             android:text="注：带*为必填项"
                             android:textColor="#8A8A8A"
@@ -363,10 +370,10 @@
         </com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout>
 
         <LinearLayout
+            android:paddingHorizontal="@dimen/idp_20"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="@drawable/bg_card_simulation"
             android:orientation="vertical"
             android:paddingVertical="@dimen/idp_15">
 

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gujia_xpop_bg"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingVertical="@dimen/idp_15">
+
+            <ImageView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/idp_27"
+                android:layout_gravity="center"
+                android:src="@drawable/gujia_title_text" />
+
+        </LinearLayout>
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/idp_20"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/idp_200"
+                android:background="@drawable/button_around_white_15_selector"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/idp_20"
+                    android:paddingHorizontal="@dimen/idp_25"
+                    android:textColor="#4F4F4F"
+                    android:textSize="@dimen/isp_18"
+                    app:layout_constraintStart_toStartOf="@+id/tv_title"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_title"
+                    tools:text="少年三国志，吃兜兜的糖，32区服，实充1289元。" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/idp_20"
+                    android:background="@drawable/bg_search"
+                    android:gravity="center_horizontal"
+                    android:paddingHorizontal="@dimen/idp_30"
+                    android:paddingVertical="@dimen/idp_10"
+                    android:text="估算价值"
+                    android:textIsSelectable="true"
+                    android:textColor="@color/text_default_color"
+                    android:textSize="@dimen/isp_17"
+                    android:textStyle="bold"
+                    tools:text="估算价值" />
+
+                <TextView
+                    android:id="@+id/tv_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginHorizontal="@dimen/idp_20"
+                    android:layout_marginTop="@dimen/idp_10"
+                    android:layout_marginBottom="@dimen/idp_25"
+                    android:gravity="center_horizontal"
+                    android:paddingVertical="@dimen/idp_10"
+                    android:text="估算价值"
+                    android:textColor="#FF3F3F"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/isp_22"
+                    android:textStyle="bold"
+                    tools:text="666.66元" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/idp_15"
+            android:paddingVertical="@dimen/idp_10"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/tv_cancel"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/idp_50"
+                android:layout_margin="@dimen/idp_10"
+                android:layout_weight="2"
+                android:background="@drawable/mod_btn_cancel_selector"
+                android:gravity="center"
+                android:text="我知道了"
+                android:textColor="@color/white"
+                android:textSize="@dimen/isp_17"
+                android:textStyle="bold" />
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/tv_confirm"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/idp_35"
+                android:layout_margin="@dimen/idp_10"
+                android:layout_weight="1"
+                android:background="@drawable/mod_btn_confirm_selector"
+                android:gravity="center"
+                android:text="点此复制"
+                android:textColor="@color/white"
+                android:textSize="@dimen/isp_14"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>
