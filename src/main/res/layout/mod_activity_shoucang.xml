@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.box.mod.ui.activity.ModActivityShouCang.Model" />
+
+        <variable
+            name="click"
+            type="com.box.mod.ui.activity.ModActivityShouCang.ProxyClick" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <com.box.other.hjq.titlebar.TitleBar
+            android:id="@+id/titleBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/idp_40"
+            android:background="@color/white"
+            android:gravity="center"
+            app:leftTitleColor="@color/black90"
+            app:leftTitleSize="@dimen/isp_17"
+            app:leftTitleStyle="bold"
+            app:lineVisible="true"
+            app:titleColor="@color/black90"
+            app:titleSize="@dimen/isp_16"
+            app:titleStyle="bold" />
+
+
+        <com.box.common.ui.layout.StatusLayout
+            android:id="@+id/status_loading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/idp_10">
+
+                <com.box.other.tablayout.DslTabLayout
+                    android:id="@+id/tab"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:minHeight="@dimen/idp_35"
+                    android:paddingHorizontal="@dimen/idp_30"
+                    app:tab_border_radius_size="@dimen/idp_5"
+                    app:tab_border_stroke_color="@color/red"
+                    app:tab_default_index="0"
+                    app:tab_deselect_color="@color/common_text_color_sec_gray"
+                    app:tab_draw_border="false"
+                    app:tab_icon_view_id="@id/text_view"
+                    app:tab_indicator_drawable="@drawable/mod_left_lin_drawable"
+                    app:tab_indicator_height="5dp"
+                    app:tab_indicator_width="50dp"
+                    app:tab_item_is_equ_width="true"
+                    app:tab_select_color="@color/text_default_color"
+                    tools:tab_default_index="0">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:paddingHorizontal="@dimen/idp_10"
+                        android:paddingVertical="@dimen/idp_5"
+                        android:text="角色名收藏"
+                        android:textColor="@{vm.isSelect() == 0?@color/text_default_color:@color/common_text_color_sec_gray}"
+                        android:textSize="@dimen/isp_14"
+                        android:textStyle="bold"
+                        tools:textColor="@color/text_default_color" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/idp_3"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:paddingHorizontal="@dimen/idp_10"
+                        android:paddingVertical="@dimen/idp_5"
+                        android:text="小游戏收藏"
+                        android:textColor="@{vm.isSelect() == 1?@color/text_default_color:@color/common_text_color_sec_gray}"
+                        android:textSize="@dimen/isp_14"
+                        android:textStyle="bold"
+                        tools:textColor="@color/text_default_color" />
+
+                </com.box.other.tablayout.DslTabLayout>
+
+                <LinearLayout
+                    android:id="@+id/nullDataLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:visibility="@{vm.hasData?View.GONE:View.VISIBLE}">
+
+                    <ImageView
+                        android:id="@+id/pic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/idp_80"
+                        android:src="@drawable/status_empty_ic" />
+
+                    <TextView
+                        android:id="@+id/modPreviewPic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/idp_20"
+                        android:text="暂无收藏内容"
+                        android:textColor="@color/bbl_999999"
+                        android:textSize="@dimen/isp_16" />
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/idp_15"
+                    android:orientation="horizontal"
+                    android:visibility="@{vm.isSelect()== 0?View.VISIBLE:View.GONE}"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/mod_item_rank" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/idp_15"
+                    android:orientation="horizontal"
+                    android:visibility="@{vm.isSelect()== 1?View.VISIBLE:View.GONE}"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/mod_item_juese_list" />
+
+            </LinearLayout>
+
+        </com.box.common.ui.layout.StatusLayout>
+
+
+    </LinearLayout>
+</layout>

@@ -39,10 +39,8 @@ import com.box.common.utils.logcat.LogcatDialog
 import com.box.mod.R
 import com.box.mod.databinding.ModActivityMainBinding
 import com.box.mod.ui.fragment.ModFragment1
-import com.box.mod.ui.fragment.ModFragment1001
-import com.box.mod.ui.fragment.ModFragment1002
-import com.box.mod.ui.fragment.ModFragment1003
 import com.box.mod.ui.fragment.ModFragment1004
+import com.box.mod.ui.fragment.ModFragmentGameList
 import com.box.mod.ui.fragment.ModFragmentGuJia
 import com.box.mod.ui.fragment.ModFragmentShengChengQi
 import com.box.other.blankj.utilcode.util.ActivityUtils
@@ -292,7 +290,7 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
                 1 -> ModFragment1.newInstance()
                 2 -> ModFragmentGuJia.newInstance()
                 3 -> ModFragmentShengChengQi.newInstance()
-                4 -> ModFragment1003.newInstance()
+                4 -> ModFragmentGameList.newInstance()
                 5 -> ModFragment1004.newInstance()
                 else -> throw IllegalArgumentException("Invalid fragmentId: ${config.fragmentId}")
             }
@@ -306,10 +304,11 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
                 .normalIcon(ResourceUtils.getDrawable(config.normalIcon))
                 .selectedIcon(ResourceUtils.getDrawable(config.selectedIcon))
                 .title(config.title)
-                .titleTextSize(SizeUtils.px2sp(resources.getDimension(RC.dimen.isp_13)))
+                .titleTextBold(true)
+                .titleTextSize(SizeUtils.px2sp(resources.getDimension(RC.dimen.isp_12)))
                 .setTitleNormalColor("#${config.titleNormalColor}".toColorInt())
                 .setTitleSelectedColor("#${config.titleSelectedColor}".toColorInt())
-                .marginTop(SizeUtils.dp2px(-5f))
+                .marginTop(SizeUtils.dp2px(-2f))
                 .openTouchBg(true)
                 .touchDrawable(ContextCompat.getDrawable(this, RC.drawable.transparent_selector))
                 .iconWidth(SizeUtils.dp2px(27f))

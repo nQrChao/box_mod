@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gujia_xpop_bg"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/idp_60"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginVertical="@dimen/idp_15"
+                android:gravity="center"
+                android:src="@drawable/gujia_title_text"
+                android:text="角色名生成结果"
+                android:textColor="@color/white"
+                android:textSize="@dimen/isp_23"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/iv_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:paddingHorizontal="@dimen/idp_20"
+                android:src="@drawable/close_g_ic_white" />
+
+        </RelativeLayout>
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/idp_20"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_around_white_15_selector"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/tv_content"
+                    android:layout_width="match_parent"
+                    android:layout_marginHorizontal="@dimen/idp_25"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginVertical="@dimen/idp_30"
+                    android:background="@drawable/bg_search"
+                    android:gravity="center_horizontal"
+                    android:paddingHorizontal="@dimen/idp_40"
+                    android:paddingVertical="@dimen/idp_10"
+                    android:text=""
+                    android:textColor="@color/text_default_color"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/isp_17"
+                    android:textStyle="bold"
+                    tools:text="青崖白鹿‌" />
+
+                <TextView
+                    android:id="@+id/tv_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginHorizontal="@dimen/idp_20"
+                    android:layout_marginTop="@dimen/idp_10"
+                    android:layout_marginBottom="@dimen/idp_25"
+                    android:gravity="center_horizontal"
+                    android:paddingVertical="@dimen/idp_10"
+                    android:text="估算价值"
+                    android:textColor="#FF3F3F"
+                    android:textIsSelectable="true"
+                    android:textSize="@dimen/isp_22"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    tools:text="666.66元" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/idp_15"
+            android:paddingVertical="@dimen/idp_10"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/tv_shoucang"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/idp_50"
+                android:layout_margin="@dimen/idp_10"
+                android:layout_weight="1"
+                android:background="@drawable/mod_btn_cancel_selector"
+                android:gravity="center"
+                android:text="收藏"
+                android:textColor="@color/white"
+                android:textSize="@dimen/isp_17"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_copy"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/idp_50"
+                android:layout_margin="@dimen/idp_10"
+                android:layout_weight="1"
+                android:background="@drawable/mod_btn_confirm_selector"
+                android:gravity="center"
+                android:text="复制"
+                android:textColor="@color/white"
+                android:textSize="@dimen/isp_17"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

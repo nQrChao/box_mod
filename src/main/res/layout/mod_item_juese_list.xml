@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.box.other.blankj.utilcode.util.StringUtils" />
+
+        <variable
+            name="modData"
+            type="com.box.common.data.model.ModDataBean" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:paddingVertical="@dimen/idp_5">
+
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="start"
+            android:maxLines="1"
+            android:text="@{modData.name}"
+            android:textColor="@color/text_default_color"
+            android:textSize="@dimen/isp_14"
+            android:textStyle="bold"
+            tools:text="仙剑奇侠传" />
+
+        <ImageView
+            android:id="@+id/copy"
+            android:layout_width="@dimen/idp_22"
+            android:layout_height="@dimen/idp_22"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/idp_15"
+            android:layout_toStartOf="@id/shoucang"
+            android:src="@drawable/mod_ic_copy" />
+
+        <ImageView
+            android:id="@+id/shoucang"
+            android:layout_width="@dimen/idp_22"
+            android:layout_height="@dimen/idp_22"
+            android:layout_marginEnd="@dimen/idp_15"
+            android:layout_toStartOf="@id/del"
+            android:src="@{modData.isShouCang ? @drawable/mod_ic_shoucang1 : @drawable/mod_ic_shoucang0}" />
+
+        <ImageView
+            android:id="@+id/del"
+            android:layout_width="@dimen/idp_22"
+            android:layout_height="@dimen/idp_22"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/mod_ic_del" />
+
+    </RelativeLayout>
+
+
+</layout>
+

@@ -1,5 +1,7 @@
 package com.box.mod.ui.activity
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.WindowManager
@@ -11,14 +13,14 @@ import com.box.common.AppInit
 import com.box.common.MMKVConfig
 import com.box.common.appViewModel
 import com.box.common.eventViewModel
+import com.box.mod.R
+import com.box.mod.databinding.ModActivitySplashBinding
 import com.box.mod.ui.xpop.ModXPopupCenterProtocol
 import com.box.mod.ui.xpop.ModXPopupCenterTip
-import com.box.mod.R
-import com.box.com.R as RC
-import com.box.mod.databinding.ModActivitySplashBinding
 import com.box.other.blankj.utilcode.util.ColorUtils
 import com.box.other.hjq.toast.Toaster
 import com.box.other.xpopup.XPopup
+import com.box.com.R as RC
 
 @SuppressLint("CustomSplashScreen")
 class ModSplashActivity : BaseModVmDbActivity<ModSplashModel, ModActivitySplashBinding>() {
@@ -30,7 +32,14 @@ class ModSplashActivity : BaseModVmDbActivity<ModSplashModel, ModActivitySplashB
     override fun initView(savedInstanceState: Bundle?) {
         window.addFlags(WindowManager.LayoutParams.FLAG_SECURE)
         //throw IllegalArgumentException("are you ok?")
-        mViewModel.xyInit()
+        mDataBinding.vm = mViewModel
+        mDataBinding.click = ProxyClick()
+        mDataBinding.splashLottie.addAnimatorListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator) {
+                mDataBinding.splashLottie.removeAnimatorListener(this)
+                mViewModel.xyInit()
+            }
+        })
     }
 
     override fun createObserver() {
@@ -98,7 +107,6 @@ class ModSplashActivity : BaseModVmDbActivity<ModSplashModel, ModActivitySplashB
     private fun agreeInit() {
         MMKVConfig.permissionsUser = true
         AppInit.initCNOAID()
-
         startMain()
     }
 
@@ -108,6 +116,14 @@ class ModSplashActivity : BaseModVmDbActivity<ModSplashModel, ModActivitySplashB
     }
 
     override fun onNetworkStateChanged(it: NetState) {
+
+    }
+
+
+    inner class ProxyClick {
+        fun confirm() {
+
+        }
 
     }
 
