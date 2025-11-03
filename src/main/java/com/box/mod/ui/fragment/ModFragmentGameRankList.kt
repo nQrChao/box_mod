@@ -25,7 +25,7 @@ import com.box.common.ui.layout.StatusLayout
 import com.box.common.utils.logsE
 import com.box.mod.BR.modData
 import com.box.mod.R
-import com.box.mod.databinding.ModFragmentGameListBinding
+import com.box.mod.databinding.ModFragmentGameRankListBinding
 import com.box.mod.databinding.ModItemRankBinding
 import com.box.mod.ui.activity.ModActivityShouCang
 import com.box.other.blankj.utilcode.util.GsonUtils
@@ -36,8 +36,8 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 
 
-class ModFragmentGameList :
-    BaseTitleBarFragment<ModFragmentGameList.Model, ModFragmentGameListBinding>(), StatusAction {
+class ModFragmentGameRankList :
+    BaseTitleBarFragment<ModFragmentGameRankList.Model, ModFragmentGameRankListBinding>(), StatusAction {
     private var type = 0
     private val pageSize = 10
     private var currentPage = 1
@@ -47,11 +47,11 @@ class ModFragmentGameList :
 
     override val mViewModel: Model by viewModels()
 
-    override fun layoutId(): Int = R.layout.mod_fragment_game_list
+    override fun layoutId(): Int = R.layout.mod_fragment_game_rank_list
 
     companion object {
-        fun newInstance(): ModFragmentGameList {
-            return ModFragmentGameList()
+        fun newInstance(): ModFragmentGameRankList {
+            return ModFragmentGameRankList()
         }
     }
     override fun lazyLoadData() {

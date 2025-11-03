@@ -25,6 +25,7 @@ import com.box.base.base.activity.BaseModVmDbActivity
 import com.box.base.ext.parseModStateWithMsg
 import com.box.base.network.NetState
 import com.box.common.INTENT_KEY_OUT_IMAGE_LIST
+import com.box.common.MMKVConfig
 import com.box.common.RESULT_CODE_SELECT_PHOTO
 import com.box.common.appViewModel
 import com.box.common.data.model.ModMainTabConfig
@@ -40,7 +41,7 @@ import com.box.mod.R
 import com.box.mod.databinding.ModActivityMainBinding
 import com.box.mod.ui.fragment.ModFragment1
 import com.box.mod.ui.fragment.ModFragment1004
-import com.box.mod.ui.fragment.ModFragmentGameList
+import com.box.mod.ui.fragment.ModFragmentGameRankList
 import com.box.mod.ui.fragment.ModFragmentGuJia
 import com.box.mod.ui.fragment.ModFragmentShengChengQi
 import com.box.other.blankj.utilcode.util.ActivityUtils
@@ -152,6 +153,12 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
         mDataBinding.vm = mViewModel
         supportActionBar?.hide()
         activity = this
+
+        MMKVConfig.userInfo?.let { savedUser ->
+            appViewModel.isLogin = true
+            appViewModel.modUserInfo.value = savedUser
+        }
+
         bottomBarLayout = findViewById(R.id.bbl)
         loadDynamicBottomBar()
 
@@ -274,6 +281,8 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
             }
         }
 
+
+
         mViewModel.modAuthLogin()
     }
 
@@ -291,7 +300,7 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
                 1 -> ModFragment1.newInstance()
                 2 -> ModFragmentGuJia.newInstance()
                 3 -> ModFragmentShengChengQi.newInstance()
-                4 -> ModFragmentGameList.newInstance()
+                4 -> ModFragmentGameRankList.newInstance()
                 5 -> ModFragment1004.newInstance()
                 else -> throw IllegalArgumentException("Invalid fragmentId: ${config.fragmentId}")
             }
@@ -369,7 +378,7 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
                 onSuccess = { data, msg ->
                 },
                 onError = {
-                    Toaster.show(it.msg)
+                    //Toaster.show(it.msg)
                 }
             )
         }

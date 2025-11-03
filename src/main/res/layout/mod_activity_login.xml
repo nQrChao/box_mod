@@ -43,23 +43,33 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <View
-            android:id="@+id/ic_return"
-            android:layout_width="@dimen/idp_1"
-            android:layout_height="@dimen/idp_50"
-            android:layout_marginTop="@dimen/idp_25" />
+        <com.box.other.hjq.titlebar.TitleBar
+            android:id="@+id/titleBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/idp_40"
+            android:background="@color/transparent"
+            android:gravity="center"
+            app:leftTitleColor="@color/black90"
+            app:leftTitleSize="@dimen/isp_17"
+            app:leftTitleStyle="bold"
+            app:lineVisible="false"
+            app:titleColor="@color/black90"
+            app:titleSize="@dimen/isp_16"
+            app:titleStyle="bold" />
+
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@id/titleBar"
             android:fadeScrollbars="true">
 
             <LinearLayout
-                android:layout_marginTop="@dimen/idp_50"
-                android:paddingHorizontal="@dimen/idp_20"
+                android:id="@+id/contentContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/idp_20">
 
                 <TextView
                     android:id="@+id/login_title_text1"
@@ -79,24 +89,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/idp_5"
                     android:onClick="@{()-> click.testClick()}"
-                    android:text="@{StringUtils.format(&quot;欢迎使用%s&quot;, vm.pName)}"
+                    android:text="@{StringUtils.format(&quot;欢迎使用 %s&quot;, vm.pName)}"
                     android:textColor="@color/text_default_color"
                     android:textSize="@dimen/isp_20"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/login_title_text1"
                     tools:text="欢迎使用" />
 
                 <LinearLayout
                     android:id="@+id/mobile_ll"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/idp_60"
+                    android:layout_height="@dimen/idp_70"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginTop="@dimen/idp_30"
+                    android:layout_marginTop="@dimen/idp_35"
                     android:gravity="center_vertical"
-                    android:orientation="vertical"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/login_title_text2">
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -105,7 +111,7 @@
                         android:text="用户名"
                         android:textColor="@color/text_default_color"
                         android:textColorHint="@color/text_default_color"
-                        android:textSize="@dimen/isp_12" />
+                        android:textSize="@dimen/isp_14" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -115,22 +121,22 @@
                         android:orientation="horizontal">
 
                         <com.box.common.ui.view.ClearEditText
-                            android:id="@+id/login_mobile"
+                            android:id="@+id/uname"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@null"
+                            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
                             android:hint="请输入用户名"
-                            android:inputType="number"
-                            android:lines="1"
-                            android:maxLength="11"
+                            android:inputType="textEmailAddress"
+                            android:maxLength="16"
+                            android:maxLines="1"
                             android:paddingHorizontal="@dimen/idp_10"
                             android:singleLine="true"
                             android:text="@={vm.uName}"
                             android:textColor="@color/black"
                             android:textColorHint="@color/text_hit_color"
-                            android:textSize="@dimen/isp_14"
-                            app:regexType="mobile" />
+                            android:textSize="@dimen/isp_15" />
 
                     </LinearLayout>
 
@@ -143,9 +149,7 @@
                     android:layout_height="@dimen/idp_60"
                     android:layout_marginTop="@dimen/idp_10"
                     android:gravity="center_vertical"
-                    android:orientation="vertical"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/mobile_ll">
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -153,9 +157,7 @@
                         android:text="密码"
                         android:textColor="@color/text_default_color"
                         android:textColorHint="@color/text_default_color"
-                        android:textSize="@dimen/isp_12"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/text2" />
+                        android:textSize="@dimen/isp_14" />
 
                     <com.box.common.ui.view.PasswordEditText
                         android:id="@+id/login_password"
@@ -165,97 +167,151 @@
                         android:background="@null"
                         android:hint="请输入密码"
                         android:inputType="text"
-                        android:lines="1"
+                        android:maxLength="16"
+                        android:maxLines="1"
                         android:paddingHorizontal="@dimen/idp_10"
                         android:text="@={vm.password}"
                         android:textColor="@color/black"
                         android:textColorHint="@color/text_hit_color"
-                        android:textSize="@dimen/isp_14" />
+                        android:textSize="@dimen/isp_15" />
 
                     <View style="@style/HorizontalLineStyle" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/loginForget"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:onClick="@{()-> click.forgetPwd()}"
-                    android:paddingTop="@dimen/idp_5"
-                    android:text="忘记密码"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/isp_13"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/password_ll" />
-
-                <Button
-                    android:id="@+id/loginSub"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/idp_40"
-                    android:layout_marginTop="@dimen/idp_30"
-                    android:layout_marginBottom="@dimen/idp_10"
-                    android:background="@drawable/button_submit_selector"
-                    android:gravity="center"
-                    android:text="登录"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/isp_15"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/loginForget"
-                    app:noRepeatClick="@{click::login}" />
-
-
-                <LinearLayout
-                    android:id="@+id/reg_text_ll"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/idp_10"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/loginSub">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="没有账号？"
-                        android:textColor="@color/text_hit_color"
-                        android:textSize="@dimen/isp_14" />
-
-                    <TextView
-                        android:id="@+id/loginGoregister"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="立即注册"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/isp_14"
-                        bind:noRepeatClick="@{()-> click.goRegister()}" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/reg_text_ll">
+                    android:visibility="@{vm.isLoginView()?View.GONE:View.VISIBLE}">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:id="@+id/password2_ll"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/idp_60"
+                        android:layout_marginTop="@dimen/idp_10"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="确认密码"
+                            android:textColor="@color/text_default_color"
+                            android:textColorHint="@color/text_default_color"
+                            android:textSize="@dimen/isp_14" />
+
+                        <com.box.common.ui.view.PasswordEditText
+                            android:id="@+id/login_password2"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:hint="请再次输入密码"
+                            android:inputType="text"
+                            android:maxLength="16"
+                            android:maxLines="1"
+                            android:paddingHorizontal="@dimen/idp_10"
+                            android:text="@={vm.password2}"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/text_hit_color"
+                            android:textSize="@dimen/isp_15" />
+
+                        <View style="@style/HorizontalLineStyle" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/regSubmit"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/idp_40"
+                        android:layout_marginTop="@dimen/idp_30"
+                        android:layout_marginBottom="@dimen/idp_10"
+                        android:background="@drawable/button_submit_selector"
+                        android:gravity="center"
+                        android:text="注册"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/isp_15"
+                        android:textStyle="bold"
+                        app:noRepeatClick="@{click::goRegister}" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/idp_30"
-                        android:text="其他登录方式"
-                        android:textColor="@color/text_hit_color"
-                        android:textSize="@dimen/isp_14"
-                        android:visibility="gone"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/login_other_ll" />
+                        android:layout_marginTop="@dimen/idp_10"
+                        android:gravity="center"
+                        android:orientation="horizontal">
 
+                        <TextView
+                            android:id="@+id/reLoginView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="@{()-> click.toLoginView()}"
+                            android:text="返回登录"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/isp_14" />
+                    </LinearLayout>
 
                 </LinearLayout>
 
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="@{vm.isLoginView()?View.VISIBLE:View.GONE}">
+
+                    <TextView
+                        android:id="@+id/loginForget"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:onClick="@{()-> click.forgetPwd()}"
+                        android:paddingTop="@dimen/idp_5"
+                        android:text="忘记密码"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/isp_14"
+                        android:visibility="gone" />
+
+                    <Button
+                        android:id="@+id/loginSub"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/idp_40"
+                        android:layout_marginTop="@dimen/idp_30"
+                        android:layout_marginBottom="@dimen/idp_10"
+                        android:background="@drawable/button_submit_selector"
+                        android:gravity="center"
+                        android:text="登录"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/isp_15"
+                        android:textStyle="bold"
+                        app:noRepeatClick="@{click::login}" />
+
+                    <LinearLayout
+                        android:id="@+id/reg_text_ll"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/idp_10"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="没有账号？"
+                            android:textColor="@color/text_hit_color"
+                            android:textSize="@dimen/isp_14" />
+
+                        <TextView
+                            android:id="@+id/loginGoregister"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="@{()-> click.toRegisterView()}"
+                            android:text="立即注册"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/isp_14" />
+                    </LinearLayout>
+                </LinearLayout>
 
             </LinearLayout>
         </ScrollView>
@@ -274,16 +330,19 @@
                 android:id="@+id/agreementButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="center_vertical"
                 android:background="@null"
-                android:button="@drawable/radiobutton_selector"
+                android:button="@drawable/checkbox_fillet_selector"
                 android:checked="false"
+                android:scaleX="0.8"
+                android:scaleY="0.8"
                 app:checkChange="@{click.agreementButtonChangeListener}" />
 
             <TextView
                 android:id="@+id/tv_agree"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_marginStart="@dimen/idp_10"
                 android:text="我已阅读并同意《隐私协议》、《用户协议》"
                 android:textColor="@color/text_default_color"

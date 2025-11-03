@@ -24,7 +24,7 @@ import com.box.common.utils.logsE
 import com.box.mod.BR.modData
 import com.box.mod.R
 import com.box.mod.databinding.ModFragment1001Binding
-import com.box.mod.databinding.ModItemNewsBinding
+import com.box.mod.databinding.ModItemGameEventBinding
 import com.box.other.blankj.utilcode.util.GsonUtils
 import com.box.other.hjq.toast.Toaster
 import com.box.other.immersionbar.immersionBar
@@ -168,10 +168,10 @@ class ModFragment1001 : BaseTitleBarFragment<ModFragment1001.Model, ModFragment1
 
     /**********************************************Adapter**************************************************/
     class ItemNewsAdapter constructor(list: MutableList<ModDataBean>) :
-        BaseQuickAdapter<ModDataBean, BaseDataBindingHolder<ModItemNewsBinding>>(
-            R.layout.mod_item_news, list
+        BaseQuickAdapter<ModDataBean, BaseDataBindingHolder<ModItemGameEventBinding>>(
+            R.layout.mod_item_game_event, list
         ) {
-        override fun convert(holder: BaseDataBindingHolder<ModItemNewsBinding>, item: ModDataBean) {
+        override fun convert(holder: BaseDataBindingHolder<ModItemGameEventBinding>, item: ModDataBean) {
             holder.dataBinding?.setVariable(modData, item)
         }
     }

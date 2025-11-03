@@ -15,13 +15,18 @@ import androidx.core.text.HtmlCompat
 import com.box.base.base.action.ClickAction
 import com.box.base.base.action.KeyboardAction
 import com.box.common.appContext
-import com.box.common.appViewModel
 import com.box.common.ui.activity.CommonActivityBrowser
 import com.box.mod.R
+import com.box.mod.ui.appUrl
+import com.box.mod.ui.privacyUrl
 import com.box.other.xpopup.core.BottomPopupView
 
 @SuppressLint("ViewConstructor")
-class ModXPopupLoginBottomXieYi(context: Context, private var cancel: (() -> Unit)?, private var sure: ((tips: String) -> Unit)?) :
+class ModXPopupLoginBottomXieYi(
+    context: Context,
+    private var cancel: (() -> Unit)?,
+    private var sure: ((tips: String) -> Unit)?
+) :
     BottomPopupView(context), ClickAction, KeyboardAction {
     override fun getImplLayoutId(): Int = R.layout.mod_xpopup_bottom_xieyi
 
@@ -32,19 +37,16 @@ class ModXPopupLoginBottomXieYi(context: Context, private var cancel: (() -> Uni
     private val linkTextColor = "#007BFF".toColorInt()
     private val userAgreementClickableSpan = object : ClickableSpan() {
         override fun onClick(view: View) {
-            appViewModel.appInfo.value?.marketjson?.xieyitanchuang_url_fuwu?.let {
-                CommonActivityBrowser.start(appContext, it)
-            }
+            CommonActivityBrowser.start(appContext, appUrl)
         }
     }
 
     private val privacyPolicyClickableSpan = object : ClickableSpan() {
         override fun onClick(view: View) {
-            appViewModel.appInfo.value?.marketjson?.xieyitanchuang_url_yinsi?.let {
-                CommonActivityBrowser.start(appContext, it)
-            }
+            CommonActivityBrowser.start(appContext, privacyUrl)
         }
     }
+
     @SuppressLint("SetTextI18n")
     override fun onCreate() {
         super.onCreate()

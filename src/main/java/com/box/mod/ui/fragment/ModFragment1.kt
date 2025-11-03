@@ -15,8 +15,11 @@ import com.box.base.ext.modRequestWithMsg
 import com.box.base.ext.parseModStateWithMsg
 import com.box.base.network.NetState
 import com.box.base.state.ModResultStateWithMsg
+import com.box.common.MMKVConfig
 import com.box.common.appContext
+import com.box.common.appViewModel
 import com.box.common.data.model.ModDataBean
+import com.box.common.data.model.ModUserInfo
 import com.box.common.eventViewModel
 import com.box.common.network.apiService
 import com.box.common.ui.activity.CommonActivityRichText
@@ -26,7 +29,7 @@ import com.box.common.utils.logsE
 import com.box.mod.BR.modData
 import com.box.mod.R
 import com.box.mod.databinding.ModFragment1Binding
-import com.box.mod.databinding.ModItemNewsBinding
+import com.box.mod.databinding.ModItemGameEventBinding
 import com.box.mod.ui.activity.ModActivityLogin
 import com.box.mod.ui.activity.ModActivityShouCang
 import com.box.other.blankj.utilcode.util.GsonUtils
@@ -49,15 +52,15 @@ class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Bindin
     private val pageSize = 10
     private var currentPage = 1
     var clickData = ModDataBean()
-    var listData: MutableList<ModDataBean> = mutableListOf()
-    var listAdapter = ItemNewsAdapter(listData)
+    var gameEventList: MutableList<ModDataBean> = mutableListOf()
+    var gameEventAdapter = GameEventAdapter(gameEventList)
 
     /**
      * 懒加载
      */
     override fun lazyLoadData() {
         showLoading()
-        mViewModel.getNewsListData(currentPage, pageSize)
+        mViewModel.getGameEventListData(currentPage, pageSize)
     }
 
     /**
@@ -71,6 +74,8 @@ class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Bindin
     override fun initView(savedInstanceState: Bundle?) {
         mDataBinding.vm = mViewModel
         mDataBinding.click = ProxyClick()
+        mDataBinding.lifecycleOwner = viewLifecycleOwner
+
         immersionBar {
             titleBar(mDataBinding.titleBar)
             statusBarDarkFont(true)
@@ -78,32 +83,46 @@ class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Bindin
         }
 
 
+        gameEventAdapter.setDiffCallback(GameEventDiffCallback())
         mDataBinding.recyclerView.apply {
             layoutManager = GridLayoutManager(context, 1)
             isNestedScrollingEnabled = false  // ✅ 关键
             overScrollMode = View.OVER_SCROLL_NEVER
             addItemDecoration(SpacingItemDecorator((resources.displayMetrics.density * 5).toInt()))
-            adapter = listAdapter
+            adapter = gameEventAdapter
         }
-        listAdapter.addChildClickViewIds(R.id.button)
-        listAdapter.setOnItemClickListener { adapter, view, position ->
+        gameEventAdapter.addChildClickViewIds(R.id.button)
+        gameEventAdapter.setOnItemClickListener { adapter, view, position ->
             clickData = adapter.data[position] as ModDataBean
-            mViewModel.getNewsDetailData(clickData.id)
+            mViewModel.getEventDetailData(clickData.id)
         }
 
-        listAdapter.setOnItemChildClickListener { adapter, view, position ->
-            clickData = adapter.data[position] as ModDataBean
+        gameEventAdapter.setOnItemChildClickListener { adapter, view, position ->
+            val currentList = adapter.data
+            val clickedItem = currentList[position] as ModDataBean
+            if (view.id == R.id.button) {
+                if (clickedItem.isShouCang) {
+                    clickedItem.isShouCang = false
+                    MMKVConfig.removeGameEventList(clickedItem)
+                } else {
+                    clickedItem.isShouCang = true
+                    MMKVConfig.addGameEventList(clickedItem)
+                }
+
+                adapter.notifyItemChanged(position, "SHOUCANG_UPDATE")
+
+            }
 
         }
 
         mDataBinding.refreshLayout.apply {
             setOnRefreshListener {
                 currentPage = 1
-                mViewModel.getNewsListData(currentPage, pageSize)
+                mViewModel.getGameEventListData(currentPage, pageSize)
             }
             setOnLoadMoreListener {
                 currentPage++
-                mViewModel.getNewsListData(currentPage, pageSize)
+                mViewModel.getGameEventListData(currentPage, pageSize)
             }
         }
 
@@ -112,28 +131,46 @@ class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Bindin
 
     @SuppressLint("NotifyDataSetChanged")
     override fun createObserver() {
-        mViewModel.newsListResult.observe(this) { resultState ->
+        mViewModel.gameEventListResult.observe(this) { resultState ->
             parseModStateWithMsg(
                 resultState,
                 onSuccess = { data, msg ->
                     logsE(GsonUtils.toJson(data))
+
+                    if (data.isNullOrEmpty()) {
+                        if (currentPage == 1) {
+                            mDataBinding.refreshLayout.finishRefresh()
+                            gameEventAdapter.setList(mutableListOf()) // 清空列表
+                            mDataBinding.refreshLayout.finishLoadMoreWithNoMoreData()
+                        } else { // 加载更多时没有数据
+                            mDataBinding.refreshLayout.finishLoadMoreWithNoMoreData()
+                        }
+                        return@parseModStateWithMsg
+                    }
+
+                    val shoucangId = MMKVConfig.gameEventList.map { it.id }.toSet()
+                    data.forEach { item ->
+                        item.isShouCang = item.id in shoucangId
+                    }
+
+
                     if (currentPage == 1) { // 下拉刷新
                         mDataBinding.refreshLayout.finishRefresh()
                         // 如果是排序后没有数据，也要清空列表
-                        if (data.isNullOrEmpty()) {
+                        if (data.isEmpty()) {
                             mDataBinding.refreshLayout.finishLoadMoreWithNoMoreData()
                         } else {
-                            listAdapter.setList(data)
+                            gameEventAdapter.setList(data)
                             mDataBinding.refreshLayout.resetNoMoreData()
                         }
                     } else { // 场景：上拉加载更多
-                        if (data.isNullOrEmpty()) {
+                        if (data.isEmpty()) {
                             mDataBinding.refreshLayout.finishLoadMoreWithNoMoreData()
                             return@parseModStateWithMsg
                         }
                         mDataBinding.refreshLayout.finishLoadMore()
-                        listAdapter.addData(data)
-                        listAdapter.notifyDataSetChanged()
+                        gameEventAdapter.addData(data)
+                        gameEventAdapter.notifyDataSetChanged()
                     }
                 },
                 onError = {
@@ -149,7 +186,7 @@ class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Bindin
             showComplete()
         }
 
-        mViewModel.newsDetailResult.observe(this) { resultState ->
+        mViewModel.gameEventDetailResult.observe(this) { resultState ->
             parseModStateWithMsg(
                 resultState,
                 onSuccess = { data, msg ->
@@ -160,6 +197,17 @@ class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Bindin
                     Toaster.show(it.msg)
                 }
             )
+        }
+
+        appViewModel.modUserInfo.observe(this) {
+            mViewModel.modUserInfo.value = it
+        }
+
+
+
+        MMKVConfig.userInfo?.let { savedUser ->
+            appViewModel.isLogin = true
+            appViewModel.modUserInfo.value = savedUser
         }
 
     }
@@ -177,7 +225,9 @@ class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Bindin
     /**********************************************Click**************************************************/
     inner class ProxyClick {
         fun user() {
-            ModActivityLogin.start(appContext)
+            if(!appViewModel.isLogin){
+                ModActivityLogin.start(appContext)
+            }
         }
 
         fun img1() {
@@ -212,16 +262,36 @@ class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Bindin
 
 
     /**********************************************Adapter**************************************************/
-    class ItemNewsAdapter constructor(list: MutableList<ModDataBean>) :
-        BaseQuickAdapter<ModDataBean, BaseDataBindingHolder<ModItemNewsBinding>>(
-            R.layout.mod_item_news, list
+    class GameEventAdapter constructor(list: MutableList<ModDataBean>) :
+        BaseQuickAdapter<ModDataBean, BaseDataBindingHolder<ModItemGameEventBinding>>(
+            R.layout.mod_item_game_event, list
         ) {
-        override fun convert(holder: BaseDataBindingHolder<ModItemNewsBinding>, item: ModDataBean) {
+        override fun convert(
+            holder: BaseDataBindingHolder<ModItemGameEventBinding>,
+            item: ModDataBean
+        ) {
             holder.dataBinding?.setVariable(modData, item)
+        }
+
+        override fun onBindViewHolder(
+            holder: BaseDataBindingHolder<ModItemGameEventBinding>,
+            position: Int,
+            payloads: MutableList<Any>
+        ) {
+            if (payloads.isEmpty()) {
+                super.onBindViewHolder(holder, position, payloads)
+                return
+            }
+            if (payloads.any { it == "SHOUCANG_UPDATE" }) {
+                val item = getItem(position)
+                holder.dataBinding?.setVariable(modData, item)
+            } else {
+                super.onBindViewHolder(holder, position, payloads)
+            }
         }
     }
 
-    class ItemCreateDiffCallback : DiffUtil.ItemCallback<ModDataBean>() {
+    class GameEventDiffCallback : DiffUtil.ItemCallback<ModDataBean>() {
         override fun areItemsTheSame(oldItem: ModDataBean, newItem: ModDataBean): Boolean {
             return oldItem.id == newItem.id
         }
@@ -234,20 +304,22 @@ class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Bindin
 
     /**********************************************Model**************************************************/
     class Model : BaseViewModel(title = "　　　　　") {
-        var pic = IntObservableField(0)
-        var newsListResult = MutableLiveData<ModResultStateWithMsg<MutableList<ModDataBean>>>()
-        var newsDetailResult = MutableLiveData<ModResultStateWithMsg<ModDataBean>>()
+        var modUserInfo = MutableLiveData<ModUserInfo>()
 
-        fun getNewsListData(pageNum: Int, pageSize: Int) {
+        var pic = IntObservableField(0)
+        var gameEventListResult = MutableLiveData<ModResultStateWithMsg<MutableList<ModDataBean>>>()
+        var gameEventDetailResult = MutableLiveData<ModResultStateWithMsg<ModDataBean>>()
+
+        fun getGameEventListData(pageNum: Int, pageSize: Int) {
             modRequestWithMsg({
                 apiService.getNewsList(pageNum, pageSize)
-            }, newsListResult)
+            }, gameEventListResult)
         }
 
-        fun getNewsDetailData(id: Int) {
+        fun getEventDetailData(id: Int) {
             modRequestWithMsg({
                 apiService.getNewsDetailById(id)
-            }, newsDetailResult)
+            }, gameEventDetailResult)
         }
 
     }

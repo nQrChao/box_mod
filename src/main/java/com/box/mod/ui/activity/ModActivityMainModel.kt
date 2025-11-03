@@ -33,7 +33,6 @@ class ModActivityMainModel : BaseViewModel(titleLine = false) {
                         val map = mutableMapOf<String, String>()
                         map["api"] = "auto_login"
                         map["uid"] = user.userId
-                        map["auth"] = user.userAuthLoginToken
                         apiService.postAuthLogin("auto_login", NetworkApi.INSTANCE.createVirtualUserPostData(map)!!)
                     },
                     resultState = postModAuthLoginResult,
@@ -45,13 +44,11 @@ class ModActivityMainModel : BaseViewModel(titleLine = false) {
                         map["api"] = "get_userinfo"
                         map["get_super_user"] = "y"
                         map["uid"] = login.userId
-                        map["token"] = login.userToken
                         apiService.postUserInfo(NetworkApi.INSTANCE.createVirtualUserPostData(map)!!)
                     },
                     resultState = userInfoBeanResult
                 )
 
-                modUser.userToken = login.userToken
                 MMKVConfig.userInfo = modUser
 
                 appViewModel.modUserInfo.postValue(modUser)
@@ -61,7 +58,6 @@ class ModActivityMainModel : BaseViewModel(titleLine = false) {
                         val map = mutableMapOf<String, String>()
                         map["api"] = "market_tradeusercert"
                         map["uid"] = login.userId
-                        map["token"] = login.userToken
                         apiService.postModUserRealName(NetworkApi.INSTANCE.createVirtualUserPostData(map)!!)
                     },
                     resultState = modUserRealName

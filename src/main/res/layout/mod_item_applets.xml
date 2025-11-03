@@ -25,7 +25,7 @@
             android:layout_height="@dimen/idp_65"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/idp_3"
-            app:loadRound11Image="@{applet.appName}"
+            app:loadRound11Image="@{applet.name}"
             tools:src="@drawable/mod_icon" />
 
         <TextView
@@ -36,7 +36,7 @@
             android:layout_marginTop="@dimen/idp_5"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="@{applet.appName}"
+            android:text="@{applet.name}"
             android:textColor="@color/text_default_color"
             android:textSize="@dimen/isp_13"
             tools:text="AAA" />

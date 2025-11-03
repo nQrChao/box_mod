@@ -8,6 +8,9 @@ import com.box.other.hjq.toast.Toaster
 import com.box.other.xpopup.XPopup
 import com.box.com.R as RC
 
+const val appUrl = "https://4319g.yize01.com/api/profile/upload/app.html"
+const val privacyUrl = "https://4319g.yize01.com/api/profile/upload/privacy.html"
+
 fun copyCodeX(context: Context, codeText: String) {
     XPopup.Builder(context)
         .dismissOnTouchOutside(false)

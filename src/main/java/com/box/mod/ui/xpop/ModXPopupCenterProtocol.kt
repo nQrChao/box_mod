@@ -8,29 +8,32 @@ import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.view.View
 import android.widget.TextView
+import androidx.core.graphics.toColorInt
 import androidx.core.text.HtmlCompat
 import androidx.lifecycle.viewModelScope
-import com.box.other.blankj.utilcode.util.IntentUtils
 import com.box.base.base.action.ClickAction
 import com.box.base.base.action.KeyboardAction
 import com.box.common.appContext
 import com.box.common.countClick
-import com.box.common.data.model.ProtocolInit
+import com.box.common.data.model.ModInitBean
 import com.box.common.eventViewModel
 import com.box.common.getDetailedInformation
 import com.box.common.ui.activity.CommonActivityBrowser
 import com.box.mod.R
+import com.box.mod.ui.appUrl
+import com.box.mod.ui.privacyUrl
+import com.box.other.blankj.utilcode.util.IntentUtils
 import com.box.other.blankj.utilcode.util.Logs
 import com.box.other.hjq.toast.Toaster
+import com.box.other.xpopup.core.CenterPopupView
 import com.hjq.permissions.OnPermissionCallback
 import com.hjq.permissions.Permission
 import com.hjq.permissions.XXPermissions
-import com.box.other.xpopup.core.CenterPopupView
 import kotlinx.coroutines.launch
 import java.io.File
 
 @SuppressLint("ViewConstructor")
-class ModXPopupCenterProtocol(context: Context, var xyInit: ProtocolInit, private var cancel: (() -> Unit)?, private var sure: (() -> Unit)?) :
+class ModXPopupCenterProtocol(context: Context, var initBean: ModInitBean?, private var cancel: (() -> Unit)?, private var sure: (() -> Unit)?) :
     CenterPopupView(context), ClickAction, KeyboardAction {
     override fun getImplLayoutId(): Int = R.layout.mod_xpopup_protocol
 
@@ -38,30 +41,17 @@ class ModXPopupCenterProtocol(context: Context, var xyInit: ProtocolInit, privat
     private var cancelView: TextView? = null
     private var contentTextView: TextView? = null
     private var confirmView: TextView? = null
-    private var contentText = xyInit.marketjson.xieyitanchuang_neirong
-    private val linkTextColor = Color.parseColor("#007BFF") // 设置链接颜色，这里使用蓝色，可以替换为其他颜色
+    private var contentText = initBean?.windowContent
+    private val linkTextColor = "#007BFF".toColorInt() // 设置链接颜色，这里使用蓝色，可以替换为其他颜色
     private val userAgreementClickableSpan = object : ClickableSpan() {
         override fun onClick(view: View) {
-            CommonActivityBrowser.start(appContext,xyInit.marketjson.xieyitanchuang_url_fuwu)
+            CommonActivityBrowser.start(appContext, initBean?.userAgreementLink ?: appUrl)
         }
     }
 
     private val privacyPolicyClickableSpan = object : ClickableSpan() {
         override fun onClick(view: View) {
-            CommonActivityBrowser.start(appContext,xyInit.marketjson.xieyitanchuang_url_yinsi)
-//            XPopup.Builder(context)
-//                .dismissOnTouchOutside(true)
-//                .dismissOnBackPressed(true)
-//                .isDestroyOnDismiss(true)
-//                .hasStatusBar(false)
-//                .isLightStatusBar(false)
-//                .animationDuration(5)
-//                .navigationBarColor(ColorUtils.getColor(R.color.xpop_shadow_color))
-//                .hasNavigationBar(false)
-//                .asCustom(XPopupFullScreenWeb(context, xyInit.marketjson.xieyitanchuang_url_yinsi, {}) {
-//                }
-//                )
-//                .show()
+            CommonActivityBrowser.start(appContext, initBean?.privacyPolicyLink ?: privacyUrl)
         }
     }
     @SuppressLint("SetTextI18n")
@@ -71,21 +61,21 @@ class ModXPopupCenterProtocol(context: Context, var xyInit: ProtocolInit, privat
         contentTextView = findViewById<TextView>(R.id.tv_content)
         cancelView = findViewById<TextView>(R.id.tv_cancel)
         confirmView = findViewById<TextView>(R.id.tv_confirm)
-        titleView?.text = xyInit.marketjson.xieyitanchuang_biaoti
+        titleView?.text = initBean?.windowTitle
 
 
         // 使用HtmlCompat.fromHtml处理HTML标记，同时为了更好的兼容性
         val spannableString = SpannableString(
-            HtmlCompat.fromHtml(contentText.replace("\n", "<br>"), HtmlCompat.FROM_HTML_MODE_LEGACY)
+            HtmlCompat.fromHtml(contentText?.replace("\n", "<br>") ?: "", HtmlCompat.FROM_HTML_MODE_LEGACY)
         )
-        var startIndex = contentText.indexOf("《用户服务协议》")
-        var endIndex = startIndex + "《用户服务协议》".length
+        var startIndex = contentText?.indexOf("《用户服务协议》")?:0
+        var endIndex = startIndex.plus("《用户服务协议》".length)
         if (startIndex >= 0) {
             spannableString.setSpan(userAgreementClickableSpan, startIndex, endIndex, 0) // 使用ClickableSpan
             spannableString.setSpan(ForegroundColorSpan(linkTextColor), startIndex, endIndex, 0) // 设置颜色
         }
 
-        startIndex = contentText.indexOf("《隐私政策》")
+        startIndex = contentText?.indexOf("《隐私政策》")?:0
         endIndex = startIndex + "《隐私政策》".length
         if (startIndex >= 0) {
             spannableString.setSpan(privacyPolicyClickableSpan, startIndex, endIndex, 0)  // 使用ClickableSpan

@@ -64,6 +64,7 @@
             android:paddingHorizontal="@dimen/idp_20">
 
             <Button
+                android:layout_marginVertical="@dimen/idp_5"
                 android:id="@+id/cancel_button"
                 android:layout_width="@dimen/idp_150"
                 android:layout_height="@dimen/idp_40"
@@ -79,6 +80,7 @@
 
             <Button
                 android:id="@+id/confirm_button"
+                android:layout_marginVertical="@dimen/idp_5"
                 android:layout_width="@dimen/idp_150"
                 android:layout_height="@dimen/idp_40"
                 android:layout_marginStart="@dimen/idp_10"
