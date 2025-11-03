@@ -76,6 +76,8 @@ class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Bindin
             statusBarDarkFont(true)
             init()
         }
+
+
         mDataBinding.recyclerView.apply {
             layoutManager = GridLayoutManager(context, 1)
             isNestedScrollingEnabled = false  // ✅ 关键
@@ -83,9 +85,15 @@ class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Bindin
             addItemDecoration(SpacingItemDecorator((resources.displayMetrics.density * 5).toInt()))
             adapter = listAdapter
         }
+        listAdapter.addChildClickViewIds(R.id.button)
         listAdapter.setOnItemClickListener { adapter, view, position ->
             clickData = adapter.data[position] as ModDataBean
             mViewModel.getNewsDetailData(clickData.id)
+        }
+
+        listAdapter.setOnItemChildClickListener { adapter, view, position ->
+            clickData = adapter.data[position] as ModDataBean
+
         }
 
         mDataBinding.refreshLayout.apply {

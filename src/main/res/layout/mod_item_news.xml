@@ -53,7 +53,8 @@
             android:weightSum="10">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginEnd="@dimen/idp_35"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:ellipsize="end"
@@ -66,13 +67,13 @@
                 tools:text="《英雄联盟》2025总决赛！" />
 
             <Button
-                android:id="@+id/button_fire"
+                android:id="@+id/button"
                 android:layout_width="@dimen/idp_25"
                 android:layout_height="@dimen/idp_25"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_gravity="end"
-                android:background="@drawable/mod_ic_fire0"
+                android:background="@{modData.isShouCang ? @drawable/mod_ic_fire1 : @drawable/mod_ic_fire0}"
                 android:ellipsize="end"
                 android:gravity="end"
                 android:maxLines="1"
