@@ -31,6 +31,7 @@ import com.box.mod.databinding.ModActivityLoginBinding
 import com.box.mod.databinding.ModItemRankShoucangBinding
 import com.box.mod.ui.xpop.ModXPopupLoginBottomXieYi
 import com.box.other.blankj.utilcode.util.ActivityUtils
+import com.box.other.blankj.utilcode.util.AppUtils
 import com.box.other.blankj.utilcode.util.ColorUtils
 import com.box.other.immersionbar.immersionBar
 import com.box.other.xpopup.XPopup
@@ -38,8 +39,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 
 @SuppressLint("CustomSplashScreen")
-class ModActivityLogin :
-    BaseModVmDbActivity<ModActivityLogin.Model, ModActivityLoginBinding>() {
+class ModActivityLogin : BaseModVmDbActivity<ModActivityLogin.Model, ModActivityLoginBinding>() {
 
     private val contentText = "我已阅读并同意《隐私政策》、《用户服务协议》"
     private val linkTextColor = "#007BFF".toColorInt()
@@ -175,6 +175,7 @@ class ModActivityLogin :
 
     /**********************************************Model**************************************************/
     class Model : BaseViewModel(title = "") {
+        var pName =  StringObservableField(AppUtils.getAppName())
         var uName = StringObservableField("")
         var password = StringObservableField("")
         var hasData = BooleanObservableField(false)

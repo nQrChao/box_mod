@@ -350,7 +350,7 @@ class ModFragmentShengChengQi :
 
 
     /**********************************************Model**************************************************/
-    class Model : BaseViewModel(title = "角色名生成器", rightTitle = "我的收藏") {
+    class Model : BaseViewModel(title = "角色名生成器") {
         var pic = IntObservableField(0)
         var isSelect = IntObservableField(3)
         var typeName = StringObservableField("")

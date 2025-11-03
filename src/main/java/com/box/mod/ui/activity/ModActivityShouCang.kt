@@ -16,6 +16,7 @@ import com.box.base.network.NetState
 import com.box.common.MMKVConfig
 import com.box.common.MMKVConfig.gameRankList
 import com.box.common.data.model.ModDataBean
+import com.box.common.ui.activity.CommonActivityBrowser.Companion.INTENT_KEY_URL
 import com.box.common.ui.adapter.SpacingItemDecorator
 import com.box.mod.BR.modData
 import com.box.mod.R
@@ -45,9 +46,19 @@ class ModActivityShouCang :
     }
 
     companion object {
+        const val INTENT_KEY_TYPE_RANK: String = "rankType"
         var resultLauncher: ActivityResultLauncher<Intent>? = null
         fun start(context: Context) {
             val intent = Intent(context, ModActivityShouCang::class.java)
+            if (context !is Activity) {
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            }
+            ActivityUtils.startActivity(intent)
+        }
+
+        fun start(context: Context,rankType:Int) {
+            val intent = Intent(context, ModActivityShouCang::class.java)
+            intent.putExtra(INTENT_KEY_TYPE_RANK, rankType)
             if (context !is Activity) {
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             }
@@ -59,7 +70,7 @@ class ModActivityShouCang :
     override fun initView(savedInstanceState: Bundle?) {
         mDataBinding.vm = mViewModel
         mDataBinding.click = ProxyClick()
-
+        mViewModel.isSelect.set(intent.getIntExtra(INTENT_KEY_TYPE_RANK,0))
         immersionBar {
             titleBar(mDataBinding.titleBar)
             navigationBarColor(com.box.com.R.color.white_pressed_color)
@@ -67,6 +78,7 @@ class ModActivityShouCang :
             init()
         }
 
+        mDataBinding.tab.tabDefaultIndex = intent.getIntExtra(INTENT_KEY_TYPE_RANK,0)
         mDataBinding.tab.observeIndexChange { fromIndex, toIndex, reselect, fromUser ->
             mViewModel.isSelect.set(toIndex)
             type = when (toIndex) {

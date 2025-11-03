@@ -63,7 +63,7 @@ import kotlin.system.exitProcess
 import com.box.com.R as RC
 
 
-class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMainBinding>(),HandlerAction {
+class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMainBinding>(), HandlerAction {
     override val mViewModel: ModActivityMainModel by viewModels()
     private val mainTabConfig = """
         [
@@ -73,8 +73,8 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
                 "selectedIcon": ${R.drawable.mod_ic_fragment_1_1},
                 "normalIconUrl": "",
                 "selectedIconUrl": "",
-                "titleNormalColor": "000000",
-                "titleSelectedColor": "7C7C7C",
+                "titleNormalColor": "7C7C7C",
+                "titleSelectedColor": "000000",
                 "fragmentId": 1
             },
             {
@@ -83,8 +83,8 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
                 "selectedIcon": ${R.drawable.mod_ic_fragment_2_1},
                 "normalIconUrl": "",
                 "selectedIconUrl": "",
-                "titleNormalColor": "000000",
-                "titleSelectedColor": "7C7C7C",
+                "titleNormalColor": "7C7C7C",
+                "titleSelectedColor": "000000",
                 "fragmentId": 2
             },
             {
@@ -93,8 +93,8 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
                 "selectedIcon": ${R.drawable.mod_ic_fragment_3_1},
                 "normalIconUrl": "",
                 "selectedIconUrl": "",
-                "titleNormalColor": "000000",
-                "titleSelectedColor": "7C7C7C",
+                "titleNormalColor": "7C7C7C",
+                "titleSelectedColor": "000000",
                 "fragmentId": 3
             },
             {
@@ -103,8 +103,8 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
                 "selectedIcon": ${R.drawable.mod_ic_fragment_4_1},
                 "normalIconUrl": "",
                 "selectedIconUrl": "",
-                "titleNormalColor": "000000",
-                "titleSelectedColor": "7C7C7C",
+                "titleNormalColor": "7C7C7C",
+                "titleSelectedColor": "000000",
                 "fragmentId": 4
             },
             {
@@ -113,12 +113,13 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
                 "selectedIcon": ${R.drawable.mod_ic_fragment_5_1},
                 "normalIconUrl": "",
                 "selectedIconUrl": "",
-                "titleNormalColor": "000000",
-                "titleSelectedColor": "7C7C7C",
+                "titleNormalColor": "7C7C7C",
+                "titleSelectedColor": "000000",
                 "fragmentId": 5
             }
         ]
     """.trimIndent()
+
     override fun layoutId(): Int = R.layout.mod_activity_main
 
 
@@ -297,8 +298,6 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
             fragments.add(fragment)
 
 
-
-
             // 使用 BottomBarItem.Builder 模式创建并配置 Builder 对象
             val builder = BottomBarItem.Builder(this)
                 .normalIcon(ResourceUtils.getDrawable(config.normalIcon))
@@ -333,6 +332,7 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
                         override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable>?) {
                             item.setNormalIcon(resource)
                         }
+
                         override fun onLoadCleared(placeholder: Drawable?) {
                             // 处理清理逻辑
                         }
@@ -346,6 +346,7 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
                         override fun onResourceReady(resource: Drawable, transition: Transition<in Drawable>?) {
                             item.setSelectedIcon(resource)
                         }
+
                         override fun onLoadCleared(placeholder: Drawable?) {
                             // 处理清理逻辑
                         }
@@ -359,11 +360,12 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
 
     override fun createObserver() {
         eventViewModel.isLogin.observe(this) {
-            
+
 
         }
         mViewModel.postModAuthLoginResult.observe(this) { resultState ->
-            parseModStateWithMsg(resultState,
+            parseModStateWithMsg(
+                resultState,
                 onSuccess = { data, msg ->
                 },
                 onError = {
@@ -372,7 +374,8 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
             )
         }
         mViewModel.userInfoBeanResult.observe(this) { resultState ->
-            parseModStateWithMsg(resultState,
+            parseModStateWithMsg(
+                resultState,
                 onSuccess = { data, msg ->
                 },
                 onError = {
@@ -382,7 +385,8 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
         }
 
         mViewModel.modUserRealName.observe(this) { resultState ->
-            parseModStateWithMsg(resultState,
+            parseModStateWithMsg(
+                resultState,
                 onSuccess = { data, msg ->
                     appViewModel.modUserRealName.postValue(data)
                 },

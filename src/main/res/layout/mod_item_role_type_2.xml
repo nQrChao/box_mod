@@ -33,10 +33,11 @@
             android:includeFontPadding="false"
             android:maxLines="1"
             android:text="@{modData.dictLabel}"
-            android:textColor="@{modData.isSelect ? @color/text_select_color:@color/common_text_color_sec_gray}"
+            android:textColor="@color/white"
             android:textSize="@dimen/isp_16"
             android:textStyle="bold"
-            tools:background="@drawable/bg_item_create_text_dddddd"
+            app:setDynamicBackground="@{position}"
+            tools:background="@drawable/bg_item_color_1"
             tools:text="国风" />
 
         <ImageView

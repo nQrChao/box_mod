@@ -29,7 +29,7 @@
             android:layout_gravity="center_horizontal"
             android:importantForAccessibility="no"
             android:scaleType="centerCrop"
-            app:loadRound11UrlImage="@{modData.image}"
+            app:loadRound20Image="@{modData.image}"
             tools:src="@drawable/mod_test_pic2" />
 
         <ImageView
@@ -42,20 +42,20 @@
             android:src="@drawable/bg_black_trans_bottom" />
 
 
-        <LinearLayout
-            android:layout_gravity="bottom"
+        <RelativeLayout
             android:id="@+id/title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/idp_35"
+            android:layout_gravity="bottom"
             android:layout_marginBottom="@dimen/idp_10"
             android:orientation="horizontal"
             android:paddingHorizontal="@dimen/idp_10"
             android:weightSum="10">
 
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="7"
+                android:layout_centerVertical="true"
                 android:ellipsize="end"
                 android:gravity="start"
                 android:maxLines="1"
@@ -65,22 +65,23 @@
                 android:textStyle="bold"
                 tools:text="《英雄联盟》2025总决赛！" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+            <Button
+                android:id="@+id/button_fire"
+                android:layout_width="@dimen/idp_25"
+                android:layout_height="@dimen/idp_25"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
                 android:layout_gravity="end"
-                android:layout_weight="3"
+                android:background="@drawable/mod_ic_fire0"
                 android:ellipsize="end"
                 android:gravity="end"
                 android:maxLines="1"
-                android:text="了解赛事"
                 android:textColor="@color/white"
                 android:textSize="@dimen/isp_13"
-                android:textStyle="bold"
-                tools:text="了解赛事" />
+                android:textStyle="bold" />
 
 
-        </LinearLayout>
+        </RelativeLayout>
 
     </FrameLayout>
 

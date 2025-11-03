@@ -27,6 +27,7 @@ import com.box.mod.BR.modData
 import com.box.mod.R
 import com.box.mod.databinding.ModFragment1Binding
 import com.box.mod.databinding.ModItemNewsBinding
+import com.box.mod.ui.activity.ModActivityLogin
 import com.box.mod.ui.activity.ModActivityShouCang
 import com.box.other.blankj.utilcode.util.GsonUtils
 import com.box.other.hjq.toast.Toaster
@@ -168,7 +169,7 @@ class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Bindin
     /**********************************************Click**************************************************/
     inner class ProxyClick {
         fun user() {
-            Toaster.show("USER")
+            ModActivityLogin.start(appContext)
         }
 
         fun img1() {

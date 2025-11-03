@@ -194,7 +194,7 @@
                                 android:maxLines="1"
                                 android:onClick="@{()->click.text3()}"
                                 android:text="三字"
-                                android:textColor="@{vm.isSelect() == 3?@color/text_default_color:@color/common_text_color_sec_gray}"
+                                android:textColor="@{vm.isSelect() == 3?@color/text_select_color:@color/common_text_color_sec_gray}"
                                 android:textSize="@dimen/isp_16"
                                 android:textStyle="bold"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -203,7 +203,7 @@
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
                                 tools:background="@drawable/bg_item_create_text_000000"
-                                tools:textColor="@color/text_default_color" />
+                                tools:textColor="@color/text_select_color" />
 
                             <TextView
                                 android:id="@+id/textView2"
@@ -216,7 +216,7 @@
                                 android:maxLines="1"
                                 android:onClick="@{()->click.text4()}"
                                 android:text="四字"
-                                android:textColor="@{vm.isSelect() == 4?@color/text_default_color:@color/common_text_color_sec_gray}"
+                                android:textColor="@{vm.isSelect() == 4?@color/text_select_color:@color/common_text_color_sec_gray}"
                                 android:textSize="@dimen/isp_16"
                                 android:textStyle="bold"
                                 app:layout_constraintEnd_toStartOf="@+id/textView3"
@@ -235,7 +235,7 @@
                                 android:maxLines="1"
                                 android:onClick="@{()->click.text5()}"
                                 android:text="五字以上"
-                                android:textColor="@{vm.isSelect() == 5?@color/text_default_color:@color/common_text_color_sec_gray}"
+                                android:textColor="@{vm.isSelect() == 5?@color/text_select_color:@color/common_text_color_sec_gray}"
                                 android:textSize="@dimen/isp_16"
                                 android:textStyle="bold"
                                 app:layout_constraintEnd_toEndOf="parent"

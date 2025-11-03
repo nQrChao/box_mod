@@ -17,6 +17,7 @@ import com.box.base.ext.parseModStateWithMsg
 import com.box.base.network.NetState
 import com.box.base.state.ModResultStateWithMsg
 import com.box.common.MMKVConfig
+import com.box.common.appContext
 import com.box.common.data.model.ModDataBean
 import com.box.common.network.apiService
 import com.box.common.ui.adapter.SpacingItemDecorator
@@ -26,7 +27,9 @@ import com.box.mod.BR.modData
 import com.box.mod.R
 import com.box.mod.databinding.ModFragmentGameListBinding
 import com.box.mod.databinding.ModItemRankBinding
+import com.box.mod.ui.activity.ModActivityShouCang
 import com.box.other.blankj.utilcode.util.GsonUtils
+import com.box.other.hjq.titlebar.TitleBar
 import com.box.other.hjq.toast.Toaster
 import com.box.other.immersionbar.immersionBar
 import com.chad.library.adapter.base.BaseQuickAdapter
@@ -212,6 +215,10 @@ class ModFragmentGameList :
     }
 
 
+    override fun onRightClick(view: TitleBar) {
+        super.onRightClick(view)
+        ModActivityShouCang.start(appContext,1)
+    }
 
     /**********************************************Click**************************************************/
     inner class ProxyClick {

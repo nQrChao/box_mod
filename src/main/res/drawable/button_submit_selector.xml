@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 默认按钮样式 -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 禁用状态 -->
+    <item android:state_enabled="false">
+        <shape android:shape="rectangle">
+            <corners />
+            <solid android:color="@color/common_button_disable_color" />
+        </shape>
+    </item>
+
+    <!-- 按压状态 -->
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/idp_10"/>
+            <gradient
+                android:angle="0"
+                android:centerX="0.5"
+                android:centerY="0.5"
+                android:endColor="#AAFFDE4E"
+                android:gradientRadius="@dimen/idp_180"
+                android:startColor="#AAFFB203"
+                android:type="linear"
+                android:useLevel="false" />
+            <!--angle控制渐变的方向-->
+            <!-- 设置按钮的四个角为弧形 -->
+            <!-- android:radius 弧形的半径 -->
+            <corners/>
+        </shape>
+    </item>
+
+    <!-- 焦点状态 -->
+    <item android:state_focused="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/idp_10"/>
+            <gradient
+                android:angle="0"
+                android:centerX="0.5"
+                android:centerY="0.5"
+                android:endColor="#AAFFDE4E"
+                android:gradientRadius="@dimen/idp_180"
+                android:startColor="#AAFFB203"
+                android:type="linear"
+                android:useLevel="false" />
+            <!--angle控制渐变的方向-->
+            <!-- 设置按钮的四个角为弧形 -->
+            <!-- android:radius 弧形的半径 -->
+            <corners />
+        </shape>
+    </item>
+
+    <!-- 默认状态 -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/idp_10"/>
+            <gradient
+                android:angle="0"
+                android:centerX="0.5"
+                android:centerY="0.5"
+                android:endColor="#FFDE4E"
+                android:gradientRadius="@dimen/idp_180"
+                android:startColor="#FFB203"
+                android:type="linear"
+                android:useLevel="false" />
+            <!--angle控制渐变的方向-->
+            <!-- 设置按钮的四个角为弧形 -->
+            <!-- android:radius 弧形的半径 -->
+            <corners/>
+        </shape>
+    </item>
+
+</selector>

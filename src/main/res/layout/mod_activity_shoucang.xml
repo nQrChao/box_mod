@@ -114,7 +114,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="@dimen/idp_80"
-                        android:src="@drawable/status_empty_ic" />
+                        android:src="@drawable/bg_status_empty_ic" />
 
                     <TextView
                         android:id="@+id/modPreviewPic"
