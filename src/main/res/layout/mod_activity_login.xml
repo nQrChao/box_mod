@@ -247,7 +247,7 @@
                             android:layout_height="wrap_content"
                             android:onClick="@{()-> click.toLoginView()}"
                             android:text="返回登录"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="#007BFF"
                             android:textSize="@dimen/isp_14" />
                     </LinearLayout>
 
@@ -268,7 +268,7 @@
                         android:onClick="@{()-> click.forgetPwd()}"
                         android:paddingTop="@dimen/idp_5"
                         android:text="忘记密码"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="#007BFF"
                         android:textSize="@dimen/isp_14"
                         android:visibility="gone" />
 
@@ -308,7 +308,7 @@
                             android:layout_height="wrap_content"
                             android:onClick="@{()-> click.toRegisterView()}"
                             android:text="立即注册"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="#007BFF"
                             android:textSize="@dimen/isp_14" />
                     </LinearLayout>
                 </LinearLayout>

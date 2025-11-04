@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -15,9 +16,10 @@
             type="com.box.mod.ui.activity.ModSplashActivity.ProxyClick" />
     </data>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/splash_lottie"
@@ -27,12 +29,23 @@
             android:layout_marginBottom="@dimen/dp_40"
             app:lottie_autoPlay="true"
             app:lottie_loop="false"
-            app:lottie_rawRes="@raw/welcome" />
+            app:lottie_rawRes="@raw/hi_black" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/idp_20"
+            android:gravity="center"
+            android:textColor="@color/text_default_color"
+            android:textSize="@dimen/isp_17"
+            android:textStyle="bold"
+            tools:text="这是应用名称" />
 
         <ImageView
-            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="center" />
-    </LinearLayout>
+            android:scaleType="center"
+            android:visibility="gone" />
+    </RelativeLayout>
 </layout>
