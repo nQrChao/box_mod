@@ -10,7 +10,6 @@ import com.box.base.base.viewmodel.BaseViewModel
 import com.box.base.callback.databind.IntObservableField
 import com.box.base.network.NetState
 import com.box.mod.R
-import com.box.mod.databinding.ModFragment1004Binding
 import com.box.mod.databinding.ModFragmentWodeBinding
 import com.box.other.immersionbar.immersionBar
 
@@ -56,6 +55,35 @@ class ModFragmentWode : BaseTitleBarFragment<ModFragmentWode.Model, ModFragmentW
         fun confirm() {
 
         }
+
+        fun fanKui() {
+
+        }
+
+        fun keFu() {
+
+        }
+
+        fun beiAn() {
+
+        }
+
+        fun uXy() {
+
+        }
+
+        fun yXy() {
+
+        }
+
+        fun fangChenMi() {
+
+        }
+
+        fun userAnQuan() {
+
+        }
+
 
     }
 
