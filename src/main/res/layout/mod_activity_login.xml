@@ -231,7 +231,8 @@
                         android:textColor="@color/white"
                         android:textSize="@dimen/isp_15"
                         android:textStyle="bold"
-                        app:noRepeatClick="@{click::goRegister}" />
+                        app:onSingleClick="@{() -> click.goRegister()}"
+                        app:singleClickDelay="@{1000L}" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -284,7 +285,8 @@
                         android:textColor="@color/white"
                         android:textSize="@dimen/isp_15"
                         android:textStyle="bold"
-                        app:noRepeatClick="@{click::login}" />
+                        app:onSingleClick="@{() -> click.login()}"
+                        app:singleClickDelay="@{1000L}" />
 
                     <LinearLayout
                         android:id="@+id/reg_text_ll"

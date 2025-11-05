@@ -9,7 +9,7 @@ import androidx.activity.viewModels
 import com.box.base.base.activity.BaseModVmDbActivity
 import com.box.base.network.NetState
 import com.box.common.AppInit
-import com.box.common.MMKVConfig
+import com.box.common.utils.mmkv.MMKVConfig
 import com.box.common.eventViewModel
 import com.box.mod.R
 import com.box.mod.databinding.ModActivitySplashBinding

@@ -25,7 +25,9 @@
             android:layout_height="@dimen/idp_65"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/idp_3"
-            app:loadRound11Image="@{applet.name}"
+            app:imageUrl="@{applet.name}"
+            app:cornerRadius="@{15f}"
+            app:hideOnNullOrError="@{false}"
             tools:src="@drawable/mod_icon" />
 
         <TextView

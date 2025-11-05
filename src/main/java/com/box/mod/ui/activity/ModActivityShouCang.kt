@@ -13,8 +13,8 @@ import com.box.base.base.viewmodel.BaseViewModel
 import com.box.base.callback.databind.BooleanObservableField
 import com.box.base.callback.databind.IntObservableField
 import com.box.base.network.NetState
-import com.box.common.MMKVConfig
-import com.box.common.MMKVConfig.gameRankList
+import com.box.common.utils.mmkv.MMKVConfig
+import com.box.common.utils.mmkv.MMKVConfig.gameRankList
 import com.box.common.data.model.ModDataBean
 import com.box.common.ui.activity.CommonActivityBrowser.Companion.INTENT_KEY_URL
 import com.box.common.ui.adapter.SpacingItemDecorator
@@ -89,7 +89,7 @@ class ModActivityShouCang :
                 }
 
                 1 -> {
-                    rankList = MMKVConfig.gameRankList
+                    rankList = gameRankList
                     mViewModel.hasData.set(!gameRankList.isEmpty())
                     1
                 }

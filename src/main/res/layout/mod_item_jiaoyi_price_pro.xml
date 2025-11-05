@@ -29,7 +29,8 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/idp_130"
             android:layout_gravity="center_horizontal"
-            app:loadRound11UrlImage="@{goodDetailBean.pic.get(0).pic_path}"
+            app:imageUrl="@{goodDetailBean.pic.get(0).pic_path}"
+            app:cornerRadius="@{15f}"
             tools:src="@mipmap/mod_icon" />
 
         <LinearLayout

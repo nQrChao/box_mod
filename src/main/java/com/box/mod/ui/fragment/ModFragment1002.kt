@@ -16,7 +16,7 @@ import com.box.base.base.viewmodel.BaseViewModel
 import com.box.base.callback.databind.IntObservableField
 import com.box.base.callback.databind.StringObservableField
 import com.box.base.network.NetState
-import com.box.common.MMKVConfig
+import com.box.common.utils.mmkv.MMKVConfig
 import com.box.common.appContext
 import com.box.mod.R
 import com.box.mod.databinding.ModFragment1002Binding

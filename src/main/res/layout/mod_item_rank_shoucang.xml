@@ -30,7 +30,8 @@
             android:layout_centerVertical="true"
             android:layout_gravity="center"
             android:layout_marginStart="@dimen/idp_15"
-            app:loadRound11Image="@{modData.url}"
+            app:cornerRadius="@{10f}"
+            app:imageUrl="@{modData.url}"
             tools:src="@mipmap/mod_icon" />
 
         <LinearLayout

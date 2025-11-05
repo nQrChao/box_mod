@@ -25,7 +25,7 @@ import com.box.base.base.activity.BaseModVmDbActivity
 import com.box.base.ext.parseModStateWithMsg
 import com.box.base.network.NetState
 import com.box.common.INTENT_KEY_OUT_IMAGE_LIST
-import com.box.common.MMKVConfig
+import com.box.common.utils.mmkv.MMKVConfig
 import com.box.common.RESULT_CODE_SELECT_PHOTO
 import com.box.common.appViewModel
 import com.box.common.data.model.ModMainTabConfig
@@ -44,6 +44,7 @@ import com.box.mod.ui.fragment.ModFragment1004
 import com.box.mod.ui.fragment.ModFragmentGameRankList
 import com.box.mod.ui.fragment.ModFragmentGuJia
 import com.box.mod.ui.fragment.ModFragmentShengChengQi
+import com.box.mod.ui.fragment.ModFragmentWode
 import com.box.other.blankj.utilcode.util.ActivityUtils
 import com.box.other.blankj.utilcode.util.AppUtils
 import com.box.other.blankj.utilcode.util.ColorUtils
@@ -301,7 +302,7 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
                 2 -> ModFragmentGuJia.newInstance()
                 3 -> ModFragmentShengChengQi.newInstance()
                 4 -> ModFragmentGameRankList.newInstance()
-                5 -> ModFragment1004.newInstance()
+                5 -> ModFragmentWode.newInstance()
                 else -> throw IllegalArgumentException("Invalid fragmentId: ${config.fragmentId}")
             }
             fragments.add(fragment)

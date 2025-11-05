@@ -18,7 +18,7 @@ import com.box.base.network.NetState
 import com.box.common.INTENT_KEY_INT
 import com.box.common.INTENT_KEY_OUT_IMAGE_ARRAYLIST
 import com.box.common.INTENT_KEY_STRING
-import com.box.common.MMKVConfig
+import com.box.common.utils.mmkv.MMKVConfig
 import com.box.common.STORAGEPermission
 import com.box.common.data.PictureElem
 import com.box.common.glide.EasyGlideEngine

@@ -29,7 +29,8 @@
             android:layout_gravity="center_horizontal"
             android:importantForAccessibility="no"
             android:scaleType="centerCrop"
-            app:loadRound20Image="@{modData.image}"
+            app:imageUrl="@{modData.image}"
+            app:cornerRadius="@{20f}"
             tools:src="@drawable/mod_test_pic2" />
 
         <ImageView

@@ -5,7 +5,7 @@ import com.box.base.base.viewmodel.BaseViewModel
 import com.box.base.ext.requestFlow
 import com.box.base.state.ModResultStateWithMsg
 import com.box.base.state.ResultState
-import com.box.common.MMKVConfig
+import com.box.common.utils.mmkv.MMKVConfig
 import com.box.common.appViewModel
 import com.box.common.data.model.ModUserInfo
 import com.box.common.data.model.ModUserRealName

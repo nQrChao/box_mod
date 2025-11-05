@@ -20,7 +20,7 @@ import com.box.common.network.apiService
 import com.box.common.ui.activity.CommonActivityRichText
 import com.box.common.ui.adapter.SpacingItemDecorator
 import com.box.common.ui.layout.StatusLayout
-import com.box.common.utils.logsE
+import com.box.common.utils.ext.logsE
 import com.box.mod.BR.modData
 import com.box.mod.R
 import com.box.mod.databinding.ModFragment1001Binding

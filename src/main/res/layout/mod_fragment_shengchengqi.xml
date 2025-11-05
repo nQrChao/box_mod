@@ -33,9 +33,9 @@
             app:rightIconGravity="start"
             app:rightIconHeight="@dimen/idp_20"
             app:rightIconWidth="@dimen/idp_20"
-            app:rightTitleStyle="bold"
             app:rightTitleColor="#6493FA"
             app:rightTitleSize="@dimen/isp_14"
+            app:rightTitleStyle="bold"
             app:titleColor="@color/black90"
             app:titleSize="@dimen/isp_16"
             app:titleStyle="bold" />
@@ -246,7 +246,6 @@
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <LinearLayout
-                            android:visibility="gone"
                             android:id="@+id/randomNameLayout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -255,6 +254,7 @@
                             android:orientation="vertical"
                             android:paddingHorizontal="@dimen/idp_5"
                             android:paddingVertical="@dimen/idp_15"
+                            android:visibility="gone"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/gameInfoLayout">
@@ -306,11 +306,12 @@
                 android:layout_height="@dimen/idp_45"
                 android:layout_gravity="center"
                 android:background="@drawable/mod_btn_confirm_selector"
-                android:onClick="@{()->click.confirm()}"
                 android:text="一键生成"
                 android:textColor="@color/white"
                 android:textSize="@dimen/mod_button_text_size"
                 android:textStyle="bold"
+                app:onSingleClick="@{() -> click.confirm()}"
+                app:singleClickDelay="@{1000L}"
                 tools:text="一键生成" />
         </LinearLayout>
     </RelativeLayout>

@@ -30,7 +30,7 @@ import com.box.base.ext.modRequestWithMsg
 import com.box.base.ext.parseModStateWithMsg
 import com.box.base.network.NetState
 import com.box.base.state.ModResultStateWithMsg
-import com.box.common.MMKVConfig
+import com.box.common.utils.mmkv.MMKVConfig
 import com.box.common.appContext
 import com.box.common.appViewModel
 import com.box.common.data.RegisterRequest
@@ -38,7 +38,7 @@ import com.box.common.data.model.ModDataBean
 import com.box.common.data.model.ModUserInfo
 import com.box.common.network.apiService
 import com.box.common.ui.activity.CommonActivityBrowser
-import com.box.common.utils.logsE
+import com.box.common.utils.ext.logsE
 import com.box.mod.BR.modData
 import com.box.mod.R
 import com.box.mod.databinding.ModActivityLoginBinding

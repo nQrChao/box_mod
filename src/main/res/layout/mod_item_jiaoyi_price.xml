@@ -27,7 +27,8 @@
             android:layout_width="@dimen/idp_80"
             android:layout_height="@dimen/idp_80"
             android:layout_gravity="center"
-            app:loadRound11Image="@{goodDetailBean.gameicon}"
+            app:imageUrl="@{goodDetailBean.gameicon}"
+            app:cornerRadius="@{10f}"
             tools:src="@mipmap/mod_icon" />
 
         <TextView

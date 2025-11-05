@@ -382,11 +382,12 @@
                 android:layout_height="@dimen/idp_45"
                 android:layout_gravity="center"
                 android:background="@drawable/mod_btn_confirm_selector"
-                android:onClick="@{()->click.confirm()}"
                 android:text="一键估算"
                 android:textColor="@color/white"
                 android:textSize="@dimen/mod_button_text_size"
                 android:textStyle="bold"
+                app:onSingleClick="@{() -> click.confirm()}"
+                app:singleClickDelay="@{1000L}"
                 tools:text="一键估算" />
         </LinearLayout>
 
