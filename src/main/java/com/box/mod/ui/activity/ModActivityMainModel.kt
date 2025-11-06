@@ -5,20 +5,19 @@ import com.box.base.base.viewmodel.BaseViewModel
 import com.box.base.ext.requestFlow
 import com.box.base.state.ModResultStateWithMsg
 import com.box.base.state.ResultState
-import com.box.common.utils.mmkv.MMKVConfig
 import com.box.common.appViewModel
 import com.box.common.data.model.ModUserInfo
 import com.box.common.data.model.ModUserRealName
 import com.box.common.eventViewModel
 import com.box.common.network.NetworkApi
 import com.box.common.network.apiService
+import com.box.common.utils.mmkv.MMKVConfig
 import com.box.other.blankj.utilcode.util.GsonUtils
 import com.box.other.blankj.utilcode.util.Logs
 
 class ModActivityMainModel : BaseViewModel(titleLine = false) {
     var loginOutResult = MutableLiveData<Boolean>()
     var registerResult = MutableLiveData<ResultState<Any?>>()
-
     var postModAuthLoginResult = MutableLiveData<ModResultStateWithMsg<ModUserInfo>>()
     val userInfoBeanResult = MutableLiveData<ModResultStateWithMsg<ModUserInfo>>()
     val modUserRealName = MutableLiveData<ModResultStateWithMsg<ModUserRealName>>()

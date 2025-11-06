@@ -8,8 +8,8 @@ import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.view.View
 import android.widget.TextView
+import androidx.core.graphics.toColorInt
 import androidx.core.text.HtmlCompat
-import com.box.other.blankj.utilcode.util.IntentUtils
 import com.box.base.base.action.ClickAction
 import com.box.base.base.action.KeyboardAction
 import com.box.common.appContext
@@ -20,11 +20,12 @@ import com.box.common.eventViewModel
 import com.box.common.ui.activity.CommonActivityBrowser
 import com.box.mod.R
 import com.box.other.blankj.utilcode.util.AppUtils
+import com.box.other.blankj.utilcode.util.IntentUtils
 import com.box.other.hjq.toast.Toaster
+import com.box.other.xpopup.core.CenterPopupView
 import com.hjq.permissions.OnPermissionCallback
 import com.hjq.permissions.Permission
 import com.hjq.permissions.XXPermissions
-import com.box.other.xpopup.core.CenterPopupView
 import java.io.File
 
 @SuppressLint("ViewConstructor")
@@ -43,13 +44,13 @@ class ModXPopupCenterTip(
     private var confirmView: TextView? = null
     private var contentText =
         "如果您不同意《隐私政策》协议，将进入浏览模式，此模式下我们不会收集您的信息，只提供部分基础内容的浏览功能。"
-    private val linkTextColor = Color.parseColor("#007BFF") // 设置链接颜色，这里使用蓝色，可以替换为其他颜色
+    private val linkTextColor = "#007BFF".toColorInt() // 设置链接颜色，这里使用蓝色，可以替换为其他颜色
 
     private val privacyPolicyClickableSpan = object : ClickableSpan() {
         override fun onClick(view: View) {
-            appViewModel.appInfo.value.let {
+            appViewModel.modInitBean.value.let {
                 if (it != null) {
-                    CommonActivityBrowser.start(appContext, it.marketjson.xieyitanchuang_url_yinsi)
+                    CommonActivityBrowser.start(appContext, it.privacyPolicyLink)
                 }
             }
         }

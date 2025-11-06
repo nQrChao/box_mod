@@ -25,7 +25,6 @@ import com.box.base.base.activity.BaseModVmDbActivity
 import com.box.base.ext.parseModStateWithMsg
 import com.box.base.network.NetState
 import com.box.common.INTENT_KEY_OUT_IMAGE_LIST
-import com.box.common.utils.mmkv.MMKVConfig
 import com.box.common.RESULT_CODE_SELECT_PHOTO
 import com.box.common.appViewModel
 import com.box.common.data.model.ModMainTabConfig
@@ -37,10 +36,10 @@ import com.box.common.ui.widget.bottombar.BottomBarLayout
 import com.box.common.utils.floattoast.XToast
 import com.box.common.utils.floattoast.draggable.SpringHideTimeDraggable
 import com.box.common.utils.logcat.LogcatDialog
+import com.box.common.utils.mmkv.MMKVConfig
 import com.box.mod.R
 import com.box.mod.databinding.ModActivityMainBinding
 import com.box.mod.ui.fragment.ModFragment1
-import com.box.mod.ui.fragment.ModFragment1004
 import com.box.mod.ui.fragment.ModFragmentGameRankList
 import com.box.mod.ui.fragment.ModFragmentGuJia
 import com.box.mod.ui.fragment.ModFragmentShengChengQi
@@ -156,7 +155,7 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
         activity = this
 
         MMKVConfig.userInfo?.let { savedUser ->
-            appViewModel.isLogin = true
+            eventViewModel.isLogin.value = true
             appViewModel.modUserInfo.value = savedUser
         }
 
@@ -394,18 +393,6 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
             )
         }
 
-        mViewModel.modUserRealName.observe(this) { resultState ->
-            parseModStateWithMsg(
-                resultState,
-                onSuccess = { data, msg ->
-                    appViewModel.modUserRealName.postValue(data)
-                },
-                onError = {
-                    Toaster.show(it.msg)
-                }
-            )
-        }
-
 
         eventViewModel.showLogView.observe(this) {
             showLogView(it)
@@ -438,7 +425,7 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
         eventViewModel.onKickedOffline.observe(this) {
 
             eventViewModel.isLogin.value = false
-            appViewModel.userInfo.value = null
+            appViewModel.modUserInfo.value = null
             XPopup.Builder(this@ModActivityMain)
                 .dismissOnBackPressed(false)
                 .dismissOnTouchOutside(false)
@@ -469,7 +456,7 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
 
         mViewModel.loginOutResult.observe(this) {
             eventViewModel.isLogin.value = false
-            appViewModel.userInfo.value = null
+            appViewModel.modUserInfo.value = null
             AppUtils.relaunchApp(true)
             ActivityUtils.finishAllActivities()
         }
@@ -500,9 +487,9 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
             setYOffset(SizeUtils.dp2px(80f))
             setDraggable(SpringHideTimeDraggable(0.6f, 4000L))
             setOnClickListener { _, _ ->
-                appViewModel.appInfo.value.let {
+                appViewModel.modInitBean.value.let {
                     if (it != null) {
-                        toBrowser(it.marketjson.wechat_url)
+                        toBrowser(it.userAgreementLink)
                     }
                 }
             }

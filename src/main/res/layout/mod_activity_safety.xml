@@ -36,7 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/idp_5"
-                android:onClick="@{()-> click.uXy()}"
+                android:onClick="@{()-> click.yonghuxieyi()}"
                 app:bar_leftText="用户协议"
                 app:bar_rightDrawable="@drawable/arrows_right_ic" />
 
@@ -44,7 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/idp_15"
-                android:onClick="@{()-> click.yXy()}"
+                android:onClick="@{()-> click.yinsixieyi()}"
                 app:bar_leftText="隐私政策"
                 app:bar_rightDrawable="@drawable/arrows_right_ic" />
 
@@ -53,7 +53,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/idp_15"
-                android:onClick="@{()-> click.uZx()}"
+                android:onClick="@{()-> click.zhuxiao()}"
                 android:visibility="@{vm.isLogin?View.VISIBLE:View.GONE}"
                 app:bar_leftText="账号注销"
                 app:bar_rightDrawable="@drawable/arrows_right_ic" />

@@ -55,20 +55,20 @@ class ModActivitySafety : BaseVmDbActivity<ModActivitySafety.Model, ModActivityS
     /**********************************************Click**************************************************/
 
     inner class ProxyClick {
-        fun uZx() {
-            ModActivityLogout.start(this@ModActivitySafety)
+        fun zhuxiao() {
+            ModActivityLogout.start(appContext)
         }
 
-        fun uXy() {
-            appViewModel.modInfoBean.value.let {
+        fun yonghuxieyi() {
+            appViewModel.modInitBean.value.let {
                 if (it != null) {
                     CommonActivityBrowser.start(appContext, it.userAgreementLink)
                 }
             }
         }
 
-        fun yXy() {
-            appViewModel.modInfoBean.value.let {
+        fun yinsixieyi() {
+            appViewModel.modInitBean.value.let {
                 if (it != null) {
                     CommonActivityBrowser.start(appContext, it.privacyPolicyLink)
                 }

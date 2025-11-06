@@ -5,12 +5,15 @@ import android.os.Build
 import android.os.Bundle
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.MutableLiveData
 import com.box.base.base.fragment.BaseTitleBarFragment
 import com.box.base.base.viewmodel.BaseViewModel
 import com.box.base.callback.databind.IntObservableField
 import com.box.base.network.NetState
+import com.box.common.appContext
 import com.box.mod.R
 import com.box.mod.databinding.ModFragmentWodeBinding
+import com.box.mod.ui.activity.ModActivitySafety
 import com.box.other.immersionbar.immersionBar
 
 
@@ -49,6 +52,11 @@ class ModFragmentWode : BaseTitleBarFragment<ModFragmentWode.Model, ModFragmentW
     override fun onNetworkStateChanged(it: NetState) {
     }
 
+    override fun onResume() {
+        super.onResume()
+
+    }
+
 
     /**********************************************Click**************************************************/
     inner class ProxyClick {
@@ -81,7 +89,7 @@ class ModFragmentWode : BaseTitleBarFragment<ModFragmentWode.Model, ModFragmentW
         }
 
         fun userAnQuan() {
-
+            ModActivitySafety.start(appContext)
         }
 
 
@@ -89,6 +97,7 @@ class ModFragmentWode : BaseTitleBarFragment<ModFragmentWode.Model, ModFragmentW
 
     /**********************************************Model**************************************************/
     class Model : BaseViewModel(title = "个人中心") {
+        val tuiSong = MutableLiveData<Boolean>()
         var pic = IntObservableField(0)
 
     }

@@ -42,7 +42,7 @@ class ModActivityLogout : BaseVmDbActivity<ModActivityLogout.Model, ModActivityL
 
     private val userAgreementClickableSpan = object : ClickableSpan() {
         override fun onClick(view: View) {
-            appViewModel.appInfo.value?.marketjson?.xieyitanchuang_url_zhuxiao?.let {
+            appViewModel.modInitBean.value?.userLogoutLink?.let {
                 CommonActivityBrowser.start(appContext, it)
             }
         }
@@ -78,7 +78,6 @@ class ModActivityLogout : BaseVmDbActivity<ModActivityLogout.Model, ModActivityL
         mDataBinding.tvAgree.text = spannableString
         mDataBinding.tvAgree.movementMethod = LinkMovementMethod.getInstance()
         mDataBinding.tvAgree.highlightColor = Color.TRANSPARENT
-
 
     }
 

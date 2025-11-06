@@ -30,15 +30,16 @@ import com.box.base.ext.modRequestWithMsg
 import com.box.base.ext.parseModStateWithMsg
 import com.box.base.network.NetState
 import com.box.base.state.ModResultStateWithMsg
-import com.box.common.utils.mmkv.MMKVConfig
 import com.box.common.appContext
 import com.box.common.appViewModel
 import com.box.common.data.RegisterRequest
 import com.box.common.data.model.ModDataBean
 import com.box.common.data.model.ModUserInfo
+import com.box.common.eventViewModel
 import com.box.common.network.apiService
 import com.box.common.ui.activity.CommonActivityBrowser
 import com.box.common.utils.ext.logsE
+import com.box.common.utils.mmkv.MMKVConfig
 import com.box.mod.BR.modData
 import com.box.mod.R
 import com.box.mod.databinding.ModActivityLoginBinding
@@ -142,7 +143,7 @@ class ModActivityLogin : BaseModVmDbActivity<ModActivityLogin.Model, ModActivity
                             data.localAvatarResName = oldUserInfo.localAvatarResName
                         }
                     }
-                    appViewModel.isLogin = true
+                    eventViewModel.isLogin.value= true
                     MMKVConfig.userInfo = data
                     appViewModel.modUserInfo.value = data
                     Toaster.show("登录成功")
@@ -173,7 +174,7 @@ class ModActivityLogin : BaseModVmDbActivity<ModActivityLogin.Model, ModActivity
                         data.localAvatarResName = localAvatars.random()
                     }
                     MMKVConfig.userInfo = data
-                    appViewModel.isLogin = true
+                    eventViewModel.isLogin.value= true
                     appViewModel.modUserInfo.value = data
                     Toaster.show("注册成功")
                     finish()
