@@ -247,11 +247,13 @@ class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Bindin
 
         fun img4() {
             eventViewModel.setMainCurrentItem.value = 3
-
         }
 
         fun shoucang() {
-            ModActivityShouCang.start(appContext)
+            if (isLogin()) {
+                ModActivityShouCang.start(appContext)
+            }
+
         }
 
         fun confirm() {

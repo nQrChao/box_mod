@@ -217,7 +217,10 @@ class ModFragmentGameRankList :
 
     override fun onRightClick(view: TitleBar) {
         super.onRightClick(view)
-        ModActivityShouCang.start(appContext,1)
+        if (isLogin()) {
+            ModActivityShouCang.start(appContext,1)
+        }
+
     }
 
     /**********************************************Click**************************************************/

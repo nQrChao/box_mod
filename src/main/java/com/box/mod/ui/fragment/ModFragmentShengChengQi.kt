@@ -238,7 +238,9 @@ class ModFragmentShengChengQi :
 
     override fun onRightClick(view: TitleBar) {
         super.onRightClick(view)
-        ModActivityShouCang.start(appContext)
+        if (isLogin()) {
+            ModActivityShouCang.start(appContext)
+        }
     }
 
     override fun onResume() {

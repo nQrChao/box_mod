@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.box.mod.ui.activity.fankui.ModActivityFankui1.Model" />
+
+        <variable
+            name="click"
+            type="com.box.mod.ui.activity.fankui.ModActivityFankui1.ProxyClick" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/mod_bg_activity_fankui_1">
+
+        <com.box.other.hjq.titlebar.TitleBar
+            android:id="@+id/titleBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/idp_40"
+            android:background="@color/transparent"
+            android:gravity="center"
+            app:leftTitleColor="@color/black90"
+            app:leftTitleSize="@dimen/isp_17"
+            app:leftTitleStyle="bold"
+            app:lineVisible="false"
+            app:title="意见反馈"
+            app:titleColor="@color/black90"
+            app:titleSize="@dimen/isp_16"
+            app:titleStyle="bold" />
+
+        <com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/titleBar"
+            app:srlEnableFooterTranslationContent="true"
+            app:srlEnableHeaderTranslationContent="true"
+            app:srlEnableLoadMore="false"
+            app:srlEnableOverScrollBounce="true"
+            app:srlEnableOverScrollDrag="true"
+            app:srlEnablePureScrollMode="true"
+            app:srlReboundDuration="700">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/titleBar"
+                android:layout_marginBottom="@dimen/idp_70">
+
+                <LinearLayout
+                    android:id="@+id/rootView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="@dimen/idp_10"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/idp_20"
+                        android:text="你好，"
+                        android:textColor="@color/text_default_color"
+                        android:textSize="@dimen/isp_20"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/idp_5"
+                        android:text="有什么好的建议可以分享一下"
+                        android:textColor="@color/text_default_color"
+                        android:textSize="@dimen/isp_20"
+                        android:textStyle="bold"
+                        tools:text="有什么好的建议可以分享一下" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/idp_20"
+                        android:background="@drawable/mod_bg_text_1"
+                        android:paddingHorizontal="@dimen/idp_15"
+                        android:paddingVertical="@dimen/idp_5"
+                        android:text="反馈内容"
+                        android:textColor="@color/text_default_color"
+                        android:textSize="@dimen/isp_13"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:id="@+id/gameInfoLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/mod_fankui_text_bg_1"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="@dimen/idp_5"
+                        android:paddingVertical="@dimen/idp_10"
+                        android:weightSum="10"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <EditText
+                            android:id="@+id/modQuestionEdit"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/idp_160"
+                            android:background="@null"
+                            android:gravity="start"
+                            android:hint="请输入您要反馈的建议"
+                            android:maxLines="7"
+                            android:padding="@dimen/idp_15"
+                            android:singleLine="false"
+                            android:text="@={vm.questionText}"
+                            android:textColorHint="@color/black30"
+                            android:textSize="@dimen/isp_13" />
+
+
+                        <ImageView
+                            android:id="@+id/addPic1"
+                            android:layout_width="@dimen/idp_70"
+                            android:layout_height="@dimen/idp_70"
+                            android:layout_marginStart="@dimen/idp_15"
+                            android:layout_marginTop="@dimen/idp_10"
+                            android:layout_marginBottom="@dimen/idp_10"
+                            android:onClick="@{() -> click.addPic()}"
+                            app:loadImagePickMediaUri="@{vm.picUri}"
+                            tools:src="@drawable/mod_add_pic_2" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/idp_15"
+                        android:background="@drawable/a_rounded_15"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="@dimen/idp_15"
+                        android:paddingVertical="@dimen/idp_10"
+                        android:weightSum="10">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="联系电话"
+                            android:textColor="@color/text_default_color"
+                            android:textSize="@dimen/isp_15"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.box.common.ui.view.ClearEditText
+                            android:id="@+id/modQQEdit"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:gravity="start"
+                            android:hint="输入QQ号码或手机号码"
+                            android:maxLines="7"
+                            android:padding="@dimen/idp_10"
+                            android:singleLine="false"
+                            android:text="@={vm.qqText}"
+                            android:textColorHint="@color/black30"
+                            android:textSize="@dimen/isp_13" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+        </com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/idp_20"
+            android:paddingVertical="@dimen/idp_15">
+
+            <Button
+                android:id="@+id/btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/idp_45"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/idp_10"
+                android:background="@drawable/mod_btn_confirm_selector"
+                android:text="提交"
+                android:textColor="@color/white"
+                android:textSize="@dimen/mod_button_text_size"
+                android:textStyle="bold"
+                app:onSingleClick="@{() -> click.confirm()}"
+                app:singleClickDelay="@{1000L}"
+                tools:text="提交" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

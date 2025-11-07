@@ -380,6 +380,7 @@
                 android:id="@+id/btn"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/idp_45"
+                android:layout_marginBottom="@dimen/idp_10"
                 android:layout_gravity="center"
                 android:background="@drawable/mod_btn_confirm_selector"
                 android:text="一键估算"
