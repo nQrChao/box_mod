@@ -74,7 +74,6 @@ class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Bindin
     override fun initView(savedInstanceState: Bundle?) {
         mDataBinding.vm = mViewModel
         mDataBinding.click = ProxyClick()
-        mDataBinding.lifecycleOwner = viewLifecycleOwner
 
         immersionBar {
             titleBar(mDataBinding.titleBar)
@@ -203,8 +202,6 @@ class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Bindin
             mViewModel.modUserInfo.value = it
         }
 
-
-
         MMKVConfig.userInfo?.let { savedUser ->
             eventViewModel.isLogin.value= true
             appViewModel.modUserInfo.value = savedUser
@@ -252,6 +249,9 @@ class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Bindin
         fun shoucang() {
             if (isLogin()) {
                 ModActivityShouCang.start(appContext)
+            }else{
+                Toaster.show("请先登录")
+                ModActivityLogin.start(appContext)
             }
 
         }

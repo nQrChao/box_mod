@@ -13,23 +13,30 @@ import android.view.View
 import android.widget.CompoundButton
 import androidx.core.graphics.toColorInt
 import androidx.core.text.HtmlCompat
+import androidx.lifecycle.MutableLiveData
 import com.box.base.base.activity.BaseVmDbActivity
 import com.box.base.base.viewmodel.BaseViewModel
 import com.box.base.callback.databind.BooleanObservableField
 import com.box.base.callback.databind.IntObservableField
 import com.box.base.callback.databind.StringObservableField
+import com.box.base.ext.modRequestWithMsg
+import com.box.base.ext.parseModStateWithMsg
 import com.box.base.network.NetState
+import com.box.base.state.ModResultStateWithMsg
 import com.box.common.appContext
 import com.box.common.appViewModel
+import com.box.common.data.DeleteUserRequest
+import com.box.common.data.model.ModUserInfo
+import com.box.common.network.apiService
 import com.box.common.ui.activity.CommonActivityBrowser
-import com.box.common.utils.mmkv.MMKVConfig
+import com.box.common.utils.ext.logsE
 import com.box.mod.R
 import com.box.mod.databinding.ModActivityLogoutBinding
+import com.box.mod.game.ModComService
 import com.box.other.blankj.utilcode.util.ActivityUtils
 import com.box.other.blankj.utilcode.util.AppUtils
 import com.box.other.blankj.utilcode.util.ColorUtils
 import com.box.other.blankj.utilcode.util.GsonUtils
-import com.box.other.blankj.utilcode.util.Logs
 import com.box.other.hjq.toast.Toaster
 import com.box.other.immersionbar.immersionBar
 import com.box.other.xpopup.XPopup
@@ -82,26 +89,39 @@ class ModActivityLogout : BaseVmDbActivity<ModActivityLogout.Model, ModActivityL
     }
 
     override fun createObserver() {
+        mViewModel.deleteUserResult.observe(this) { resultState ->
+            parseModStateWithMsg(
+                resultState,
+                onSuccess = { data, msg ->
+                    logsE(GsonUtils.toJson(data))
+                    ModComService.get().logout()
+                    XPopup.Builder(this@ModActivityLogout)
+                        .isDestroyOnDismiss(false)
+                        .hasStatusBar(true)
+                        .animationDuration(5)
+                        .navigationBarColor(ColorUtils.getColor(RC.color.xpop_shadow_color))
+                        .isLightStatusBar(true)
+                        .hasNavigationBar(true)
+                        .asConfirm(
+                            "注销成功",
+                            "实名信息、手机信息、相关第三方授权已释放删除，即时起你将不可再登录现有账号，再次使用手机号登录将会创建一个全新账号。\n*原注销账号数据将在7日内完全删除",
+                            "",
+                            "确定",
+                            {
+                                ModActivityMain.start(this@ModActivityLogout)
+                                finish()
+                            },
+                            null,
+                            true,
+                            R.layout.xpopup_confirm_mod
+                        ).show()
+                },
+                onError = {
+                    Toaster.show(it.msg)
+                }
+            )
+        }
 
-//        ModManager.provider.logout()
-//        XPopup.Builder(this@ModActivityLogout)
-//            .isDestroyOnDismiss(false)
-//            .hasStatusBar(true)
-//            .animationDuration(5)
-//            .navigationBarColor(ColorUtils.getColor(RC.color.xpop_shadow_color))
-//            .isLightStatusBar(true)
-//            .hasNavigationBar(true)
-//            .asConfirm(
-//                "注销成功", "实名信息、手机信息、相关第三方授权已释放删除，即时起你将不可再登录现有账号，再次使用手机号登录将会创建一个全新账号。\n*原注销账号数据将在7日内完全删除",
-//                "", "确定",
-//                {
-//                    MMKVConfig.userInfo = null
-//                    appViewModel.modUserInfo.postValue(null)
-//                    eventViewModel.isLogin.value = false
-//                    ModActivityMain.start(this@ModActivityLogout)
-//                    finish()
-//                }, null, true, R.layout.xpopup_confirm_mod
-//            ).show()
 
     }
 
@@ -125,11 +145,16 @@ class ModActivityLogout : BaseVmDbActivity<ModActivityLogout.Model, ModActivityL
                 .isLightStatusBar(true)
                 .hasNavigationBar(true)
                 .asConfirm(
-                    "注销提示", "账户可能存在可用财产，建议使用完毕再注销账号，若仍要注销将视为你自愿放弃且无法继续使用！" + AppUtils.getAppName(),
-                    "暂不注销", "确定注销",
+                    "注销提示",
+                    "账户可能存在可用财产，建议使用完毕再注销账号，若仍要注销将视为你自愿放弃且无法继续使用！" + AppUtils.getAppName(),
+                    "暂不注销",
+                    "确定注销",
                     {
                         mViewModel.zhuxiaoShowView.set(1)
-                    }, null, false, R.layout.xpopup_confirm_mod
+                    },
+                    null,
+                    false,
+                    R.layout.xpopup_confirm_mod
                 ).show()
 
         }
@@ -139,11 +164,11 @@ class ModActivityLogout : BaseVmDbActivity<ModActivityLogout.Model, ModActivityL
                 Toaster.show("密码长度应不少于6位数")
                 return
             }
-            if (mViewModel.password.get().length > 18) {
-                Toaster.show("密码长度应不大于18位数")
+            if (mViewModel.password.get().length > 16) {
+                Toaster.show("密码长度应不大于16位数")
                 return
             }
-            mViewModel.logoutCheckRequest()
+            mViewModel.postDeleteUser(mViewModel.password.get())
         }
 
 
@@ -153,7 +178,7 @@ class ModActivityLogout : BaseVmDbActivity<ModActivityLogout.Model, ModActivityL
         }
     }
 
-
+    /**********************************************Model**************************************************/
 
     class Model : BaseViewModel(title = "账号注销") {
         var zhuxiaoShowView = IntObservableField(0)
@@ -162,25 +187,18 @@ class ModActivityLogout : BaseVmDbActivity<ModActivityLogout.Model, ModActivityL
         var mobileNum = StringObservableField("")
         var password = StringObservableField("")
 
+        var deleteUserResult = MutableLiveData<ModResultStateWithMsg<ModUserInfo>>()
 
-
-        fun logoutCheckRequest() {
-            val user = MMKVConfig.userInfo
-            Logs.e("USER:${GsonUtils.toJson(user)}")
-            if (user != null) {
-
-            }
+        fun postDeleteUser(password: String) {
+            val requestBody = DeleteUserRequest(
+                pwd = password,
+            )
+            modRequestWithMsg(
+                { apiService.deleteUser(requestBody) },
+                deleteUserResult,
+                isShowDialog = true,
+            )
         }
-
-
-        fun logoutRequest() {
-            val user = MMKVConfig.userInfo
-            Logs.e("USER:${GsonUtils.toJson(user)}")
-            if (user != null) {
-
-            }
-        }
-
 
 
     }

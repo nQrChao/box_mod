@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <import type="com.box.other.blankj.utilcode.util.StringUtils" />
 
         <variable
@@ -23,245 +25,311 @@
         android:background="@drawable/mod_bg_wode"
         android:orientation="vertical">
 
-        <com.box.other.hjq.titlebar.TitleBar
+        <FrameLayout
             android:id="@+id/titleBar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/idp_40"
-            android:background="@color/transparent"
-            android:gravity="center"
-            app:leftIcon="@null"
-            app:lineVisible="false"
-            app:rightIcon="@drawable/mod_wode_setting"
-            app:rightIconGravity="start"
-            app:rightIconHeight="@dimen/idp_20"
-            app:rightIconWidth="@dimen/idp_20"
-            app:rightTitleColor="#6493FA"
-            app:rightTitleSize="@dimen/isp_14"
-            app:rightTitleStyle="bold"
-            app:titleColor="@color/black90"
-            app:titleSize="@dimen/isp_16"
-            app:titleStyle="bold" />
+            android:background="@color/transparent">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/idp_40"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="个人中心"
+                android:textColor="@color/black"
+                android:textSize="@dimen/isp_16"
+                android:textStyle="bold" />
 
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/me_swipe"
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottieMessage"
+                android:layout_width="@dimen/idp_35"
+                android:layout_height="@dimen/idp_35"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="end"
+                android:layout_marginEnd="@dimen/idp_15"
+                android:onClick="@{()-> click.xiaoxi()}"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/message" />
+        </FrameLayout>
+
+        <com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/refreshLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/idp_10">
+            android:layout_below="@id/titleBar"
+            app:srlEnableFooterTranslationContent="true"
+            app:srlEnableHeaderTranslationContent="true"
+            app:srlEnableLoadMore="false"
+            app:srlEnableOverScrollBounce="true"
+            app:srlEnableOverScrollDrag="true"
+            app:srlEnablePureScrollMode="true"
+            app:srlReboundDuration="700">
 
-            <LinearLayout
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/me_swipe"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:padding="@dimen/idp_10">
+                android:layout_marginTop="@dimen/idp_10">
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/idp_200"
-                    android:background="@drawable/mod_wode_user_bg"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="@dimen/idp_10">
 
-                    <FrameLayout
-                        android:id="@+id/mod_wode_user_icon"
-                        android:layout_width="@dimen/idp_100"
-                        android:layout_height="@dimen/idp_100"
-                        android:layout_marginStart="@dimen/idp_30"
-                        android:background="@drawable/white_circle_bg"
-                        android:gravity="center">
-
-                        <ImageView
-                            android:id="@+id/f1_title_user_img"
-                            android:layout_width="@dimen/idp_70"
-                            android:layout_height="@dimen/idp_70"
-                            android:layout_gravity="center"
-                            android:onClick="@{()->click.user()}"
-                            app:userAvatarInfo="@{vm.modUserInfo}"
-                            tools:src="@drawable/mod_user_icon1" />
-                    </FrameLayout>
-
-
-                    <LinearLayout
-                        android:id="@+id/f1_title_user_account_layout"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginTop="@dimen/idp_20"
-                        android:layout_marginEnd="@dimen/idp_40"
-                        android:onClick="@{()-> click.user()}"
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/idp_200"
+                        android:background="@drawable/mod_wode_user_bg"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/f1_title_user_name"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:maxLines="1"
-                            android:onClick="@{()->click.user()}"
-                            android:text="@{vm.modUserInfo.nickName ?? `点击登录`}"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/isp_16"
-                            android:textStyle="bold"
-                            tools:text="兜兜里的糖糖" />
+                        <FrameLayout
+                            android:id="@+id/mod_wode_user_icon"
+                            android:layout_width="@dimen/idp_100"
+                            android:layout_height="@dimen/idp_100"
+                            android:layout_marginStart="@dimen/idp_30"
+                            android:background="@drawable/white_circle_bg"
+                            android:gravity="center">
 
-                        <TextView
-                            android:id="@+id/f1_title_user_id"
+                            <ImageView
+                                android:id="@+id/user_icon"
+                                android:layout_width="@dimen/idp_70"
+                                android:layout_height="@dimen/idp_70"
+                                android:layout_gravity="center"
+                                android:onClick="@{()->click.user()}"
+                                app:userAvatarInfo="@{vm.userInfo()}"
+                                tools:src="@drawable/mod_user_icon1" />
+                        </FrameLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/f1_title_user_account_layout"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:maxLines="1"
-                            android:text="@{vm.modUserInfo == null ? `ID: --` : StringUtils.format(&quot;ID: %s&quot;, vm.modUserInfo.userId)}"
-                            android:textColor="#8A8A8A"
-                            android:textSize="@dimen/isp_14"
-                            tools:text="ID：23279" />
-                    </LinearLayout>
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="@dimen/idp_20"
+                            android:layout_marginEnd="@dimen/idp_50"
+                            android:onClick="@{()-> click.user()}"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/f1_title_user_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:onClick="@{()->click.user()}"
+                                android:text="@{vm.modUserInfo.nickName ?? `点击登录`}"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/isp_16"
+                                android:textStyle="bold"
+                                tools:text="兜兜里的糖糖" />
+
+                            <TextView
+                                android:id="@+id/f1_title_user_id"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:text="@{vm.modUserInfo == null ? `` : StringUtils.format(&quot;ID: %s&quot;, vm.modUserInfo.userId)}"
+                                android:textColor="#8A8A8A"
+                                android:textSize="@dimen/isp_14"
+                                tools:text="ID：23279" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/mod_wode_user_icon"
+                            android:orientation="horizontal"
+                            android:paddingHorizontal="@dimen/idp_30"
+                            android:weightSum="2">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/idp_7"
+                                android:layout_weight="1"
+                                android:background="@drawable/mod_wode_bg_text_1"
+                                android:onClick="@{()-> click.jueseShoucang()}"
+                                android:orientation="vertical"
+                                android:paddingVertical="@dimen/idp_10">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="角色名收藏"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/isp_15"
+                                    android:textStyle="bold"
+                                    tools:text="角色名收藏" />
+
+                                <ImageView
+                                    android:layout_width="@dimen/idp_35"
+                                    android:layout_height="@dimen/idp_35"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginTop="@dimen/idp_5"
+                                    android:src="@drawable/mod_wode_juese_shoucang" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/idp_7"
+                                android:layout_weight="1"
+                                android:background="@drawable/mod_wode_bg_text_2"
+                                android:onClick="@{()->click.gameShoucang()}"
+                                android:orientation="vertical"
+                                android:paddingVertical="@dimen/idp_10">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="小游戏收藏"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/isp_15"
+                                    android:textStyle="bold"
+                                    tools:text="小游戏收藏" />
+
+                                <ImageView
+                                    android:layout_width="@dimen/idp_35"
+                                    android:layout_height="@dimen/idp_35"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginTop="@dimen/idp_5"
+                                    android:src="@drawable/mod_wode_game_shoucang" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/mod_wode_user_icon"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="@dimen/idp_30"
-                        android:weightSum="2">
+                        android:layout_marginTop="@dimen/idp_15"
+                        android:background="@drawable/a_rounded_20"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="@dimen/idp_20"
+                        android:paddingVertical="@dimen/idp_10">
 
-                        <LinearLayout
-                            android:onClick="@{()-> click.jueseShoucang()}"
-                            android:layout_width="0dp"
+                        <com.box.common.ui.layout.SettingBar
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="@dimen/idp_7"
-                            android:layout_weight="1"
-                            android:background="@drawable/mod_wode_bg_text_1"
-                            android:orientation="vertical"
-                            android:paddingVertical="@dimen/idp_10">
+                            android:layout_marginTop="@dimen/idp_5"
+                            android:background="@drawable/transparent_selector"
+                            android:onClick="@{()-> click.xiaoxi()}"
+                            android:visibility="gone"
+                            app:bar_leftText="我的消息"
+                            app:bar_leftTextStyle="bold"
+                            app:bar_rightDrawable="@drawable/mod_right_return"
+                            app:bar_rightDrawableSize="@dimen/idp_20" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:ellipsize="end"
-                                android:maxLines="1"
-                                android:text="角色名收藏"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/isp_15"
-                                android:textStyle="bold"
-                                tools:text="角色名收藏" />
 
-                            <ImageView
-                                android:layout_width="@dimen/idp_35"
-                                android:layout_height="@dimen/idp_35"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginTop="@dimen/idp_5"
-                                android:src="@drawable/mod_wode_juese_shoucang" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
+                        <com.box.common.ui.layout.SettingBar
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/idp_7"
-                            android:layout_weight="1"
-                            android:background="@drawable/mod_wode_bg_text_2"
-                            android:onClick="@{()->click.gameShoucang()}"
-                            android:orientation="vertical"
-                            android:paddingVertical="@dimen/idp_10">
+                            android:layout_marginTop="@dimen/idp_10"
+                            android:background="@drawable/transparent_selector"
+                            android:onClick="@{()-> click.fankui()}"
+                            app:bar_leftText="意见反馈"
+                            app:bar_leftTextStyle="bold"
+                            app:bar_rightDrawable="@drawable/mod_right_return"
+                            app:bar_rightDrawableSize="@dimen/idp_20" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:ellipsize="end"
-                                android:maxLines="1"
-                                android:text="角色名收藏"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/isp_15"
-                                android:textStyle="bold"
-                                tools:text="小游戏收藏" />
+                        <com.box.common.ui.layout.SettingBar
+                            android:id="@+id/huancunBar"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/idp_10"
+                            android:background="@drawable/transparent_selector"
+                            android:onClick="@{()-> click.huancun()}"
+                            app:bar_leftText="清理缓存"
+                            app:bar_leftTextStyle="bold"
+                            app:bar_rightDrawable="@drawable/mod_right_return"
+                            app:bar_rightDrawableSize="@dimen/idp_20"
+                            app:bar_rightTextColor="@color/text_hit_color"
+                            app:bar_rightTextSize="@dimen/isp_13" />
 
-                            <ImageView
-                                android:layout_width="@dimen/idp_35"
-                                android:layout_height="@dimen/idp_35"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginTop="@dimen/idp_5"
-                                android:src="@drawable/mod_wode_game_shoucang" />
+                        <com.box.common.ui.layout.SettingBar
+                            android:id="@+id/beiAnBar"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/idp_10"
+                            android:background="@drawable/transparent_selector"
+                            android:onClick="@{()-> click.beian()}"
+                            app:bar_leftText="备案信息"
+                            app:bar_leftTextStyle="bold"
+                            app:bar_rightDrawable="@drawable/mod_right_return"
+                            app:bar_rightDrawableSize="@dimen/idp_20"
+                            app:bar_rightTextColor="@color/text_hit_color"
+                            app:bar_rightTextSize="@dimen/isp_13" />
 
-                        </LinearLayout>
+
+                        <com.box.common.ui.layout.SettingBar
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/idp_10"
+                            android:background="@drawable/transparent_selector"
+                            android:onClick="@{()-> click.fangChenMi()}"
+                            app:bar_leftText="防沉迷政策"
+                            app:bar_leftTextStyle="bold"
+                            app:bar_rightDrawable="@drawable/mod_right_return"
+                            app:bar_rightDrawableSize="@dimen/idp_20" />
+
+                        <com.box.common.ui.layout.SettingBar
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/idp_10"
+                            android:background="@drawable/transparent_selector"
+                            android:onClick="@{()-> click.userAnQuan()}"
+                            app:bar_leftText="隐私权限安全"
+                            app:bar_leftTextStyle="bold"
+                            app:bar_rightDrawable="@drawable/mod_right_return"
+                            app:bar_rightDrawableSize="@dimen/idp_20" />
+
+                        <com.box.common.ui.layout.SettingBar
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/idp_10"
+                            android:background="@drawable/transparent_selector"
+                            android:onClick="@{()-> click.xiugaimima()}"
+                            android:visibility="@{vm.modUserInfo == null?View.GONE:View.VISIBLE}"
+                            app:bar_leftText="修改密码"
+                            app:bar_leftTextStyle="bold"
+                            app:bar_rightDrawable="@drawable/mod_right_return"
+                            app:bar_rightDrawableSize="@dimen/idp_20" />
+
+                        <com.box.common.ui.layout.SettingBar
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/idp_10"
+                            android:background="@drawable/transparent_selector"
+                            android:onClick="@{()-> click.quit()}"
+                            android:visibility="@{vm.modUserInfo == null?View.GONE:View.VISIBLE}"
+                            app:bar_leftText="退出账号"
+                            app:bar_leftTextStyle="bold"
+                            app:bar_lineVisible="false"
+                            app:bar_rightDrawable="@drawable/mod_right_return"
+                            app:bar_rightDrawableSize="@dimen/idp_20" />
 
                     </LinearLayout>
 
-                </RelativeLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/mod_wode_user_icon"
-                    android:layout_marginTop="@dimen/idp_15"
-                    android:background="@drawable/a_rounded_20"
-                    android:orientation="vertical"
-                    android:paddingHorizontal="@dimen/idp_20"
-                    android:paddingVertical="@dimen/idp_10">
-
-                    <com.box.common.ui.layout.SettingBar
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/idp_5"
-                        android:background="@drawable/transparent_selector"
-                        android:onClick="@{()-> click.xiaoxi()}"
-                        app:bar_leftText="我的消息"
-                        app:bar_leftTextStyle="bold"
-                        app:bar_rightDrawable="@drawable/mod_right_return"
-                        app:bar_rightDrawableSize="@dimen/idp_20" />
-
-
-                    <com.box.common.ui.layout.SettingBar
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/idp_10"
-                        android:background="@drawable/transparent_selector"
-                        android:onClick="@{()-> click.fankui()}"
-                        app:bar_leftText="意见反馈"
-                        app:bar_leftTextStyle="bold"
-                        app:bar_rightDrawable="@drawable/mod_right_return"
-                        app:bar_rightDrawableSize="@dimen/idp_20" />
-
-
-                    <com.box.common.ui.layout.SettingBar
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/idp_10"
-                        android:background="@drawable/transparent_selector"
-                        android:onClick="@{()-> click.fangChenMi()}"
-                        app:bar_leftText="防沉迷政策"
-                        app:bar_leftTextStyle="bold"
-                        app:bar_rightDrawable="@drawable/mod_right_return"
-                        app:bar_rightDrawableSize="@dimen/idp_20" />
-
-                    <com.box.common.ui.layout.SettingBar
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/idp_10"
-                        android:background="@drawable/transparent_selector"
-                        android:onClick="@{()-> click.userAnQuan()}"
-                        app:bar_leftText="隐私权限安全"
-                        app:bar_leftTextStyle="bold"
-                        app:bar_rightDrawable="@drawable/mod_right_return"
-                        app:bar_rightDrawableSize="@dimen/idp_20" />
-
-                    <com.box.common.ui.layout.SettingBar
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/idp_10"
-                        android:background="@drawable/transparent_selector"
-                        android:onClick="@{()-> click.quit()}"
-                        app:bar_leftText="退出账号"
-                        app:bar_leftTextStyle="bold"
-                        app:bar_lineVisible="false"
-                        app:bar_rightDrawable="@drawable/mod_right_return"
-                        app:bar_rightDrawableSize="@dimen/idp_20" />
-
                 </LinearLayout>
 
-            </LinearLayout>
-
-        </androidx.core.widget.NestedScrollView>
-
+            </androidx.core.widget.NestedScrollView>
+        </com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout>
     </LinearLayout>
 </layout>

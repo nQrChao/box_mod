@@ -251,7 +251,7 @@ class ModActivityLogin : BaseModVmDbActivity<ModActivityLogin.Model, ModActivity
                 return
             }
             if (mViewModel.password2.get() != mViewModel.password.get()) {
-                showFieldError(mDataBinding.loginPassword2, "两次密码输入不一直，请确认输入")
+                showFieldError(mDataBinding.loginPassword2, "两次密码输入不一致，请确认输入")
                 return
             }
             if (mDataBinding.agreementButton.isChecked) {

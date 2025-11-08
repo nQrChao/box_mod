@@ -67,6 +67,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/idp_20"
+                        android:letterSpacing="0.05"
                         android:text="你好，"
                         android:textColor="@color/text_default_color"
                         android:textSize="@dimen/isp_20"
@@ -78,23 +79,39 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/idp_5"
-                        android:text="有什么好的建议可以分享一下"
+                        android:letterSpacing="0.05"
+                        android:text="等待你分享更好的建议！"
                         android:textColor="@color/text_default_color"
                         android:textSize="@dimen/isp_20"
                         android:textStyle="bold"
-                        tools:text="有什么好的建议可以分享一下" />
+                        tools:text="等待你分享更好的建议！" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/idp_20"
-                        android:background="@drawable/mod_bg_text_1"
-                        android:paddingHorizontal="@dimen/idp_15"
-                        android:paddingVertical="@dimen/idp_5"
-                        android:text="反馈内容"
-                        android:textColor="@color/text_default_color"
-                        android:textSize="@dimen/isp_13"
-                        android:textStyle="bold" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/fankui_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/idp_15"
+                            android:background="@drawable/mod_bg_text_1"
+                            android:paddingHorizontal="@dimen/idp_15"
+                            android:paddingVertical="@dimen/idp_5"
+                            android:text="反馈内容"
+                            android:textColor="@color/text_default_color"
+                            android:textSize="@dimen/isp_14"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:layout_width="@dimen/idp_16"
+                            android:layout_height="@dimen/idp_16"
+                            android:layout_alignEnd="@id/fankui_title"
+                            android:layout_marginTop="@dimen/idp_10"
+                            android:layout_marginEnd="-5dp"
+                            android:src="@drawable/love1" />
+                    </RelativeLayout>
+
 
                     <LinearLayout
                         android:id="@+id/gameInfoLayout"
@@ -112,7 +129,7 @@
                         <EditText
                             android:id="@+id/modQuestionEdit"
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/idp_160"
+                            android:layout_height="@dimen/idp_130"
                             android:background="@null"
                             android:gravity="start"
                             android:hint="请输入您要反馈的建议"
@@ -121,7 +138,7 @@
                             android:singleLine="false"
                             android:text="@={vm.questionText}"
                             android:textColorHint="@color/black30"
-                            android:textSize="@dimen/isp_13" />
+                            android:textSize="@dimen/isp_14" />
 
 
                         <ImageView
@@ -151,7 +168,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="联系电话"
+                            android:text="联系方式"
                             android:textColor="@color/text_default_color"
                             android:textSize="@dimen/isp_15"
                             android:textStyle="bold"
@@ -170,7 +187,7 @@
                             android:singleLine="false"
                             android:text="@={vm.qqText}"
                             android:textColorHint="@color/black30"
-                            android:textSize="@dimen/isp_13" />
+                            android:textSize="@dimen/isp_14" />
 
                     </LinearLayout>
 

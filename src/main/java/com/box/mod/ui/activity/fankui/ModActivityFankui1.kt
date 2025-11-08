@@ -17,7 +17,6 @@ import com.box.base.callback.databind.IntObservableField
 import com.box.base.callback.databind.StringObservableField
 import com.box.base.network.NetState
 import com.box.common.appContext
-import com.box.common.eventViewModel
 import com.box.common.utils.mmkv.MMKVConfig
 import com.box.mod.R
 import com.box.mod.databinding.ModActivityFankui1Binding
@@ -30,10 +29,8 @@ import com.box.other.hjq.titlebar.TitleBar
 import com.box.other.hjq.toast.Toaster
 import com.box.other.immersionbar.immersionBar
 import com.box.other.xpopup.XPopup
-import kotlin.compareTo
-import kotlin.text.get
-import kotlin.text.set
 import com.box.com.R as RC
+
 class ModActivityFankui1 : BaseVmDbActivity<ModActivityFankui1.Model, ModActivityFankui1Binding>() {
     private val pickMedia: ActivityResultLauncher<PickVisualMediaRequest> =
         registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri: Uri? ->
@@ -63,11 +60,12 @@ class ModActivityFankui1 : BaseVmDbActivity<ModActivityFankui1.Model, ModActivit
         mDataBinding.click = ProxyClick()
         immersionBar {
             titleBar(mDataBinding.titleBar)
-            navigationBarColor(com.box.com.R.color.white)
+            navigationBarColor(R.color.mod_fankui1_nav_color)
             init()
         }
-        mViewModel.titleT.value = "意见反馈"
-        mViewModel.isLogin.set(eventViewModel.isLogin.value ?: false)
+        mDataBinding.titleBar.leftView.setOnClickListener {
+            finish()
+        }
 
     }
 

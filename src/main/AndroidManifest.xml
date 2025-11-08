@@ -31,12 +31,18 @@
             android:windowSoftInputMode="adjustResize" />
 
         <activity
+            android:name="com.box.mod.ui.activity.message.ModActivityMessage1"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
             android:name="com.box.mod.ui.activity.ModActivityLogin"
             android:exported="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
 
-       <activity
+        <activity
             android:name="com.box.mod.ui.activity.ModActivitySafety"
             android:exported="true"
             android:screenOrientation="portrait"
@@ -44,6 +50,12 @@
 
         <activity
             android:name="com.box.mod.ui.activity.ModActivityLogout"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name="com.box.mod.ui.activity.ModActivityChangePassword"
             android:exported="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />

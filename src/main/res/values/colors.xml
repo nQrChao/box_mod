@@ -7,6 +7,7 @@
 
     <color name="mod_tab_color_default">#8A8A8A</color>
     <color name="mod_tab_color_select">@color/white</color>
+    <color name="mod_fankui1_nav_color">#F3F5F8</color>
 
 
 </resources>

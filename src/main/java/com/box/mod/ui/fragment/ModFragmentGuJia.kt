@@ -17,8 +17,9 @@ import com.box.base.callback.databind.IntObservableField
 import com.box.base.callback.databind.StringObservableField
 import com.box.base.network.NetState
 import com.box.common.DecimalDigitsInputFilter
-import com.box.common.utils.mmkv.MMKVConfig
 import com.box.common.appContext
+import com.box.common.data.model.ModLocalGuJiaBean
+import com.box.common.utils.mmkv.MMKVConfig
 import com.box.mod.R
 import com.box.mod.databinding.ModFragmentGujiaBinding
 import com.box.mod.ui.xpop.ModXPopupCenterGuJia
@@ -38,9 +39,17 @@ class ModFragmentGuJia : BaseTitleBarFragment<ModFragmentGuJia.Model, ModFragmen
         registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri: Uri? ->
             if (uri != null) {
                 when (mViewModel.pic.get()) {
-                    1 -> {mViewModel.pic1Uri.set(uri)}
-                    2 -> {mViewModel.pic2Uri.set(uri)}
-                    3 -> {mViewModel.pic3Uri.set(uri)}
+                    1 -> {
+                        mViewModel.pic1Uri.set(uri)
+                    }
+
+                    2 -> {
+                        mViewModel.pic2Uri.set(uri)
+                    }
+
+                    3 -> {
+                        mViewModel.pic3Uri.set(uri)
+                    }
                 }
             } else {
                 Toaster.show("未选择任何图片")
@@ -81,11 +90,8 @@ class ModFragmentGuJia : BaseTitleBarFragment<ModFragmentGuJia.Model, ModFragmen
     }
 
     override fun getTitleBar(): TitleBar? {
-       return mDataBinding.titleBar
+        return mDataBinding.titleBar
     }
-
-
-
 
 
     override fun createObserver() {
@@ -113,30 +119,65 @@ class ModFragmentGuJia : BaseTitleBarFragment<ModFragmentGuJia.Model, ModFragmen
         fun addPic3() {
             selectPhoto(3)
         }
+
         fun confirm() {
-            val priceText = mViewModel.getCalculatedPrice(mViewModel.gamePrice.get())
+
             val errorMessage = mViewModel.getValidationError()
             if (errorMessage != null) {
                 if (mViewModel.gameName.get().isEmpty()) {
-                    mDataBinding.gameNameEdit.startAnimation(AnimationUtils.loadAnimation(appContext, RC.anim.shake_anim))
+                    mDataBinding.gameNameEdit.startAnimation(
+                        AnimationUtils.loadAnimation(
+                            appContext,
+                            RC.anim.shake_anim
+                        )
+                    )
                 } else if (mViewModel.gameNickName.get().isEmpty()) {
-                    mDataBinding.gameNickNameEdit.startAnimation(AnimationUtils.loadAnimation(appContext, RC.anim.shake_anim))
-                }  else if (mViewModel.gameServerName.get().isEmpty() ) {
-                    mDataBinding.gameServerEdit.startAnimation(AnimationUtils.loadAnimation(appContext, RC.anim.shake_anim))
-                } else if (mViewModel.gamePrice.get().isEmpty() )  {
-                    mDataBinding.gamePriceEdit.startAnimation(AnimationUtils.loadAnimation(appContext, RC.anim.shake_anim))
-                }  else if (priceText == null)  {
-                    mDataBinding.gamePriceEdit.startAnimation(AnimationUtils.loadAnimation(appContext, RC.anim.shake_anim))
-                } else if (mViewModel.pic1Uri.get() == null && mViewModel.pic2Uri.get() == null && mViewModel.pic3Uri.get() == null) {
-                    mDataBinding.gameAddPicLayout.startAnimation(AnimationUtils.loadAnimation(appContext, RC.anim.shake_anim))
+                    mDataBinding.gameNickNameEdit.startAnimation(
+                        AnimationUtils.loadAnimation(
+                            appContext,
+                            RC.anim.shake_anim
+                        )
+                    )
+                } else if (mViewModel.gameServerName.get().isEmpty()) {
+                    mDataBinding.gameServerEdit.startAnimation(
+                        AnimationUtils.loadAnimation(
+                            appContext,
+                            RC.anim.shake_anim
+                        )
+                    )
+                } else if (mViewModel.gamePrice.get().isEmpty()) {
+                    mDataBinding.gamePriceEdit.startAnimation(
+                        AnimationUtils.loadAnimation(
+                            appContext,
+                            RC.anim.shake_anim
+                        )
+                    )
+                }else if (mViewModel.pic1Uri.get() == null && mViewModel.pic2Uri.get() == null && mViewModel.pic3Uri.get() == null) {
+                    mDataBinding.gameAddPicLayout.startAnimation(
+                        AnimationUtils.loadAnimation(
+                            appContext,
+                            RC.anim.shake_anim
+                        )
+                    )
                 }
                 Toaster.show(errorMessage)
                 return
             }
 
-            val contentText = mViewModel.gameName.get()+","+
-                    mViewModel.gameNickName.get()+","+
-                    mViewModel.gameServerName.get()+",实充"+mViewModel.gamePrice.get()
+            val contentText = mViewModel.gameName.get() + "," +
+                    mViewModel.gameNickName.get() + "," +
+                    mViewModel.gameServerName.get() + ",实充" + mViewModel.gamePrice.get()
+            //添加到本地，保证同样的信息只计算一次
+            // 尝试查找，并使用 let/run 表达式来处理两种情况
+            val guJiaBean = MMKVConfig.findGuJiaByName(contentText) ?: run {
+                // 没找到 (existingBean == null)，'run' 块执行， 只有在这里才计算价格和创建新对象
+                val priceText = mViewModel.getCalculatedPrice(mViewModel.gamePrice.get())
+                val newBean = ModLocalGuJiaBean(contentText, priceText.toString())
+                // 添加到 MMKV
+                MMKVConfig.addGuJiaList(newBean)
+                // 返回新创建的 bean
+                newBean
+            }
 
             XPopup.Builder(context)
                 .dismissOnTouchOutside(false)
@@ -148,8 +189,13 @@ class ModFragmentGuJia : BaseTitleBarFragment<ModFragmentGuJia.Model, ModFragmen
                 .navigationBarColor(ColorUtils.getColor(RC.color.xpop_shadow_color))
                 .hasNavigationBar(true)
                 .asCustom(
-                    ModXPopupCenterGuJia(mActivity, contentText,priceText.toString(),{
-                    }) {
+                    ModXPopupCenterGuJia(
+                        mActivity,
+                        contentText,
+                        guJiaBean.price,
+                        { // <-- guJiaBean.price 总是正确的
+
+                        }) {
 
                     })
                 .show()
@@ -157,13 +203,12 @@ class ModFragmentGuJia : BaseTitleBarFragment<ModFragmentGuJia.Model, ModFragmen
             //mViewModel.clearData()
 
 
-
         }
 
     }
 
     private fun selectPhoto(pic: Int) {
-        if(!MMKVConfig.permissionsAlbum){
+        if (!MMKVConfig.permissionsAlbum) {
             XPopup.Builder(context)
                 .dismissOnTouchOutside(false)
                 .dismissOnBackPressed(false)
@@ -182,7 +227,7 @@ class ModFragmentGuJia : BaseTitleBarFragment<ModFragmentGuJia.Model, ModFragmen
 
                     })
                 .show()
-        }else{
+        } else {
             mViewModel.pic.set(pic)
             pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
         }
@@ -192,13 +237,13 @@ class ModFragmentGuJia : BaseTitleBarFragment<ModFragmentGuJia.Model, ModFragmen
     /**********************************************Model**************************************************/
     class Model : BaseViewModel(title = "游戏账号估值") {
         var pic = IntObservableField(0)
-        var gameName  = StringObservableField()
-        var gameNickName  = StringObservableField()
-        var gameServerName  = StringObservableField()
-        var gamePrice  = StringObservableField()
-        var pic1Uri  = ObservableField<Uri>()
-        var pic2Uri  = ObservableField<Uri>()
-        var pic3Uri  = ObservableField<Uri>()
+        var gameName = StringObservableField()
+        var gameNickName = StringObservableField()
+        var gameServerName = StringObservableField()
+        var gamePrice = StringObservableField()
+        var pic1Uri = ObservableField<Uri>()
+        var pic2Uri = ObservableField<Uri>()
+        var pic3Uri = ObservableField<Uri>()
 
         fun clearData() {
             gameName.set("")
@@ -217,12 +262,15 @@ class ModFragmentGuJia : BaseTitleBarFragment<ModFragmentGuJia.Model, ModFragmen
         fun getValidationError(): String? {
             // 使用一个“规则列表”来定义所有校验
             val validationRules = listOf(
-                Pair( { gameName.get().isEmpty() }, "请填写游戏名" ),
-                Pair( { gameNickName.get().isEmpty() }, "请填写角色名" ),
-                Pair( { gameServerName.get().isEmpty() }, "请填写区服名" ),
-                Pair( { getCalculatedPrice(gamePrice.get()) == null}, "请填写实充金额" ),
-                Pair( { gamePrice.get().isEmpty() }, "请填写正确的实充金额" ),
-                Pair( { pic1Uri.get() == null && pic2Uri.get() == null && pic3Uri.get() == null}, "请上传角色信息截图，至少上传1张截图" ),
+                Pair({ gameName.get().isEmpty() }, "请填写游戏名"),
+                Pair({ gameNickName.get().isEmpty() }, "请填写角色名"),
+                Pair({ gameServerName.get().isEmpty() }, "请填写区服名"),
+                Pair({ getCalculatedPrice(gamePrice.get()) == null }, "请填写实充金额"),
+                Pair({ gamePrice.get().isEmpty() }, "请填写正确的实充金额"),
+                Pair(
+                    { pic1Uri.get() == null && pic2Uri.get() == null && pic3Uri.get() == null },
+                    "请上传角色信息截图，至少上传1张截图"
+                ),
             )
             // 遍历规则，找到第一个不满足的并返回错误信息
             for ((condition, message) in validationRules) {

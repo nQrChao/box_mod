@@ -35,28 +35,42 @@
             <com.box.common.ui.layout.SettingBar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/idp_5"
+                android:layout_marginTop="@dimen/idp_10"
+                android:background="@drawable/transparent_selector"
                 android:onClick="@{()-> click.yonghuxieyi()}"
                 app:bar_leftText="用户协议"
-                app:bar_rightDrawable="@drawable/arrows_right_ic" />
+                app:bar_leftTextStyle="bold"
+                app:bar_rightDrawable="@drawable/mod_right_return"
+                app:bar_rightDrawableSize="@dimen/idp_20"
+                app:bar_rightTextColor="@color/text_hit_color"
+                app:bar_rightTextSize="@dimen/isp_13" />
 
             <com.box.common.ui.layout.SettingBar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/idp_15"
+                android:layout_marginTop="@dimen/idp_10"
+                android:background="@drawable/transparent_selector"
                 android:onClick="@{()-> click.yinsixieyi()}"
                 app:bar_leftText="隐私政策"
-                app:bar_rightDrawable="@drawable/arrows_right_ic" />
+                app:bar_leftTextStyle="bold"
+                app:bar_rightDrawable="@drawable/mod_right_return"
+                app:bar_rightDrawableSize="@dimen/idp_20"
+                app:bar_rightTextColor="@color/text_hit_color"
+                app:bar_rightTextSize="@dimen/isp_13" />
 
             <com.box.common.ui.layout.SettingBar
-                android:id="@+id/user_setting_6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/idp_15"
+                android:layout_marginTop="@dimen/idp_10"
+                android:background="@drawable/transparent_selector"
                 android:onClick="@{()-> click.zhuxiao()}"
                 android:visibility="@{vm.isLogin?View.VISIBLE:View.GONE}"
                 app:bar_leftText="账号注销"
-                app:bar_rightDrawable="@drawable/arrows_right_ic" />
+                app:bar_leftTextStyle="bold"
+                app:bar_rightDrawable="@drawable/mod_right_return"
+                app:bar_rightDrawableSize="@dimen/idp_20"
+                app:bar_rightTextColor="@color/text_hit_color"
+                app:bar_rightTextSize="@dimen/isp_13" />
 
 
         </LinearLayout>
