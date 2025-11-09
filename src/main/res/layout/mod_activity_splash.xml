@@ -29,7 +29,7 @@
             android:layout_marginBottom="@dimen/dp_40"
             app:lottie_autoPlay="true"
             app:lottie_loop="false"
-            app:lottie_rawRes="@raw/hi_black" />
+            app:lottie_rawRes="@raw/splash" />
 
         <TextView
             android:layout_width="match_parent"

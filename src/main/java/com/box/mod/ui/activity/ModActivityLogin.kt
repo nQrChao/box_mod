@@ -44,8 +44,6 @@ import com.box.mod.BR.modData
 import com.box.mod.R
 import com.box.mod.databinding.ModActivityLoginBinding
 import com.box.mod.databinding.ModItemRankShoucangBinding
-import com.box.mod.ui.appUrl
-import com.box.mod.ui.privacyUrl
 import com.box.mod.ui.xpop.ModXPopupLoginBottomXieYi
 import com.box.other.blankj.utilcode.util.ActivityUtils
 import com.box.other.blankj.utilcode.util.AppUtils
@@ -64,16 +62,23 @@ class ModActivityLogin : BaseModVmDbActivity<ModActivityLogin.Model, ModActivity
     private val contentText = "我已阅读并同意《隐私政策》、《用户服务协议》"
     private val linkTextColor = "#007BFF".toColorInt()
 
-
     private val userAgreementClickableSpan = object : ClickableSpan() {
         override fun onClick(view: View) {
-            CommonActivityBrowser.start(appContext, appUrl)
+            appViewModel.modInitBean.value.let {
+                if (it != null) {
+                    CommonActivityBrowser.start(appContext, it.userAgreementLink)
+                }
+            }
         }
     }
 
     private val privacyPolicyClickableSpan = object : ClickableSpan() {
         override fun onClick(view: View) {
-            CommonActivityBrowser.start(appContext, privacyUrl)
+            appViewModel.modInitBean.value.let {
+                if (it != null) {
+                    CommonActivityBrowser.start(appContext, it.privacyPolicyLink)
+                }
+            }
         }
     }
 

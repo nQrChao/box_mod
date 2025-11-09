@@ -66,16 +66,16 @@ class ModFragmentWode : BaseTitleBarFragment<ModFragmentWode.Model, ModFragmentW
     override fun createObserver() {
         appViewModel.modUserInfo.observe(this) {
             mViewModel.modUserInfo.value = it
-            if (it.localAvatarResName != null) {
-                val resId = mDataBinding.userIcon.context.resources.getIdentifier(
-                    it.localAvatarResName,
-                    "drawable",
-                    mDataBinding.userIcon.context.packageName
-                )
-                if (resId != 0) {
-                    mDataBinding.userIcon.setImageResource(resId)
-                }
-            }
+//            if (it.localAvatarResName != null) {
+//                val resId = mDataBinding.userIcon.context.resources.getIdentifier(
+//                    it.localAvatarResName,
+//                    "drawable",
+//                    mDataBinding.userIcon.context.packageName
+//                )
+//                if (resId != 0) {
+//                    mDataBinding.userIcon.setImageResource(resId)
+//                }
+//            }
         }
 
         MMKVConfig.userInfo?.let { savedUser ->

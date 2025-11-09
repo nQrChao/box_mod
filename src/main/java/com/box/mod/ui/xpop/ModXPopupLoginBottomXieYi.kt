@@ -15,10 +15,9 @@ import androidx.core.text.HtmlCompat
 import com.box.base.base.action.ClickAction
 import com.box.base.base.action.KeyboardAction
 import com.box.common.appContext
+import com.box.common.appViewModel
 import com.box.common.ui.activity.CommonActivityBrowser
 import com.box.mod.R
-import com.box.mod.ui.appUrl
-import com.box.mod.ui.privacyUrl
 import com.box.other.xpopup.core.BottomPopupView
 
 @SuppressLint("ViewConstructor")
@@ -37,13 +36,21 @@ class ModXPopupLoginBottomXieYi(
     private val linkTextColor = "#007BFF".toColorInt()
     private val userAgreementClickableSpan = object : ClickableSpan() {
         override fun onClick(view: View) {
-            CommonActivityBrowser.start(appContext, appUrl)
+            appViewModel.modInitBean.value.let {
+                if (it != null) {
+                    CommonActivityBrowser.start(appContext, it.userAgreementLink)
+                }
+            }
         }
     }
 
     private val privacyPolicyClickableSpan = object : ClickableSpan() {
         override fun onClick(view: View) {
-            CommonActivityBrowser.start(appContext, privacyUrl)
+            appViewModel.modInitBean.value.let {
+                if (it != null) {
+                    CommonActivityBrowser.start(appContext, it.privacyPolicyLink)
+                }
+            }
         }
     }
 

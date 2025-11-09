@@ -14,14 +14,13 @@ import androidx.lifecycle.viewModelScope
 import com.box.base.base.action.ClickAction
 import com.box.base.base.action.KeyboardAction
 import com.box.common.appContext
+import com.box.common.appViewModel
 import com.box.common.countClick
 import com.box.common.data.model.ModInitBean
 import com.box.common.eventViewModel
 import com.box.common.getDetailedInformation
 import com.box.common.ui.activity.CommonActivityBrowser
 import com.box.mod.R
-import com.box.mod.ui.appUrl
-import com.box.mod.ui.privacyUrl
 import com.box.other.blankj.utilcode.util.IntentUtils
 import com.box.other.blankj.utilcode.util.Logs
 import com.box.other.hjq.toast.Toaster
@@ -45,13 +44,21 @@ class ModXPopupCenterProtocol(context: Context, var initBean: ModInitBean?, priv
     private val linkTextColor = "#007BFF".toColorInt() // 设置链接颜色，这里使用蓝色，可以替换为其他颜色
     private val userAgreementClickableSpan = object : ClickableSpan() {
         override fun onClick(view: View) {
-            CommonActivityBrowser.start(appContext, initBean?.userAgreementLink ?: appUrl)
+            appViewModel.modInitBean.value.let {
+                if (it != null) {
+                    CommonActivityBrowser.start(appContext, it.userAgreementLink)
+                }
+            }
         }
     }
 
     private val privacyPolicyClickableSpan = object : ClickableSpan() {
         override fun onClick(view: View) {
-            CommonActivityBrowser.start(appContext, initBean?.privacyPolicyLink ?: privacyUrl)
+            appViewModel.modInitBean.value.let {
+                if (it != null) {
+                    CommonActivityBrowser.start(appContext, it.privacyPolicyLink)
+                }
+            }
         }
     }
     @SuppressLint("SetTextI18n")
