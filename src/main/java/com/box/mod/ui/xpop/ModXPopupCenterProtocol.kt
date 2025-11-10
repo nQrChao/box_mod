@@ -71,23 +71,34 @@ class ModXPopupCenterProtocol(context: Context, var initBean: ModInitBean?, priv
         titleView?.text = initBean?.windowTitle
 
 
-        // 使用HtmlCompat.fromHtml处理HTML标记，同时为了更好的兼容性
-        val spannableString = SpannableString(
-            HtmlCompat.fromHtml(contentText?.replace("\n", "<br>") ?: "", HtmlCompat.FROM_HTML_MODE_LEGACY)
+        // HtmlCompat 处理文本
+        val processedText = HtmlCompat.fromHtml(
+            contentText?.replace("\n", "<br>")?.replace("\\n", "<br>") ?: "",
+            HtmlCompat.FROM_HTML_MODE_LEGACY
         )
-        var startIndex = contentText?.indexOf("《用户服务协议》")?:0
-        var endIndex = startIndex.plus("《用户服务协议》".length)
+
+        // 将处理后的 Spanned 转换为 SpannableString，以便我们修改它
+        val spannableString = SpannableString(processedText)
+
+        // 在 *处理后* 的 spannableString 上查找索引
+        val agreementString = "《用户服务协议》"
+        var startIndex = spannableString.toString().indexOf(agreementString)
+        var endIndex = startIndex + agreementString.length
+
         if (startIndex >= 0) {
             spannableString.setSpan(userAgreementClickableSpan, startIndex, endIndex, 0) // 使用ClickableSpan
             spannableString.setSpan(ForegroundColorSpan(linkTextColor), startIndex, endIndex, 0) // 设置颜色
         }
 
-        startIndex = contentText?.indexOf("《隐私政策》")?:0
-        endIndex = startIndex + "《隐私政策》".length
+        val policyString = "《隐私政策》"
+        startIndex = spannableString.toString().indexOf(policyString) // <-- 关键修复：在 spannableString 上查找
+        endIndex = startIndex + policyString.length
+
         if (startIndex >= 0) {
             spannableString.setSpan(privacyPolicyClickableSpan, startIndex, endIndex, 0)  // 使用ClickableSpan
             spannableString.setSpan(ForegroundColorSpan(linkTextColor), startIndex, endIndex, 0) // 设置颜色
         }
+
         contentTextView?.text = spannableString
         contentTextView?.movementMethod = android.text.method.LinkMovementMethod.getInstance() // 使点击事件生效
         contentTextView?.highlightColor = Color.TRANSPARENT //去除点击后的高亮

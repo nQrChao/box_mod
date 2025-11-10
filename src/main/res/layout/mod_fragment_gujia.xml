@@ -57,6 +57,7 @@
                     android:id="@+id/rootView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/idp_20"
                     android:layout_marginHorizontal="@dimen/idp_10"
                     android:orientation="vertical">
 
@@ -363,6 +364,35 @@
                     </LinearLayout>
 
 
+                    <LinearLayout
+                        android:id="@+id/tipLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/idp_15"
+                        android:background="@drawable/bg_mod_gujia_window"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="@dimen/idp_5"
+                        android:paddingVertical="@dimen/idp_15"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/gamePicLayout">
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/idp_10"
+                            android:gravity="start"
+                            android:text="估算说明：\n        账号价格为基于账号内等级、道具、稀有物品等现有信息的估算值，实际价值可能受游戏官方规则调整、市场供需波动、账号绑定状态等因素影响，最终价格以游戏内核实结果或双方协商为准。"
+                            android:textColor="@color/text_default_color"
+                            android:textSize="@dimen/mod_edit_title_text_size"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/gameAddPicLayout" />
+
+                    </LinearLayout>
+
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.core.widget.NestedScrollView>
@@ -380,8 +410,8 @@
                 android:id="@+id/btn"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/idp_45"
-                android:layout_marginBottom="@dimen/idp_10"
                 android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/idp_10"
                 android:background="@drawable/mod_btn_confirm_selector"
                 android:text="一键估算"
                 android:textColor="@color/white"
