@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AnimationUtils
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
@@ -31,6 +32,7 @@ import com.box.mod.R
 import com.box.mod.databinding.ModFragmentShengchengqiBinding
 import com.box.mod.databinding.ModItemJueseListBinding
 import com.box.mod.databinding.ModItemRoleTypeBinding
+import com.box.mod.ui.activity.ModActivityLogin
 import com.box.mod.ui.activity.ModActivityShouCang
 import com.box.mod.ui.xpop.ModXPopupCenterShengChengQi
 import com.box.other.blankj.utilcode.util.ClipboardUtils
@@ -172,8 +174,8 @@ class ModFragmentShengChengQi :
                 resultState,
                 onSuccess = { data, msg ->
                     logsE(GsonUtils.toJson(data))
-                    mViewModel.typeName.set(data?.get(0)?.dictLabel)
-                    data?.firstOrNull()?.also { it.isSelect = true }
+                    //mViewModel.typeName.set(data?.get(0)?.dictLabel)
+                    //data?.firstOrNull()?.also { it.isSelect = true }
                     roleTypeAdapter.setDiffNewData(data)
 
                 },
@@ -240,6 +242,9 @@ class ModFragmentShengChengQi :
         super.onRightClick(view)
         if (isLogin()) {
             ModActivityShouCang.start(appContext)
+        }else{
+            Toaster.show("请先登录")
+            ModActivityLogin.start(appContext)
         }
     }
 
@@ -272,6 +277,16 @@ class ModFragmentShengChengQi :
         }
 
         fun confirm() {
+            if(mViewModel.typeName.get() == "0"){
+                mDataBinding.recyclerView.startAnimation(AnimationUtils.loadAnimation(appContext, RC.anim.shake_anim))
+                Toaster.show("请选择类型")
+                return
+            }
+            if(mViewModel.lengthName.get() == "0"){
+                mDataBinding.lengthLayout.startAnimation(AnimationUtils.loadAnimation(appContext, RC.anim.shake_anim))
+                Toaster.show("请选择长度")
+                return
+            }
             val currentList = roleTypeAdapter.data
             val selectedItem: ModDataBean? = currentList.toList().find { it.isSelect }
             if (selectedItem != null) {
@@ -354,9 +369,9 @@ class ModFragmentShengChengQi :
     /**********************************************Model**************************************************/
     class Model : BaseViewModel(title = "角色名生成器") {
         var pic = IntObservableField(0)
-        var isSelect = IntObservableField(3)
-        var typeName = StringObservableField("")
-        var lengthName = StringObservableField("三字")
+        var isSelect = IntObservableField(0)
+        var typeName = StringObservableField("0")
+        var lengthName = StringObservableField("0")
         var dataBean = MutableLiveData<ModDataBean>()
         var roleTypeResult = MutableLiveData<ModResultStateWithMsg<MutableList<ModDataBean>>>()
         var randomNameResult = MutableLiveData<ModResultStateWithMsg<ModDataBean>>()

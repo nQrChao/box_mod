@@ -23,21 +23,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tv_label"
+        <ImageView
             android:layout_width="@dimen/idp_130"
             android:layout_height="@dimen/idp_60"
-            android:background="@drawable/mod_game_label_bg"
-            android:ellipsize="end"
-            android:gravity="center"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:text="@{modData.dictLabel}"
-            android:textColor="@{modData.isSelect ? @color/text_select_color:@color/common_text_color_sec_gray}"
-            android:textSize="@dimen/isp_16"
-            android:textStyle="bold"
-            tools:background="@drawable/bg_item_create_text_dddddd"
-            tools:text="国风" />
+            android:layout_gravity="center_horizontal"
+            app:setDynamicBackground="@{position}"
+            tools:src="@drawable/bg_item_color_1" />
 
         <ImageView
             android:layout_width="@dimen/idp_130"
@@ -47,6 +38,20 @@
             android:visibility="@{modData.isSelect ? View.VISIBLE : View.GONE}"
             tools:src="@drawable/bg_item_create_text_00000000" />
 
+        <TextView
+            android:id="@+id/tv_label"
+            android:layout_width="@dimen/idp_130"
+            android:layout_height="@dimen/idp_60"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="@{modData.dictLabel}"
+            android:textColor="@{modData.isSelect ? @color/mod_role_type_select_color:@color/white}"
+            android:textSize="@dimen/isp_16"
+            android:textStyle="bold"
+            tools:text="国风"
+            tools:textColor="@color/white" />
     </FrameLayout>
 
 

@@ -74,8 +74,8 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
                 "selectedIcon": ${R.drawable.mod_ic_fragment_1_1},
                 "normalIconUrl": "",
                 "selectedIconUrl": "",
-                "titleNormalColor": "7C7C7C",
-                "titleSelectedColor": "000000",
+                "titleNormalColor": "B7B7B7",
+                "titleSelectedColor": "FFB508",
                 "fragmentId": 1
             },
             {
@@ -84,8 +84,8 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
                 "selectedIcon": ${R.drawable.mod_ic_fragment_2_1},
                 "normalIconUrl": "",
                 "selectedIconUrl": "",
-                "titleNormalColor": "7C7C7C",
-                "titleSelectedColor": "000000",
+                "titleNormalColor": "B7B7B7",
+                "titleSelectedColor": "FFB508",
                 "fragmentId": 2
             },
             {
@@ -94,8 +94,8 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
                 "selectedIcon": ${R.drawable.mod_ic_fragment_3_1},
                 "normalIconUrl": "",
                 "selectedIconUrl": "",
-                "titleNormalColor": "7C7C7C",
-                "titleSelectedColor": "000000",
+                "titleNormalColor": "B7B7B7",
+                "titleSelectedColor": "FFB508",
                 "fragmentId": 3
             },
             {
@@ -104,8 +104,8 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
                 "selectedIcon": ${R.drawable.mod_ic_fragment_4_1},
                 "normalIconUrl": "",
                 "selectedIconUrl": "",
-                "titleNormalColor": "7C7C7C",
-                "titleSelectedColor": "000000",
+                "titleNormalColor": "B7B7B7",
+                "titleSelectedColor": "FFB508",
                 "fragmentId": 4
             },
             {
@@ -114,8 +114,8 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
                 "selectedIcon": ${R.drawable.mod_ic_fragment_5_1},
                 "normalIconUrl": "",
                 "selectedIconUrl": "",
-                "titleNormalColor": "7C7C7C",
-                "titleSelectedColor": "000000",
+                "titleNormalColor": "B7B7B7",
+                "titleSelectedColor": "FFB508",
                 "fragmentId": 5
             }
         ]
@@ -318,7 +318,7 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
                 .setTitleSelectedColor("#${config.titleSelectedColor}".toColorInt())
                 .marginTop(SizeUtils.dp2px(-2f))
                 .openTouchBg(true)
-                .touchDrawable(ContextCompat.getDrawable(this, RC.drawable.transparent_selector))
+                .touchDrawable(ContextCompat.getDrawable(this, RC.drawable.transparent_selector_2))
                 .iconWidth(SizeUtils.dp2px(27f))
                 .iconHeight(SizeUtils.dp2px(27f))
             // 创建一个 BottomBarItem 实例

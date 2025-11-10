@@ -105,6 +105,7 @@ class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Bindin
                     MMKVConfig.removeGameEventList(clickedItem)
                 } else {
                     clickedItem.isShouCang = true
+                    Toaster.showReSuccess("1")
                     MMKVConfig.addGameEventList(clickedItem)
                 }
 
@@ -190,7 +191,7 @@ class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Bindin
                 resultState,
                 onSuccess = { data, msg ->
                     logsE(GsonUtils.toJson(data))
-                    CommonActivityRichText.start(appContext, clickData.title, data?.content ?: "")
+                    CommonActivityRichText.start(appContext, clickData.title, data?.content ?: "",data?.views?:"-1")
                 },
                 onError = {
                     Toaster.show(it.msg)

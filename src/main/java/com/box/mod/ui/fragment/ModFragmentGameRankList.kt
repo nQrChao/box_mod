@@ -28,6 +28,7 @@ import com.box.mod.BR.modData
 import com.box.mod.R
 import com.box.mod.databinding.ModFragmentGameRankListBinding
 import com.box.mod.databinding.ModItemRankBinding
+import com.box.mod.ui.activity.ModActivityLogin
 import com.box.mod.ui.activity.ModActivityShouCang
 import com.box.other.blankj.utilcode.util.GsonUtils
 import com.box.other.hjq.titlebar.TitleBar
@@ -220,6 +221,9 @@ class ModFragmentGameRankList :
         super.onRightClick(view)
         if (isLogin()) {
             ModActivityShouCang.start(appContext,1)
+        }else{
+            Toaster.show("请先登录")
+            ModActivityLogin.start(appContext)
         }
 
     }

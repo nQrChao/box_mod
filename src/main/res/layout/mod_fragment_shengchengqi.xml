@@ -179,6 +179,7 @@
 
 
                         <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/lengthLayout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/idp_10">

@@ -399,6 +399,7 @@
         </com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout>
 
         <LinearLayout
+            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"

@@ -57,7 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginEnd="@dimen/idp_35"
+                android:layout_marginEnd="@dimen/idp_40"
                 android:ellipsize="end"
                 android:gravity="start"
                 android:maxLines="1"
@@ -69,8 +69,8 @@
 
             <ImageView
                 android:id="@+id/button"
-                android:layout_width="@dimen/idp_25"
-                android:layout_height="@dimen/idp_25"
+                android:layout_width="@dimen/idp_35"
+                android:layout_height="@dimen/idp_35"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_gravity="end"
