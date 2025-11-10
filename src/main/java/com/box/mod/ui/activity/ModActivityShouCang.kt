@@ -24,6 +24,7 @@ import com.box.mod.databinding.ModActivityShoucangBinding
 import com.box.mod.databinding.ModItemRankShoucangBinding
 import com.box.mod.ui.fragment.ModFragmentShengChengQi.RandomNameAdapter
 import com.box.other.blankj.utilcode.util.ActivityUtils
+import com.box.other.blankj.utilcode.util.ClipboardUtils
 import com.box.other.hjq.toast.Toaster
 import com.box.other.immersionbar.immersionBar
 import com.chad.library.adapter.base.BaseQuickAdapter
@@ -111,7 +112,7 @@ class ModActivityShouCang :
             addItemDecoration(SpacingItemDecorator((resources.displayMetrics.density * 5).toInt()))
             adapter = randomNameAdapter
         }
-        randomNameAdapter.addChildClickViewIds(R.id.shoucang,R.id.del)
+        randomNameAdapter.addChildClickViewIds(R.id.shoucang,R.id.del,R.id.copy)
         randomNameAdapter.setOnItemChildClickListener { adapter, view, position ->
             val currentList = adapter.data
             val clickedItem = currentList[position] as ModDataBean
@@ -135,7 +136,9 @@ class ModActivityShouCang :
                 if(adapter.data.isEmpty()){
                     mViewModel.hasData.set(false)
                 }
-
+            }else if (view.id == R.id.copy) {
+                ClipboardUtils.copyText(clickedItem.name)
+                Toaster.show("角色名已复制")
             }
         }
         randomNameAdapter.setList(randomNameList)

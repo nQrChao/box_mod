@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.GridLayoutManager
+import com.angcyo.dsladapter.L.it
 import com.box.base.base.action.StatusAction
 import com.box.base.base.fragment.BaseTitleBarFragment
 import com.box.base.base.viewmodel.BaseViewModel
@@ -262,7 +263,18 @@ class ModFragmentGameRankList :
             }
             if (payloads.any { it == "SHOUCANG_UPDATE" }) {
                 val item = getItem(position)
-                holder.dataBinding?.setVariable(modData, item)
+                holder.dataBinding?.let {
+                    it.setVariable(modData, item)
+                    it.executePendingBindings()
+                    it.topText.text = item.rank.toString()
+                }
+                if (item.rank < 4) {
+                    holder.dataBinding?.topText?.visibility = View.GONE
+                    holder.dataBinding?.topIcon?.visibility = View.VISIBLE
+                } else {
+                    holder.dataBinding?.topIcon?.visibility = View.GONE
+                    holder.dataBinding?.topText?.visibility = View.VISIBLE
+                }
             } else {
                 super.onBindViewHolder(holder, position, payloads)
             }
