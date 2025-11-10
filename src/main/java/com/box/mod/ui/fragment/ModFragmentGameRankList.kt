@@ -8,7 +8,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.GridLayoutManager
-import com.angcyo.dsladapter.L.it
 import com.box.base.base.action.StatusAction
 import com.box.base.base.fragment.BaseTitleBarFragment
 import com.box.base.base.viewmodel.BaseViewModel
