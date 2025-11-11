@@ -36,7 +36,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:loadResNameImage="@{modModelMod.appIcon}"
-                tools:src="@mipmap/mod_icon" />
+                tools:src="@drawable/mod_icon" />
 
 
             <LinearLayout

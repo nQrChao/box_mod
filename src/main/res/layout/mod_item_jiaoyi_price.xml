@@ -29,7 +29,7 @@
             android:layout_gravity="center"
             app:imageUrl="@{goodDetailBean.gameicon}"
             app:cornerRadius="@{10f}"
-            tools:src="@mipmap/mod_icon" />
+            tools:src="@drawable/mod_icon" />
 
         <TextView
             android:layout_width="match_parent"

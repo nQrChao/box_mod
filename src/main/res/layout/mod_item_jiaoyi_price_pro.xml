@@ -31,7 +31,7 @@
             android:layout_gravity="center_horizontal"
             app:imageUrl="@{goodDetailBean.pic.get(0).pic_path}"
             app:cornerRadius="@{15f}"
-            tools:src="@mipmap/mod_icon" />
+            tools:src="@drawable/mod_icon" />
 
         <LinearLayout
             android:id="@+id/title"

@@ -32,7 +32,7 @@
             android:layout_marginStart="@dimen/idp_15"
             app:cornerRadius="@{10f}"
             app:imageUrl="@{modData.url}"
-            tools:src="@mipmap/mod_icon" />
+            tools:src="@drawable/mod_icon" />
 
         <LinearLayout
             android:id="@+id/nameLayout"
