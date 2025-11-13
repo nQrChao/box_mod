@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.box.mod.ui.fragment.ModFragmentGuJiaReal.Model" />
+
+        <variable
+            name="click"
+            type="com.box.mod.ui.fragment.ModFragmentGuJiaReal.ProxyClick" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F6F9FF">
+
+        <com.box.other.hjq.titlebar.TitleBar
+            android:id="@+id/titleBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/idp_40"
+            android:background="@color/transparent"
+            android:gravity="center"
+            app:leftIcon="@null"
+            app:leftTitleColor="@color/black90"
+            app:leftTitleSize="@dimen/isp_17"
+            app:leftTitleStyle="bold"
+            app:lineVisible="false"
+            app:titleColor="@color/black90"
+            app:titleSize="@dimen/isp_16"
+            app:titleStyle="bold" />
+
+        <com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/titleBar"
+            app:srlEnableFooterTranslationContent="true"
+            app:srlEnableHeaderTranslationContent="true"
+            app:srlEnableLoadMore="false"
+            app:srlEnableOverScrollBounce="true"
+            app:srlEnableOverScrollDrag="true"
+            app:srlEnablePureScrollMode="true"
+            app:srlReboundDuration="700">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/titleBar"
+                android:layout_marginBottom="@dimen/idp_70">
+
+                <LinearLayout
+                    android:id="@+id/rootView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/idp_20"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/idp_10"
+                        android:background="@drawable/a_rounded_5"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="@dimen/idp_10"
+                        android:paddingVertical="@dimen/idp_10">
+
+                        <com.box.common.ui.view.DrawableTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="@dimen/idp_5"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="热门游戏账号估值"
+                            android:textSize="@dimen/isp_16"
+                            android:textStyle="bold"
+                            app:drawableHeight="@dimen/idp_20"
+                            app:drawableStartCompat="@drawable/title_left_line"
+                            app:drawableWidth="@dimen/idp_7" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/idp_8"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:itemCount="1"
+                            tools:listitem="@layout/mod_item_gujia_game" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+        </com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/idp_20"
+            android:paddingVertical="@dimen/idp_15">
+
+            <Button
+                android:id="@+id/btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/idp_45"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/idp_10"
+                android:background="@drawable/mod_btn_confirm_selector"
+                android:text="一键估算"
+                android:textColor="@color/white"
+                android:textSize="@dimen/mod_button_text_size"
+                android:textStyle="bold"
+                app:onSingleClick="@{() -> click.confirm()}"
+                app:singleClickDelay="@{1000L}"
+                tools:text="一键估算" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

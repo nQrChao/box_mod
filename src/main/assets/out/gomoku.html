@@ -1,0 +1,514 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>五子棋</title>
+    <style>
+        :root {
+            --board-bg-color: #A67B5B;
+            --background-color: #F5F5DC;
+            --text-color: #3d2c1d;
+            --button-color: #654321;
+            --button-text-color: #fff;
+            --black-piece-color: #000;
+            --white-piece-color: #fff;
+            --winning-ring-color: #ffc107;
+            --board-size: 15;
+            --cell-size: clamp(20px, 6.2vw, 35px);
+            --board-dimension: calc(var(--cell-size) * (var(--board-size) - 1));
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .game-mode-selector {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+        }
+        
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: var(--button-color);
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(20px);
+        }
+
+        .status-panel {
+            min-width: 250px;
+            padding: 12px;
+            border-radius: 8px;
+            background-color: rgba(101, 67, 33, 0.1);
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .status-panel.winner {
+            background-color: var(--winning-ring-color);
+            color: var(--black-piece-color);
+            transform: scale(1.05);
+        }
+        
+        .status-panel.thinking {
+             animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        .board-wrapper {
+            position: relative;
+            width: var(--board-dimension);
+            height: var(--board-dimension);
+            padding: calc(var(--cell-size) / 2);
+            background-color: var(--board-bg-color);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        #gomoku-board {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(var(--board-size), 1fr);
+            grid-template-rows: repeat(var(--board-size), 1fr);
+            border: none;
+            background-image:
+                linear-gradient(to right, #0004 1px, transparent 1px),
+                linear-gradient(to bottom, #0004 1px, transparent 1px);
+            background-size: calc(100% / (var(--board-size) - 1)) calc(100% / (var(--board-size) - 1));
+        }
+
+        .board-cell {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .board-cell.disabled {
+            cursor: not-allowed;
+        }
+
+        .piece {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 85%;
+            height: 85%;
+            border-radius: 50%;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+            animation: place-piece 0.15s ease-out;
+        }
+        
+        @keyframes place-piece {
+          from { transform: translate(-50%, -50%) scale(0.8); opacity: 0.8; }
+          to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        }
+
+        .piece.black {
+            background-color: var(--black-piece-color);
+        }
+
+        .piece.white {
+            background-color: var(--white-piece-color);
+        }
+        
+        .piece.winning {
+            box-shadow: 0 0 0 3px var(--winning-ring-color), 0 0 10px var(--winning-ring-color);
+        }
+        
+        .hover-indicator {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            border-radius: 50%;
+            background-color: var(--black-piece-color);
+            opacity: 0;
+            transition: opacity 0.2s;
+            pointer-events: none; /* Important! */
+        }
+        
+        .board-cell:not(.disabled):not(.has-piece):hover .hover-indicator {
+            opacity: 0.4;
+        }
+
+        .reset-button {
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--button-text-color);
+            background-color: var(--button-color);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.2s, box-shadow 0.2s;
+        }
+
+        .reset-button:hover {
+            background-color: #4a3118;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .reset-button svg {
+            width: 20px;
+            height: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="game-container">
+        <h1 class="title">五子棋 AI</h1>
+
+        <div class="game-mode-selector">
+            <label for="game-mode-switch">双人对战</label>
+            <label class="switch">
+                <input type="checkbox" id="game-mode-switch" checked>
+                <span class="slider"></span>
+            </label>
+            <label for="game-mode-switch">人机对战</label>
+        </div>
+
+        <div id="status-panel" class="status-panel"></div>
+
+        <div class="board-wrapper">
+            <div id="gomoku-board"></div>
+        </div>
+        
+        <button id="reset-button" class="reset-button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                <path d="M3 3v5h5"/>
+                <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/>
+                <path d="M21 21v-5h-5"/>
+            </svg>
+            新游戏
+        </button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const BOARD_SIZE = 15;
+            const WIN_COUNT = 5;
+
+            let board = createEmptyBoard();
+            let currentPlayer = 'black';
+            let winner = null;
+            let winningCells = [];
+            let gameMode = 'pva'; // pvp or pva
+            let isAiThinking = false;
+            
+            const boardElement = document.getElementById('gomoku-board');
+            const statusPanel = document.getElementById('status-panel');
+            const resetButton = document.getElementById('reset-button');
+            const gameModeSwitch = document.getElementById('game-mode-switch');
+            
+            function createEmptyBoard() {
+                return Array(BOARD_SIZE).fill(null).map(() => Array(BOARD_SIZE).fill(null));
+            }
+
+            function checkWin(boardState, row, col) {
+                const player = boardState[row][col];
+                if (!player) return null;
+
+                const directions = [
+                    { r: 0, c: 1 },  // Horizontal
+                    { r: 1, c: 0 },  // Vertical
+                    { r: 1, c: 1 },  // Diagonal \
+                    { r: 1, c: -1 } // Anti-diagonal /
+                ];
+
+                for (const dir of directions) {
+                    const line = [[row, col]];
+                    for (let i = 1; i < WIN_COUNT; i++) {
+                        const r = row + i * dir.r;
+                        const c = col + i * dir.c;
+                        if (r < 0 || r >= BOARD_SIZE || c < 0 || c >= BOARD_SIZE || boardState[r][c] !== player) break;
+                        line.push([r, c]);
+                    }
+                    for (let i = 1; i < WIN_COUNT; i++) {
+                        const r = row - i * dir.r;
+                        const c = col - i * dir.c;
+                        if (r < 0 || r >= BOARD_SIZE || c < 0 || c >= BOARD_SIZE || boardState[r][c] !== player) break;
+                        line.push([r, c]);
+                    }
+                    if (line.length >= WIN_COUNT) return line;
+                }
+                return null;
+            }
+
+            function placePiece(row, col) {
+                if (winner || board[row][col]) return;
+                
+                board[row][col] = currentPlayer;
+                const winningLine = checkWin(board, row, col);
+
+                if (winningLine) {
+                    winner = currentPlayer;
+                    winningCells = winningLine;
+                } else if (board.flat().every(cell => cell !== null)) {
+                    winner = 'draw';
+                } else {
+                    currentPlayer = currentPlayer === 'black' ? 'white' : 'black';
+                }
+                
+                renderBoard();
+                
+                if (gameMode === 'pva' && currentPlayer === 'white' && !winner) {
+                    isAiThinking = true;
+                    updateStatus();
+                    setTimeout(makeLocalAiMove, 500);
+                }
+            }
+            
+            function handleCellClick(row, col) {
+                if (isAiThinking || (gameMode === 'pva' && currentPlayer === 'white')) {
+                    return;
+                }
+                placePiece(row, col);
+            }
+
+            function renderBoard() {
+                boardElement.innerHTML = '';
+                for (let r = 0; r < BOARD_SIZE; r++) {
+                    for (let c = 0; c < BOARD_SIZE; c++) {
+                        const cell = document.createElement('div');
+                        cell.classList.add('board-cell');
+                        cell.dataset.row = r;
+                        cell.dataset.col = c;
+                        
+                        const pieceValue = board[r][c];
+                        if (pieceValue) {
+                            const piece = document.createElement('div');
+                            piece.classList.add('piece', pieceValue);
+                            cell.classList.add('has-piece');
+                            if (winningCells.some(([wr, wc]) => wr === r && wc === c)) {
+                                piece.classList.add('winning');
+                            }
+                            cell.appendChild(piece);
+                        } else {
+                             const hoverIndicator = document.createElement('div');
+                             hoverIndicator.className = 'hover-indicator';
+                             cell.appendChild(hoverIndicator);
+                        }
+
+                        if (winner || isAiThinking || (gameMode === 'pva' && currentPlayer === 'white')) {
+                            cell.classList.add('disabled');
+                        }
+
+                        cell.addEventListener('click', () => handleCellClick(r, c));
+                        boardElement.appendChild(cell);
+                    }
+                }
+                updateStatus();
+                updateHoverIndicators();
+            }
+            
+            function updateHoverIndicators() {
+                document.querySelectorAll('.hover-indicator').forEach(indicator => {
+                    indicator.style.backgroundColor = (currentPlayer === 'black') ? 'var(--black-piece-color)' : 'var(--white-piece-color)';
+                });
+            }
+
+            function updateStatus() {
+                const playerTranslations = { black: '黑方', white: '白方' };
+                statusPanel.classList.remove('winner', 'thinking');
+                
+                if (winner) {
+                    statusPanel.classList.add('winner');
+                    statusPanel.textContent = winner === 'draw' ? '平局！' : `${playerTranslations[winner]}胜利！`;
+                } else if (isAiThinking) {
+                    statusPanel.classList.add('thinking');
+                    statusPanel.textContent = 'AI 思考中...';
+                } else {
+                    statusPanel.textContent = `当前回合：${playerTranslations[currentPlayer]}`;
+                }
+            }
+
+            function resetGame() {
+                board = createEmptyBoard();
+                currentPlayer = 'black';
+                winner = null;
+                winningCells = [];
+                isAiThinking = false;
+                renderBoard();
+            }
+            
+            function handleGameModeChange(event) {
+                gameMode = event.target.checked ? 'pva' : 'pvp';
+                resetGame();
+            }
+
+            // --- Simple AI Logic ---
+            function makeLocalAiMove() {
+                const findBestMove = () => {
+                    const scores = Array(BOARD_SIZE).fill(0).map(() => Array(BOARD_SIZE).fill(0));
+                    const evaluateLine = (line) => {
+                        const counts = { black: 0, white: 0, empty: 0 };
+                        line.forEach(cell => {
+                            if (cell === 'black') counts.black++;
+                            else if (cell === 'white') counts.white++;
+                            else counts.empty++;
+                        });
+                        if (counts.white === 4 && counts.empty === 1) return 100000; // AI win
+                        if (counts.black === 4 && counts.empty === 1) return 50000;  // Block human win
+                        if (counts.white === 3 && counts.empty === 2) return 1000;
+                        if (counts.black === 3 && counts.empty === 2) return 500;
+                        if (counts.white === 2 && counts.empty === 3) return 100;
+                        if (counts.black === 2 && counts.empty === 3) return 50;
+                        if (counts.white === 1 && counts.empty === 4) return 10;
+                        if (counts.black === 1 && counts.empty === 4) return 5;
+                        return 0;
+                    };
+
+                    for (let r = 0; r < BOARD_SIZE; r++) {
+                        for (let c = 0; c < BOARD_SIZE; c++) {
+                            if (board[r][c] === null) {
+                                let score = 1; // Add small random score
+                                const directions = [{r:0,c:1}, {r:1,c:0}, {r:1,c:1}, {r:1,c:-1}];
+                                for (const dir of directions) {
+                                    for (let i = 0; i < WIN_COUNT; i++) {
+                                        const line = [];
+                                        let valid = true;
+                                        for (let j = 0; j < WIN_COUNT; j++) {
+                                            const newR = r - (i - j) * dir.r;
+                                            const newC = c - (i - j) * dir.c;
+                                            if (newR >= 0 && newR < BOARD_SIZE && newC >= 0 && newC < BOARD_SIZE) {
+                                                line.push(board[newR][newC]);
+                                            } else {
+                                                valid = false;
+                                                break;
+                                            }
+                                        }
+                                        if (valid) score += evaluateLine(line);
+                                    }
+                                }
+                                scores[r][c] = score;
+                            }
+                        }
+                    }
+
+                    let maxScore = -1;
+                    let move = { row: -1, col: -1 };
+                    for (let r = 0; r < BOARD_SIZE; r++) {
+                        for (let c = 0; c < BOARD_SIZE; c++) {
+                            if (scores[r][c] > maxScore) {
+                                maxScore = scores[r][c];
+                                move = { row: r, col: c };
+                            }
+                        }
+                    }
+                    if (move.row === -1) {
+                        for (let r = 0; r < BOARD_SIZE; r++) {
+                            for (let c = 0; c < BOARD_SIZE; c++) {
+                                if (board[r][c] === null) return { row: r, col: c };
+                            }
+                        }
+                    }
+                    return move;
+                };
+
+                const aiMove = findBestMove();
+                isAiThinking = false;
+                if (aiMove && board[aiMove.row][aiMove.col] === null) {
+                    placePiece(aiMove.row, aiMove.col);
+                } else {
+                    updateStatus(); // Update status even if AI fails to move
+                }
+            }
+
+            resetButton.addEventListener('click', resetGame);
+            gameModeSwitch.addEventListener('change', handleGameModeChange);
+            
+            // Initial render
+            resetGame();
+        });
+    </script>
+</body>
+</html>
+
+    

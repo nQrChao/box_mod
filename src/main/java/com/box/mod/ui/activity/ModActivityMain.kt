@@ -42,6 +42,7 @@ import com.box.mod.databinding.ModActivityMainBinding
 import com.box.mod.ui.fragment.ModFragment1
 import com.box.mod.ui.fragment.ModFragmentGameRankList
 import com.box.mod.ui.fragment.ModFragmentGuJia
+import com.box.mod.ui.fragment.ModFragmentGuJiaReal
 import com.box.mod.ui.fragment.ModFragmentShengChengQi
 import com.box.mod.ui.fragment.ModFragmentWode
 import com.box.other.blankj.utilcode.util.ActivityUtils
@@ -298,7 +299,7 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
             // 根据配置的 fragmentId 创建对应的 Fragment 实例
             val fragment = when (config.fragmentId) {
                 1 -> ModFragment1.newInstance()
-                2 -> ModFragmentGuJia.newInstance()
+                2 -> ModFragmentGuJiaReal.newInstance()
                 3 -> ModFragmentShengChengQi.newInstance()
                 4 -> ModFragmentGameRankList.newInstance()
                 5 -> ModFragmentWode.newInstance()

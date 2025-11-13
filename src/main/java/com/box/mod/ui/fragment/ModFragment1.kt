@@ -21,6 +21,7 @@ import com.box.common.data.model.ModDataBean
 import com.box.common.data.model.ModUserInfo
 import com.box.common.eventViewModel
 import com.box.common.network.apiService
+import com.box.common.ui.activity.CommonActivityBrowser
 import com.box.common.ui.activity.CommonActivityRichText
 import com.box.common.ui.adapter.SpacingItemDecorator
 import com.box.common.ui.layout.StatusLayout
@@ -248,6 +249,7 @@ class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Bindin
         }
 
         fun shoucang() {
+
             if (isLogin()) {
                 ModActivityShouCang.start(appContext)
             }else{
@@ -255,6 +257,11 @@ class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Bindin
                 ModActivityLogin.start(appContext)
             }
 
+        }
+
+        fun test() {
+            val assetGame = "file:///android_asset/out/gomoku.html"
+            CommonActivityBrowser.start(appContext,assetGame)
         }
 
         fun confirm() {

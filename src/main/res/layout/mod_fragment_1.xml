@@ -288,6 +288,7 @@
                                 android:ellipsize="end"
                                 android:gravity="center_vertical"
                                 android:maxLines="1"
+                                android:onClick="@{()->click.test()}"
                                 android:text="热门游戏赛事"
                                 android:textColor="@color/text_default_color"
                                 android:textSize="@dimen/isp_18"
