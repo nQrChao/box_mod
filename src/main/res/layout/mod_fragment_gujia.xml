@@ -269,6 +269,7 @@
 
 
                     <LinearLayout
+                        android:visibility="gone"
                         android:id="@+id/gamePicLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -282,6 +283,7 @@
                         app:layout_constraintTop_toBottomOf="@id/gameInfoLayout">
 
                         <TextView
+                            android:visibility="gone"
                             android:id="@+id/gamePicTitle"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
@@ -383,7 +385,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/idp_10"
                             android:gravity="start"
-                            android:text="估算说明：\n        账号价格为基于账号内等级、道具、稀有物品等现有信息的估算值，实际价值可能受游戏官方规则调整、市场供需波动、账号绑定状态等因素影响，最终价格以游戏内核实结果或双方协商为准。"
+                            android:text="估算说明：\n        账号价格为基于游戏、区服、实际充值金额等现有信息的估算值，账号内其他属性及道具暂无法进行估算，实际价值可能受游戏官方规则调整、市场供需波动、账号绑定状态等因素影响，最终价格以游戏内核实结果或双方协商为准。"
                             android:textColor="@color/text_default_color"
                             android:textSize="@dimen/mod_edit_title_text_size"
                             app:layout_constraintEnd_toEndOf="parent"

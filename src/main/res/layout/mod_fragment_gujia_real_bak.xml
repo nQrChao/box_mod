@@ -74,28 +74,22 @@
                             android:drawablePadding="@dimen/idp_5"
                             android:ellipsize="end"
                             android:maxLines="1"
-                            android:text="热门游戏"
+                            android:text="热门游戏账号估值"
                             android:textSize="@dimen/isp_16"
                             android:textStyle="bold"
                             app:drawableHeight="@dimen/idp_18"
+                            app:drawableStartCompat="@drawable/title_left_line"
                             app:drawableWidth="@dimen/idp_7" />
 
-                        <com.box.other.tablayout.DslTabLayout
-                            android:id="@+id/tab_layout"
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/idp_5"
-                            android:paddingHorizontal="@dimen/idp_5"
-                            android:paddingVertical="@dimen/idp_10"
-                            app:tab_draw_highlight="true"
-                            app:tab_default_index="0"
-                            app:tab_highlight_height="10dp"
-                            app:tab_highlight_height_offset="10dp"
-                            app:tab_highlight_width="10dp"
-                            app:tab_highlight_width_offset="10dp"
-                            app:tab_orientation="HORIZONTAL">
-
-                        </com.box.other.tablayout.DslTabLayout>
+                            android:layout_marginTop="@dimen/idp_8"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:itemCount="1"
+                            tools:listitem="@layout/mod_item_gujia_game" />
 
                     </LinearLayout>
 
@@ -114,37 +108,18 @@
                             android:paddingHorizontal="@dimen/idp_10"
                             android:paddingVertical="@dimen/idp_15">
 
-                            <LinearLayout
+                            <com.box.common.ui.view.DrawableTextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <ImageView
-                                    app:cornerRadius="@{5f}"
-                                    app:imageUrl="@{vm.clickGameItem.url}"
-                                    app:hideOnNullOrError="@{false}"
-                                    android:layout_width="@dimen/idp_25"
-                                    android:layout_height="@dimen/idp_25"
-                                    android:src="@drawable/mod_icon" />
-
-                                <TextView
-                                    android:layout_marginStart="@dimen/idp_10"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_vertical"
-                                    android:drawablePadding="@dimen/idp_5"
-                                    android:ellipsize="end"
-                                    android:maxLines="1"
-                                    android:text="@{vm.clickGameItem.name}"
-                                    android:textColor="@color/text_default_color"
-                                    android:textSize="@dimen/isp_16"
-                                    android:textStyle="bold"
-                                    app:drawableHeight="@dimen/idp_18"
-                                    tools:text="原神"
-                                    app:drawableWidth="@dimen/idp_7" />
-
-                            </LinearLayout>
-
+                                android:drawablePadding="@dimen/idp_5"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:text="常规游戏账号估值"
+                                android:textSize="@dimen/isp_16"
+                                android:textStyle="bold"
+                                app:drawableHeight="@dimen/idp_18"
+                                app:drawableStartCompat="@drawable/title_left_line"
+                                app:drawableWidth="@dimen/idp_7" />
 
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/recyclerView2"
@@ -159,8 +134,8 @@
                             <com.box.common.ui.view.DrawableTextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/idp_10"
                                 android:drawablePadding="@dimen/idp_5"
+                                android:layout_marginTop="@dimen/idp_10"
                                 android:ellipsize="end"
                                 android:maxLines="1"
                                 android:text="游戏截图"
@@ -170,6 +145,7 @@
                                 app:drawableWidth="@dimen/idp_7" />
 
                         </LinearLayout>
+
 
 
                     </com.box.common.ui.layout.StatusLayout>

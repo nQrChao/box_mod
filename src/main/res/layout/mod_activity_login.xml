@@ -127,7 +127,7 @@
                             android:layout_weight="1"
                             android:background="@null"
                             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-                            android:hint="请输入用户名"
+                            android:hint="请输入小写字母开头6-18位用户名"
                             android:inputType="textEmailAddress"
                             android:maxLength="16"
                             android:maxLines="1"
@@ -136,7 +136,7 @@
                             android:text="@={vm.uName}"
                             android:textColor="@color/black"
                             android:textColorHint="@color/text_hit_color"
-                            android:textSize="@dimen/isp_15" />
+                            android:textSize="@dimen/isp_14" />
 
                     </LinearLayout>
 
@@ -165,7 +165,7 @@
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:background="@null"
-                        android:hint="请输入密码"
+                        android:hint="请输入6-18位密码"
                         android:inputType="text"
                         android:maxLength="16"
                         android:maxLines="1"
@@ -173,7 +173,7 @@
                         android:text="@={vm.password}"
                         android:textColor="@color/black"
                         android:textColorHint="@color/text_hit_color"
-                        android:textSize="@dimen/isp_15" />
+                        android:textSize="@dimen/isp_14" />
 
                     <View style="@style/HorizontalLineStyle" />
                 </LinearLayout>
@@ -214,7 +214,7 @@
                             android:text="@={vm.password2}"
                             android:textColor="@color/black"
                             android:textColorHint="@color/text_hit_color"
-                            android:textSize="@dimen/isp_15" />
+                            android:textSize="@dimen/isp_14" />
 
                         <View style="@style/HorizontalLineStyle" />
                     </LinearLayout>

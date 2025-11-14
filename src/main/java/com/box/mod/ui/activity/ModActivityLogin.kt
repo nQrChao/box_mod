@@ -92,12 +92,12 @@ class ModActivityLogin : BaseModVmDbActivity<ModActivityLogin.Model, ModActivity
         var resultLauncher: ActivityResultLauncher<Intent>? = null
         fun start(context: Context) {
             val intent = Intent(context, ModActivityLogin::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
             if (context !is Activity) {
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             }
             ActivityUtils.startActivity(intent)
         }
-
     }
 
     override fun initView(savedInstanceState: Bundle?) {
@@ -148,7 +148,7 @@ class ModActivityLogin : BaseModVmDbActivity<ModActivityLogin.Model, ModActivity
                             data.localAvatarResName = oldUserInfo.localAvatarResName
                         }
                     }
-                    eventViewModel.isLogin.value= true
+                    eventViewModel.isLogin.value = true
                     MMKVConfig.userInfo = data
                     appViewModel.modUserInfo.value = data
                     Toaster.show("登录成功")
@@ -179,7 +179,7 @@ class ModActivityLogin : BaseModVmDbActivity<ModActivityLogin.Model, ModActivity
                         data.localAvatarResName = localAvatars.random()
                     }
                     MMKVConfig.userInfo = data
-                    eventViewModel.isLogin.value= true
+                    eventViewModel.isLogin.value = true
                     appViewModel.modUserInfo.value = data
                     Toaster.show("注册成功")
                     finish()
@@ -243,6 +243,10 @@ class ModActivityLogin : BaseModVmDbActivity<ModActivityLogin.Model, ModActivity
                 showFieldError(mDataBinding.uname, "请输入用户名")
                 return
             }
+            if (mViewModel.uName.get().length < 6) {
+                showFieldError(mDataBinding.uname, "用户名长度至少6位")
+                return
+            }
             if (mViewModel.password.get().length < 6) {
                 showFieldError(mDataBinding.loginPassword, "密码长度应不少于6位")
                 return
@@ -272,6 +276,10 @@ class ModActivityLogin : BaseModVmDbActivity<ModActivityLogin.Model, ModActivity
         fun login() {
             if (mViewModel.uName.get().isEmpty()) {
                 showFieldError(mDataBinding.uname, "请输入用户名")
+                return
+            }
+            if (mViewModel.uName.get().length < 6) {
+                showFieldError(mDataBinding.uname, "用户名长度至少6位")
                 return
             }
             if (mViewModel.password.get().length < 6) {
