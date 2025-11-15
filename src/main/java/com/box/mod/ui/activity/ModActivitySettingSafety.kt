@@ -18,12 +18,12 @@ import com.box.other.blankj.utilcode.util.ActivityUtils
 import com.box.other.immersionbar.immersionBar
 import com.box.com.R as RC
 
-class ModActivitySafety : BaseVmDbActivity<ModActivitySafety.Model, ModActivitySafetyBinding>() {
+class ModActivitySettingSafety : BaseVmDbActivity<ModActivitySettingSafety.Model, ModActivitySafetyBinding>() {
     override fun layoutId(): Int = R.layout.mod_activity_safety
 
     companion object {
         fun start(context: Context) {
-            val intent = Intent(context, ModActivitySafety::class.java)
+            val intent = Intent(context, ModActivitySettingSafety::class.java)
             if (context !is Activity) {
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             }

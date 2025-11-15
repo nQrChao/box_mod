@@ -83,7 +83,7 @@
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/idp_200"
+                        android:layout_height="@dimen/idp_250"
                         android:background="@drawable/mod_wode_user_bg"
                         android:orientation="vertical">
 
@@ -142,72 +142,102 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:layout_marginTop="@dimen/idp_10"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/mod_wode_user_icon"
                             android:orientation="horizontal"
-                            android:paddingHorizontal="@dimen/idp_30"
+                            android:paddingHorizontal="@dimen/idp_20"
                             android:weightSum="2">
 
                             <LinearLayout
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="@dimen/idp_115"
                                 android:layout_marginEnd="@dimen/idp_7"
                                 android:layout_weight="1"
-                                android:background="@drawable/mod_wode_bg_text_1"
-                                android:onClick="@{()-> click.jueseShoucang()}"
+                                android:background="@drawable/mod_wode_btn_bg_1"
+                                android:onClick="@{()-> click.myGujia()}"
                                 android:orientation="vertical"
                                 android:paddingVertical="@dimen/idp_10">
 
                                 <TextView
+                                    android:layout_marginStart="@dimen/idp_10"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal"
+                                    android:layout_gravity="start"
                                     android:ellipsize="end"
                                     android:maxLines="1"
-                                    android:text="角色名收藏"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/isp_15"
+                                    android:text="我的账号估算"
+                                    android:textColor="#D26923"
+                                    android:textSize="@dimen/isp_14"
                                     android:textStyle="bold"
-                                    tools:text="角色名收藏" />
-
-                                <ImageView
-                                    android:layout_width="@dimen/idp_35"
-                                    android:layout_height="@dimen/idp_35"
-                                    android:layout_gravity="center_horizontal"
-                                    android:layout_marginTop="@dimen/idp_5"
-                                    android:src="@drawable/mod_wode_juese_shoucang" />
+                                    tools:text="我的账号估算" />
 
                             </LinearLayout>
 
                             <LinearLayout
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/idp_7"
+                                android:layout_height="@dimen/idp_115"
                                 android:layout_weight="1"
-                                android:background="@drawable/mod_wode_bg_text_2"
-                                android:onClick="@{()->click.gameShoucang()}"
-                                android:orientation="vertical"
-                                android:paddingVertical="@dimen/idp_10">
+                                android:weightSum="10"
+                                android:orientation="vertical">
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center_horizontal"
-                                    android:ellipsize="end"
-                                    android:maxLines="1"
-                                    android:text="小游戏收藏"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/isp_15"
-                                    android:textStyle="bold"
-                                    tools:text="小游戏收藏" />
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="4.5"
+                                    android:background="@drawable/mod_wode_btn_bg_2"
+                                    android:onClick="@{()-> click.gameShoucang()}"
+                                    android:orientation="vertical"
+                                    android:paddingVertical="@dimen/idp_10">
 
-                                <ImageView
-                                    android:layout_width="@dimen/idp_35"
-                                    android:layout_height="@dimen/idp_35"
-                                    android:layout_gravity="center_horizontal"
-                                    android:layout_marginTop="@dimen/idp_5"
-                                    android:src="@drawable/mod_wode_game_shoucang" />
+                                    <TextView
+                                        android:layout_marginStart="@dimen/idp_10"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="start"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:text="小游戏收藏"
+                                        android:textColor="#1C6AAE"
+                                        android:textSize="@dimen/isp_14"
+                                        android:textStyle="bold"
+                                        tools:text="小游戏收藏" />
+
+                                </LinearLayout>
+
+                                <View
+                                    android:layout_weight="1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"/>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="4.5"
+                                    android:background="@drawable/mod_wode_btn_bg_3"
+                                    android:onClick="@{()-> click.jueseShoucang()}"
+                                    android:orientation="vertical"
+                                    android:paddingVertical="@dimen/idp_10">
+
+                                    <TextView
+                                        android:layout_marginStart="@dimen/idp_10"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="start"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:text="角色名收藏"
+                                        android:textColor="#AA3341"
+                                        android:textSize="@dimen/isp_14"
+                                        android:textStyle="bold"
+                                        tools:text="角色名收藏" />
+
+                                </LinearLayout>
+
+
+
+
 
                             </LinearLayout>
 
@@ -275,7 +305,7 @@
                             app:bar_rightDrawable="@drawable/mod_right_return"
                             app:bar_rightDrawableSize="@dimen/idp_20"
                             app:bar_rightTextColor="@color/text_hit_color"
-                            app:bar_rightTextSize="@dimen/isp_13" />
+                            app:bar_rightTextSize="@dimen/isp_12" />
 
 
                         <com.box.common.ui.layout.SettingBar

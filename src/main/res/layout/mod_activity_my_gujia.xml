@@ -9,33 +9,18 @@
 
         <variable
             name="vm"
-            type="com.box.mod.ui.activity.ModActivityMyShouCang.Model" />
+            type="com.box.mod.ui.activity.ModActivityMyGujia.Model" />
 
         <variable
             name="click"
-            type="com.box.mod.ui.activity.ModActivityMyShouCang.ProxyClick" />
+            type="com.box.mod.ui.activity.ModActivityMyGujia.ProxyClick" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
+        android:background="#F5F5F5"
         android:orientation="vertical">
-
-        <com.box.other.hjq.titlebar.TitleBar
-            android:id="@+id/titleBar"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/idp_40"
-            android:background="@color/white"
-            android:gravity="center"
-            app:leftTitleColor="@color/black90"
-            app:leftTitleSize="@dimen/isp_17"
-            app:leftTitleStyle="bold"
-            app:lineVisible="true"
-            app:titleColor="@color/black90"
-            app:titleSize="@dimen/isp_16"
-            app:titleStyle="bold" />
-
 
         <com.box.common.ui.layout.StatusLayout
             android:id="@+id/status_loading"
@@ -77,7 +62,7 @@
                         android:maxLines="1"
                         android:paddingHorizontal="@dimen/idp_10"
                         android:paddingVertical="@dimen/idp_5"
-                        android:text="角色名收藏"
+                        android:text="已估算"
                         android:textColor="@{vm.isSelect() == 0?@color/text_default_color:@color/common_text_color_sec_gray}"
                         android:textSize="@dimen/isp_14"
                         android:textStyle="bold"
@@ -93,7 +78,7 @@
                         android:maxLines="1"
                         android:paddingHorizontal="@dimen/idp_10"
                         android:paddingVertical="@dimen/idp_5"
-                        android:text="小游戏收藏"
+                        android:text="审核中"
                         android:textColor="@{vm.isSelect() == 1?@color/text_default_color:@color/common_text_color_sec_gray}"
                         android:textSize="@dimen/isp_14"
                         android:textStyle="bold"
@@ -101,52 +86,30 @@
 
                 </com.box.other.tablayout.DslTabLayout>
 
-                <LinearLayout
-                    android:id="@+id/nullDataLayout"
+                <com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout
+                    android:id="@+id/refreshLayout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:visibility="@{vm.hasData?View.GONE:View.VISIBLE}">
+                    app:srlEnableLoadMore="true"
+                    app:srlEnableRefresh="true">
 
-                    <ImageView
-                        android:id="@+id/pic"
-                        android:layout_width="wrap_content"
+                    <com.box.other.scwang.smart.refresh.header.MaterialHeader
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="@dimen/idp_80"
-                        android:src="@drawable/bg_status_empty_ic" />
+                        android:layout_marginTop="@dimen/idp_15"
+                        android:orientation="horizontal"
+                        tools:itemCount="2"
+                        tools:listitem="@layout/mod_item_my_gujia_list" />
 
-                    <TextView
-                        android:id="@+id/modPreviewPic"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="@dimen/idp_20"
-                        android:text="暂无收藏内容"
-                        android:textColor="@color/bbl_999999"
-                        android:textSize="@dimen/isp_16" />
-                </LinearLayout>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/idp_15"
-                    android:orientation="horizontal"
-                    android:visibility="@{vm.isSelect()== 0?View.VISIBLE:View.GONE}"
-                    tools:itemCount="2"
-                    tools:listitem="@layout/mod_item_rank" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/idp_15"
-                    android:orientation="horizontal"
-                    android:visibility="@{vm.isSelect()== 1?View.VISIBLE:View.GONE}"
-                    tools:itemCount="2"
-                    tools:listitem="@layout/mod_item_juese_list" />
-
+                    <com.box.other.scwang.smart.refresh.footer.ClassicsFooter
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout>
             </LinearLayout>
 
         </com.box.common.ui.layout.StatusLayout>

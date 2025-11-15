@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View" />
+
+        <import type="com.box.other.blankj.utilcode.util.StringUtils" />
+
+        <variable
+            name="modImageUriBean"
+            type="com.box.common.data.model.ModImageUriBean" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/image"
+            app:loadImagePickMediaUri="@{modImageUriBean.files}"
+            android:layout_width="@dimen/idp_70"
+            android:layout_height="@dimen/idp_70"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/mod_add_pic_3" />
+    </LinearLayout>
+
+</layout>

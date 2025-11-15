@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/idp_370"
+        android:layout_marginTop="@dimen/idp_40"
+        android:background="@drawable/gujia_dialog_bg"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/idp_15"
+            android:paddingVertical="@dimen/idp_10"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/btn_commit"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/idp_70"
+                android:layout_margin="@dimen/idp_10"
+                android:layout_weight="2"
+                android:background="@drawable/gujia_btn_cancel_selector"
+                android:gravity="center"
+                android:text="我知道啦"
+                android:textColor="#FF5C2A"
+                android:textSize="@dimen/isp_20"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/idp_300"
+        android:layout_marginHorizontal="@dimen/idp_25"
+        android:background="@drawable/a_rounded_20"
+        android:orientation="vertical"
+        android:paddingVertical="@dimen/idp_20">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/gujia_mod_dialog_title_text" />
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/idp_20"
+            android:paddingHorizontal="@dimen/idp_25"
+            android:text="恭喜！你的账号估值申请已成功提交至人工审核通道。为确保估值精准，工作人员将逐一核对账号数据、运营情况等关键信息，审核周期为 1-3 个工作日。审核结果将通过站内信同步，请勿重复提交申请～"
+            android:textColor="#4F4F4F"
+            android:textSize="@dimen/isp_16"
+            app:layout_constraintStart_toStartOf="@+id/tv_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

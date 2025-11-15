@@ -5,19 +5,20 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.animation.AnimationUtils
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import com.box.base.base.activity.BaseModVmDbActivity
 import com.box.base.base.viewmodel.BaseViewModel
 import com.box.base.callback.databind.BooleanObservableField
 import com.box.base.callback.databind.IntObservableField
 import com.box.base.network.NetState
+import com.box.common.data.model.ModDataBean
+import com.box.common.ui.adapter.SpacingItemDecorator
 import com.box.common.utils.mmkv.MMKVConfig
 import com.box.common.utils.mmkv.MMKVConfig.gameRankList
-import com.box.common.data.model.ModDataBean
-import com.box.common.ui.activity.CommonActivityBrowser.Companion.INTENT_KEY_URL
-import com.box.common.ui.adapter.SpacingItemDecorator
 import com.box.mod.BR.modData
 import com.box.mod.R
 import com.box.mod.databinding.ModActivityShoucangBinding
@@ -31,8 +32,8 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 
 @SuppressLint("CustomSplashScreen")
-class ModActivityShouCang :
-    BaseModVmDbActivity<ModActivityShouCang.Model, ModActivityShoucangBinding>() {
+class ModActivityMyShouCang :
+    BaseModVmDbActivity<ModActivityMyShouCang.Model, ModActivityShoucangBinding>() {
     private var type = 0
 
     var rankList: MutableList<ModDataBean> = mutableListOf()
@@ -50,7 +51,7 @@ class ModActivityShouCang :
         const val INTENT_KEY_TYPE_RANK: String = "rankType"
         var resultLauncher: ActivityResultLauncher<Intent>? = null
         fun start(context: Context) {
-            val intent = Intent(context, ModActivityShouCang::class.java)
+            val intent = Intent(context, ModActivityMyShouCang::class.java)
             if (context !is Activity) {
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             }
@@ -58,7 +59,7 @@ class ModActivityShouCang :
         }
 
         fun start(context: Context,rankType:Int) {
-            val intent = Intent(context, ModActivityShouCang::class.java)
+            val intent = Intent(context, ModActivityMyShouCang::class.java)
             intent.putExtra(INTENT_KEY_TYPE_RANK, rankType)
             if (context !is Activity) {
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -87,6 +88,7 @@ class ModActivityShouCang :
                     randomNameList = MMKVConfig.getShouCangNameList()
                     mViewModel.hasData.set(!randomNameList.isEmpty())
                     0
+
                 }
 
                 1 -> {
@@ -97,10 +99,7 @@ class ModActivityShouCang :
 
                 else -> 0
             }
-
             mDataBinding.root.postDelayed({
-
-
             }, 500) // 延迟500毫秒
         }
 
@@ -200,20 +199,56 @@ class ModActivityShouCang :
 
     }
 
-
     class ModGameRankShoucangAdapter : BaseQuickAdapter<ModDataBean, BaseDataBindingHolder<ModItemRankShoucangBinding>>(
         R.layout.mod_item_rank_shoucang
     ) {
-
+        private var lastPosition = -1
         override fun convert(holder: BaseDataBindingHolder<ModItemRankShoucangBinding>, item: ModDataBean) {
             // 绑定逻辑保持不变
             holder.dataBinding?.let {
                 it.setVariable(modData, item)
                 it.executePendingBindings()
             }
-
+            if (holder.layoutPosition > lastPosition) {
+                val animation = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.item_slide_up_fade_in_short)
+                animation.startOffset = 50L * holder.layoutPosition.toLong()
+                holder.itemView.startAnimation(animation)
+                lastPosition = holder.layoutPosition
+            }
+        }
+        override fun onViewRecycled(holder: BaseDataBindingHolder<ModItemRankShoucangBinding>) {
+            holder.itemView.clearAnimation()
+            super.onViewRecycled(holder)
         }
 
+        fun resetAnimationState() {
+            lastPosition = -1
+        }
+
+        fun updateList(newList: List<ModDataBean>) {
+            val diffResult = DiffUtil.calculateDiff(ModGameRankShoucangDiffCallback(data, newList))
+            data.clear()
+            data.addAll(newList)
+            diffResult.dispatchUpdatesTo(this)
+        }
+
+    }
+
+    class  ModGameRankShoucangDiffCallback(
+        private val oldList: List<ModDataBean>,
+        private val newList: List<ModDataBean>
+    ) : DiffUtil.Callback() {
+
+        override fun getOldListSize(): Int = oldList.size
+        override fun getNewListSize(): Int = newList.size
+
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList[oldItemPosition].id == newList[newItemPosition].id
+        }
+
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList[oldItemPosition] == newList[newItemPosition]
+        }
     }
 
 

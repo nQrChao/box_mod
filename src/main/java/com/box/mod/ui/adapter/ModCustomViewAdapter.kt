@@ -1,15 +1,12 @@
 package com.box.mod.ui.adapter
 
 import android.view.animation.AnimationUtils
-import androidx.recyclerview.widget.DiffUtil
-import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
-import com.box.common.data.model.ModInitBean
 import com.box.common.data.model.ModValuationCommitBean
 import com.box.mod.BR
 import com.box.mod.R
-import com.box.mod.databinding.ModItemAppletsBinding
 import com.box.mod.databinding.ModItemCustomFormBinding
+import com.chad.library.adapter.base.BaseQuickAdapter
+import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 
 class ModCustomViewAdapter : BaseQuickAdapter<ModValuationCommitBean, BaseDataBindingHolder<ModItemCustomFormBinding>>(
     R.layout.mod_item_custom_form) {
@@ -36,10 +33,11 @@ class ModCustomViewAdapter : BaseQuickAdapter<ModValuationCommitBean, BaseDataBi
     }
 
     fun updateList(newList: List<ModValuationCommitBean>) {
-        val diffResult = DiffUtil.calculateDiff(ModCustomViewDiffCallback(data, newList))
-        data.clear()
-        data.addAll(newList)
-        diffResult.dispatchUpdatesTo(this)
+        setList(newList)
+//        val diffResult = DiffUtil.calculateDiff(ModCustomViewDiffCallback(data, newList))
+//        data.clear()
+//        data.addAll(newList)
+//        diffResult.dispatchUpdatesTo(this)
     }
 
 }

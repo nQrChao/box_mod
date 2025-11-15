@@ -19,13 +19,13 @@ import com.box.base.ext.modRequestWithMsg
 import com.box.base.ext.parseModStateWithMsg
 import com.box.base.network.NetState
 import com.box.base.state.ModResultStateWithMsg
-import com.box.common.utils.mmkv.MMKVConfig
 import com.box.common.appContext
 import com.box.common.data.model.ModDataBean
 import com.box.common.network.apiService
 import com.box.common.ui.adapter.SpacingItemDecorator
 import com.box.common.ui.layout.StatusLayout
 import com.box.common.utils.ext.logsE
+import com.box.common.utils.mmkv.MMKVConfig
 import com.box.mod.BR.modData
 import com.box.mod.BR.position
 import com.box.mod.R
@@ -33,7 +33,7 @@ import com.box.mod.databinding.ModFragmentShengchengqiBinding
 import com.box.mod.databinding.ModItemJueseListBinding
 import com.box.mod.databinding.ModItemRoleTypeBinding
 import com.box.mod.ui.activity.ModActivityLogin
-import com.box.mod.ui.activity.ModActivityShouCang
+import com.box.mod.ui.activity.ModActivityMyShouCang
 import com.box.mod.ui.xpop.ModXPopupCenterShengChengQi
 import com.box.other.blankj.utilcode.util.ClipboardUtils
 import com.box.other.blankj.utilcode.util.ColorUtils
@@ -87,7 +87,6 @@ class ModFragmentShengChengQi :
             init()
         }
 
-        roleTypeAdapter.setDiffCallback(RoleTypeDiffCallback())
         mDataBinding.recyclerView.run {
             layoutManager = GridLayoutManager(context, 2)
             addItemDecoration(SpacingItemDecorator((resources.displayMetrics.density * 10).toInt()))
@@ -113,13 +112,12 @@ class ModFragmentShengChengQi :
         }
 
 
-        randomNameAdapter.setDiffCallback(RandomNameDiffCallback())
         mDataBinding.recyclerView2.run {
             layoutManager = GridLayoutManager(context, 1)
             addItemDecoration(SpacingItemDecorator((resources.displayMetrics.density * 5).toInt()))
             adapter = randomNameAdapter
         }
-        randomNameAdapter.addChildClickViewIds(R.id.copy, R.id.shoucang,R.id.del)
+        randomNameAdapter.addChildClickViewIds(R.id.copy, R.id.shoucang, R.id.del)
         randomNameAdapter.setOnItemClickListener { adapter, view, position ->
 
         }
@@ -129,16 +127,16 @@ class ModFragmentShengChengQi :
             if (view.id == R.id.copy) {
                 ClipboardUtils.copyText(clickedItem.name)
                 Toaster.show("角色名已复制")
-            }else if (view.id == R.id.del) {
+            } else if (view.id == R.id.del) {
                 MMKVConfig.removeRandomNameList(clickedItem) //
                 val latestList = MMKVConfig.getRandomName() //
                 randomNameAdapter.setDiffNewData(latestList) //
                 Toaster.show("角色名已删除")
-                if(latestList.isEmpty()){ //
+                if (latestList.isEmpty()) { //
                     mDataBinding.randomNameLayout.visibility = View.GONE //
                 }
                 //adapter.removeAt(position)
-            }  else if (view.id == R.id.shoucang) {
+            } else if (view.id == R.id.shoucang) {
 //                val newState = !clickedItem.isShouCang // 计算新状态
 //                MMKVConfig.updateRandomNameStatusByName(clickedItem.name, newState)
 //                val latestList = MMKVConfig.getRandomName()
@@ -152,8 +150,8 @@ class ModFragmentShengChengQi :
                 val newState = !clickedItem.isShouCang
                 MMKVConfig.updateRandomNameStatusByName(clickedItem.name, newState) //
                 val latestList = MMKVConfig.getRandomName() //
-                randomNameAdapter.setDiffNewData(latestList) //
-                if(newState) {
+                randomNameAdapter.updateList(latestList) //
+                if (newState) {
                     Toaster.show("收藏成功：${clickedItem.name}")
                 }
 
@@ -162,7 +160,7 @@ class ModFragmentShengChengQi :
 
         if (!MMKVConfig.getRandomName().isEmpty()) {
             mDataBinding.randomNameLayout.visibility = View.VISIBLE
-            randomNameAdapter.setDiffNewData(MMKVConfig.getRandomName())
+            randomNameAdapter.updateList(MMKVConfig.getRandomName())
         }
 
     }
@@ -174,10 +172,10 @@ class ModFragmentShengChengQi :
                 resultState,
                 onSuccess = { data, msg ->
                     logsE(GsonUtils.toJson(data))
-                    //mViewModel.typeName.set(data?.get(0)?.dictLabel)
-                    //data?.firstOrNull()?.also { it.isSelect = true }
-                    roleTypeAdapter.setDiffNewData(data)
-
+                    if (data != null) {
+                        roleTypeAdapter.updateList(data)
+                    }
+                    roleTypeAdapter.resetAnimationState()
                 },
                 onError = {
                     Toaster.show(it.msg)
@@ -195,8 +193,8 @@ class ModFragmentShengChengQi :
                         data.isShouCang = false
                         mDataBinding.randomNameLayout.visibility = View.VISIBLE
                         MMKVConfig.addRandomNameList(data)
-                        randomNameAdapter.setDiffNewData(MMKVConfig.getRandomName())
-
+                        randomNameAdapter.updateList(MMKVConfig.getRandomName())
+                        randomNameAdapter.resetAnimationState()
                         XPopup.Builder(context)
                             .dismissOnTouchOutside(false)
                             .dismissOnBackPressed(false)
@@ -212,12 +210,16 @@ class ModFragmentShengChengQi :
                                     data
                                 ) {
                                     MMKVConfig.updateRandomNameStatusByName(data.name, true)
-                                    val currentPosition = randomNameAdapter.data.indexOfFirst { bean ->
-                                        bean.name == data.name
-                                    }
+                                    val currentPosition =
+                                        randomNameAdapter.data.indexOfFirst { bean ->
+                                            bean.name == data.name
+                                        }
                                     if (currentPosition != -1) {
                                         randomNameAdapter.getItem(currentPosition).isShouCang = true
-                                        randomNameAdapter.notifyItemChanged(currentPosition, "SHOUCANG_UPDATE")
+                                        randomNameAdapter.notifyItemChanged(
+                                            currentPosition,
+                                            "SHOUCANG_UPDATE"
+                                        )
                                     }
                                     Toaster.show("收藏成功")
                                 })
@@ -241,8 +243,8 @@ class ModFragmentShengChengQi :
     override fun onRightClick(view: TitleBar) {
         super.onRightClick(view)
         if (isLogin()) {
-            ModActivityShouCang.start(appContext)
-        }else{
+            ModActivityMyShouCang.start(appContext)
+        } else {
             Toaster.show("请先登录")
             ModActivityLogin.start(appContext)
         }
@@ -277,13 +279,23 @@ class ModFragmentShengChengQi :
         }
 
         fun confirm() {
-            if(mViewModel.typeName.get() == "0"){
-                mDataBinding.recyclerView.startAnimation(AnimationUtils.loadAnimation(appContext, RC.anim.shake_anim))
+            if (mViewModel.typeName.get() == "0") {
+                mDataBinding.recyclerView.startAnimation(
+                    AnimationUtils.loadAnimation(
+                        appContext,
+                        RC.anim.shake_anim
+                    )
+                )
                 Toaster.show("请选择类型")
                 return
             }
-            if(mViewModel.lengthName.get() == "0"){
-                mDataBinding.lengthLayout.startAnimation(AnimationUtils.loadAnimation(appContext, RC.anim.shake_anim))
+            if (mViewModel.lengthName.get() == "0") {
+                mDataBinding.lengthLayout.startAnimation(
+                    AnimationUtils.loadAnimation(
+                        appContext,
+                        RC.anim.shake_anim
+                    )
+                )
                 Toaster.show("请选择长度")
                 return
             }
@@ -306,35 +318,82 @@ class ModFragmentShengChengQi :
         BaseQuickAdapter<ModDataBean, BaseDataBindingHolder<ModItemRoleTypeBinding>>(
             R.layout.mod_item_role_type, list
         ) {
+        private var lastPosition = -1
         override fun convert(
             holder: BaseDataBindingHolder<ModItemRoleTypeBinding>,
             item: ModDataBean
         ) {
             holder.dataBinding?.setVariable(modData, item)
             holder.dataBinding?.setVariable(position, holder.bindingAdapterPosition)
+            holder.dataBinding?.executePendingBindings()
+            if (holder.layoutPosition > lastPosition) {
+                val animation = AnimationUtils.loadAnimation(
+                    holder.itemView.context,
+                    R.anim.item_slide_up_fade_in
+                )
+                animation.startOffset = 50L * holder.layoutPosition.toLong()
+                holder.itemView.startAnimation(animation)
+                lastPosition = holder.layoutPosition
+            }
+        }
+
+        override fun onViewRecycled(holder: BaseDataBindingHolder<ModItemRoleTypeBinding>) {
+            holder.itemView.clearAnimation()
+            super.onViewRecycled(holder)
+        }
+
+        fun resetAnimationState() {
+            lastPosition = -1
+        }
+
+        fun updateList(newList: MutableList<ModDataBean>) {
+            val diffResult = DiffUtil.calculateDiff(RoleTypeDiffCallback(data, newList))
+            data.clear()
+            data.addAll(newList)
+            diffResult.dispatchUpdatesTo(this)
         }
     }
 
-    class RoleTypeDiffCallback : DiffUtil.ItemCallback<ModDataBean>() {
-        override fun areItemsTheSame(oldItem: ModDataBean, newItem: ModDataBean): Boolean {
-            return oldItem.dictValue == newItem.dictValue
+    class RoleTypeDiffCallback(
+        private val oldList: List<ModDataBean>,
+        private val newList: List<ModDataBean>
+    ) : DiffUtil.Callback() {
+
+        override fun getOldListSize(): Int = oldList.size
+        override fun getNewListSize(): Int = newList.size
+
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList[oldItemPosition].id == newList[newItemPosition].id
         }
 
-        override fun areContentsTheSame(oldItem: ModDataBean, newItem: ModDataBean): Boolean {
-            return oldItem == newItem
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList[oldItemPosition] == newList[newItemPosition]
         }
     }
 
 
-    class RandomNameAdapter constructor() : BaseQuickAdapter<ModDataBean, BaseDataBindingHolder<ModItemJueseListBinding>>(
+    class RandomNameAdapter constructor() :
+        BaseQuickAdapter<ModDataBean, BaseDataBindingHolder<ModItemJueseListBinding>>(
             R.layout.mod_item_juese_list
         ) {
+
+        private var lastPosition = -1
         override fun convert(
             holder: BaseDataBindingHolder<ModItemJueseListBinding>,
             item: ModDataBean
         ) {
             holder.dataBinding?.setVariable(modData, item)
             holder.dataBinding?.executePendingBindings()
+
+            if (holder.layoutPosition > lastPosition) {
+                val animation = AnimationUtils.loadAnimation(
+                    holder.itemView.context,
+                    R.anim.item_slide_up_fade_in
+                )
+                animation.startOffset = 50L * holder.layoutPosition.toLong()
+                holder.itemView.startAnimation(animation)
+                lastPosition = holder.layoutPosition
+            }
         }
 
         override fun onBindViewHolder(
@@ -353,15 +412,38 @@ class ModFragmentShengChengQi :
                 super.onBindViewHolder(holder, position, payloads)
             }
         }
-    }
 
-    class RandomNameDiffCallback : DiffUtil.ItemCallback<ModDataBean>() {
-        override fun areItemsTheSame(oldItem: ModDataBean, newItem: ModDataBean): Boolean {
-            return oldItem.name == newItem.name
+        override fun onViewRecycled(holder: BaseDataBindingHolder<ModItemJueseListBinding>) {
+            holder.itemView.clearAnimation()
+            super.onViewRecycled(holder)
         }
 
-        override fun areContentsTheSame(oldItem: ModDataBean, newItem: ModDataBean): Boolean {
-            return oldItem == newItem
+        fun resetAnimationState() {
+            lastPosition = -1
+        }
+
+        fun updateList(newList: List<ModDataBean>) {
+            val diffResult = DiffUtil.calculateDiff(RandomNameDiffCallback(data, newList))
+            data.clear()
+            data.addAll(newList)
+            diffResult.dispatchUpdatesTo(this)
+        }
+    }
+
+    class RandomNameDiffCallback(
+        private val oldList: List<ModDataBean>,
+        private val newList: List<ModDataBean>
+    ) : DiffUtil.Callback() {
+
+        override fun getOldListSize(): Int = oldList.size
+        override fun getNewListSize(): Int = newList.size
+
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList[oldItemPosition].id == newList[newItemPosition].id
+        }
+
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList[oldItemPosition] == newList[newItemPosition]
         }
     }
 

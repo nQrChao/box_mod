@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.box.other.blankj.utilcode.util.StringUtils" />
+
+        <variable
+            name="picUrl"
+            type="String" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/idp_120"
+            android:layout_height="@dimen/idp_60"
+            android:layout_gravity="center"
+            app:cornerRadius="@{15f}"
+            app:hideOnNullOrError="@{false}"
+            app:imageUrl="@{picUrl}"
+            tools:src="@drawable/bg_dialog_loading" />
+
+    </LinearLayout>
+
+</layout>

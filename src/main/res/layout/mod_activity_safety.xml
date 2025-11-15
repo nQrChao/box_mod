@@ -10,11 +10,11 @@
 
         <variable
             name="vm"
-            type="com.box.mod.ui.activity.ModActivitySafety.Model" />
+            type="com.box.mod.ui.activity.ModActivitySettingSafety.Model" />
 
         <variable
             name="click"
-            type="com.box.mod.ui.activity.ModActivitySafety.ProxyClick" />
+            type="com.box.mod.ui.activity.ModActivitySettingSafety.ProxyClick" />
     </data>
 
     <RelativeLayout

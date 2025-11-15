@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.box.other.blankj.utilcode.util.StringUtils" />
+
+        <variable
+            name="modData"
+            type="com.box.common.data.model.ModDataBean" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/a_rounded_20"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/idp_15"
+        android:paddingVertical="@dimen/idp_15">
+
+
+        <LinearLayout
+            android:id="@+id/shenhe_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/shenhe_price"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/shenhe_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{StringUtils.format(&quot;游戏名：%s&quot;, modData.gameName)}"
+                android:textColor="@color/text_default_color"
+                android:textSize="@dimen/isp_14"
+                android:textStyle="bold"
+                tools:text="游戏名：剑侠情缘剑侠情缘剑侠情缘" />
+
+            <TextView
+                android:id="@+id/shenhe_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="@dimen/idp_2"
+                android:gravity="center"
+                android:text="@{modData.checkState == 0 ? StringUtils.format(&quot;提交日期：%s&quot;, modData.createTime):StringUtils.format(&quot;审核日期：%s&quot;, modData.checkTime)}"
+                android:textColor="@color/text_hit_color"
+                android:textSize="@dimen/isp_12"
+                tools:text="审核日期：2025-11-13  12:23" />
+
+            <TextView
+                android:id="@+id/shenhe_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="@dimen/idp_2"
+                android:gravity="center"
+                android:text="@{StringUtils.format(&quot;审核编号：%s&quot;, modData.checkNum)}"
+                android:textColor="@color/text_hit_color"
+                android:textSize="@dimen/isp_12"
+                tools:text="审核编号：23232446" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/shenhe_price"
+            android:layout_width="@dimen/idp_90"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/idp_10"
+            android:background="@{modData.checkState == 1 ? @drawable/gujia_my_shenhe_text_bg_1 : @drawable/gujia_my_shenhe_text_bg_2}"
+            android:gravity="center"
+            android:paddingVertical="@dimen/idp_10"
+            android:text="@{modData.checkState == 1 ? StringUtils.format(&quot;估价\n￥%s&quot;, modData.money):&quot;审核中...&quot;}"
+            android:textColor="@{modData.checkState == 1? @color/white:@color/common_text_color_sec_gray}"
+            android:textSize="@dimen/isp_11"
+            android:textStyle="bold"
+            tools:background="@drawable/gujia_my_shenhe_text_bg_1"
+            tools:text="估价\n￥12780.00"
+            tools:textColor="@color/white" />
+
+
+    </RelativeLayout>
+
+</layout>

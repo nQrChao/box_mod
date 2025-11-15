@@ -21,8 +21,9 @@ import com.box.mod.R
 import com.box.mod.databinding.ModFragmentWodeBinding
 import com.box.mod.ui.activity.ModActivityChangePassword
 import com.box.mod.ui.activity.ModActivityLogin
-import com.box.mod.ui.activity.ModActivitySafety
-import com.box.mod.ui.activity.ModActivityShouCang
+import com.box.mod.ui.activity.ModActivityMyGujia
+import com.box.mod.ui.activity.ModActivityMyShouCang
+import com.box.mod.ui.activity.ModActivitySettingSafety
 import com.box.mod.ui.activity.fankui.ModActivityFankui1
 import com.box.mod.ui.activity.message.ModActivityMessage1
 import com.box.other.blankj.utilcode.util.ColorUtils
@@ -102,9 +103,18 @@ class ModFragmentWode : BaseTitleBarFragment<ModFragmentWode.Model, ModFragmentW
 
         }
 
+        fun myGujia() {
+            if (isLogin()) {
+                ModActivityMyGujia.start(appContext, 0)
+            } else {
+                Toaster.show("请先登录")
+                ModActivityLogin.start(appContext)
+            }
+        }
+
         fun gameShoucang() {
             if (isLogin()) {
-                ModActivityShouCang.start(appContext, 1)
+                ModActivityMyShouCang.start(appContext, 1)
             } else {
                 Toaster.show("请先登录")
                 ModActivityLogin.start(appContext)
@@ -113,7 +123,7 @@ class ModFragmentWode : BaseTitleBarFragment<ModFragmentWode.Model, ModFragmentW
 
         fun jueseShoucang() {
             if (isLogin()) {
-                ModActivityShouCang.start(appContext)
+                ModActivityMyShouCang.start(appContext)
             } else {
                 Toaster.show("请先登录")
                 ModActivityLogin.start(appContext)
@@ -187,7 +197,7 @@ class ModFragmentWode : BaseTitleBarFragment<ModFragmentWode.Model, ModFragmentW
         }
 
         fun userAnQuan() {
-            ModActivitySafety.start(appContext)
+            ModActivitySettingSafety.start(appContext)
         }
 
         fun quit() {

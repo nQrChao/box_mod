@@ -3,6 +3,7 @@ package com.box.mod.ui.fragment
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AnimationUtils
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
@@ -16,19 +17,19 @@ import com.box.base.ext.modRequestWithMsg
 import com.box.base.ext.parseModStateWithMsg
 import com.box.base.network.NetState
 import com.box.base.state.ModResultStateWithMsg
-import com.box.common.utils.mmkv.MMKVConfig
 import com.box.common.appContext
 import com.box.common.data.model.ModDataBean
 import com.box.common.network.apiService
 import com.box.common.ui.adapter.SpacingItemDecorator
 import com.box.common.ui.layout.StatusLayout
 import com.box.common.utils.ext.logsE
+import com.box.common.utils.mmkv.MMKVConfig
 import com.box.mod.BR.modData
 import com.box.mod.R
 import com.box.mod.databinding.ModFragmentGameRankListBinding
 import com.box.mod.databinding.ModItemRankBinding
 import com.box.mod.ui.activity.ModActivityLogin
-import com.box.mod.ui.activity.ModActivityShouCang
+import com.box.mod.ui.activity.ModActivityMyShouCang
 import com.box.other.blankj.utilcode.util.GsonUtils
 import com.box.other.hjq.titlebar.TitleBar
 import com.box.other.hjq.toast.Toaster
@@ -72,8 +73,6 @@ class ModFragmentGameRankList :
             init()
         }
 
-        rankListAdapter.setDiffCallback(ModGameRankDiffCallback())
-
         mDataBinding.tab.observeIndexChange { fromIndex, toIndex, reselect, fromUser ->
             mViewModel.isSelect.set(toIndex)
             type = when (toIndex) {
@@ -81,6 +80,7 @@ class ModFragmentGameRankList :
                 1 -> 1
                 else -> 0
             }
+            //mViewModel.getRoleTypeData(1, pageSize, type)
             mDataBinding.recyclerView.scrollToPosition(0)
             mDataBinding.root.postDelayed({
                 mDataBinding.refreshLayout.autoRefresh()
@@ -143,11 +143,12 @@ class ModFragmentGameRankList :
                     if (data.isNullOrEmpty()) {
                         if (currentPage == 1) { // 刷新时没有数据
                             mDataBinding.refreshLayout.finishRefresh()
-                            rankListAdapter.setList(mutableListOf()) // 清空列表
+                            rankListAdapter.updateList(mutableListOf()) // 清空列表
                             mDataBinding.refreshLayout.finishLoadMoreWithNoMoreData()
                         } else { // 加载更多时没有数据
                             mDataBinding.refreshLayout.finishLoadMoreWithNoMoreData()
                         }
+                        rankListAdapter.resetAnimationState()
                         return@parseModStateWithMsg // 提前退出
                     }
 
@@ -161,8 +162,9 @@ class ModFragmentGameRankList :
                         data.forEachIndexed { index, item ->
                             item.rank = index + 1
                         }
-                        rankListAdapter.setList(data)
+                        rankListAdapter.updateList(data)
                         mDataBinding.refreshLayout.resetNoMoreData()
+                        rankListAdapter.resetAnimationState()
                     } else {
                         mDataBinding.refreshLayout.finishLoadMore()
                         val currentItemCount = rankListAdapter.data.size
@@ -219,7 +221,7 @@ class ModFragmentGameRankList :
     override fun onRightClick(view: TitleBar) {
         super.onRightClick(view)
         if (isLogin()) {
-            ModActivityShouCang.start(appContext,1)
+            ModActivityMyShouCang.start(appContext,1)
         }else{
             Toaster.show("请先登录")
             ModActivityLogin.start(appContext)
@@ -239,7 +241,7 @@ class ModFragmentGameRankList :
     class ModGameRankAdapter : BaseQuickAdapter<ModDataBean, BaseDataBindingHolder<ModItemRankBinding>>(
             R.layout.mod_item_rank
         ) {
-
+        private var lastPosition = -1
         override fun convert(holder: BaseDataBindingHolder<ModItemRankBinding>, item: ModDataBean) {
             // 绑定逻辑保持不变
             holder.dataBinding?.let {
@@ -253,6 +255,13 @@ class ModFragmentGameRankList :
             } else {
                 holder.dataBinding?.topIcon?.visibility = View.GONE
                 holder.dataBinding?.topText?.visibility = View.VISIBLE
+            }
+
+            if (holder.layoutPosition > lastPosition) {
+                val animation = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.item_slide_up_fade_in_short)
+                animation.startOffset = 50L * holder.layoutPosition.toLong()
+                holder.itemView.startAnimation(animation)
+                lastPosition = holder.layoutPosition
             }
         }
         override fun onBindViewHolder(
@@ -282,16 +291,44 @@ class ModFragmentGameRankList :
                 super.onBindViewHolder(holder, position, payloads)
             }
         }
+
+        override fun onViewRecycled(holder: BaseDataBindingHolder<ModItemRankBinding>) {
+            holder.itemView.clearAnimation()
+            super.onViewRecycled(holder)
+        }
+
+        fun resetAnimationState() {
+            lastPosition = -1
+        }
+
+        fun updateList(newList: List<ModDataBean>) {
+            setList(newList)
+//            val diffResult = DiffUtil.calculateDiff(ModGameRankDiffCallback(data, newList))
+//            data.clear()
+//            data.addAll(newList)
+//            diffResult.dispatchUpdatesTo(this)
+        }
+
     }
 
-    class ModGameRankDiffCallback : DiffUtil.ItemCallback<ModDataBean>() {
-        override fun areItemsTheSame(oldItem: ModDataBean, newItem: ModDataBean): Boolean {
-            return oldItem.name == newItem.name
+    class  ModGameRankDiffCallback(
+        private val oldList: List<ModDataBean>,
+        private val newList: List<ModDataBean>
+    ) : DiffUtil.Callback() {
+
+        override fun getOldListSize(): Int = oldList.size
+        override fun getNewListSize(): Int = newList.size
+
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList[oldItemPosition].id == newList[newItemPosition].id
         }
-        override fun areContentsTheSame(oldItem: ModDataBean, newItem: ModDataBean): Boolean {
-            return oldItem == newItem
+
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList[oldItemPosition] == newList[newItemPosition]
         }
     }
+
+
 
 
     /**********************************************Model**************************************************/

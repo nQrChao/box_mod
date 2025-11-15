@@ -19,7 +19,17 @@
             android:windowSoftInputMode="adjustResize|stateHidden" />
 
         <activity
-            android:name="com.box.mod.ui.activity.ModActivityShouCang"
+            android:name="com.box.mod.ui.activity.ModActivityMyShouCang"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.box.mod.ui.activity.ModActivityMyGujia"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.box.mod.ui.activity.ModActivityMyGujiaXiangqing"
             android:exported="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
@@ -43,7 +53,7 @@
             android:windowSoftInputMode="adjustResize" />
 
         <activity
-            android:name="com.box.mod.ui.activity.ModActivitySafety"
+            android:name="com.box.mod.ui.activity.ModActivitySettingSafety"
             android:exported="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
