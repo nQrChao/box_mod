@@ -130,7 +130,7 @@ class ModFragmentShengChengQi :
             } else if (view.id == R.id.del) {
                 MMKVConfig.removeRandomNameList(clickedItem) //
                 val latestList = MMKVConfig.getRandomName() //
-                randomNameAdapter.setDiffNewData(latestList) //
+                randomNameAdapter.updateList(latestList) //
                 Toaster.show("角色名已删除")
                 if (latestList.isEmpty()) { //
                     mDataBinding.randomNameLayout.visibility = View.GONE //
@@ -258,7 +258,7 @@ class ModFragmentShengChengQi :
         } else {
             mDataBinding.randomNameLayout.visibility = View.VISIBLE
         }
-        randomNameAdapter.setDiffNewData(latestList)
+        randomNameAdapter.updateList(latestList)
     }
 
     /**********************************************Click**************************************************/
@@ -423,10 +423,11 @@ class ModFragmentShengChengQi :
         }
 
         fun updateList(newList: List<ModDataBean>) {
-            val diffResult = DiffUtil.calculateDiff(RandomNameDiffCallback(data, newList))
-            data.clear()
-            data.addAll(newList)
-            diffResult.dispatchUpdatesTo(this)
+            setList(newList)
+//            val diffResult = DiffUtil.calculateDiff(RandomNameDiffCallback(data, newList))
+//            data.clear()
+//            data.addAll(newList)
+//            diffResult.dispatchUpdatesTo(this)
         }
     }
 

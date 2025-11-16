@@ -454,8 +454,6 @@ class ModFragmentGuJiaReal :
                 }, 100) // 100毫秒延迟
                 return // 停止执行
             }
-            // --- 如果没有校验错误，才继续往下执行 ---
-            Toaster.show("数据收集成功，准备提交：$commitDataMap")
 
             val uploadedFilesCount = upPicList.count { it.files != null }
             if (uploadedFilesCount < 3) {

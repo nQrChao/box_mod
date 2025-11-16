@@ -24,7 +24,7 @@ class ModXPopupCenterGuJiaCommit(context: Context, var contentText: String, priv
         btnCommit = findViewById<Button>(R.id.btn_commit)
         tvContent = findViewById<TextView>(R.id.tv_content)
 
-        tvContent?.text = contentText
+        //tvContent?.text = contentText
 
         setOnClickListener(R.id.tv_content,R.id.btn_commit)
     }
