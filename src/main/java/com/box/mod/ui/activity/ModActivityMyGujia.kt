@@ -39,7 +39,8 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 
 @SuppressLint("CustomSplashScreen")
-class ModActivityMyGujia : BaseVmDbActivity<ModActivityMyGujia.Model, ModActivityMyGujiaBinding>() , StatusAction{
+class ModActivityMyGujia : BaseVmDbActivity<ModActivityMyGujia.Model, ModActivityMyGujiaBinding>(),
+    StatusAction {
     private var type = 1
     private val pageSize = 10
     private var currentPage = 1
@@ -49,6 +50,7 @@ class ModActivityMyGujia : BaseVmDbActivity<ModActivityMyGujia.Model, ModActivit
     override fun layoutId(): Int {
         return R.layout.mod_activity_my_gujia
     }
+
     /**
      * 加载状态
      */
@@ -67,7 +69,7 @@ class ModActivityMyGujia : BaseVmDbActivity<ModActivityMyGujia.Model, ModActivit
             ActivityUtils.startActivity(intent)
         }
 
-        fun start(context: Context,rankType:Int) {
+        fun start(context: Context, rankType: Int) {
             val intent = Intent(context, ModActivityMyGujia::class.java)
             intent.putExtra(INTENT_KEY_TYPE_GUJIA, rankType)
             if (context !is Activity) {
@@ -81,7 +83,7 @@ class ModActivityMyGujia : BaseVmDbActivity<ModActivityMyGujia.Model, ModActivit
     override fun initView(savedInstanceState: Bundle?) {
         mDataBinding.vm = mViewModel
         mDataBinding.click = ProxyClick()
-        mViewModel.isSelect.set(intent.getIntExtra(INTENT_KEY_TYPE_GUJIA,0))
+        mViewModel.isSelect.set(intent.getIntExtra(INTENT_KEY_TYPE_GUJIA, 0))
         showLoading()
         immersionBar {
             navigationBarColor(com.box.com.R.color.white_pressed_color)
@@ -89,20 +91,26 @@ class ModActivityMyGujia : BaseVmDbActivity<ModActivityMyGujia.Model, ModActivit
             init()
         }
 
-        mDataBinding.tab.tabDefaultIndex = intent.getIntExtra(INTENT_KEY_TYPE_RANK,0)
+        mDataBinding.tab.tabDefaultIndex = intent.getIntExtra(INTENT_KEY_TYPE_RANK, 0)
         mDataBinding.tab.observeIndexChange { fromIndex, toIndex, reselect, fromUser ->
             mViewModel.isSelect.set(toIndex)
             type = when (toIndex) {
                 0 -> {
                     1
                 }
+
                 1 -> {
                     0
                 }
+
+                2 -> {
+                    2
+                }
+
                 else -> 0
             }
             mDataBinding.root.postDelayed({
-                mViewModel.getMyCommitListData(type,currentPage, pageSize)
+                mViewModel.getMyCommitListData(type, currentPage, pageSize)
             }, 100) // 延迟100毫秒
         }
 
@@ -115,23 +123,23 @@ class ModActivityMyGujia : BaseVmDbActivity<ModActivityMyGujia.Model, ModActivit
         myGujiaAdapter.setOnItemClickListener { adapter, view, position ->
             val currentList = adapter.data
             val clickedItem = currentList[position] as ModDataBean
-            ModActivityMyGujiaXiangqing.start(appContext,clickedItem.id.toString())
+            ModActivityMyGujiaXiangqing.start(appContext, clickedItem.id.toString())
 
         }
 
         mDataBinding.refreshLayout.apply {
             setOnRefreshListener {
                 currentPage = 1
-                mViewModel.getMyCommitListData(type,currentPage, pageSize, )
+                mViewModel.getMyCommitListData(type, currentPage, pageSize)
             }
 
             setOnLoadMoreListener {
                 currentPage++
-                mViewModel.getMyCommitListData(type,currentPage, pageSize, )
+                mViewModel.getMyCommitListData(type, currentPage, pageSize)
             }
         }
 
-        mViewModel.getMyCommitListData(type,currentPage, pageSize, )
+        mViewModel.getMyCommitListData(type, currentPage, pageSize)
 
 
     }
@@ -202,27 +210,34 @@ class ModActivityMyGujia : BaseVmDbActivity<ModActivityMyGujia.Model, ModActivit
 
         var myCommitListResult = MutableLiveData<ModResultStateWithMsg<MutableList<ModDataBean>>>()
 
-        fun getMyCommitListData(checkState: Int,pageNum: Int,pageSize: Int) {
+        fun getMyCommitListData(checkState: Int, pageNum: Int, pageSize: Int) {
             modRequestWithMsg({
-                apiService.getValuationCommitList(checkState, pageNum,pageSize)
+                apiService.getValuationCommitList(checkState, pageNum, pageSize)
             }, myCommitListResult)
         }
 
     }
 
 
-    class ModMyGujiaAdapter : BaseQuickAdapter<ModDataBean, BaseDataBindingHolder<ModItemMyGujiaListBinding>>(
-        R.layout.mod_item_my_gujia_list
-    ) {
+    class ModMyGujiaAdapter :
+        BaseQuickAdapter<ModDataBean, BaseDataBindingHolder<ModItemMyGujiaListBinding>>(
+            R.layout.mod_item_my_gujia_list
+        ) {
         private var lastPosition = -1
-        override fun convert(holder: BaseDataBindingHolder<ModItemMyGujiaListBinding>, item: ModDataBean) {
+        override fun convert(
+            holder: BaseDataBindingHolder<ModItemMyGujiaListBinding>,
+            item: ModDataBean
+        ) {
             // 绑定逻辑保持不变
             holder.dataBinding?.let {
                 it.setVariable(modData, item)
                 it.executePendingBindings()
             }
             if (holder.layoutPosition > lastPosition) {
-                val animation = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.item_slide_up_fade_in)
+                val animation = AnimationUtils.loadAnimation(
+                    holder.itemView.context,
+                    R.anim.item_slide_up_fade_in
+                )
                 animation.startOffset = 50L * holder.layoutPosition.toLong()
                 holder.itemView.startAnimation(animation)
                 lastPosition = holder.layoutPosition

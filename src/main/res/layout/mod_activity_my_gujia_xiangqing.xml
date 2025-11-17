@@ -94,8 +94,8 @@
                         android:layout_marginTop="@dimen/idp_3"
                         android:elevation="@dimen/idp_4"
                         app:cornerRadius="@{10f}"
-                        app:imageUrl="@{vm.modData.gameIcon}"
                         app:hideOnNullOrError="@{false}"
+                        app:imageUrl="@{vm.modData.gameIcon}"
                         app:layout_constraintEnd_toEndOf="@id/textRootView"
                         app:layout_constraintStart_toStartOf="@id/textRootView"
                         tools:src="@drawable/mod_icon" />
@@ -121,7 +121,7 @@
                     android:layout_marginTop="@dimen/idp_5"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:text="@{vm.modData.checkState == 0 ? `审核中` : StringUtils.format(&quot;￥ %s&quot;,vm.modData.money)}"
+                    android:text="@{vm.modData.getCheckMoney()}"
                     android:textColor="#F2510C"
                     android:textSize="@dimen/isp_16"
                     android:textStyle="bold"
@@ -198,8 +198,8 @@
                 <com.box.common.ui.view.DrawableTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawablePadding="@dimen/idp_5"
                     android:layout_marginTop="@dimen/idp_20"
+                    android:drawablePadding="@dimen/idp_5"
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:text="其他热门游戏账号估值"

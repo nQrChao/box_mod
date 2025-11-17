@@ -80,7 +80,7 @@
             android:background="@{modData.checkState == 1 ? @drawable/gujia_my_shenhe_text_bg_1 : @drawable/gujia_my_shenhe_text_bg_2}"
             android:gravity="center"
             android:paddingVertical="@dimen/idp_10"
-            android:text="@{modData.checkState == 1 ? StringUtils.format(&quot;估价\n￥%s&quot;, modData.money):&quot;审核中...&quot;}"
+            android:text="@{modData.getCheckStateString()}"
             android:textColor="@{modData.checkState == 1? @color/white:@color/common_text_color_sec_gray}"
             android:textSize="@dimen/isp_11"
             android:textStyle="bold"

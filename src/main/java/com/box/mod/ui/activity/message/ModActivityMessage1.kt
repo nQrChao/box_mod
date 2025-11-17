@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.animation.AnimationUtils
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.GridLayoutManager
@@ -18,6 +19,7 @@ import com.box.base.state.ModResultStateWithMsg
 import com.box.common.appContext
 import com.box.common.appViewModel
 import com.box.common.data.model.ModDataBean
+import com.box.common.eventViewModel
 import com.box.common.network.apiService
 import com.box.common.ui.activity.CommonActivityBrowser
 import com.box.common.ui.activity.CommonActivityRichText
@@ -37,7 +39,9 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 import com.box.com.R as RC
 
-class ModActivityMessage1 : BaseVmDbActivity<ModActivityMessage1.Model, ModActivityMessage1Binding>(),StatusAction {
+class ModActivityMessage1 :
+    BaseVmDbActivity<ModActivityMessage1.Model, ModActivityMessage1Binding>(), StatusAction {
+
 
     private val pageSize = 10
     private var currentPage = 1
@@ -73,16 +77,27 @@ class ModActivityMessage1 : BaseVmDbActivity<ModActivityMessage1.Model, ModActiv
             init()
         }
 
-
-        messageAdapter.setDiffCallback(MessageDiffCallback())
         mDataBinding.recyclerView.run {
             layoutManager = GridLayoutManager(context, 1)
             addItemDecoration(SpacingItemDecorator((resources.displayMetrics.density * 5).toInt()))
+//            val divider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+//            ContextCompat.getDrawable(context, R.drawable.shape_divider_gray)?.let {
+//                divider.setDrawable(it)
+//            }
+//            addItemDecoration(divider)
             adapter = messageAdapter
         }
+
         messageAdapter.setOnItemClickListener { adapter, view, position ->
             val modDataBean = adapter.data[position] as ModDataBean
+            val wasUnread = modDataBean.readStatus != 1
+            mViewModel.getReadNoticeData(modDataBean.noticeId)
             CommonActivityRichText.start(appContext, modDataBean.noticeTitle, modDataBean.noticeContent)
+            if (wasUnread) {
+                modDataBean.readStatus = 1
+                adapter.notifyItemChanged(position, "READ_STATUS_UPDATE")
+            }
+            eventViewModel.updateMessage.value = true
         }
 
 
@@ -98,8 +113,7 @@ class ModActivityMessage1 : BaseVmDbActivity<ModActivityMessage1.Model, ModActiv
             }
         }
 
-
-        mViewModel.getMessageData(currentPage,pageSize)
+        mViewModel.getMessageData(currentPage, pageSize)
 
     }
 
@@ -188,11 +202,24 @@ class ModActivityMessage1 : BaseVmDbActivity<ModActivityMessage1.Model, ModActiv
         BaseQuickAdapter<ModDataBean, BaseDataBindingHolder<ModItemMessage1Binding>>(
             R.layout.mod_item_message_1, list
         ) {
+        private var lastPosition = -1
+
         override fun convert(
             holder: BaseDataBindingHolder<ModItemMessage1Binding>,
             item: ModDataBean
         ) {
             holder.dataBinding?.setVariable(modData, item)
+            holder.dataBinding?.executePendingBindings()
+
+            if (holder.layoutPosition > lastPosition) {
+                val animation = AnimationUtils.loadAnimation(
+                    holder.itemView.context,
+                    R.anim.item_slide_up_fade_in
+                )
+                animation.startOffset = 50L * holder.layoutPosition.toLong()
+                holder.itemView.startAnimation(animation)
+                lastPosition = holder.layoutPosition
+            }
         }
 
         override fun onBindViewHolder(
@@ -204,36 +231,67 @@ class ModActivityMessage1 : BaseVmDbActivity<ModActivityMessage1.Model, ModActiv
                 super.onBindViewHolder(holder, position, payloads)
                 return
             }
-            if (payloads.any { it == "SHOUCANG_UPDATE" }) {
+            if (payloads.any { it == "SHOUCANG_UPDATE" || it == "READ_STATUS_UPDATE" }) {
                 val item = getItem(position)
                 holder.dataBinding?.setVariable(modData, item)
+                holder.dataBinding?.executePendingBindings() // 确保数据立即绑定
             } else {
                 super.onBindViewHolder(holder, position, payloads)
             }
         }
-    }
 
-    class MessageDiffCallback : DiffUtil.ItemCallback<ModDataBean>() {
-        override fun areItemsTheSame(oldItem: ModDataBean, newItem: ModDataBean): Boolean {
-            return oldItem.id == newItem.id
+        override fun onViewRecycled(holder: BaseDataBindingHolder<ModItemMessage1Binding>) {
+            holder.itemView.clearAnimation()
+            super.onViewRecycled(holder)
         }
 
-        override fun areContentsTheSame(oldItem: ModDataBean, newItem: ModDataBean): Boolean {
-            return oldItem == newItem
+        fun resetAnimationState() {
+            lastPosition = -1
+        }
+
+        fun updateList(newList: List<ModDataBean>) {
+            val diffResult = DiffUtil.calculateDiff(MessageDiffCallback(data, newList))
+            data.clear()
+            data.addAll(newList)
+            diffResult.dispatchUpdatesTo(this)
         }
     }
+
+    class MessageDiffCallback(
+        private val oldList: List<ModDataBean>,
+        private val newList: List<ModDataBean>
+    ) : DiffUtil.Callback() {
+
+        override fun getOldListSize(): Int = oldList.size
+        override fun getNewListSize(): Int = newList.size
+
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList[oldItemPosition].id == newList[newItemPosition].id
+        }
+
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList[oldItemPosition] == newList[newItemPosition]
+        }
+    }
+
 
 
     /**********************************************Model**************************************************/
     class Model : BaseViewModel(title = "我的消息") {
         var isLogin = BooleanObservableField(false)
-
         var messageResult = MutableLiveData<ModResultStateWithMsg<MutableList<ModDataBean>>>()
+        var getReadNoticeResult = MutableLiveData<ModResultStateWithMsg<Any>>()
 
         fun getMessageData(pageNum: Int, pageSize: Int) {
             modRequestWithMsg({
                 apiService.getMessageList(pageNum, pageSize)
             }, messageResult)
+        }
+
+        fun getReadNoticeData(noticeId: String) {
+            modRequestWithMsg({
+                apiService.getReadNotice(noticeId)
+            }, getReadNoticeResult)
         }
     }
 

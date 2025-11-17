@@ -33,22 +33,23 @@
                 android:layout_width="@dimen/idp_35"
                 android:layout_height="@dimen/idp_35"
                 android:layout_gravity="center_vertical"
+                android:src="@drawable/mod_ic_message_1"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:src="@drawable/mod_ic_message_1" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/name"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/idp_15"
                 android:ellipsize="end"
                 android:gravity="start"
                 android:maxLines="1"
                 android:text="@{modData.createBy}"
-                android:textColor="@color/text_default_color"
+                android:textColor="@{modData.readStatus == 0 ? @color/text_default_color:@color/text_hit_color}"
                 android:textSize="@dimen/isp_14"
                 android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@id/time"
                 app:layout_constraintStart_toEndOf="@id/icon"
                 tools:text="系统消息" />
 
@@ -61,7 +62,7 @@
                 android:gravity="start"
                 android:maxLines="1"
                 android:text="@{modData.createTime}"
-                android:textColor="@color/text_default_color"
+                android:textColor="@{modData.readStatus == 0 ? @color/text_default_color:@color/text_hit_color}"
                 android:textSize="@dimen/isp_13"
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:text="2025-11-07" />
@@ -71,6 +72,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/idp_10"
+                android:layout_marginEnd="@dimen/idp_15"
                 android:ellipsize="end"
                 android:gravity="start"
                 android:maxLines="2"
@@ -78,11 +80,25 @@
                 android:textColor="#A9A9A9"
                 android:textSize="@dimen/isp_13"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/state"
                 app:layout_constraintStart_toStartOf="@id/name"
                 app:layout_constraintTop_toBottomOf="@id/name"
                 tools:text="欢迎来到XXX世界！快来开启你的奇幻之旅吧！欢迎来到XXX世界！快来开启你的奇幻之旅吧！欢迎来到XXX世界！快来开启你的奇幻之旅吧！" />
 
+            <TextView
+                android:id="@+id/state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="start"
+                android:maxLines="1"
+                android:text="@{modData.readStatus == 0 ?&quot;未读&quot;:&quot;已读&quot;}"
+                android:textColor="@{modData.readStatus == 0 ? @color/text_default_color:@color/text_hit_color}"
+                android:textSize="@dimen/isp_13"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="已读" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

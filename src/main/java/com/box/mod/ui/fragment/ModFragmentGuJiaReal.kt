@@ -327,6 +327,7 @@ class ModFragmentGuJiaReal :
             mViewModel.postValuationCommit(commitRequest)
             logsE("提交的原始数据: ${GsonUtils.toJson(commitRequest)}")
             showCommitPop()
+            eventViewModel.updateMessage.value = true
         }
 
 

@@ -50,6 +50,7 @@
                 android:layout_gravity="end"
                 android:layout_marginEnd="@dimen/idp_15"
                 android:onClick="@{()-> click.xiaoxi()}"
+                android:visibility="gone"
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true"
                 app:lottie_rawRes="@raw/message" />
@@ -142,10 +143,10 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_marginTop="@dimen/idp_10"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/mod_wode_user_icon"
+                            android:layout_marginTop="@dimen/idp_10"
                             android:orientation="horizontal"
                             android:paddingHorizontal="@dimen/idp_20"
                             android:weightSum="2">
@@ -161,10 +162,10 @@
                                 android:paddingVertical="@dimen/idp_10">
 
                                 <TextView
-                                    android:layout_marginStart="@dimen/idp_10"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="start"
+                                    android:layout_marginStart="@dimen/idp_10"
                                     android:ellipsize="end"
                                     android:maxLines="1"
                                     android:text="我的账号估算"
@@ -179,64 +180,84 @@
                                 android:layout_width="0dp"
                                 android:layout_height="@dimen/idp_115"
                                 android:layout_weight="1"
-                                android:weightSum="10"
-                                android:orientation="vertical">
+                                android:orientation="vertical"
+                                android:weightSum="10">
 
-                                <LinearLayout
+                                <RelativeLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
                                     android:layout_weight="4.5"
+
                                     android:background="@drawable/mod_wode_btn_bg_2"
-                                    android:onClick="@{()-> click.gameShoucang()}"
+                                    android:onClick="@{()-> click.jueseShoucang()}"
                                     android:orientation="vertical"
-                                    android:paddingVertical="@dimen/idp_10">
+                                    android:paddingHorizontal="@dimen/idp_10">
 
                                     <TextView
-                                        android:layout_marginStart="@dimen/idp_10"
+                                        android:id="@+id/shoucangTitle"
                                         android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
+                                        android:layout_height="match_parent"
                                         android:layout_gravity="start"
+                                        android:layout_marginTop="@dimen/idp_10"
                                         android:ellipsize="end"
                                         android:maxLines="1"
-                                        android:text="小游戏收藏"
+                                        android:text="我的收藏"
                                         android:textColor="#1C6AAE"
                                         android:textSize="@dimen/isp_14"
                                         android:textStyle="bold"
-                                        tools:text="小游戏收藏" />
+                                        tools:text="我的收藏" />
 
-                                </LinearLayout>
+                                    <Button
+                                        android:id="@+id/shoucangRed"
+                                        android:layout_width="@dimen/idp_9"
+                                        android:layout_height="@dimen/idp_9"
+                                        android:layout_alignEnd="@id/shoucangTitle"
+                                        android:layout_marginTop="@dimen/idp_8"
+                                        android:layout_marginEnd="-9dp"
+                                        android:background="@drawable/red_radius"
+                                        android:visibility="gone" />
+
+                                </RelativeLayout>
 
                                 <View
-                                    android:layout_weight="1"
                                     android:layout_width="match_parent"
-                                    android:layout_height="0dp"/>
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1" />
 
-                                <LinearLayout
+                                <RelativeLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
                                     android:layout_weight="4.5"
                                     android:background="@drawable/mod_wode_btn_bg_3"
-                                    android:onClick="@{()-> click.jueseShoucang()}"
+                                    android:onClick="@{()-> click.xiaoxi()}"
                                     android:orientation="vertical"
-                                    android:paddingVertical="@dimen/idp_10">
+                                    android:paddingHorizontal="@dimen/idp_10">
 
                                     <TextView
-                                        android:layout_marginStart="@dimen/idp_10"
+                                        android:id="@+id/messageTitle"
                                         android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
+                                        android:layout_height="match_parent"
                                         android:layout_gravity="start"
+                                        android:layout_marginTop="@dimen/idp_10"
                                         android:ellipsize="end"
                                         android:maxLines="1"
-                                        android:text="角色名收藏"
+                                        android:text="我的消息"
                                         android:textColor="#AA3341"
                                         android:textSize="@dimen/isp_14"
                                         android:textStyle="bold"
-                                        tools:text="角色名收藏" />
+                                        tools:text="我的消息" />
 
-                                </LinearLayout>
+                                    <Button
+                                        android:id="@+id/messageRed"
+                                        android:layout_width="@dimen/idp_9"
+                                        android:layout_height="@dimen/idp_9"
+                                        android:layout_alignEnd="@id/messageTitle"
+                                        android:layout_marginTop="@dimen/idp_8"
+                                        android:layout_marginEnd="-9dp"
+                                        android:background="@drawable/red_radius"
+                                        android:visibility="@{vm.hasUnRead?View.VISIBLE:View.GONE}" />
 
-
-
+                                </RelativeLayout>
 
 
                             </LinearLayout>

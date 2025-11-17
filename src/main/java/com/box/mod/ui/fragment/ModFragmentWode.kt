@@ -9,13 +9,19 @@ import androidx.lifecycle.MutableLiveData
 import com.box.base.base.fragment.BaseTitleBarFragment
 import com.box.base.base.viewmodel.BaseViewModel
 import com.box.base.callback.databind.IntObservableField
+import com.box.base.ext.modRequestWithMsg
+import com.box.base.ext.parseModStateWithMsg
 import com.box.base.network.NetState
+import com.box.base.state.ModResultStateWithMsg
 import com.box.common.appContext
 import com.box.common.appViewModel
+import com.box.common.data.model.ModDataBean
 import com.box.common.data.model.ModUserInfo
 import com.box.common.eventViewModel
+import com.box.common.network.apiService
 import com.box.common.ui.activity.CommonActivityBrowser
 import com.box.common.utils.CacheManager
+import com.box.common.utils.ext.logsE
 import com.box.common.utils.mmkv.MMKVConfig
 import com.box.mod.R
 import com.box.mod.databinding.ModFragmentWodeBinding
@@ -27,6 +33,7 @@ import com.box.mod.ui.activity.ModActivitySettingSafety
 import com.box.mod.ui.activity.fankui.ModActivityFankui1
 import com.box.mod.ui.activity.message.ModActivityMessage1
 import com.box.other.blankj.utilcode.util.ColorUtils
+import com.box.other.blankj.utilcode.util.GsonUtils
 import com.box.other.hjq.toast.Toaster
 import com.box.other.immersionbar.immersionBar
 import com.box.other.xpopup.XPopup
@@ -83,10 +90,32 @@ class ModFragmentWode : BaseTitleBarFragment<ModFragmentWode.Model, ModFragmentW
             eventViewModel.isLogin.value = true
             appViewModel.modUserInfo.value = savedUser
         }
+
+
+        eventViewModel.updateMessage.observe(this){
+            mViewModel.getReadNoticeCountData(1,10)
+        }
+
+
+        mViewModel.readNoticeCountResult.observe(this) { resultState ->
+            parseModStateWithMsg(
+                resultState,
+                onSuccess = { data, msg ->
+                    logsE(GsonUtils.toJson(data))
+                    data?.count?.let {
+                        mViewModel.hasUnRead.value = it > 0
+                    }
+                },
+                onError = {
+                    Toaster.show(it.msg)
+                }
+            )
+        }
+
     }
 
     override fun lazyLoadData() {
-
+        mViewModel.getReadNoticeCountData(1, 10)
     }
 
     override fun onNetworkStateChanged(it: NetState) {
@@ -226,9 +255,18 @@ class ModFragmentWode : BaseTitleBarFragment<ModFragmentWode.Model, ModFragmentW
 
     /**********************************************Model**************************************************/
     class Model : BaseViewModel(title = "") {
-        val tuiSong = MutableLiveData<Boolean>()
+        val hasUnRead = MutableLiveData<Boolean>(false)
         var pic = IntObservableField(0)
         val modUserInfo = MutableLiveData<ModUserInfo>()
+
+
+        var readNoticeCountResult = MutableLiveData<ModResultStateWithMsg<ModDataBean>>()
+
+        fun getReadNoticeCountData(pageNum: Int, pageSize: Int) {
+            modRequestWithMsg({
+                apiService.getReadNoticeCount(pageNum, pageSize)
+            }, readNoticeCountResult)
+        }
 
     }
 

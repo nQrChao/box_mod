@@ -84,6 +84,22 @@
                         android:textStyle="bold"
                         tools:textColor="@color/text_default_color" />
 
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/idp_3"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:paddingHorizontal="@dimen/idp_10"
+                        android:paddingVertical="@dimen/idp_5"
+                        android:text="未通过"
+                        android:textColor="@{vm.isSelect() == 2?@color/text_default_color:@color/common_text_color_sec_gray}"
+                        android:textSize="@dimen/isp_14"
+                        android:textStyle="bold"
+                        tools:textColor="@color/text_default_color" />
+
                 </com.box.other.tablayout.DslTabLayout>
 
                 <com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout
