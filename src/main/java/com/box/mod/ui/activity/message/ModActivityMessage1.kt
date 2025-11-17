@@ -131,9 +131,10 @@ class ModActivityMessage1 :
                         } else { // 加载更多时没有数据
                             mDataBinding.refreshLayout.finishLoadMoreWithNoMoreData()
                         }
+                        mViewModel.hasData.set(false)
                         return@parseModStateWithMsg
                     }
-
+                    mViewModel.hasData.set(true)
                     if (currentPage == 1) { // 下拉刷新
                         mDataBinding.refreshLayout.finishRefresh()
                         // 如果是排序后没有数据，也要清空列表
@@ -278,6 +279,7 @@ class ModActivityMessage1 :
 
     /**********************************************Model**************************************************/
     class Model : BaseViewModel(title = "我的消息") {
+        var hasData = BooleanObservableField(false)
         var isLogin = BooleanObservableField(false)
         var messageResult = MutableLiveData<ModResultStateWithMsg<MutableList<ModDataBean>>>()
         var getReadNoticeResult = MutableLiveData<ModResultStateWithMsg<Any>>()

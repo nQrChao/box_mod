@@ -23,6 +23,32 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:id="@+id/nullDataLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="@{vm.hasData?View.GONE:View.VISIBLE}">
+
+            <ImageView
+                android:id="@+id/pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/idp_80"
+                android:src="@drawable/bg_status_empty_ic" />
+
+            <TextView
+                android:id="@+id/modPreviewPic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/idp_20"
+                android:text="暂无消息"
+                android:textColor="@color/bbl_999999"
+                android:textSize="@dimen/isp_16" />
+        </LinearLayout>
+
         <com.box.common.ui.layout.StatusLayout
             android:id="@+id/status_loading"
             android:layout_width="match_parent"
