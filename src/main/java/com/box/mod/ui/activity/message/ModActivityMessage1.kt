@@ -125,13 +125,13 @@ class ModActivityMessage1 :
                     logsE(GsonUtils.toJson(data))
                     if (data.isNullOrEmpty()) {
                         if (currentPage == 1) {
+                            mViewModel.hasData.set(false)
                             mDataBinding.refreshLayout.finishRefresh()
                             messageAdapter.setList(mutableListOf()) // 清空列表
                             mDataBinding.refreshLayout.finishLoadMoreWithNoMoreData()
                         } else { // 加载更多时没有数据
                             mDataBinding.refreshLayout.finishLoadMoreWithNoMoreData()
                         }
-                        mViewModel.hasData.set(false)
                         return@parseModStateWithMsg
                     }
                     mViewModel.hasData.set(true)
