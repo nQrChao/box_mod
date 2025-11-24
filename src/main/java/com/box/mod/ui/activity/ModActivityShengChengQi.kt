@@ -1,18 +1,22 @@
-package com.box.mod.ui.fragment
+package com.box.mod.ui.activity
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
+import androidx.activity.result.ActivityResultLauncher
 import androidx.annotation.RequiresApi
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import com.box.base.base.action.StatusAction
-import com.box.base.base.fragment.BaseTitleBarFragment
+import com.box.base.base.activity.BaseVmDbActivity
 import com.box.base.base.viewmodel.BaseViewModel
+import com.box.base.callback.databind.BooleanObservableField
 import com.box.base.callback.databind.IntObservableField
 import com.box.base.callback.databind.StringObservableField
 import com.box.base.ext.modRequestWithMsg
@@ -26,15 +30,15 @@ import com.box.common.ui.adapter.SpacingItemDecorator
 import com.box.common.ui.layout.StatusLayout
 import com.box.common.utils.ext.logsE
 import com.box.common.utils.mmkv.MMKVConfig
+import com.box.common.utils.mmkv.MMKVConfig.gameRankList
 import com.box.mod.BR.modData
 import com.box.mod.BR.position
 import com.box.mod.R
-import com.box.mod.databinding.ModFragmentShengchengqiBinding
+import com.box.mod.databinding.ModActivityShengchengqiBinding
 import com.box.mod.databinding.ModItemJueseListBinding
 import com.box.mod.databinding.ModItemRoleTypeBinding
-import com.box.mod.ui.activity.ModActivityLogin
-import com.box.mod.ui.activity.ModActivityMyShouCang
 import com.box.mod.ui.xpop.ModXPopupCenterShengChengQi
+import com.box.other.blankj.utilcode.util.ActivityUtils
 import com.box.other.blankj.utilcode.util.ClipboardUtils
 import com.box.other.blankj.utilcode.util.ColorUtils
 import com.box.other.blankj.utilcode.util.GsonUtils
@@ -46,24 +50,34 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 import com.box.com.R as RC
 
-class ModFragmentShengChengQi : BaseTitleBarFragment<ModFragmentShengChengQi.Model, ModFragmentShengchengqiBinding>(), StatusAction {
+@SuppressLint("CustomSplashScreen")
+class ModActivityShengChengQi : BaseVmDbActivity<ModActivityShengChengQi.Model, ModActivityShengchengqiBinding>() ,StatusAction{
     private var randomNameAdapter = RandomNameAdapter()
     private var roleTypeAdapter = RoleTypeAdapter(mutableListOf())
 
-    override val mViewModel: Model by viewModels()
-
-    override fun layoutId(): Int = R.layout.mod_fragment_shengchengqi
 
     companion object {
-        fun newInstance(): ModFragmentShengChengQi {
-            return ModFragmentShengChengQi()
+        const val INTENT_KEY_TYPE_RANK: String = "rankType"
+        var resultLauncher: ActivityResultLauncher<Intent>? = null
+        fun start(context: Context) {
+            val intent = Intent(context, ModActivityShengChengQi::class.java)
+            if (context !is Activity) {
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            }
+            ActivityUtils.startActivity(intent)
         }
+
+        fun start(context: Context,rankType:Int) {
+            val intent = Intent(context, ModActivityShengChengQi::class.java)
+            intent.putExtra(INTENT_KEY_TYPE_RANK, rankType)
+            if (context !is Activity) {
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            }
+            ActivityUtils.startActivity(intent)
+        }
+
     }
 
-    override fun lazyLoadData() {
-        showLoading()
-        mViewModel.getRoleTypeData()
-    }
 
     /**
      * 加载状态
@@ -161,6 +175,9 @@ class ModFragmentShengChengQi : BaseTitleBarFragment<ModFragmentShengChengQi.Mod
             randomNameAdapter.updateList(MMKVConfig.getRandomName())
         }
 
+        showLoading()
+        mViewModel.getRoleTypeData()
+
     }
 
 
@@ -193,7 +210,7 @@ class ModFragmentShengChengQi : BaseTitleBarFragment<ModFragmentShengChengQi.Mod
                         MMKVConfig.addRandomNameList(data)
                         randomNameAdapter.updateList(MMKVConfig.getRandomName())
                         randomNameAdapter.resetAnimationState()
-                        XPopup.Builder(context)
+                        XPopup.Builder(this)
                             .dismissOnTouchOutside(false)
                             .dismissOnBackPressed(false)
                             .isDestroyOnDismiss(true)
@@ -204,7 +221,7 @@ class ModFragmentShengChengQi : BaseTitleBarFragment<ModFragmentShengChengQi.Mod
                             .hasNavigationBar(true)
                             .asCustom(
                                 ModXPopupCenterShengChengQi(
-                                    mActivity,
+                                    this,
                                     data
                                 ) {
                                     MMKVConfig.updateRandomNameStatusByName(data.name, true)
@@ -233,6 +250,10 @@ class ModFragmentShengChengQi : BaseTitleBarFragment<ModFragmentShengChengQi.Mod
         }
     }
 
+    override fun layoutId(): Int {
+       return R.layout.mod_activity_shengchengqi
+    }
+
 
     override fun onNetworkStateChanged(it: NetState) {
     }
@@ -259,7 +280,9 @@ class ModFragmentShengChengQi : BaseTitleBarFragment<ModFragmentShengChengQi.Mod
         randomNameAdapter.updateList(latestList)
     }
 
-    /**********************************************Click**************************************************/
+
+
+    /**********************************************Model**************************************************/
     inner class ProxyClick {
         fun text3() {
             mViewModel.lengthName.set("三字")
@@ -310,7 +333,6 @@ class ModFragmentShengChengQi : BaseTitleBarFragment<ModFragmentShengChengQi.Mod
         }
 
     }
-
     /**********************************************Adapter**************************************************/
     class RoleTypeAdapter constructor(list: MutableList<ModDataBean>) :
         BaseQuickAdapter<ModDataBean, BaseDataBindingHolder<ModItemRoleTypeBinding>>(
@@ -445,10 +467,8 @@ class ModFragmentShengChengQi : BaseTitleBarFragment<ModFragmentShengChengQi.Mod
             return oldList[oldItemPosition] == newList[newItemPosition]
         }
     }
-
-
     /**********************************************Model**************************************************/
-    class Model : BaseViewModel(title = "角色名生成器") {
+    class Model : BaseViewModel(title = "") {
         var pic = IntObservableField(0)
         var isSelect = IntObservableField(0)
         var typeName = StringObservableField("0")
@@ -473,5 +493,3 @@ class ModFragmentShengChengQi : BaseTitleBarFragment<ModFragmentShengChengQi.Mod
 
 
 }
-
-

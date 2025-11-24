@@ -43,6 +43,7 @@ import com.box.mod.ui.fragment.ModFragment1
 import com.box.mod.ui.fragment.ModFragmentGameRankList
 import com.box.mod.ui.fragment.ModFragmentGuJia
 import com.box.mod.ui.fragment.ModFragmentGuJiaReal
+import com.box.mod.ui.fragment.ModFragmentMain
 import com.box.mod.ui.fragment.ModFragmentShengChengQi
 import com.box.mod.ui.fragment.ModFragmentWode
 import com.box.other.blankj.utilcode.util.ActivityUtils
@@ -80,7 +81,7 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
                 "fragmentId": 1
             },
             {
-                "title": "账号估价",
+                "title": "账号估值",
                 "normalIcon": ${R.drawable.mod_ic_fragment_2},
                 "selectedIcon": ${R.drawable.mod_ic_fragment_2_1},
                 "normalIconUrl": "",
@@ -90,7 +91,7 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
                 "fragmentId": 2
             },
             {
-                "title": "角色起名",
+                "title": "估值广场",
                 "normalIcon": ${R.drawable.mod_ic_fragment_3},
                 "selectedIcon": ${R.drawable.mod_ic_fragment_3_1},
                 "normalIconUrl": "",
@@ -100,7 +101,7 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
                 "fragmentId": 3
             },
             {
-                "title": "游戏排行",
+                "title": "估值速递",
                 "normalIcon": ${R.drawable.mod_ic_fragment_4},
                 "selectedIcon": ${R.drawable.mod_ic_fragment_4_1},
                 "normalIconUrl": "",
@@ -123,7 +124,6 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
     """.trimIndent()
 
     override fun layoutId(): Int = R.layout.mod_activity_main
-
 
     // 存储动态生成的 fragments 列表
     private var fragments = arrayListOf<Fragment>()
@@ -298,7 +298,7 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
         for (config in tabConfigList) {
             // 根据配置的 fragmentId 创建对应的 Fragment 实例
             val fragment = when (config.fragmentId) {
-                1 -> ModFragment1.newInstance()
+                1 -> ModFragmentMain.newInstance()
                 2 -> ModFragmentGuJiaReal.newInstance()
                 3 -> ModFragmentShengChengQi.newInstance()
                 4 -> ModFragmentGameRankList.newInstance()

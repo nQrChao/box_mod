@@ -17,9 +17,13 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden" />
-
         <activity
             android:name="com.box.mod.ui.activity.ModActivityMyShouCang"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.box.mod.ui.activity.ModActivityShengChengQi"
             android:exported="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />

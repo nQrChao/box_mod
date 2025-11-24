@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.box.other.blankj.utilcode.util.StringUtils" />
+
+        <variable
+            name="modData"
+            type="com.box.common.data.model.ModDataBean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/a_rounded_20"
+        android:paddingHorizontal="@dimen/idp_15"
+        android:paddingVertical="@dimen/idp_15">
+
+        <TextView
+            android:id="@+id/tv_game_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/idp_8"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{modData.gameName}"
+            android:textColor="#333333"
+            android:textSize="@dimen/isp_16"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/tv_val_tag"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="青云决之伏魔" />
+
+        <TextView
+            android:id="@+id/tv_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{`¥ ` + modData.money}"
+            android:textColor="#FF5722"
+            android:textSize="@dimen/isp_20"
+            android:textStyle="bold"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_game_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="¥ 5588" />
+
+        <TextView
+            android:id="@+id/tv_val_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/idp_8"
+            android:background="@drawable/a_rounded_5_gray"
+            android:paddingHorizontal="@dimen/idp_8"
+            android:paddingVertical="@dimen/idp_2"
+            android:text="估值"
+            android:textColor="#999999"
+            android:textSize="@dimen/isp_12"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_money"
+            app:layout_constraintEnd_toStartOf="@+id/tv_money"
+            app:layout_constraintTop_toTopOf="@+id/tv_money" />
+
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/idp_5"
+            android:text="@{modData.description}"
+            android:textColor="#999999"
+            android:textSize="@dimen/isp_12"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_game_name"
+            tools:text="区服: 64区 累充金额: 4499.25元" />
+
+        <LinearLayout
+            android:id="@+id/ll_images"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/idp_70"
+            android:layout_marginTop="@dimen/idp_10"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            app:layout_constraintTop_toBottomOf="@+id/tv_description">
+
+            <ImageView
+                android:id="@+id/iv_pic_1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/idp_3"
+                android:layout_weight="1"
+                android:background="#EEEEEE"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{modData.image}"
+                app:cornerRadius="@{10f}"
+                tools:src="@drawable/mod_test_pic2" />
+
+            <ImageView
+                android:id="@+id/iv_pic_2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="@dimen/idp_2"
+                android:layout_weight="1"
+                android:background="#EEEEEE"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{modData.image}"
+                app:cornerRadius="@{10f}"
+                tools:src="@drawable/mod_test_pic2" />
+
+            <ImageView
+                android:id="@+id/iv_pic_3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/idp_3"
+                android:layout_weight="1"
+                android:background="#EEEEEE"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{modData.image}"
+                app:cornerRadius="@{10f}"
+                tools:src="@drawable/mod_test_pic2" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/idp_10"
+            android:text="@{`估算时间: ` + modData.checkTime}"
+            android:textColor="#AAAAAA"
+            android:textSize="@dimen/isp_12"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_images"
+            tools:text="估算时间: 2025-11-9 12:19:24" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -7,6 +7,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.viewpager2.widget.ViewPager2
 import com.box.base.base.action.StatusAction
 import com.box.base.base.fragment.BaseTitleBarFragment
 import com.box.base.base.viewmodel.BaseViewModel
@@ -29,24 +30,30 @@ import com.box.common.utils.ext.logsE
 import com.box.common.utils.mmkv.MMKVConfig
 import com.box.mod.BR.modData
 import com.box.mod.R
-import com.box.mod.databinding.ModFragment1Binding
+import com.box.mod.databinding.ModFragmentMainBinding
 import com.box.mod.databinding.ModItemGameEventBinding
 import com.box.mod.ui.activity.ModActivityLogin
 import com.box.mod.ui.activity.ModActivityMyShouCang
+import com.box.mod.ui.activity.ModActivityShengChengQi
+import com.box.mod.ui.adapter.MainBannerAdapter
 import com.box.other.blankj.utilcode.util.GsonUtils
 import com.box.other.hjq.toast.Toaster
 import com.box.other.immersionbar.immersionBar
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
+import com.zhpan.bannerview.BannerViewPager
+import com.zhpan.bannerview.constants.IndicatorGravity
+import com.zhpan.bannerview.indicator.DrawableIndicator
+import com.zhpan.indicator.base.IIndicator
 
 
-class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Binding>(), StatusAction {
+class ModFragmentMain : BaseTitleBarFragment<ModFragmentMain.Model, ModFragmentMainBinding>(), StatusAction {
     override val mViewModel: Model by viewModels()
-    override fun layoutId(): Int = R.layout.mod_fragment_1
+    override fun layoutId(): Int = R.layout.mod_fragment_main
 
     companion object {
-        fun newInstance(): ModFragment1 {
-            return ModFragment1()
+        fun newInstance(): ModFragmentMain {
+            return ModFragmentMain()
         }
     }
 
@@ -55,6 +62,7 @@ class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Bindin
     var clickData = ModDataBean()
     var gameEventList: MutableList<ModDataBean> = mutableListOf()
     var gameEventAdapter = GameEventAdapter(gameEventList)
+    val marqueeList: MutableList<String> = mutableListOf("用户xxx《王者荣耀》账号专业估价为：1234","用户xxx《王者荣耀》账号专业估价为：12345","用户xxx《王者荣耀》账号专业估价为：123456","用户xxx《王者荣耀》账号专业估价为：1234567")
 
     /**
      * 懒加载
@@ -141,6 +149,7 @@ class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Bindin
                     if (data.isNullOrEmpty()) {
                         if (currentPage == 1) {
                             mDataBinding.refreshLayout.finishRefresh()
+                            setBanner(mutableListOf())
                             gameEventAdapter.setList(mutableListOf()) // 清空列表
                             mDataBinding.refreshLayout.finishLoadMoreWithNoMoreData()
                         } else { // 加载更多时没有数据
@@ -154,9 +163,10 @@ class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Bindin
                         item.isShouCang = item.id in shoucangId
                     }
 
-
                     if (currentPage == 1) { // 下拉刷新
                         mDataBinding.refreshLayout.finishRefresh()
+                        setBanner(data)
+                        mDataBinding.marqueeview.startWithList(marqueeList)
                         // 如果是排序后没有数据，也要清空列表
                         if (data.isEmpty()) {
                             mDataBinding.refreshLayout.finishLoadMoreWithNoMoreData()
@@ -192,7 +202,7 @@ class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Bindin
                 resultState,
                 onSuccess = { data, msg ->
                     logsE(GsonUtils.toJson(data))
-                    CommonActivityRichText.start(appContext, clickData.title, data?.content ?: "",data?.views?:"-1")
+                    CommonActivityRichText.start(appContext, clickData.title, data?.content ?: "", data?.views ?: "-1")
                 },
                 onError = {
                     Toaster.show(it.msg)
@@ -205,14 +215,23 @@ class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Bindin
         }
 
         MMKVConfig.userInfo?.let { savedUser ->
-            eventViewModel.isLogin.value= true
+            eventViewModel.isLogin.value = true
             appViewModel.modUserInfo.value = savedUser
         }
 
-
-
     }
 
+    fun setBanner(list: MutableList<ModDataBean>) {
+        (mDataBinding.bannerView as BannerViewPager<ModDataBean>)
+            .setCanLoop(true)
+            .setOrientation(ViewPager2.ORIENTATION_HORIZONTAL)
+            .setIndicatorView(getDrawableIndicator())
+            .setIndicatorGravity(IndicatorGravity.CENTER)
+            .setInterval(2000)
+            .setAdapter(MainBannerAdapter()) // 链式调用
+            .registerLifecycleObserver(viewLifecycleOwner.lifecycle)
+            .create(list)
+    }
 
     override fun onNetworkStateChanged(it: NetState) {
     }
@@ -222,6 +241,13 @@ class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Bindin
         return true
     }
 
+    private fun getDrawableIndicator(): IIndicator {
+        val dp10 = resources.getDimensionPixelOffset(com.box.com.R.dimen.idp_10)
+        return DrawableIndicator(context)
+            .setIndicatorGap(resources.getDimensionPixelOffset(com.box.com.R.dimen.idp_2_5))
+            .setIndicatorDrawable(R.drawable.mod_heart_empty, R.drawable.mod_heart_red)
+            .setIndicatorSize(dp10, dp10, dp10, dp10)
+    }
 
     /**********************************************Click**************************************************/
     inner class ProxyClick {
@@ -232,10 +258,10 @@ class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Bindin
         }
 
         fun img1() {
-            val targetView = mDataBinding.saishiText
-            val scrollView = mDataBinding.nestedScrollView
-            val yPosition = targetView.top
-            scrollView.smoothScrollTo(0, yPosition)
+//            val targetView = mDataBinding.saishiText
+//            val scrollView = mDataBinding.nestedScrollView
+//            val yPosition = targetView.top
+//            scrollView.smoothScrollTo(0, yPosition)
         }
 
         fun img2() {
@@ -243,18 +269,19 @@ class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Bindin
         }
 
         fun img3() {
-            eventViewModel.setMainCurrentItem.value = 2
+            ModActivityShengChengQi.start(appContext)
+            //eventViewModel.setMainCurrentItem.value = 2
         }
 
         fun img4() {
-            eventViewModel.setMainCurrentItem.value = 3
+            //eventViewModel.setMainCurrentItem.value = 3
         }
 
         fun shoucang() {
 
             if (isLogin()) {
                 ModActivityMyShouCang.start(appContext)
-            }else{
+            } else {
                 Toaster.show("请先登录")
                 ModActivityLogin.start(appContext)
             }
@@ -263,7 +290,7 @@ class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Bindin
 
         fun test() {
             val assetGame = "file:///android_asset/out/gomoku.html"
-            CommonActivityBrowser.start(appContext,assetGame)
+            CommonActivityBrowser.start(appContext, assetGame)
         }
 
         fun confirm() {
@@ -274,7 +301,7 @@ class ModFragment1 : BaseTitleBarFragment<ModFragment1.Model, ModFragment1Bindin
 
 
     /**********************************************Adapter**************************************************/
-    class GameEventAdapter constructor(list: MutableList<ModDataBean>) :
+    class GameEventAdapter(list: MutableList<ModDataBean>) :
         BaseQuickAdapter<ModDataBean, BaseDataBindingHolder<ModItemGameEventBinding>>(
             R.layout.mod_item_game_event, list
         ) {
