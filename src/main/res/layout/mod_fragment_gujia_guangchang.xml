@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.box.other.blankj.utilcode.util.StringUtils" />
+
+        <variable
+            name="vm"
+            type="com.box.mod.ui.fragment.ModFragmentGuJiaGuangchang.Model" />
+
+        <variable
+            name="click"
+            type="com.box.mod.ui.fragment.ModFragmentGuJiaGuangchang.ProxyClick" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/rootView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/mod_home_bg_color"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/idp_10">
+
+        <com.box.other.hjq.titlebar.TitleBar
+            android:id="@+id/titleBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/idp_40"
+            android:background="@color/transparent"
+            android:gravity="center"
+            app:leftIcon="@null"
+            app:leftTitleColor="@color/black90"
+            app:leftTitleSize="@dimen/isp_17"
+            app:leftTitleStyle="bold"
+            app:lineVisible="false"
+            app:titleColor="@color/black90"
+            app:titleSize="@dimen/isp_16"
+            app:titleStyle="bold" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/searchBar"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="@dimen/idp_10"
+            android:background="@drawable/shape_search_bg_stroke"
+            android:paddingHorizontal="4dp"
+            android:paddingVertical="4dp">
+
+            <TextView
+                android:id="@+id/tv_hint"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/transparent"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="热估游戏： 三年三国志"
+                android:textColor="#999999"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_search_btn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_search_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_search_btn_blue_bg"
+                android:gravity="center"
+                android:paddingHorizontal="24dp"
+                android:text="搜索"
+                android:textColor="#333333"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.box.common.ui.layout.StatusLayout
+            android:id="@+id/status_loading"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout
+                android:id="@+id/refreshLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                app:srlEnableLoadMore="true"
+                app:srlEnableRefresh="true">
+
+                <com.box.other.scwang.smart.refresh.header.MaterialHeader
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <androidx.core.widget.NestedScrollView
+                    android:id="@+id/nestedScrollView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:id="@+id/contentView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/idp_70"
+                            android:layout_marginTop="@dimen/idp_10"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginEnd="@dimen/idp_5"
+                                android:layout_weight="1"
+                                android:background="@drawable/mod_fragmen_main_bg_4"
+                                android:onClick="@{()->click.img1()}"
+                                android:orientation="horizontal"
+                                android:paddingHorizontal="@dimen/idp_5"
+                                app:layout_constraintBottom_toBottomOf="@id/user_icon"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/user_icon">
+
+                                <ImageView
+                                    android:layout_width="@dimen/idp_60"
+                                    android:layout_height="@dimen/idp_60"
+                                    android:layout_gravity="center"
+                                    android:layout_marginStart="@dimen/idp_10"
+                                    android:src="@drawable/mod_fragmen_main_bg_img_5" />
+
+                                <com.box.common.ui.view.DrawableTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="游动攻略"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/isp_17"
+                                    android:textStyle="bold"
+                                    app:drawableHeight="@dimen/idp_60"
+                                    app:drawableWidth="@dimen/idp_60"
+                                    app:layout_constraintBottom_toBottomOf="@id/user_icon"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="@id/user_icon"
+                                    tools:text="游动攻略" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="@dimen/idp_5"
+                                android:layout_weight="1"
+                                android:background="@drawable/mod_fragmen_main_bg_3"
+                                android:onClick="@{()->click.img2()}"
+                                android:orientation="horizontal"
+                                android:paddingHorizontal="@dimen/idp_5"
+                                app:layout_constraintBottom_toBottomOf="@id/user_icon"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@id/user_icon">
+
+                                <ImageView
+                                    android:layout_width="@dimen/idp_60"
+                                    android:layout_height="@dimen/idp_60"
+                                    android:layout_gravity="center"
+                                    android:layout_marginStart="@dimen/idp_10"
+                                    android:src="@drawable/mod_fragmen_main_bg_img_4" />
+
+                                <com.box.common.ui.view.DrawableTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="估算问答"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/isp_17"
+                                    android:textStyle="bold"
+                                    app:drawableHeight="@dimen/idp_60"
+                                    app:drawableWidth="@dimen/idp_60"
+                                    app:layout_constraintBottom_toBottomOf="@id/user_icon"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="@id/user_icon"
+                                    tools:text="估算问答" />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/idp_10"
+                            android:nestedScrollingEnabled="false"
+                            android:overScrollMode="never"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/saishiText"
+                            tools:itemCount="10"
+                            tools:listitem="@layout/mod_item_game_gusuan" />
+                    </LinearLayout>
+                </androidx.core.widget.NestedScrollView>
+
+                <com.box.other.scwang.smart.refresh.footer.ClassicsFooter
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+        </com.box.common.ui.layout.StatusLayout>
+    </LinearLayout>
+</layout>

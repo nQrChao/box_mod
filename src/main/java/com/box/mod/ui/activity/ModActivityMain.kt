@@ -39,12 +39,10 @@ import com.box.common.utils.logcat.LogcatDialog
 import com.box.common.utils.mmkv.MMKVConfig
 import com.box.mod.R
 import com.box.mod.databinding.ModActivityMainBinding
-import com.box.mod.ui.fragment.ModFragment1
-import com.box.mod.ui.fragment.ModFragmentGameRankList
-import com.box.mod.ui.fragment.ModFragmentGuJia
-import com.box.mod.ui.fragment.ModFragmentGuJiaReal
+import com.box.mod.ui.fragment.ModFragmentGameZiXun
+import com.box.mod.ui.fragment.ModFragmentGuJiaGuangchang
+import com.box.mod.ui.fragment.ModFragmentGuJiaReal2
 import com.box.mod.ui.fragment.ModFragmentMain
-import com.box.mod.ui.fragment.ModFragmentShengChengQi
 import com.box.mod.ui.fragment.ModFragmentWode
 import com.box.other.blankj.utilcode.util.ActivityUtils
 import com.box.other.blankj.utilcode.util.AppUtils
@@ -299,9 +297,9 @@ class ModActivityMain : BaseModVmDbActivity<ModActivityMainModel, ModActivityMai
             // 根据配置的 fragmentId 创建对应的 Fragment 实例
             val fragment = when (config.fragmentId) {
                 1 -> ModFragmentMain.newInstance()
-                2 -> ModFragmentGuJiaReal.newInstance()
-                3 -> ModFragmentShengChengQi.newInstance()
-                4 -> ModFragmentGameRankList.newInstance()
+                2 -> ModFragmentGuJiaReal2.newInstance()
+                3 -> ModFragmentGuJiaGuangchang.newInstance()
+                4 -> ModFragmentGameZiXun.newInstance()
                 5 -> ModFragmentWode.newInstance()
                 else -> throw IllegalArgumentException("Invalid fragmentId: ${config.fragmentId}")
             }

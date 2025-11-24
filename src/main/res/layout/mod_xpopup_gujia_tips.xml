@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gujia_xpop_bg"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingVertical="@dimen/idp_15">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:src="@drawable/gujia_title_text"
+                android:text="快速估算说明"
+                android:textColor="@color/white"
+                android:textSize="@dimen/isp_18"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/idp_15"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/idp_200"
+                android:background="@drawable/button_around_white_15_selector"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginVertical="@dimen/idp_15"
+                    android:paddingHorizontal="@dimen/idp_15"
+                    android:text="1、当前快速估算仅基于账号基础信息（如等级、皮肤数量等），未考虑稀有皮肤、段位、版本热度等关键因素，因此价格可能与真实价值存在较大偏差。\n\n2、如需更精准的估价，建议使用专业估算，享有免费人工审核服务，通过综合评估账号全维度数据得出结果。"
+                    android:textColor="#4F4F4F"
+                    android:textSize="@dimen/isp_14"
+                    app:layout_constraintStart_toStartOf="@+id/tv_title"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/idp_15">
+
+            <LinearLayout
+                android:id="@+id/ll_agree"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/idp_20"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/agreementButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@null"
+                    android:button="@drawable/checkbox_fillet_selector"
+                    android:checked="false" />
+
+                <TextView
+                    android:id="@+id/tv_agree"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/idp_10"
+                    android:text="下次不再提示"
+                    android:textColor="@color/text_default_color"
+                    android:textSize="@dimen/isp_14" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_cancel"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/idp_45"
+                android:layout_marginVertical="@dimen/idp_20"
+                android:layout_weight="2"
+                android:background="@drawable/mod_btn_cancel_selector"
+                android:gravity="center"
+                android:text="我知道了"
+                android:textColor="@color/white"
+                android:textSize="@dimen/isp_15"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_confirm"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/idp_35"
+                android:layout_margin="@dimen/idp_10"
+                android:layout_weight="1"
+                android:background="@drawable/mod_btn_confirm_selector"
+                android:gravity="center"
+                android:text="点此复制"
+                android:textColor="@color/white"
+                android:textSize="@dimen/isp_14"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

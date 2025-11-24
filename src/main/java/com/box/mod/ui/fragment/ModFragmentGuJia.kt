@@ -121,7 +121,6 @@ class ModFragmentGuJia : BaseTitleBarFragment<ModFragmentGuJia.Model, ModFragmen
         }
 
         fun confirm() {
-
             val errorMessage = mViewModel.getValidationError()
             if (errorMessage != null) {
                 if (mViewModel.gameName.get().isEmpty()) {

@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.box.mod.ui.fragment.ModFragmentGuJiaReal2.Model" />
+
+        <variable
+            name="click"
+            type="com.box.mod.ui.fragment.ModFragmentGuJiaReal2.ProxyClick" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <com.box.other.hjq.titlebar.TitleBar
+            android:id="@+id/titleBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/idp_40"
+            android:background="@color/transparent"
+            android:gravity="center"
+            app:leftIcon="@null"
+            app:leftTitleColor="@color/black90"
+            app:leftTitleSize="@dimen/isp_17"
+            app:leftTitleStyle="bold"
+            app:lineVisible="false"
+            app:titleColor="@color/black90"
+            app:titleSize="@dimen/isp_16"
+            app:titleStyle="bold" />
+
+        <com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/titleBar"
+            app:srlEnableFooterTranslationContent="true"
+            app:srlEnableHeaderTranslationContent="true"
+            app:srlEnableLoadMore="false"
+            app:srlEnableOverScrollBounce="true"
+            app:srlEnableOverScrollDrag="true"
+            app:srlEnablePureScrollMode="true"
+            app:srlReboundDuration="700">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/titleBar"
+                android:layout_marginBottom="@dimen/idp_50">
+
+                <LinearLayout
+                    android:id="@+id/rootView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/idp_20"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#F6F9FF"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="@dimen/idp_10"
+                        android:paddingVertical="@dimen/idp_15">
+
+                        <com.box.common.ui.view.DrawableTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="@dimen/idp_5"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="热门游戏"
+                            android:textSize="@dimen/isp_16"
+                            android:textStyle="bold"
+                            app:drawableHeight="@dimen/idp_18"
+                            app:drawableWidth="@dimen/idp_7" />
+
+                        <com.box.other.tablayout.DslTabLayout
+                            android:id="@+id/tab_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/idp_5"
+                            android:paddingHorizontal="@dimen/idp_5"
+                            android:paddingVertical="@dimen/idp_10"
+                            app:tab_draw_highlight="true"
+                            app:tab_highlight_height="10dp"
+                            app:tab_highlight_height_offset="10dp"
+                            app:tab_highlight_width="10dp"
+                            app:tab_highlight_width_offset="10dp"
+                            app:tab_orientation="HORIZONTAL">
+
+                        </com.box.other.tablayout.DslTabLayout>
+
+                    </LinearLayout>
+
+                    <com.box.common.ui.layout.StatusLayout
+                        android:id="@+id/status_loading"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/idp_15"
+                            android:background="#F6F9FF"
+                            android:orientation="vertical"
+                            android:paddingHorizontal="@dimen/idp_10"
+                            android:paddingVertical="@dimen/idp_15">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="@dimen/idp_25"
+                                    android:layout_height="@dimen/idp_25"
+                                    android:src="@drawable/mod_icon"
+                                    app:cornerRadius="@{5f}"
+                                    app:hideOnNullOrError="@{false}"
+                                    app:imageUrl="@{vm.clickGameItem.url}" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginStart="@dimen/idp_10"
+                                    android:drawablePadding="@dimen/idp_5"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="@{vm.clickGameItem.name}"
+                                    android:textColor="@color/text_default_color"
+                                    android:textSize="@dimen/isp_16"
+                                    android:textStyle="bold"
+                                    app:drawableHeight="@dimen/idp_18"
+                                    app:drawableWidth="@dimen/idp_7"
+                                    tools:text="原神" />
+
+                            </LinearLayout>
+
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerView2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/idp_8"
+                                android:orientation="horizontal"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                tools:itemCount="1"
+                                tools:listitem="@layout/mod_item_custom_form" />
+
+                            <com.box.common.ui.view.DrawableTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/idp_45"
+                                android:drawablePadding="@dimen/idp_5"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:text="游戏截图（专业估算）"
+                                android:textSize="@dimen/isp_16"
+                                android:textStyle="bold"
+                                app:drawableHeight="@dimen/idp_18"
+                                app:drawableWidth="@dimen/idp_7" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerView3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/idp_8"
+                                android:orientation="horizontal"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                tools:itemCount="1"
+                                tools:listitem="@layout/mod_item_custom_form_pic" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/idp_8"
+                                android:gravity="center"
+                                android:text="专业估算需上传游戏截图(至少3张)\n尽可能包含有价值的道具信息，以确保估算准确度"
+                                android:textSize="@dimen/isp_12" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/idp_45"
+                                android:orientation="horizontal">
+
+                                <com.box.common.ui.view.DrawableTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:drawablePadding="@dimen/idp_5"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="账号特色说明"
+                                    android:textSize="@dimen/isp_16"
+                                    android:textStyle="bold"
+                                    app:drawableHeight="@dimen/idp_18"
+                                    app:drawableWidth="@dimen/idp_7" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:text="（如没有可不填写）"
+                                    android:textSize="@dimen/isp_12" />
+
+                            </LinearLayout>
+
+
+                            <com.box.common.ui.view.ClearEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/idp_130"
+                                android:layout_marginTop="@dimen/idp_10"
+                                android:background="@drawable/a_rounded_20"
+                                android:gravity="start"
+                                android:hint="可提供该游戏账号的特色：如稀有物品、皮肤、称号武器、装备、属性等等！"
+                                android:maxLines="7"
+                                android:padding="@dimen/idp_15"
+                                android:singleLine="false"
+                                android:text="@={vm.shuomingText}"
+                                android:textColorHint="@color/black30"
+                                android:textSize="@dimen/isp_13" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/idp_25"
+                                android:text="估算说明："
+                                android:textColor="@color/text_default_color"
+                                android:textSize="@dimen/isp_14" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/idp_5"
+                                android:text="1、账号提交后，将进行后台审核估算阶段，请您耐心等待生成结果，生成结果后面您可在个人中心-账号估值查看结果！\n2、以上选项，若没有此物品或者道具可以填「0」 \n3、账号价格为基于账号内等级、道具、稀有物品等现有信息的估算值，实际价值可能受游戏官方规则调整、市场供需波动、账号绑定状态等因素影响，最终价格以游戏内核实结果或双方协商为准。"
+                                android:textSize="@dimen/isp_13" />
+
+
+                        </LinearLayout>
+
+
+                    </com.box.common.ui.layout.StatusLayout>
+
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+        </com.box.other.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#F6F9FF"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/idp_20"
+            android:paddingVertical="@dimen/idp_10"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/btn1"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/idp_45"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/idp_5"
+                android:layout_marginEnd="@dimen/idp_5"
+                android:layout_marginBottom="@dimen/idp_5"
+                android:layout_weight="1"
+                android:background="@drawable/mod_btn_confirm_selector"
+                android:text="快速估算"
+                android:textColor="@color/white"
+                android:textSize="@dimen/mod_button_text_size"
+                android:textStyle="bold"
+                app:onSingleClick="@{() -> click.confirmKuaisu()}"
+                app:singleClickDelay="@{1000L}"
+                tools:background="@drawable/mod_btn_confirm_selector"
+                tools:text="快速估算" />
+
+            <Button
+                android:id="@+id/btn2"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/idp_45"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/idp_5"
+                android:layout_marginTop="@dimen/idp_5"
+                android:layout_marginBottom="@dimen/idp_5"
+                android:layout_weight="1"
+                android:background="@{vm.modUserInfo == null? @drawable/mod_btn_noenabled_selector : @drawable/mod_btn_confirm_selector}"
+                android:text="@{vm.modUserInfo == null ? `专业估算` : `我要估算`}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/mod_button_text_size"
+                android:textStyle="bold"
+                app:onSingleClick="@{() -> click.confirm()}"
+                app:singleClickDelay="@{1000L}"
+                tools:background="@drawable/mod_btn_noenabled_selector"
+                tools:text="专业估算" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

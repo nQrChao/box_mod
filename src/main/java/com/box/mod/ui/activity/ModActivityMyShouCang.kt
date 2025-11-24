@@ -32,10 +32,8 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 
 @SuppressLint("CustomSplashScreen")
-class ModActivityMyShouCang :
-    BaseModVmDbActivity<ModActivityMyShouCang.Model, ModActivityShoucangBinding>() {
+class ModActivityMyShouCang : BaseModVmDbActivity<ModActivityMyShouCang.Model, ModActivityShoucangBinding>() {
     private var type = 0
-
     var rankList: MutableList<ModDataBean> = mutableListOf()
     var randomNameList: MutableList<ModDataBean> = mutableListOf()
     private val rankListAdapter = ModGameRankShoucangAdapter()

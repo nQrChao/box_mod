@@ -89,11 +89,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:text="@{`¥ ` + modData.money}"
                 android:textColor="#FF5722"
                 android:textSize="@dimen/isp_20"
                 android:textStyle="bold"
-                tools:text="¥ 5588" />
+                android:text="¥ 88888" />
 
             <TextView
                 android:id="@+id/tv_val_tag"

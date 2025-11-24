@@ -23,6 +23,16 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:name="com.box.mod.ui.activity.ModActivityMyGuJiaShuoming"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.box.mod.ui.activity.ModActivityGuSuanXiangqing"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
             android:name="com.box.mod.ui.activity.ModActivityShengChengQi"
             android:exported="true"
             android:screenOrientation="portrait"

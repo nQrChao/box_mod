@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="vm"
+            type="com.box.mod.ui.activity.ModActivityMyGuJiaShuoming.Model" />
+
+        <variable
+            name="click"
+            type="com.box.mod.ui.activity.ModActivityMyGuJiaShuoming.ProxyClick" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F5F7FA"
+        android:orientation="vertical">
+
+        <com.box.other.hjq.titlebar.TitleBar
+            android:id="@+id/titleBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/idp_40"
+            android:background="@color/white"
+            android:gravity="center"
+            app:leftTitleColor="@color/black90"
+            app:leftTitleSize="@dimen/isp_17"
+            app:leftTitleStyle="bold"
+            app:lineVisible="true"
+            app:title="游戏账号估值常见问答"
+            app:titleColor="@color/black90"
+            app:titleSize="@dimen/isp_16"
+            app:titleStyle="bold" />
+
+
+        <com.box.common.ui.layout.StatusLayout
+            android:id="@+id/status_loading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.core.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingBottom="@dimen/idp_30">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/idp_15"
+                            android:layout_marginBottom="@dimen/idp_15"
+                            android:background="@drawable/shape_header_gradient_blue"
+                            android:paddingHorizontal="@dimen/idp_20"
+                            android:paddingVertical="@dimen/idp_5"
+                            android:text="基础估值方法"
+                            android:textColor="#FFFFFF"
+                            android:textSize="@dimen/isp_16"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/idp_15"
+                            android:layout_marginBottom="@dimen/idp_10"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <View
+                                android:layout_width="@dimen/idp_5"
+                                android:layout_height="@dimen/idp_18"
+                                android:background="@drawable/shape_vertical_bar_blue" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/idp_5"
+                                android:text="热门游戏账号估值"
+                                android:textColor="#333333"
+                                android:textSize="@dimen/isp_15"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/idp_13"
+                            android:layout_marginBottom="@dimen/idp_10"
+                            app:cardCornerRadius="@dimen/idp_10"
+                            app:cardElevation="@dimen/idp_1"
+                            app:cardPreventCornerOverlap="false"
+                            app:cardUseCompatPadding="true">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                                android:background="@drawable/shape_card_white_bg"
+                                android:orientation="vertical"
+                                android:padding="@dimen/idp_15">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/idp_10"
+                                    android:text="Q1: 如何评估游戏账号的基础价值?"
+                                    android:textColor="#333333"
+                                    android:textSize="@dimen/isp_14"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:lineSpacingExtra="@dimen/idp_3"
+                                    android:text="采用 &quot;资产总和 - 风险系数&quot; 框架：先计算账号可见资产（等级、稀有道具、皮肤等）的市场价值，再扣除账号安全风险、违规记录等不确定因素。"
+                                    android:textColor="#666666"
+                                    android:textSize="@dimen/isp_13" />
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/idp_13"
+                            android:layout_marginBottom="@dimen/idp_10"
+                            app:cardCornerRadius="@dimen/idp_10"
+                            app:cardElevation="@dimen/idp_1"
+                            app:cardPreventCornerOverlap="false"
+                            app:cardUseCompatPadding="true">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/shape_card_white_bg"
+                                android:orientation="vertical"
+                                android:padding="@dimen/idp_15">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/idp_10"
+                                    android:text="Q2: 有哪些常用的估值方法?"
+                                    android:textColor="#333333"
+                                    android:textSize="@dimen/isp_14"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:lineSpacingExtra="@dimen/idp_3"
+                                    android:text="☒市场比较法：在交易平台搜索相似账号（等级、装备相近）的成交价格作为参考\n☒装备价值法：单独计算稀有装备 / 皮肤价值，再加上账号等级基础价\n成本折旧法：统计充值总额，按游戏类型折旧（端游约 40-50%/3 年，手游约 60-70%/3 年）"
+                                    android:textColor="#666666"
+                                    android:textSize="@dimen/isp_13" />
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/idp_13"
+                            android:layout_marginBottom="@dimen/idp_10"
+                            app:cardCornerRadius="@dimen/idp_10"
+                            app:cardElevation="@dimen/idp_1"
+                            app:cardPreventCornerOverlap="false"
+                            app:cardUseCompatPadding="true">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/shape_card_white_bg"
+                                android:orientation="vertical"
+                                android:padding="@dimen/idp_15">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/idp_10"
+                                    android:text="Q2: 免费估值工具准确吗?"
+                                    android:textColor="#333333"
+                                    android:textSize="@dimen/isp_14"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:lineSpacingExtra="@dimen/idp_3"
+                                    android:text="☒市场比较法：在交易平台搜索相似账号（等级、装备相近）的成交价格作为参考\n☒装备价值法：单独计算稀有装备 / 皮肤价值，再加上账号等级基础价\n成本折旧法：统计充值总额，按游戏类型折旧（端游约 40-50%/3 年，手游约 60-70%/3 年）"
+                                    android:textColor="#666666"
+                                    android:textSize="@dimen/isp_13" />
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                    </LinearLayout>
+                </androidx.core.widget.NestedScrollView>
+
+
+            </LinearLayout>
+
+        </com.box.common.ui.layout.StatusLayout>
+
+
+    </LinearLayout>
+</layout>

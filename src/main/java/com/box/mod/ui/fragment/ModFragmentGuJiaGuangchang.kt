@@ -7,7 +7,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.viewpager2.widget.ViewPager2
 import com.box.base.base.action.StatusAction
 import com.box.base.base.fragment.BaseTitleBarFragment
 import com.box.base.base.viewmodel.BaseViewModel
@@ -22,7 +21,6 @@ import com.box.common.data.model.ModDataBean
 import com.box.common.data.model.ModUserInfo
 import com.box.common.eventViewModel
 import com.box.common.network.apiService
-import com.box.common.ui.activity.CommonActivityBrowser
 import com.box.common.ui.activity.CommonActivityRichText
 import com.box.common.ui.adapter.SpacingItemDecorator
 import com.box.common.ui.layout.StatusLayout
@@ -30,50 +28,35 @@ import com.box.common.utils.ext.logsE
 import com.box.common.utils.mmkv.MMKVConfig
 import com.box.mod.BR.modData
 import com.box.mod.R
-import com.box.mod.databinding.ModFragmentMainBinding
+import com.box.mod.databinding.ModFragmentGujiaGuangchangBinding
 import com.box.mod.databinding.ModItemGameEventBinding
-import com.box.mod.databinding.ModItemGameGusuanBinding
 import com.box.mod.ui.activity.ModActivityGuSuanXiangqing
 import com.box.mod.ui.activity.ModActivityLogin
-import com.box.mod.ui.activity.ModActivityMyShouCang
-import com.box.mod.ui.activity.ModActivityShengChengQi
-import com.box.mod.ui.adapter.MainBannerAdapter
+import com.box.mod.ui.activity.ModActivityMyGuJiaShuoming
 import com.box.other.blankj.utilcode.util.GsonUtils
 import com.box.other.hjq.toast.Toaster
 import com.box.other.immersionbar.immersionBar
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
-import com.zhpan.bannerview.BannerViewPager
-import com.zhpan.bannerview.constants.IndicatorGravity
 import com.zhpan.bannerview.indicator.DrawableIndicator
 import com.zhpan.indicator.base.IIndicator
 
 
-class ModFragmentMain : BaseTitleBarFragment<ModFragmentMain.Model, ModFragmentMainBinding>(),
-    StatusAction {
+class ModFragmentGuJiaGuangchang : BaseTitleBarFragment<ModFragmentGuJiaGuangchang.Model, ModFragmentGujiaGuangchangBinding>(), StatusAction {
     override val mViewModel: Model by viewModels()
-    override fun layoutId(): Int = R.layout.mod_fragment_main
+    override fun layoutId(): Int = R.layout.mod_fragment_gujia_guangchang
 
     companion object {
-        fun newInstance(): ModFragmentMain {
-            return ModFragmentMain()
+        fun newInstance(): ModFragmentGuJiaGuangchang {
+            return ModFragmentGuJiaGuangchang()
         }
     }
 
     private val pageSize = 10
     private var currentPage = 1
     var clickData = ModDataBean()
-    //var gameEventList: MutableList<ModDataBean> = mutableListOf()
-    //var gameEventAdapter = GameEventAdapter(gameEventList)
-
-    var gameGuSuanList: MutableList<ModDataBean> = mutableListOf()
-    var gameGuSuanAdapter = GameGuSuanAdapter(gameGuSuanList)
-    val marqueeList: MutableList<String> = mutableListOf(
-        "用户xxx《王者荣耀》账号专业估价为：1234",
-        "用户xxx《王者荣耀》账号专业估价为：12345",
-        "用户xxx《王者荣耀》账号专业估价为：123456",
-        "用户xxx《王者荣耀》账号专业估价为：1234567"
-    )
+    var gameEventList: MutableList<ModDataBean> = mutableListOf()
+    var gameEventAdapter = ModFragmentMain.GameGuSuanAdapter(gameEventList)
 
     /**
      * 懒加载
@@ -102,36 +85,37 @@ class ModFragmentMain : BaseTitleBarFragment<ModFragmentMain.Model, ModFragmentM
         }
 
 
-        gameGuSuanAdapter.setDiffCallback(GameEventDiffCallback())
+        gameEventAdapter.setDiffCallback(GameEventDiffCallback())
         mDataBinding.recyclerView.apply {
             layoutManager = GridLayoutManager(context, 1)
             isNestedScrollingEnabled = false  // ✅ 关键
             overScrollMode = View.OVER_SCROLL_NEVER
             addItemDecoration(SpacingItemDecorator((resources.displayMetrics.density * 5).toInt()))
-            adapter = gameGuSuanAdapter
+            adapter = gameEventAdapter
         }
-        gameGuSuanAdapter.addChildClickViewIds(R.id.button)
-        gameGuSuanAdapter.setOnItemClickListener { adapter, view, position ->
-            clickData = adapter.data[position] as ModDataBean
+        gameEventAdapter.addChildClickViewIds(R.id.button)
+        gameEventAdapter.setOnItemClickListener { adapter, view, position ->
             ModActivityGuSuanXiangqing.start(appContext,"1")
+//            clickData = adapter.data[position] as ModDataBean
 //            mViewModel.getEventDetailData(clickData.id)
         }
 
-        gameGuSuanAdapter.setOnItemChildClickListener { adapter, view, position ->
-//            val currentList = adapter.data
-//            val clickedItem = currentList[position] as ModDataBean
-//            if (view.id == R.id.button) {
-//                if (clickedItem.isShouCang) {
-//                    clickedItem.isShouCang = false
-//                    MMKVConfig.removeGameEventList(clickedItem)
-//                } else {
-//                    clickedItem.isShouCang = true
-//                    Toaster.showReSuccess("1")
-//                    MMKVConfig.addGameEventList(clickedItem)
-//                }
-//                adapter.notifyItemChanged(position, "SHOUCANG_UPDATE")
-//
-//            }
+        gameEventAdapter.setOnItemChildClickListener { adapter, view, position ->
+            val currentList = adapter.data
+            val clickedItem = currentList[position] as ModDataBean
+            if (view.id == R.id.button) {
+                if (clickedItem.isShouCang) {
+                    clickedItem.isShouCang = false
+                    MMKVConfig.removeGameEventList(clickedItem)
+                } else {
+                    clickedItem.isShouCang = true
+                    Toaster.showReSuccess("1")
+                    MMKVConfig.addGameEventList(clickedItem)
+                }
+
+                adapter.notifyItemChanged(position, "SHOUCANG_UPDATE")
+
+            }
 
         }
 
@@ -160,8 +144,7 @@ class ModFragmentMain : BaseTitleBarFragment<ModFragmentMain.Model, ModFragmentM
                     if (data.isNullOrEmpty()) {
                         if (currentPage == 1) {
                             mDataBinding.refreshLayout.finishRefresh()
-                            setBanner(mutableListOf())
-                            gameGuSuanAdapter.setList(mutableListOf()) // 清空列表
+                            gameEventAdapter.setList(mutableListOf()) // 清空列表
                             mDataBinding.refreshLayout.finishLoadMoreWithNoMoreData()
                         } else { // 加载更多时没有数据
                             mDataBinding.refreshLayout.finishLoadMoreWithNoMoreData()
@@ -176,13 +159,11 @@ class ModFragmentMain : BaseTitleBarFragment<ModFragmentMain.Model, ModFragmentM
 
                     if (currentPage == 1) { // 下拉刷新
                         mDataBinding.refreshLayout.finishRefresh()
-                        setBanner(data)
-                        mDataBinding.marqueeview.startWithList(marqueeList)
                         // 如果是排序后没有数据，也要清空列表
                         if (data.isEmpty()) {
                             mDataBinding.refreshLayout.finishLoadMoreWithNoMoreData()
                         } else {
-                            gameGuSuanAdapter.setList(data)
+                            gameEventAdapter.setList(data)
                             mDataBinding.refreshLayout.resetNoMoreData()
                         }
                     } else { // 场景：上拉加载更多
@@ -191,8 +172,8 @@ class ModFragmentMain : BaseTitleBarFragment<ModFragmentMain.Model, ModFragmentM
                             return@parseModStateWithMsg
                         }
                         mDataBinding.refreshLayout.finishLoadMore()
-                        gameGuSuanAdapter.addData(data)
-                        gameGuSuanAdapter.notifyDataSetChanged()
+                        gameEventAdapter.addData(data)
+                        gameEventAdapter.notifyDataSetChanged()
                     }
                 },
                 onError = {
@@ -213,12 +194,7 @@ class ModFragmentMain : BaseTitleBarFragment<ModFragmentMain.Model, ModFragmentM
                 resultState,
                 onSuccess = { data, msg ->
                     logsE(GsonUtils.toJson(data))
-                    CommonActivityRichText.start(
-                        appContext,
-                        clickData.title,
-                        data?.content ?: "",
-                        data?.views ?: "-1"
-                    )
+                    CommonActivityRichText.start(appContext, clickData.title, data?.content ?: "", data?.views ?: "-1")
                 },
                 onError = {
                     Toaster.show(it.msg)
@@ -237,17 +213,6 @@ class ModFragmentMain : BaseTitleBarFragment<ModFragmentMain.Model, ModFragmentM
 
     }
 
-    fun setBanner(list: MutableList<ModDataBean>) {
-        (mDataBinding.bannerView as BannerViewPager<ModDataBean>)
-            .setCanLoop(true)
-            .setOrientation(ViewPager2.ORIENTATION_HORIZONTAL)
-            .setIndicatorView(getDrawableIndicator())
-            .setIndicatorGravity(IndicatorGravity.CENTER)
-            .setInterval(2000)
-            .setAdapter(MainBannerAdapter()) // 链式调用
-            .registerLifecycleObserver(viewLifecycleOwner.lifecycle)
-            .create(list)
-    }
 
     override fun onNetworkStateChanged(it: NetState) {
     }
@@ -274,39 +239,11 @@ class ModFragmentMain : BaseTitleBarFragment<ModFragmentMain.Model, ModFragmentM
         }
 
         fun img1() {
-            val targetView = mDataBinding.titleText
-            val scrollView = mDataBinding.nestedScrollView
-            val yPosition = targetView.top
-            scrollView.smoothScrollTo(0, yPosition)
+            eventViewModel.setMainCurrentItem.value = 3
         }
 
         fun img2() {
-            eventViewModel.setMainCurrentItem.value = 1
-        }
-
-        fun img3() {
-            ModActivityShengChengQi.start(appContext)
-            //eventViewModel.setMainCurrentItem.value = 2
-        }
-
-        fun img4() {
-            //eventViewModel.setMainCurrentItem.value = 3
-        }
-
-        fun shoucang() {
-
-            if (isLogin()) {
-                ModActivityMyShouCang.start(appContext)
-            } else {
-                Toaster.show("请先登录")
-                ModActivityLogin.start(appContext)
-            }
-
-        }
-
-        fun test() {
-            val assetGame = "file:///android_asset/out/gomoku.html"
-            CommonActivityBrowser.start(appContext, assetGame)
+            ModActivityMyGuJiaShuoming.start(appContext)
         }
 
         fun confirm() {
@@ -317,7 +254,8 @@ class ModFragmentMain : BaseTitleBarFragment<ModFragmentMain.Model, ModFragmentM
 
 
     /**********************************************Adapter**************************************************/
-    class GameEventAdapter(list: MutableList<ModDataBean>) : BaseQuickAdapter<ModDataBean, BaseDataBindingHolder<ModItemGameEventBinding>>(
+    class GameEventAdapter(list: MutableList<ModDataBean>) :
+        BaseQuickAdapter<ModDataBean, BaseDataBindingHolder<ModItemGameEventBinding>>(
             R.layout.mod_item_game_event, list
         ) {
         override fun convert(
@@ -356,48 +294,8 @@ class ModFragmentMain : BaseTitleBarFragment<ModFragmentMain.Model, ModFragmentM
     }
 
 
-
-    class GameGuSuanAdapter(list: MutableList<ModDataBean>) : BaseQuickAdapter<ModDataBean, BaseDataBindingHolder<ModItemGameGusuanBinding>>(
-        R.layout.mod_item_game_gusuan, list
-    ) {
-        override fun convert(
-            holder: BaseDataBindingHolder<ModItemGameGusuanBinding>,
-            item: ModDataBean
-        ) {
-            holder.dataBinding?.setVariable(modData, item)
-        }
-
-        override fun onBindViewHolder(
-            holder: BaseDataBindingHolder<ModItemGameGusuanBinding>,
-            position: Int,
-            payloads: MutableList<Any>
-        ) {
-            if (payloads.isEmpty()) {
-                super.onBindViewHolder(holder, position, payloads)
-                return
-            }
-            if (payloads.any { it == "SHOUCANG_UPDATE" }) {
-                val item = getItem(position)
-                holder.dataBinding?.setVariable(modData, item)
-            } else {
-                super.onBindViewHolder(holder, position, payloads)
-            }
-        }
-    }
-
-    class GameGuSuanDiffCallback : DiffUtil.ItemCallback<ModDataBean>() {
-        override fun areItemsTheSame(oldItem: ModDataBean, newItem: ModDataBean): Boolean {
-            return oldItem.id == newItem.id
-        }
-
-        override fun areContentsTheSame(oldItem: ModDataBean, newItem: ModDataBean): Boolean {
-            return oldItem == newItem
-        }
-    }
-
-
     /**********************************************Model**************************************************/
-    class Model : BaseViewModel(title = "　　　　　") {
+    class Model : BaseViewModel(title = "估值广场") {
         var modUserInfo = MutableLiveData<ModUserInfo>()
 
         var pic = IntObservableField(0)

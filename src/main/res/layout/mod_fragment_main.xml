@@ -186,7 +186,6 @@
 
                             </LinearLayout>
 
-
                             <com.zhpan.bannerview.BannerViewPager
                                 android:id="@+id/banner_view"
                                 android:layout_width="match_parent"
@@ -204,6 +203,7 @@
                                     android:id="@+id/card_top"
                                     android:layout_width="match_parent"
                                     android:layout_height="@dimen/idp_70"
+                                    android:onClick="@{()->click.img1()}"
                                     android:background="@drawable/mod_fragmen_main_bg_1"
                                     android:paddingHorizontal="@dimen/idp_20"
                                     app:layout_constraintEnd_toEndOf="parent"
@@ -312,6 +312,7 @@
 
 
                             <TextView
+                                android:id="@+id/titleText"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/idp_10"
@@ -343,6 +344,7 @@
 
 
                             <TextView
+                                android:visibility="gone"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/idp_10"
@@ -359,6 +361,7 @@
                                 app:layout_constraintTop_toBottomOf="@id/text_ranking" />
 
                             <androidx.recyclerview.widget.RecyclerView
+                                android:visibility="gone"
                                 android:id="@+id/recyclerView2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
