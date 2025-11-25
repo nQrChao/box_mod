@@ -33,6 +33,7 @@ import com.box.mod.R
 import com.box.mod.databinding.ModFragmentMainBinding
 import com.box.mod.databinding.ModItemGameEventBinding
 import com.box.mod.databinding.ModItemGameGusuanBinding
+import com.box.mod.databinding.ModItemGujiaGameHotBinding
 import com.box.mod.ui.activity.ModActivityGuSuanXiangqing
 import com.box.mod.ui.activity.ModActivityLogin
 import com.box.mod.ui.activity.ModActivityMyShouCang
@@ -44,9 +45,9 @@ import com.box.other.immersionbar.immersionBar
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 import com.zhpan.bannerview.BannerViewPager
-import com.zhpan.bannerview.constants.IndicatorGravity
 import com.zhpan.bannerview.indicator.DrawableIndicator
 import com.zhpan.indicator.base.IIndicator
+import com.zhpan.indicator.enums.IndicatorSlideMode
 
 
 class ModFragmentMain : BaseTitleBarFragment<ModFragmentMain.Model, ModFragmentMainBinding>(),
@@ -68,6 +69,8 @@ class ModFragmentMain : BaseTitleBarFragment<ModFragmentMain.Model, ModFragmentM
 
     var gameGuSuanList: MutableList<ModDataBean> = mutableListOf()
     var gameGuSuanAdapter = GameGuSuanAdapter(gameGuSuanList)
+
+    var gameHotAdapter = ModGamesHotAdapter()
     val marqueeList: MutableList<String> = mutableListOf(
         "用户xxx《王者荣耀》账号专业估价为：1234",
         "用户xxx《王者荣耀》账号专业估价为：12345",
@@ -80,7 +83,11 @@ class ModFragmentMain : BaseTitleBarFragment<ModFragmentMain.Model, ModFragmentM
      */
     override fun lazyLoadData() {
         showLoading()
-        mViewModel.getGameEventListData(currentPage, pageSize)
+        mViewModel.getGameTodayListData()
+        mViewModel.getGameBannerData()
+        mViewModel.getGameListData()
+        mViewModel.getGameHotListData(currentPage, pageSize)
+        //mViewModel.getGameEventListData(currentPage, pageSize)
     }
 
     /**
@@ -113,7 +120,7 @@ class ModFragmentMain : BaseTitleBarFragment<ModFragmentMain.Model, ModFragmentM
         gameGuSuanAdapter.addChildClickViewIds(R.id.button)
         gameGuSuanAdapter.setOnItemClickListener { adapter, view, position ->
             clickData = adapter.data[position] as ModDataBean
-            ModActivityGuSuanXiangqing.start(appContext,"1")
+            ModActivityGuSuanXiangqing.start(appContext, "1")
 //            mViewModel.getEventDetailData(clickData.id)
         }
 
@@ -132,35 +139,88 @@ class ModFragmentMain : BaseTitleBarFragment<ModFragmentMain.Model, ModFragmentM
 //                adapter.notifyItemChanged(position, "SHOUCANG_UPDATE")
 //
 //            }
-
         }
 
         mDataBinding.refreshLayout.apply {
             setOnRefreshListener {
                 currentPage = 1
-                mViewModel.getGameEventListData(currentPage, pageSize)
+                mViewModel.getGameHotListData(currentPage, pageSize)
             }
             setOnLoadMoreListener {
                 currentPage++
-                mViewModel.getGameEventListData(currentPage, pageSize)
+                mViewModel.getGameHotListData(currentPage, pageSize)
             }
         }
+
+
+
+        mDataBinding.recyclerViewHotGame.apply {
+            layoutManager = GridLayoutManager(context, 3)
+            isNestedScrollingEnabled = false
+            overScrollMode = View.OVER_SCROLL_NEVER
+            addItemDecoration(SpacingItemDecorator((resources.displayMetrics.density * 5).toInt()))
+            adapter = gameHotAdapter
+        }
+
+        gameHotAdapter.setOnItemClickListener { adapter, view, position ->
+            clickData = adapter.data[position] as ModDataBean
+
+        }
+
 
     }
 
 
     @SuppressLint("NotifyDataSetChanged")
     override fun createObserver() {
-        mViewModel.gameEventListResult.observe(this) { resultState ->
+        mViewModel.gameTodayListResult.observe(this) { resultState ->
             parseModStateWithMsg(
                 resultState,
                 onSuccess = { data, msg ->
                     logsE(GsonUtils.toJson(data))
+                },
+                onError = {
+                    Toaster.show(it.msg)
+                }
+            )
+        }
+        mViewModel.gameBannerResult.observe(this) { resultState ->
+            parseModStateWithMsg(
+                resultState,
+                onSuccess = { data, msg ->
+                    logsE(GsonUtils.toJson(data))
+                    setBanner(data ?: mutableListOf())
+                },
+                onError = {
+                    Toaster.show(it.msg)
+                }
+            )
+        }
 
+        mViewModel.gameListResult.observe(this) { resultState ->
+            parseModStateWithMsg(
+                resultState,
+                onSuccess = { data, msg ->
+                    logsE(GsonUtils.toJson(data))
+                    if (data != null) {
+                        val filteredData = data.filter { it.name != "通用游戏" }
+                        gameHotAdapter.setList(filteredData.shuffled().take(6))
+                    }
+                },
+                onError = {
+                    Toaster.show(it.msg)
+                }
+            )
+        }
+
+        mViewModel.gameHotListResult.observe(this) { resultState ->
+            parseModStateWithMsg(
+                resultState,
+                onSuccess = { data, msg ->
+                    logsE(GsonUtils.toJson(data))
                     if (data.isNullOrEmpty()) {
                         if (currentPage == 1) {
                             mDataBinding.refreshLayout.finishRefresh()
-                            setBanner(mutableListOf())
                             gameGuSuanAdapter.setList(mutableListOf()) // 清空列表
                             mDataBinding.refreshLayout.finishLoadMoreWithNoMoreData()
                         } else { // 加载更多时没有数据
@@ -176,7 +236,6 @@ class ModFragmentMain : BaseTitleBarFragment<ModFragmentMain.Model, ModFragmentM
 
                     if (currentPage == 1) { // 下拉刷新
                         mDataBinding.refreshLayout.finishRefresh()
-                        setBanner(data)
                         mDataBinding.marqueeview.startWithList(marqueeList)
                         // 如果是排序后没有数据，也要清空列表
                         if (data.isEmpty()) {
@@ -238,11 +297,14 @@ class ModFragmentMain : BaseTitleBarFragment<ModFragmentMain.Model, ModFragmentM
     }
 
     fun setBanner(list: MutableList<ModDataBean>) {
+        mDataBinding.indicatorView.visibility = View.VISIBLE
         (mDataBinding.bannerView as BannerViewPager<ModDataBean>)
             .setCanLoop(true)
             .setOrientation(ViewPager2.ORIENTATION_HORIZONTAL)
-            .setIndicatorView(getDrawableIndicator())
-            .setIndicatorGravity(IndicatorGravity.CENTER)
+            .setIndicatorVisibility(View.GONE)
+            .setIndicatorSlideMode(IndicatorSlideMode.SMOOTH)
+            //.setIndicatorView(getDrawableIndicator())
+            .setIndicatorView(mDataBinding.indicatorView)
             .setInterval(2000)
             .setAdapter(MainBannerAdapter()) // 链式调用
             .registerLifecycleObserver(viewLifecycleOwner.lifecycle)
@@ -317,7 +379,20 @@ class ModFragmentMain : BaseTitleBarFragment<ModFragmentMain.Model, ModFragmentM
 
 
     /**********************************************Adapter**************************************************/
-    class GameEventAdapter(list: MutableList<ModDataBean>) : BaseQuickAdapter<ModDataBean, BaseDataBindingHolder<ModItemGameEventBinding>>(
+
+    class ModGamesHotAdapter :
+        BaseQuickAdapter<ModDataBean, BaseDataBindingHolder<ModItemGujiaGameHotBinding>>(R.layout.mod_item_gujia_game_hot) {
+        override fun convert(
+            holder: BaseDataBindingHolder<ModItemGujiaGameHotBinding>,
+            item: ModDataBean
+        ) {
+            holder.dataBinding?.setVariable(modData, item)
+        }
+    }
+
+
+    class GameEventAdapter(list: MutableList<ModDataBean>) :
+        BaseQuickAdapter<ModDataBean, BaseDataBindingHolder<ModItemGameEventBinding>>(
             R.layout.mod_item_game_event, list
         ) {
         override fun convert(
@@ -356,10 +431,10 @@ class ModFragmentMain : BaseTitleBarFragment<ModFragmentMain.Model, ModFragmentM
     }
 
 
-
-    class GameGuSuanAdapter(list: MutableList<ModDataBean>) : BaseQuickAdapter<ModDataBean, BaseDataBindingHolder<ModItemGameGusuanBinding>>(
-        R.layout.mod_item_game_gusuan, list
-    ) {
+    class GameGuSuanAdapter(list: MutableList<ModDataBean>) :
+        BaseQuickAdapter<ModDataBean, BaseDataBindingHolder<ModItemGameGusuanBinding>>(
+            R.layout.mod_item_game_gusuan, list
+        ) {
         override fun convert(
             holder: BaseDataBindingHolder<ModItemGameGusuanBinding>,
             item: ModDataBean
@@ -403,6 +478,33 @@ class ModFragmentMain : BaseTitleBarFragment<ModFragmentMain.Model, ModFragmentM
         var pic = IntObservableField(0)
         var gameEventListResult = MutableLiveData<ModResultStateWithMsg<MutableList<ModDataBean>>>()
         var gameEventDetailResult = MutableLiveData<ModResultStateWithMsg<ModDataBean>>()
+        var gameTodayListResult = MutableLiveData<ModResultStateWithMsg<MutableList<ModDataBean>>>()
+        fun getGameTodayListData() {
+            modRequestWithMsg({
+                apiService.getValuationCommitTodayList()
+            }, gameTodayListResult)
+        }
+        var gameBannerResult = MutableLiveData<ModResultStateWithMsg<MutableList<ModDataBean>>>()
+        fun getGameBannerData() {
+            modRequestWithMsg({
+                apiService.getValuationCommitBanner()
+            }, gameBannerResult)
+        }
+
+        var gameListResult = MutableLiveData<ModResultStateWithMsg<MutableList<ModDataBean>>>()
+
+        fun getGameListData() {
+            modRequestWithMsg({
+                apiService.getValuationCommitGameList()
+            }, gameListResult)
+        }
+
+        var gameHotListResult = MutableLiveData<ModResultStateWithMsg<MutableList<ModDataBean>>>()
+        fun getGameHotListData(pageNum: Int, pageSize: Int) {
+            modRequestWithMsg({
+                apiService.getValuationCommitHotList(pageNum, pageSize)
+            }, gameHotListResult)
+        }
 
         fun getGameEventListData(pageNum: Int, pageSize: Int) {
             modRequestWithMsg({
@@ -415,6 +517,7 @@ class ModFragmentMain : BaseTitleBarFragment<ModFragmentMain.Model, ModFragmentM
                 apiService.getNewsDetailById(id)
             }, gameEventDetailResult)
         }
+
 
     }
 

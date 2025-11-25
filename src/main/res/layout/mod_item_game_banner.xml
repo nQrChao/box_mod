@@ -30,7 +30,7 @@
             android:importantForAccessibility="no"
             android:scaleType="centerCrop"
             app:cornerRadius="@{20f}"
-            app:imageUrl="@{modData.image}"
+            app:imageUrl="@{modData.gameAccountIcon}"
             tools:src="@drawable/mod_test_pic2" />
 
         <ImageView
@@ -45,7 +45,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/idp_70"
+            android:layout_height="@dimen/idp_60"
             android:layout_gravity="bottom"
             android:background="@drawable/bg_bottom_20_radius"
             android:orientation="horizontal"
@@ -53,35 +53,39 @@
             android:paddingVertical="@dimen/idp_8"
             android:weightSum="10">
 
-            <TextView
-                android:id="@+id/game_name"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/idp_10"
-                android:layout_toLeftOf="@id/tv_val_tag"
-                android:ellipsize="end"
-                android:gravity="start"
-                android:maxLines="1"
-                android:text="《英雄联盟》"
-                android:textColor="@color/white"
-                android:textSize="@dimen/isp_15"
-                tools:text="《英雄联盟》" />
+                android:layout_centerVertical="true"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/game_desc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/game_name"
-                android:layout_marginTop="@dimen/idp_2"
-                android:layout_marginEnd="@dimen/idp_10"
-                android:layout_toLeftOf="@id/tv_val_tag"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="@{modData.title}"
-                android:textColor="@color/white"
-                android:textSize="@dimen/isp_12"
-                tools:text="《王者荣耀》23区，黄金段位" />
+                <TextView
+                    android:id="@+id/game_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/idp_10"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:maxLines="1"
+                    android:text="@{modData.gameName}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/isp_15"
+                    tools:text="《英雄联盟》" />
 
+                <TextView
+                    android:id="@+id/game_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/idp_2"
+                    android:layout_marginEnd="@dimen/idp_10"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@{modData.characteristic}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/isp_12"
+                    tools:text="《王者荣耀》23区，黄金段位" />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/game_money"
@@ -89,10 +93,11 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
+                android:text="@{`¥ ` + modData.money}"
                 android:textColor="#FF5722"
                 android:textSize="@dimen/isp_20"
                 android:textStyle="bold"
-                android:text="¥ 88888" />
+                tools:text="¥ 88888" />
 
             <TextView
                 android:id="@+id/tv_val_tag"

@@ -194,17 +194,25 @@
                                 app:bvp_indicator_visibility="visible"
                                 app:bvp_round_corner="@dimen/idp_20" />
 
+                            <com.zhpan.indicator.IndicatorView
+                                android:layout_marginTop="@dimen/idp_10"
+                                android:layout_gravity="center_horizontal"
+                                android:id="@+id/indicator_view"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
                             <androidx.constraintlayout.widget.ConstraintLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:padding="@dimen/idp_10">
+                                android:padding="@dimen/idp_10"
+                                android:visibility="gone">
 
                                 <androidx.constraintlayout.widget.ConstraintLayout
                                     android:id="@+id/card_top"
                                     android:layout_width="match_parent"
                                     android:layout_height="@dimen/idp_70"
-                                    android:onClick="@{()->click.img1()}"
                                     android:background="@drawable/mod_fragmen_main_bg_1"
+                                    android:onClick="@{()->click.img1()}"
                                     android:paddingHorizontal="@dimen/idp_20"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
@@ -248,8 +256,8 @@
                                         android:id="@+id/img_pink"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:paddingEnd="@dimen/idp_30"
                                         android:onClick="@{()->click.img2()}"
+                                        android:paddingEnd="@dimen/idp_30"
                                         android:src="@drawable/mod_fragmen_main_bg_img_2"
                                         app:layout_constraintBottom_toBottomOf="parent"
                                         app:layout_constraintStart_toStartOf="parent"
@@ -278,8 +286,8 @@
                                     android:layout_height="@dimen/idp_110"
                                     android:layout_marginStart="@dimen/idp_5"
                                     android:layout_marginTop="@dimen/idp_10"
-                                    android:onClick="@{()->click.img3()}"
                                     android:background="@drawable/mod_fragmen_main_bg_3"
+                                    android:onClick="@{()->click.img3()}"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintHorizontal_weight="1"
                                     app:layout_constraintStart_toEndOf="@id/card_bottom_left"
@@ -310,13 +318,36 @@
 
                             </androidx.constraintlayout.widget.ConstraintLayout>
 
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/idp_10"
+                                android:layout_marginTop="@dimen/idp_15"
+                                android:ellipsize="end"
+                                android:gravity="center_vertical"
+                                android:maxLines="1"
+                                android:onClick="@{()->click.test()}"
+                                android:text="热门游戏估值"
+                                android:textColor="@color/text_default_color"
+                                android:textSize="@dimen/isp_18"
+                                android:textStyle="bold" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerViewHotGame"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/idp_15"
+                                android:nestedScrollingEnabled="false"
+                                android:overScrollMode="never"
+                                tools:itemCount="1"
+                                tools:listitem="@layout/mod_item_gujia_game_hot" />
 
                             <TextView
                                 android:id="@+id/titleText"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/idp_10"
-                                android:layout_marginTop="@dimen/idp_20"
+                                android:layout_marginTop="@dimen/idp_15"
                                 android:ellipsize="end"
                                 android:gravity="center_vertical"
                                 android:maxLines="1"
@@ -327,7 +358,6 @@
                                 android:textStyle="bold"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@id/text_ranking" />
-
 
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/recyclerView"
@@ -344,7 +374,6 @@
 
 
                             <TextView
-                                android:visibility="gone"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/idp_10"
@@ -357,17 +386,18 @@
                                 android:textColor="@color/text_default_color"
                                 android:textSize="@dimen/isp_18"
                                 android:textStyle="bold"
+                                android:visibility="gone"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@id/text_ranking" />
 
                             <androidx.recyclerview.widget.RecyclerView
-                                android:visibility="gone"
                                 android:id="@+id/recyclerView2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/idp_10"
                                 android:nestedScrollingEnabled="false"
                                 android:overScrollMode="never"
+                                android:visibility="gone"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@id/saishiText"

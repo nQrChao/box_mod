@@ -41,7 +41,7 @@
             android:id="@+id/tv_money"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="¥ 5588"
+            android:text="@{`¥ ` + modData.money}"
             android:textColor="#FF5722"
             android:textSize="@dimen/isp_20"
             android:textStyle="bold"
@@ -68,7 +68,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/idp_5"
-            android:text="区服: 64区 累充金额: 4499.25元"
+            android:text="@{modData.characteristic}"
             android:textColor="#999999"
             android:textSize="@dimen/isp_12"
             app:layout_constraintEnd_toEndOf="parent"
@@ -93,7 +93,8 @@
                 android:background="#EEEEEE"
                 android:scaleType="centerCrop"
                 app:cornerRadius="@{10f}"
-                app:imageUrl="@{modData.image}"
+                app:imageUrl="@{modData.gameAccountIcon}"
+                app:hideOnNullOrError="@{true}"
                 tools:src="@drawable/mod_test_pic2" />
 
             <ImageView
@@ -105,7 +106,8 @@
                 android:background="#EEEEEE"
                 android:scaleType="centerCrop"
                 app:cornerRadius="@{10f}"
-                app:imageUrl="@{modData.image}"
+                app:imageUrl="@{modData.fileNames.size() > 1 ? modData.fileNames.get(1) : null}"
+                app:hideOnNullOrError="@{true}"
                 tools:src="@drawable/mod_test_pic2" />
 
             <ImageView
@@ -117,7 +119,8 @@
                 android:background="#EEEEEE"
                 android:scaleType="centerCrop"
                 app:cornerRadius="@{10f}"
-                app:imageUrl="@{modData.image}"
+                app:imageUrl="@{modData.fileNames.size() > 2 ? modData.fileNames.get(2) : null}"
+                app:hideOnNullOrError="@{true}"
                 tools:src="@drawable/mod_test_pic2" />
         </LinearLayout>
 
@@ -126,7 +129,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/idp_10"
-            android:text="@{`估算时间: ` + modData.checkTime}"
+            android:text="@{`估算时间: ` + modData.createTime}"
             android:textColor="#AAAAAA"
             android:textSize="@dimen/isp_12"
             app:layout_constraintStart_toStartOf="parent"
