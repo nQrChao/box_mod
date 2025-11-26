@@ -14,18 +14,19 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="@dimen/idp_90"
+
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_view_root"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/idp_10"
-            android:layout_marginBottom="@dimen/idp_4"
+            android:layout_marginBottom="@dimen/idp_10"
             app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="@dimen/idp_10"
+            app:cardCornerRadius="@dimen/idp_15"
             app:cardElevation="@dimen/idp_1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -36,10 +37,11 @@
                 android:id="@+id/textRootView"
                 android:layout_width="@dimen/idp_90"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:background="@drawable/bg_ffffff_10_radius"
                 android:orientation="vertical"
                 android:paddingHorizontal="@dimen/idp_8"
-                android:paddingTop="@dimen/idp_50"
+                android:paddingTop="@dimen/idp_55"
                 android:paddingBottom="@dimen/idp_10">
 
                 <TextView
@@ -52,7 +54,7 @@
                     android:maxLines="1"
                     android:text="@{modData.name}"
                     android:textColor="#253E75"
-                    android:textSize="@dimen/isp_13"
+                    android:textSize="@dimen/isp_12"
                     android:textStyle="bold"
                     tools:text="王者荣耀" />
 
@@ -61,10 +63,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/idp_25"
                     android:layout_marginTop="@dimen/idp_5"
+                    android:layout_marginBottom="@dimen/idp_5"
                     android:background="@drawable/gujia_item_btn_bg"
                     android:text="我要估值"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/isp_12"
+                    android:textSize="@dimen/isp_11"
                     android:textStyle="bold" />
 
 
@@ -73,8 +76,8 @@
 
         <ImageView
             android:id="@+id/icon"
-            android:layout_width="@dimen/idp_55"
-            android:layout_height="@dimen/idp_55"
+            android:layout_width="@dimen/idp_60"
+            android:layout_height="@dimen/idp_60"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/idp_3"
             android:elevation="@dimen/idp_4"

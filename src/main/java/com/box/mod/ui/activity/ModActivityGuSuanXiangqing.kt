@@ -5,8 +5,10 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.animation.AnimationUtils
+import androidx.core.graphics.toColorInt
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.box.base.base.activity.BaseVmDbActivity
@@ -16,11 +18,12 @@ import com.box.base.ext.modRequestWithMsg
 import com.box.base.ext.parseModStateWithMsg
 import com.box.base.network.NetState
 import com.box.base.state.ModResultStateWithMsg
-import com.box.common.data.GameValuationCommitRequest
 import com.box.common.data.model.ModDataBean
 import com.box.common.data.model.ModValuationCommitBean
 import com.box.common.eventViewModel
 import com.box.common.network.apiService
+import com.box.common.toSafeArrayList
+import com.box.common.toSafeMutableList
 import com.box.common.ui.adapter.SpacingItemDecorator
 import com.box.common.utils.ext.logsE
 import com.box.mod.BR.modData
@@ -31,6 +34,7 @@ import com.box.mod.databinding.ModActivityMyGusuanXiangqingBinding
 import com.box.mod.databinding.ModItemCustomFormXiangqingBinding
 import com.box.mod.databinding.ModItemCustomFormXiangqingPicBinding
 import com.box.mod.databinding.ModItemGujiaGameReBinding
+import com.box.mod.ui.activity.image.ModActivityPreviewImageVideo
 import com.box.other.blankj.utilcode.util.ActivityUtils
 import com.box.other.blankj.utilcode.util.GsonUtils
 import com.box.other.hjq.toast.Toaster
@@ -39,12 +43,13 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseDataBindingHolder
 import com.box.com.R as RC
 
-class ModActivityGuSuanXiangqing : BaseVmDbActivity<ModActivityGuSuanXiangqing.Model, ModActivityMyGusuanXiangqingBinding>() {
+class ModActivityGuSuanXiangqing :
+    BaseVmDbActivity<ModActivityGuSuanXiangqing.Model, ModActivityMyGusuanXiangqingBinding>() {
     private val fromsAdapter = ModXiangqingFromsAdapter()
     private val gamesAdapter = ModXiangqingGamesAdapter(mutableListOf())
 
     private var picAdapter = ModXiangqingPicAdapter(mutableListOf())
-
+    var photoList: ArrayList<Any> = ArrayList()
 
     override fun layoutId(): Int = R.layout.mod_activity_my_gusuan_xiangqing
 
@@ -69,15 +74,15 @@ class ModActivityGuSuanXiangqing : BaseVmDbActivity<ModActivityGuSuanXiangqing.M
         }
         mViewModel.isLogin.set(eventViewModel.isLogin.value ?: false)
         mViewModel.getGameListData()
-//        if (intent.getStringExtra(INTENT_KEY_TYPE_GUJIA_ID) != null) {
-//            mViewModel.postValuationCommitDetail(
-//                intent.getStringExtra(INTENT_KEY_TYPE_GUJIA_ID) ?: ""
-//            )
-//            mViewModel.getGameListData()
-//        }
+        if (intent.getStringExtra(INTENT_KEY_TYPE_GUJIA_ID) != null) {
+            mViewModel.postValuationCommitDetail(
+                intent.getStringExtra(INTENT_KEY_TYPE_GUJIA_ID) ?: ""
+            )
+            //mViewModel.getGameListData()
+        }
 
         mDataBinding.recyclerView3.run {
-            layoutManager =  LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+            layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
             addItemDecoration(SpacingItemDecorator((resources.displayMetrics.density * 3).toInt()))
             adapter = gamesAdapter
         }
@@ -88,7 +93,7 @@ class ModActivityGuSuanXiangqing : BaseVmDbActivity<ModActivityGuSuanXiangqing.M
         }
 
         gamesAdapter.setOnItemChildClickListener { adapter, view, position ->
-            if(view.id == R.id.commit) {
+            if (view.id == R.id.commit) {
                 eventViewModel.setMainCurrentItem.value = 1
                 eventViewModel.guJiaCurrentItem.value = position
                 eventViewModel.closeMyGujiaActivity.value = true
@@ -96,6 +101,19 @@ class ModActivityGuSuanXiangqing : BaseVmDbActivity<ModActivityGuSuanXiangqing.M
             }
         }
 
+
+
+        getTitleBar()?.setBackgroundColor("#F9F9F9".toColorInt())
+
+        mDataBinding.recyclerView2.run {
+            layoutManager = GridLayoutManager(context, 3)
+            addItemDecoration(SpacingItemDecorator((resources.displayMetrics.density * 3).toInt()))
+            adapter = picAdapter
+        }
+
+        picAdapter.setOnItemClickListener { adapter, view, position ->
+            ModActivityPreviewImageVideo.start(this, photoList, position)
+        }
 
 
     }
@@ -125,8 +143,8 @@ class ModActivityGuSuanXiangqing : BaseVmDbActivity<ModActivityGuSuanXiangqing.M
                     logsE(GsonUtils.toJson(data))
                     mViewModel.modData.value = data
                     fromsAdapter.updateList(data?.froms ?: mutableListOf())
-                    picAdapter.setList(data?.fileNames ?: mutableListOf())
-                    tryMatchGameIcon()
+                    photoList = data?.gameOwnScreenshots.toSafeArrayList()
+                    picAdapter.setList(data?.gameOwnScreenshots.toSafeMutableList())
                 },
                 onError = {
                     Toaster.show(it.msg)
@@ -171,19 +189,20 @@ class ModActivityGuSuanXiangqing : BaseVmDbActivity<ModActivityGuSuanXiangqing.M
             logsE("未能在 gameList 中找到匹配的 GameID: $gameIdToMatch")
         }
     }
+
     /**********************************************Click**************************************************/
 
     inner class ProxyClick {
 
     }
 
-    class Model : BaseViewModel(title = "账号估算结果") {
+    class Model : BaseViewModel(title = "估值详情", titleLine = false) {
         var isLogin = BooleanObservableField(false)
-        var modData = MutableLiveData<GameValuationCommitRequest>()
+        var modData = MutableLiveData<ModDataBean>()
         var gameList = MutableLiveData<MutableList<ModDataBean>>()
         var gameListResult = MutableLiveData<ModResultStateWithMsg<MutableList<ModDataBean>>>()
         var postValuationCommitDetailResult =
-            MutableLiveData<ModResultStateWithMsg<GameValuationCommitRequest>>()
+            MutableLiveData<ModResultStateWithMsg<ModDataBean>>()
 
         fun postValuationCommitDetail(id: String) {
             modRequestWithMsg(

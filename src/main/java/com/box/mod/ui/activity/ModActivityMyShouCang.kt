@@ -103,7 +103,7 @@ class ModActivityMyShouCang : BaseModVmDbActivity<ModActivityMyShouCang.Model, M
 
         rankList = MMKVConfig.getGameRank()
         randomNameList = MMKVConfig.getShouCangNameList()
-
+        mViewModel.hasData.set(!randomNameList.isEmpty())
         mDataBinding.recyclerView.run {
             layoutManager = GridLayoutManager(context, 1)
             addItemDecoration(SpacingItemDecorator((resources.displayMetrics.density * 5).toInt()))
@@ -191,7 +191,7 @@ class ModActivityMyShouCang : BaseModVmDbActivity<ModActivityMyShouCang.Model, M
 
 
     /**********************************************Model**************************************************/
-    class Model : BaseViewModel(title = "我的收藏") {
+    class Model : BaseViewModel(title = "我的角色名收藏") {
         var hasData = BooleanObservableField(false)
         var isSelect = IntObservableField(0)
 

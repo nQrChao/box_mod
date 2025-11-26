@@ -134,25 +134,20 @@
                                     android:layout_width="@dimen/idp_60"
                                     android:layout_height="@dimen/idp_60"
                                     android:layout_gravity="center"
-                                    android:layout_marginStart="@dimen/idp_10"
-                                    android:src="@drawable/mod_fragmen_main_bg_img_5" />
+                                    android:layout_marginStart="@dimen/idp_5"
+                                    android:src="@drawable/mod_fragmen_main_bg_img_6" />
 
                                 <com.box.common.ui.view.DrawableTextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
+                                    android:layout_marginStart="@dimen/idp_3"
                                     android:ellipsize="end"
-                                    android:maxLines="1"
-                                    android:text="游动攻略"
+                                    android:text="游戏账号\n估值工具"
                                     android:textColor="@color/white"
-                                    android:textSize="@dimen/isp_17"
+                                    android:textSize="@dimen/isp_16"
                                     android:textStyle="bold"
-                                    app:drawableHeight="@dimen/idp_60"
-                                    app:drawableWidth="@dimen/idp_60"
-                                    app:layout_constraintBottom_toBottomOf="@id/user_icon"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintTop_toTopOf="@id/user_icon"
-                                    tools:text="游动攻略" />
+                                    tools:text="游戏账号\n估值工具" />
 
                             </LinearLayout>
 
@@ -174,27 +169,57 @@
                                     android:layout_height="@dimen/idp_60"
                                     android:layout_gravity="center"
                                     android:layout_marginStart="@dimen/idp_10"
-                                    android:src="@drawable/mod_fragmen_main_bg_img_4" />
+                                    android:src="@drawable/mod_fragmen_main_bg_img_7" />
 
                                 <com.box.common.ui.view.DrawableTextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
+                                    android:layout_marginStart="@dimen/idp_10"
                                     android:ellipsize="end"
-                                    android:maxLines="1"
-                                    android:text="估算问答"
+                                    android:text="角色名\n生成器"
                                     android:textColor="@color/white"
-                                    android:textSize="@dimen/isp_17"
+                                    android:textSize="@dimen/isp_16"
                                     android:textStyle="bold"
-                                    app:drawableHeight="@dimen/idp_60"
-                                    app:drawableWidth="@dimen/idp_60"
-                                    app:layout_constraintBottom_toBottomOf="@id/user_icon"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintTop_toTopOf="@id/user_icon"
-                                    tools:text="估算问答" />
+                                    tools:text="角色名\n生成器" />
 
                             </LinearLayout>
 
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="@dimen/idp_10"
+                            android:layout_weight="1"
+                            android:background="@drawable/mod_fragmen_main_bg_3"
+                            android:onClick="@{()->click.img3()}"
+                            android:orientation="horizontal"
+                            android:paddingHorizontal="@dimen/idp_5"
+                            android:weightSum="10">
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/idp_50"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="@dimen/idp_10"
+                                android:layout_weight="4"
+                                android:src="@drawable/mod_fragmen_main_bg_img_8" />
+
+                            <com.box.common.ui.view.DrawableTextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="6"
+                                android:ellipsize="end"
+                                android:onClick="@{()->click.img3()}"
+                                android:maxLines="1"
+                                android:text="游戏账号估值常见问答"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/isp_16"
+                                android:textStyle="bold"
+                                tools:text="游戏账号估值常见问答" />
 
                         </LinearLayout>
 

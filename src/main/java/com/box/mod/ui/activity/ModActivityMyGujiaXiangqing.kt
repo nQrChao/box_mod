@@ -17,7 +17,6 @@ import com.box.base.ext.modRequestWithMsg
 import com.box.base.ext.parseModStateWithMsg
 import com.box.base.network.NetState
 import com.box.base.state.ModResultStateWithMsg
-import com.box.common.data.GameValuationCommitRequest
 import com.box.common.data.model.ModDataBean
 import com.box.common.data.model.ModValuationCommitBean
 import com.box.common.eventViewModel
@@ -201,11 +200,11 @@ class ModActivityMyGujiaXiangqing :
 
     class Model : BaseViewModel(title = "账号估算结果") {
         var isLogin = BooleanObservableField(false)
-        var modData = MutableLiveData<GameValuationCommitRequest>()
+        var modData = MutableLiveData<ModDataBean>()
         var gameList = MutableLiveData<MutableList<ModDataBean>>()
         var gameListResult = MutableLiveData<ModResultStateWithMsg<MutableList<ModDataBean>>>()
         var postValuationCommitDetailResult =
-            MutableLiveData<ModResultStateWithMsg<GameValuationCommitRequest>>()
+            MutableLiveData<ModResultStateWithMsg<ModDataBean>>()
 
         fun postValuationCommitDetail(id: String) {
             modRequestWithMsg(

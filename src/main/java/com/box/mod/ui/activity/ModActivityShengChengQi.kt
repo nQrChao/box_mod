@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.box.base.base.action.StatusAction
 import com.box.base.base.activity.BaseVmDbActivity
 import com.box.base.base.viewmodel.BaseViewModel
-import com.box.base.callback.databind.BooleanObservableField
 import com.box.base.callback.databind.IntObservableField
 import com.box.base.callback.databind.StringObservableField
 import com.box.base.ext.modRequestWithMsg
@@ -30,7 +29,6 @@ import com.box.common.ui.adapter.SpacingItemDecorator
 import com.box.common.ui.layout.StatusLayout
 import com.box.common.utils.ext.logsE
 import com.box.common.utils.mmkv.MMKVConfig
-import com.box.common.utils.mmkv.MMKVConfig.gameRankList
 import com.box.mod.BR.modData
 import com.box.mod.BR.position
 import com.box.mod.R
@@ -178,6 +176,16 @@ class ModActivityShengChengQi : BaseVmDbActivity<ModActivityShengChengQi.Model, 
         showLoading()
         mViewModel.getRoleTypeData()
 
+
+        mDataBinding.titleBar.rightView.setOnClickListener {
+            if (isLogin()) {
+                ModActivityMyShouCang.start(appContext)
+            } else {
+                Toaster.show("请先登录")
+                ModActivityLogin.start(appContext)
+            }
+        }
+
     }
 
 
@@ -261,12 +269,7 @@ class ModActivityShengChengQi : BaseVmDbActivity<ModActivityShengChengQi.Model, 
 
     override fun onRightClick(view: TitleBar) {
         super.onRightClick(view)
-        if (isLogin()) {
-            ModActivityMyShouCang.start(appContext)
-        } else {
-            Toaster.show("请先登录")
-            ModActivityLogin.start(appContext)
-        }
+
     }
 
     override fun onResume() {

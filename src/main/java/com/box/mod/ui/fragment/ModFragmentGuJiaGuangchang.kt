@@ -21,7 +21,6 @@ import com.box.common.data.model.ModDataBean
 import com.box.common.data.model.ModUserInfo
 import com.box.common.eventViewModel
 import com.box.common.network.apiService
-import com.box.common.ui.activity.CommonActivityRichText
 import com.box.common.ui.adapter.SpacingItemDecorator
 import com.box.common.ui.layout.StatusLayout
 import com.box.common.utils.ext.logsE
@@ -33,6 +32,7 @@ import com.box.mod.databinding.ModItemGameEventBinding
 import com.box.mod.ui.activity.ModActivityGuSuanXiangqing
 import com.box.mod.ui.activity.ModActivityLogin
 import com.box.mod.ui.activity.ModActivityMyGuJiaShuoming
+import com.box.mod.ui.activity.ModActivityShengChengQi
 import com.box.other.blankj.utilcode.util.GsonUtils
 import com.box.other.hjq.toast.Toaster
 import com.box.other.immersionbar.immersionBar
@@ -42,7 +42,9 @@ import com.zhpan.bannerview.indicator.DrawableIndicator
 import com.zhpan.indicator.base.IIndicator
 
 
-class ModFragmentGuJiaGuangchang : BaseTitleBarFragment<ModFragmentGuJiaGuangchang.Model, ModFragmentGujiaGuangchangBinding>(), StatusAction {
+class ModFragmentGuJiaGuangchang :
+    BaseTitleBarFragment<ModFragmentGuJiaGuangchang.Model, ModFragmentGujiaGuangchangBinding>(),
+    StatusAction {
     override val mViewModel: Model by viewModels()
     override fun layoutId(): Int = R.layout.mod_fragment_gujia_guangchang
 
@@ -62,8 +64,7 @@ class ModFragmentGuJiaGuangchang : BaseTitleBarFragment<ModFragmentGuJiaGuangcha
      * 懒加载
      */
     override fun lazyLoadData() {
-        showLoading()
-        mViewModel.getGameEventListData(currentPage, pageSize)
+        mViewModel.getValuationCommitSquareData(0,"",currentPage, pageSize)
     }
 
     /**
@@ -95,7 +96,7 @@ class ModFragmentGuJiaGuangchang : BaseTitleBarFragment<ModFragmentGuJiaGuangcha
         }
         gameEventAdapter.addChildClickViewIds(R.id.button)
         gameEventAdapter.setOnItemClickListener { adapter, view, position ->
-            ModActivityGuSuanXiangqing.start(appContext,"1")
+            ModActivityGuSuanXiangqing.start(appContext, "1")
 //            clickData = adapter.data[position] as ModDataBean
 //            mViewModel.getEventDetailData(clickData.id)
         }
@@ -122,11 +123,11 @@ class ModFragmentGuJiaGuangchang : BaseTitleBarFragment<ModFragmentGuJiaGuangcha
         mDataBinding.refreshLayout.apply {
             setOnRefreshListener {
                 currentPage = 1
-                mViewModel.getGameEventListData(currentPage, pageSize)
+                mViewModel.getValuationCommitSquareData(0,"",currentPage, pageSize)
             }
             setOnLoadMoreListener {
                 currentPage++
-                mViewModel.getGameEventListData(currentPage, pageSize)
+                mViewModel.getValuationCommitSquareData(0,"",currentPage, pageSize)
             }
         }
 
@@ -135,7 +136,7 @@ class ModFragmentGuJiaGuangchang : BaseTitleBarFragment<ModFragmentGuJiaGuangcha
 
     @SuppressLint("NotifyDataSetChanged")
     override fun createObserver() {
-        mViewModel.gameEventListResult.observe(this) { resultState ->
+        mViewModel.valuationCommitSquareResult.observe(this) { resultState ->
             parseModStateWithMsg(
                 resultState,
                 onSuccess = { data, msg ->
@@ -186,21 +187,9 @@ class ModFragmentGuJiaGuangchang : BaseTitleBarFragment<ModFragmentGuJiaGuangcha
                     Toaster.show(it.msg)
                 }
             )
-            showComplete()
         }
 
-        mViewModel.gameEventDetailResult.observe(this) { resultState ->
-            parseModStateWithMsg(
-                resultState,
-                onSuccess = { data, msg ->
-                    logsE(GsonUtils.toJson(data))
-                    CommonActivityRichText.start(appContext, clickData.title, data?.content ?: "", data?.views ?: "-1")
-                },
-                onError = {
-                    Toaster.show(it.msg)
-                }
-            )
-        }
+
 
         appViewModel.modUserInfo.observe(this) {
             mViewModel.modUserInfo.value = it
@@ -239,12 +228,17 @@ class ModFragmentGuJiaGuangchang : BaseTitleBarFragment<ModFragmentGuJiaGuangcha
         }
 
         fun img1() {
-            eventViewModel.setMainCurrentItem.value = 3
+            eventViewModel.setMainCurrentItem.value = 1
         }
 
         fun img2() {
+            ModActivityShengChengQi.start(appContext)
+        }
+
+        fun img3() {
             ModActivityMyGuJiaShuoming.start(appContext)
         }
+
 
         fun confirm() {
 
@@ -299,20 +293,19 @@ class ModFragmentGuJiaGuangchang : BaseTitleBarFragment<ModFragmentGuJiaGuangcha
         var modUserInfo = MutableLiveData<ModUserInfo>()
 
         var pic = IntObservableField(0)
-        var gameEventListResult = MutableLiveData<ModResultStateWithMsg<MutableList<ModDataBean>>>()
-        var gameEventDetailResult = MutableLiveData<ModResultStateWithMsg<ModDataBean>>()
+        var valuationCommitSquareResult = MutableLiveData<ModResultStateWithMsg<MutableList<ModDataBean>>>()
 
-        fun getGameEventListData(pageNum: Int, pageSize: Int) {
+        fun getValuationCommitSquareData(
+            checkedState: Int,
+            gameName: String,
+            pageNum: Int,
+            pageSize: Int
+        ) {
             modRequestWithMsg({
-                apiService.getNewsList(pageNum, pageSize)
-            }, gameEventListResult)
+                apiService.getValuationCommitSquare(checkedState, gameName, pageNum, pageSize)
+            }, valuationCommitSquareResult)
         }
 
-        fun getEventDetailData(id: Int) {
-            modRequestWithMsg({
-                apiService.getNewsDetailById(id)
-            }, gameEventDetailResult)
-        }
 
     }
 

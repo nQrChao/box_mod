@@ -42,6 +42,18 @@
                 android:textSize="@dimen/isp_16"
                 android:textStyle="bold" />
 
+            <ImageView
+                android:layout_width="@dimen/idp_25"
+                android:layout_height="@dimen/idp_25"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="@dimen/idp_15"
+                android:onClick="@{()-> click.setting()}"
+                android:src="@drawable/mod_me_setting_ic"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/message" />
+
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/lottieMessage"
                 android:layout_width="@dimen/idp_35"
@@ -174,6 +186,20 @@
                                     android:textStyle="bold"
                                     tools:text="我的账号估算" />
 
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/messageTitle"
+                                    android:layout_gravity="start"
+                                    android:layout_marginStart="@dimen/idp_10"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="账号估值审核结果"
+                                    android:textColor="#7DB5E6"
+                                    android:textSize="@dimen/isp_11"
+                                    android:textStyle="bold"
+                                    tools:text="账号估值审核结果" />
+
                             </LinearLayout>
 
                             <LinearLayout
@@ -187,7 +213,6 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="0dp"
                                     android:layout_weight="4.5"
-
                                     android:background="@drawable/mod_wode_btn_bg_2"
                                     android:onClick="@{()-> click.jueseShoucang()}"
                                     android:orientation="vertical"
@@ -196,9 +221,9 @@
                                     <TextView
                                         android:id="@+id/shoucangTitle"
                                         android:layout_width="wrap_content"
-                                        android:layout_height="match_parent"
+                                        android:layout_height="wrap_content"
                                         android:layout_gravity="start"
-                                        android:layout_marginTop="@dimen/idp_10"
+                                        android:layout_marginTop="@dimen/idp_7"
                                         android:ellipsize="end"
                                         android:maxLines="1"
                                         android:text="我的收藏"
@@ -206,6 +231,19 @@
                                         android:textSize="@dimen/isp_14"
                                         android:textStyle="bold"
                                         tools:text="我的收藏" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/shoucangTitle"
+                                        android:layout_gravity="start"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:text="我的角色名收藏"
+                                        android:textColor="#7DB5E6"
+                                        android:textSize="@dimen/isp_10"
+                                        android:textStyle="bold"
+                                        tools:text="我的角色名收藏" />
 
                                     <Button
                                         android:id="@+id/shoucangRed"
@@ -236,9 +274,9 @@
                                     <TextView
                                         android:id="@+id/messageTitle"
                                         android:layout_width="wrap_content"
-                                        android:layout_height="match_parent"
+                                        android:layout_height="wrap_content"
                                         android:layout_gravity="start"
-                                        android:layout_marginTop="@dimen/idp_10"
+                                        android:layout_marginTop="@dimen/idp_7"
                                         android:ellipsize="end"
                                         android:maxLines="1"
                                         android:text="我的消息"
@@ -246,6 +284,19 @@
                                         android:textSize="@dimen/isp_14"
                                         android:textStyle="bold"
                                         tools:text="我的消息" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/messageTitle"
+                                        android:layout_gravity="start"
+                                        android:ellipsize="end"
+                                        android:maxLines="1"
+                                        android:text="系统通知消息"
+                                        android:textColor="#7DB5E6"
+                                        android:textSize="@dimen/isp_10"
+                                        android:textStyle="bold"
+                                        tools:text="系统通知消息" />
 
                                     <Button
                                         android:id="@+id/messageRed"
@@ -288,6 +339,16 @@
                             app:bar_rightDrawable="@drawable/mod_right_return"
                             app:bar_rightDrawableSize="@dimen/idp_20" />
 
+                        <com.box.common.ui.layout.SettingBar
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/idp_10"
+                            android:background="@drawable/transparent_selector"
+                            android:onClick="@{()-> click.wenda()}"
+                            app:bar_leftText="游戏账号估值问答"
+                            app:bar_leftTextStyle="bold"
+                            app:bar_rightDrawable="@drawable/mod_right_return"
+                            app:bar_rightDrawableSize="@dimen/idp_20" />
 
                         <com.box.common.ui.layout.SettingBar
                             android:layout_width="match_parent"
@@ -357,7 +418,7 @@
                             android:layout_marginTop="@dimen/idp_10"
                             android:background="@drawable/transparent_selector"
                             android:onClick="@{()-> click.xiugaimima()}"
-                            android:visibility="@{vm.modUserInfo == null?View.GONE:View.VISIBLE}"
+                            android:visibility="gone"
                             app:bar_leftText="修改密码"
                             app:bar_leftTextStyle="bold"
                             app:bar_rightDrawable="@drawable/mod_right_return"

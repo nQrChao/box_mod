@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.LayoutInflater
+import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -25,6 +26,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.box.base.base.fragment.BaseTitleBarFragment
 import com.box.base.base.viewmodel.BaseViewModel
+import com.box.base.callback.databind.BooleanObservableField
 import com.box.base.callback.databind.IntObservableField
 import com.box.base.callback.databind.StringObservableField
 import com.box.base.ext.modRequestWithMsg
@@ -36,6 +38,7 @@ import com.box.common.appViewModel
 import com.box.common.data.GameValuationCommitRequest
 import com.box.common.data.model.ModDataBean
 import com.box.common.data.model.ModImageUriBean
+import com.box.common.data.model.ModLocalGuJiaBean
 import com.box.common.data.model.ModUserInfo
 import com.box.common.data.model.ModValuationCommitBean
 import com.box.common.data.model.UploadResponseString
@@ -118,6 +121,10 @@ class ModFragmentGuJiaReal2 :
         }
     }
 
+    override fun lazyLoadData() {
+        mViewModel.getGameListData()
+    }
+
     @RequiresApi(Build.VERSION_CODES.N)
     @SuppressLint("SetTextI18n", "UseCompatLoadingForDrawables")
     override fun initView(savedInstanceState: Bundle?) {
@@ -131,9 +138,11 @@ class ModFragmentGuJiaReal2 :
         MMKVConfig.userInfo?.let { savedUser ->
             eventViewModel.isLogin.value = true
             appViewModel.modUserInfo.value = savedUser
+            mViewModel.getValuationCommitUserTodayCountData()
         }
         /**********************************************************************************/
         mDataBinding.tabLayout.observeIndexChange { fromIndex, toIndex, reselect, fromUser ->
+            updateBottomBtnState(toIndex)
             if (fromUser) {
                 // 清空数据 ---
                 clearData()
@@ -210,6 +219,18 @@ class ModFragmentGuJiaReal2 :
 
 
     override fun createObserver() {
+        mViewModel.valuationCommitUserTodayCountResult.observe(this) { resultState ->
+            parseModStateWithMsg(
+                resultState,
+                onSuccess = { data, msg ->
+                    logsE(GsonUtils.toJson(data))
+                    mViewModel.count.set(data?.count)
+                },
+                onError = {
+                    Toaster.show(it.msg)
+                }
+            )
+        }
         mViewModel.gameListResult.observe(this) { resultState ->
             parseModStateWithMsg(
                 resultState,
@@ -233,6 +254,7 @@ class ModFragmentGuJiaReal2 :
                     } else {
                         commitViewAdapter.setList(null)
                     }
+                    mViewModel.showTip.set(true)
                     commitViewAdapter.resetAnimationState()
                 },
                 onError = {
@@ -259,6 +281,15 @@ class ModFragmentGuJiaReal2 :
             if (it.isNotEmpty()) {
                 if (!isInitialSelectionHandled) {
                     isInitialSelectionHandled = true
+                    val targetName = eventViewModel.guJiaStringCurrentItem.value
+                    if (!targetName.isNullOrEmpty()) {
+                        val nameIndex = it.indexOfFirst { bean -> bean.name == targetName }
+                        if (nameIndex != -1) {
+                            handleTabSelectionAndRequest(nameIndex, it)
+                            eventViewModel.guJiaStringCurrentItem.value = null
+                            return@observe // 处理完了直接返回，不再处理下面的 Int 逻辑
+                        }
+                    }
                     //获取 EventViewModel 中的指令值
                     val targetIndex = eventViewModel.guJiaCurrentItem.value
                     //如果有有效的指令值，则使用它；否则使用默认值 0
@@ -289,6 +320,17 @@ class ModFragmentGuJiaReal2 :
                 handleTabSelectionAndRequest(finalIndex, gameList)
                 // 重置 UnPeekLiveData，防止下次 Fragment Resume 时重复触发
                 eventViewModel.guJiaCurrentItem.value = null
+            }
+        }
+
+        eventViewModel.guJiaStringCurrentItem.observe(this) { target ->
+            if (target.isNullOrEmpty()) return@observe
+            val gameList = mViewModel.gameList.value
+            if (gameList.isNullOrEmpty()) return@observe
+            val index = gameList.indexOfFirst { it.name == target }
+            if (index != -1) {
+                handleTabSelectionAndRequest(index, gameList)
+                eventViewModel.guJiaStringCurrentItem.value = null
             }
         }
 
@@ -339,6 +381,7 @@ class ModFragmentGuJiaReal2 :
 
         appViewModel.modUserInfo.observe(this) {
             mViewModel.modUserInfo.value = it
+            mViewModel.getValuationCommitUserTodayCountData()
         }
 
 
@@ -379,9 +422,6 @@ class ModFragmentGuJiaReal2 :
         return list.toMutableList()
     }
 
-    override fun lazyLoadData() {
-        mViewModel.getGameListData()
-    }
 
     override fun onNetworkStateChanged(it: NetState) {
     }
@@ -454,6 +494,10 @@ class ModFragmentGuJiaReal2 :
     }
 
     fun clearData() {
+        commitViewAdapter.data.forEach { item ->
+            item.content = ""
+        }
+        commitViewAdapter.notifyDataSetChanged()
         mViewModel.shuomingText.set("")
         upPicList = MutableList(8) { ModImageUriBean(null) }
         upPicAdapter.setList(upPicList)
@@ -512,11 +556,104 @@ class ModFragmentGuJiaReal2 :
         return formItemsList
     }
 
+
+    /**
+     * 根据选中的 Tab 索引更新底部按钮状态
+     * @param index 当前选中的 Tab 索引
+     */
+    private fun updateBottomBtnState(index: Int) {
+        if (index == 0) {
+            // --- 情况 1：选中第一个 Tab (index 为 0) ---
+            // 显示“快速估值”按钮
+            mDataBinding.btn1.visibility = View.VISIBLE
+            // 将“专业估值”按钮的权重恢复为 1 (与快速估值平分宽度)
+            val params = mDataBinding.btn2.layoutParams as LinearLayout.LayoutParams
+            params.weight = 1f
+            mDataBinding.btn2.layoutParams = params
+        } else {
+            // --- 情况 2：选中其他 Tab ---
+            // 隐藏“快速估值”按钮
+            mDataBinding.btn1.visibility = View.GONE
+            // 将“专业估值”按钮的权重设置为 2 (填满父容器的 weightSum=2)
+            val params = mDataBinding.btn2.layoutParams as LinearLayout.LayoutParams
+            params.weight = 2f
+            mDataBinding.btn2.layoutParams = params
+        }
+    }
+
     /**********************************************Click**************************************************/
     inner class ProxyClick {
+        fun clear() {
+            XPopup.Builder(context)
+                .isDestroyOnDismiss(true)
+                .hasStatusBar(true)
+                .animationDuration(5)
+                .navigationBarColor(ColorUtils.getColor(RC.color.xpop_shadow_color))
+                .isLightStatusBar(true)
+                .hasNavigationBar(true)
+                .asConfirm(
+                    "清空数据", "是否情况所有已填写的数据",
+                    "取消", "确定",
+                    {
+                        clearData()
+                    }, null, false, R.layout.xpopup_confirm_mod
+                ).show()
+        }
+
         fun confirmKuaisu() {
-            getFormItemsList() ?: return
-            showTipPop(getFormContentString(), "1111")
+            // 1. 获取表单数据 (此方法内已经处理了空值校验和UI抖动)
+            val formList = getFormItemsList() ?: return
+            val formListString = getFormContentString()
+            val guJiaBean = MMKVConfig.findGuJiaByName(formListString)
+            if(guJiaBean!=null){
+                showTipPop(formListString, guJiaBean.price)
+            }else{
+                // 2. 定义计算所需的变量
+                var rechargeAmount = 0.0 // 实充金额
+                var roleLevel = 0        // 角色等级
+                var rareItemCount = 0    // 稀有道具个数
+                // 3. 提取数据并进行“数字格式校验”
+                // 定义需要强制校验数字的字段标题
+                val numericFields = listOf("实充金额", "角色等级")
+                for (item in formList) {
+                    if (item.title in numericFields) {
+                        // 尝试转换为 Double，如果转换失败（返回 null），说明不是纯数字
+                        val numValue = item.content.trim().toDoubleOrNull()
+                        if (numValue == null) {
+                            Toaster.show("【${item.title}】必须填写数字")
+                            return // 中断后续计算
+                        }
+                        // 根据标题提取对应的值
+                        when (item.title) {
+                            "实充金额" -> rechargeAmount = numValue
+                            "角色等级" -> roleLevel = numValue.toInt()
+                        }
+                    }
+                }
+                // 4. 执行计算规则
+                // 规则A: 实充金额的 10% ~ 30% (随机)
+                // Random.nextDouble(min, max) 生成 [0.10, 0.30) 之间的随机数
+                val ratioA = kotlin.random.Random.nextDouble(0.10, 0.30)
+                val partA = rechargeAmount * ratioA
+                // 规则B: 稀有道具个数 * 实充金额 * 1% (上限 10%)
+                // 计算比例：数量 * 0.01
+                val rawRareRatio = rareItemCount * 0.01
+                // 取上限：即 rawRareRatio 和 0.10 中取较小的一个
+                val finalRareRatio = rawRareRatio.coerceAtMost(0.10)
+                val partB = rechargeAmount * finalRareRatio
+                // 规则C: (角色等级 50 以上) 实充金额 * 5%
+                val partC = if (roleLevel > 50) rechargeAmount * 0.05 else 0.0
+                // 5. 汇总总价
+                val totalPrice = partA + partB + partC
+                // 6. 格式化价格 (保留两位小数)
+                val priceString = String.format("%.2f", totalPrice)
+
+                MMKVConfig.addGuJiaList(ModLocalGuJiaBean(formListString, priceString))
+                // 7. 弹窗显示
+                showTipPop(formListString, priceString)
+            }
+
+
         }
 
         fun confirm() {
@@ -603,6 +740,8 @@ class ModFragmentGuJiaReal2 :
 
     /**********************************************Model**************************************************/
     class Model : BaseViewModel(title = "游戏账号估值") {
+        var count = IntObservableField(0)
+        var showTip = BooleanObservableField(false)
         val modUserInfo = MutableLiveData<ModUserInfo>()
         var uploadedFileNameList = MutableLiveData<MutableList<String>>()
         var valuationCommitList = MutableLiveData<MutableList<ModValuationCommitBean>>()
@@ -614,6 +753,15 @@ class ModFragmentGuJiaReal2 :
         var customFromResult =
             MutableLiveData<ModResultStateWithMsg<MutableList<ModValuationCommitBean>>>()
         private var customFromDataJob: Job? = null
+
+        var valuationCommitUserTodayCountResult =
+            MutableLiveData<ModResultStateWithMsg<ModDataBean>>()
+
+        fun getValuationCommitUserTodayCountData() {
+            modRequestWithMsg({
+                apiService.getValuationCommitUserTodayCount()
+            }, valuationCommitUserTodayCountResult)
+        }
 
         fun getGameListData() {
             modRequestWithMsg({
@@ -636,6 +784,7 @@ class ModFragmentGuJiaReal2 :
         var postValuationCommitResult = MutableLiveData<ModResultStateWithMsg<Any>>()
 
         fun postValuationCommit(request: GameValuationCommitRequest) {
+            showTip.set(false)
             modRequestWithMsg(
                 { apiService.postValuationCommit(request) },
                 postValuationCommitResult,

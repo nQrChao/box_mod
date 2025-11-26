@@ -90,7 +90,6 @@
                 android:layout_height="match_parent"
                 android:layout_marginEnd="@dimen/idp_3"
                 android:layout_weight="1"
-                android:background="#EEEEEE"
                 android:scaleType="centerCrop"
                 app:cornerRadius="@{10f}"
                 app:imageUrl="@{modData.gameAccountIcon}"

@@ -1,11 +1,7 @@
 <?xml  version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
-
-
-
-
-
+    <string name="required_hint"><font color="#FF0000">*</font> 号为必填项</string>
     <string name="label_game_name"><![CDATA[<font color=\'#FF0000\'>*</font> 游戏名称]]></string>
 
 </resources>

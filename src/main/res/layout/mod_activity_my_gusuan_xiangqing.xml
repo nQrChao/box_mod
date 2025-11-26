@@ -20,6 +20,7 @@
     </data>
 
     <RelativeLayout
+        android:background="#F9F9F9"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -28,62 +29,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/idp_10"
                 android:orientation="vertical"
                 android:paddingHorizontal="@dimen/idp_15"
-                android:paddingVertical="@dimen/idp_15">
+                android:paddingVertical="@dimen/idp_5">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <LinearLayout
-                        android:id="@+id/textRootView"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/idp_120"
-                        android:layout_marginTop="@dimen/idp_10"
-                        android:layout_marginBottom="@dimen/idp_4"
-                        android:background="@drawable/gujia_xiangqing_title_bg"
-                        android:orientation="vertical"
-                        android:paddingTop="@dimen/idp_50"
-                        android:paddingBottom="@dimen/idp_10"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <TextView
-                            android:id="@+id/name"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="@dimen/idp_5"
-                            android:ellipsize="end"
-                            android:maxLines="1"
-                            android:text="@{StringUtils.format(&quot;游戏名：%s&quot;,vm.modData.gameName)}"
-                            android:textColor="#253E75"
-                            android:textSize="@dimen/isp_14"
-                            android:textStyle="bold"
-                            tools:text="游戏名：王者荣耀" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="@dimen/idp_8"
-                            android:ellipsize="end"
-                            android:maxLines="1"
-                            android:text="卡牌 动漫"
-                            android:textColor="@color/text_hit_color"
-                            android:textSize="@dimen/isp_13"
-                            android:textStyle="bold" />
-
-
-                    </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/a_rounded_15"
+                    android:paddingHorizontal="@dimen/idp_10"
+                    android:paddingVertical="@dimen/idp_15">
 
                     <ImageView
                         android:id="@+id/icon"
@@ -99,53 +57,100 @@
                         app:layout_constraintStart_toStartOf="@id/textRootView"
                         tools:src="@drawable/mod_icon" />
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                    <LinearLayout
+                        android:layout_marginEnd="@dimen/idp_110"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/idp_10"
+                        android:layout_toEndOf="@id/icon"
+                        android:layout_toLeftOf="@id/priceLayout"
+                        android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                        <TextView
+                            android:id="@+id/name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/idp_5"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="@{vm.modData.gameName}"
+                            android:textColor="@color/text_default_color"
+                            android:textSize="@dimen/isp_14"
+                            android:textStyle="bold"
+                            tools:text="王者荣耀王王者荣耀王王者荣耀王" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/idp_5"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="卡牌 动漫"
+                            android:textColor="#8A8A8A"
+                            android:textSize="@dimen/isp_13"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/priceLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_val_tag"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="@dimen/idp_4"
+                            android:background="@drawable/a_rounded_5_gray"
+                            android:paddingHorizontal="@dimen/idp_8"
+                            android:paddingVertical="@dimen/idp_2"
+                            android:text="估值"
+                            android:textColor="#999999"
+                            android:textSize="@dimen/isp_12" />
+
+                        <TextView
+                            android:id="@+id/tv_money"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="@{`¥ ` + vm.modData.money}"
+                            android:textColor="#FF5722"
+                            android:textSize="@dimen/isp_18"
+                            android:textStyle="bold"
+                            app:layout_constraintBaseline_toBaselineOf="@+id/tv_game_name"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            tools:text="￥8888" />
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+                <com.box.common.ui.view.DrawableTextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/idp_25"
+                    android:layout_marginTop="@dimen/idp_15"
+                    android:drawablePadding="@dimen/idp_5"
                     android:ellipsize="end"
                     android:maxLines="1"
-                    android:text="账号估值"
-                    android:textColor="@color/text_default_color"
-                    android:textSize="@dimen/isp_13"
-                    tools:text="账号估值" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/idp_5"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:text="@{vm.modData.getCheckMoney()}"
-                    android:textColor="#F2510C"
+                    android:text="基本信息"
                     android:textSize="@dimen/isp_16"
                     android:textStyle="bold"
-                    tools:text="￥126768.00" />
+                    app:drawableHeight="@dimen/idp_18"
+                    app:drawableWidth="@dimen/idp_7" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/idp_20"
-                    android:background="@drawable/gujia_layout_bg"
+                    android:layout_marginTop="@dimen/idp_10"
+                    android:background="@drawable/a_rounded_15"
                     android:orientation="vertical"
-                    android:paddingHorizontal="@dimen/idp_10"
+                    android:paddingHorizontal="@dimen/idp_15"
                     android:paddingVertical="@dimen/idp_20">
-
-                    <com.box.common.ui.view.DrawableTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:drawablePadding="@dimen/idp_5"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:text="基本信息"
-                        android:textSize="@dimen/isp_16"
-                        android:textStyle="bold"
-                        app:drawableHeight="@dimen/idp_18"
-                        app:drawableWidth="@dimen/idp_7" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -160,7 +165,7 @@
                             android:ellipsize="end"
                             android:maxLines="1"
                             android:text="估算时间："
-                            android:textColor="@color/text_hit_color"
+                            android:textColor="#8A8A8A"
                             android:textSize="@dimen/isp_13"
                             android:textStyle="bold" />
 
@@ -172,7 +177,7 @@
                             android:ellipsize="end"
                             android:maxLines="1"
                             android:text="2025-11-11 22:22:22"
-                            android:textColor="@color/text_hit_color"
+                            android:textColor="#101010"
                             android:textSize="@dimen/isp_13" />
 
                     </LinearLayout>
@@ -180,6 +185,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/idp_5"
                         android:orientation="horizontal">
 
                         <TextView
@@ -190,7 +196,7 @@
                             android:ellipsize="end"
                             android:maxLines="1"
                             android:text="小号　　："
-                            android:textColor="@color/text_hit_color"
+                            android:textColor="#8A8A8A"
                             android:textSize="@dimen/isp_13"
                             android:textStyle="bold" />
 
@@ -202,7 +208,7 @@
                             android:ellipsize="end"
                             android:maxLines="1"
                             android:text="这是小号名称"
-                            android:textColor="@color/text_hit_color"
+                            android:textColor="#101010"
                             android:textSize="@dimen/isp_13" />
 
                     </LinearLayout>
@@ -210,6 +216,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/idp_5"
                         android:orientation="horizontal">
 
                         <TextView
@@ -220,7 +227,7 @@
                             android:ellipsize="end"
                             android:maxLines="1"
                             android:text="区服　　："
-                            android:textColor="@color/text_hit_color"
+                            android:textColor="#8A8A8A"
                             android:textSize="@dimen/isp_13"
                             android:textStyle="bold" />
 
@@ -232,7 +239,7 @@
                             android:ellipsize="end"
                             android:maxLines="1"
                             android:text="这是区服信息"
-                            android:textColor="@color/text_hit_color"
+                            android:textColor="#101010"
                             android:textSize="@dimen/isp_13" />
 
                     </LinearLayout>
@@ -240,6 +247,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/idp_5"
                         android:orientation="horizontal">
 
                         <TextView
@@ -250,7 +258,7 @@
                             android:ellipsize="end"
                             android:maxLines="1"
                             android:text="备注　　："
-                            android:textColor="@color/text_hit_color"
+                            android:textColor="#8A8A8A"
                             android:textSize="@dimen/isp_13"
                             android:textStyle="bold" />
 
@@ -262,34 +270,38 @@
                             android:ellipsize="end"
                             android:maxLines="1"
                             android:text="这是备注内容"
-                            android:textColor="@color/text_hit_color"
+                            android:textColor="#101010"
                             android:textSize="@dimen/isp_13" />
 
                     </LinearLayout>
 
-                    <com.box.common.ui.view.DrawableTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/idp_15"
-                        android:drawablePadding="@dimen/idp_5"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:text="账号截图"
-                        android:textSize="@dimen/isp_16"
-                        android:textStyle="bold"
-                        app:drawableHeight="@dimen/idp_18"
-                        app:drawableWidth="@dimen/idp_7" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerView2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/idp_10"
-                        android:orientation="horizontal"
-                        tools:itemCount="1"
-                        tools:listitem="@layout/mod_item_custom_form_xiangqing_pic" />
 
                 </LinearLayout>
+
+                <com.box.common.ui.view.DrawableTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/idp_15"
+                    android:drawablePadding="@dimen/idp_5"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="账号截图"
+                    android:textSize="@dimen/isp_16"
+                    android:textStyle="bold"
+                    app:drawableHeight="@dimen/idp_18"
+                    app:drawableWidth="@dimen/idp_7" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/idp_10"
+                    android:background="@drawable/a_rounded_15"
+                    android:paddingHorizontal="@dimen/idp_10"
+                    android:paddingVertical="@dimen/idp_20"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/mod_item_custom_form_xiangqing_pic" />
 
                 <com.box.common.ui.view.DrawableTextView
                     android:layout_width="match_parent"
@@ -328,6 +340,7 @@
                     android:text="其他热门游戏账号估值"
                     android:textSize="@dimen/isp_16"
                     android:textStyle="bold"
+                    android:visibility="gone"
                     app:drawableHeight="@dimen/idp_18"
                     app:drawableWidth="@dimen/idp_7" />
 
@@ -337,6 +350,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/idp_10"
                     android:orientation="horizontal"
+                    android:visibility="gone"
                     tools:itemCount="1"
                     tools:listitem="@layout/mod_item_gujia_game_re" />
 

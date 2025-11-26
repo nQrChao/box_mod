@@ -14,20 +14,20 @@
             type="String" />
     </data>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <ImageView
-            android:layout_width="@dimen/idp_120"
-            android:layout_height="@dimen/idp_60"
-            android:layout_gravity="center"
-            app:cornerRadius="@{15f}"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/idp_150"
+            app:cornerRadius="@{10f}"
             app:hideOnNullOrError="@{false}"
             app:imageUrl="@{picUrl}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             tools:src="@drawable/bg_dialog_loading" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

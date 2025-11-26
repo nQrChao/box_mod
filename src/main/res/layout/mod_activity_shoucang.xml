@@ -49,6 +49,7 @@
                 android:paddingHorizontal="@dimen/idp_10">
 
                 <com.box.other.tablayout.DslTabLayout
+                    android:visibility="gone"
                     android:id="@+id/tab"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

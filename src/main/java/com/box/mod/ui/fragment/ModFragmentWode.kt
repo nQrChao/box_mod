@@ -27,6 +27,8 @@ import com.box.mod.R
 import com.box.mod.databinding.ModFragmentWodeBinding
 import com.box.mod.ui.activity.ModActivityChangePassword
 import com.box.mod.ui.activity.ModActivityLogin
+import com.box.mod.ui.activity.ModActivityMeSetting
+import com.box.mod.ui.activity.ModActivityMyGuJiaShuoming
 import com.box.mod.ui.activity.ModActivityMyGujia
 import com.box.mod.ui.activity.ModActivityMyShouCang
 import com.box.mod.ui.activity.ModActivitySettingSafety
@@ -165,6 +167,16 @@ class ModFragmentWode : BaseTitleBarFragment<ModFragmentWode.Model, ModFragmentW
             }
         }
 
+        fun setting() {
+            if (isLogin()) {
+                ModActivityMeSetting.start(appContext)
+            } else {
+                Toaster.show("请先登录")
+                ModActivityLogin.start(appContext)
+            }
+
+        }
+
         fun xiaoxi() {
             if (isLogin()) {
                 ModActivityMessage1.start(appContext)
@@ -199,6 +211,10 @@ class ModFragmentWode : BaseTitleBarFragment<ModFragmentWode.Model, ModFragmentW
             } else {
                 Toaster.show("")
             }
+        }
+
+        fun wenda() {
+            ModActivityMyGuJiaShuoming.start(appContext)
         }
 
         fun fankui() {
@@ -245,7 +261,7 @@ class ModFragmentWode : BaseTitleBarFragment<ModFragmentWode.Model, ModFragmentW
                         MMKVConfig.userInfo = null
                         appViewModel.modUserInfo.postValue(null)
                         eventViewModel.isLogin.value = false
-                    }, null, false, RC.layout.xpopup_confirm
+                    }, null, false, R.layout.xpopup_confirm_mod
                 ).show()
 
 

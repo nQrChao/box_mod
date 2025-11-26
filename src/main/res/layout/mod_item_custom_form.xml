@@ -25,12 +25,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_weight="3"
+            android:layout_weight="2.5"
             android:gravity="end"
+            android:textStyle="bold"
             android:paddingEnd="@dimen/idp_10"
             android:text="@{valuationCommitBean.title}"
             android:textColor="@color/text_default_color"
-            android:textSize="@dimen/isp_13"
+            android:textSize="@dimen/isp_12"
             tools:text="游戏名啊啊啊" />
 
         <com.box.common.ui.view.ClearEditText
@@ -42,10 +43,10 @@
             android:background="@drawable/bg_custom_edit_text"
             android:gravity="start"
             android:paddingHorizontal="@dimen/idp_10"
-            android:paddingVertical="@dimen/idp_8"
+            android:paddingVertical="@dimen/idp_10"
             android:singleLine="true"
             android:textColor="@color/text_default_color"
-            android:textSize="@dimen/isp_13"
+            android:textSize="@dimen/isp_12"
             android:hint="@{valuationCommitBean.hint}"
             app:textValue="@={valuationCommitBean.content}"
             tools:hint="请填写游戏名" />
@@ -53,12 +54,12 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.5"
             android:gravity="center"
+            android:layout_gravity="center"
             android:text="*"
             android:textColor="#FF3F3F"
-            android:textSize="@dimen/mod_edit_title_text_size"
-            android:visibility="gone" />
+            android:textSize="@dimen/mod_edit_title_text_size" />
 
 
     </LinearLayout>

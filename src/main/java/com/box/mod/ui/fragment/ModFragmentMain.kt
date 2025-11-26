@@ -77,6 +77,7 @@ class ModFragmentMain : BaseTitleBarFragment<ModFragmentMain.Model, ModFragmentM
         "用户xxx《王者荣耀》账号专业估价为：123456",
         "用户xxx《王者荣耀》账号专业估价为：1234567"
     )
+    var bannerList: MutableList<ModDataBean> = mutableListOf()
 
     /**
      * 懒加载
@@ -117,29 +118,13 @@ class ModFragmentMain : BaseTitleBarFragment<ModFragmentMain.Model, ModFragmentM
             addItemDecoration(SpacingItemDecorator((resources.displayMetrics.density * 5).toInt()))
             adapter = gameGuSuanAdapter
         }
-        gameGuSuanAdapter.addChildClickViewIds(R.id.button)
+
         gameGuSuanAdapter.setOnItemClickListener { adapter, view, position ->
             clickData = adapter.data[position] as ModDataBean
-            ModActivityGuSuanXiangqing.start(appContext, "1")
+            ModActivityGuSuanXiangqing.start(appContext, clickData.id.toString())
 //            mViewModel.getEventDetailData(clickData.id)
         }
 
-        gameGuSuanAdapter.setOnItemChildClickListener { adapter, view, position ->
-//            val currentList = adapter.data
-//            val clickedItem = currentList[position] as ModDataBean
-//            if (view.id == R.id.button) {
-//                if (clickedItem.isShouCang) {
-//                    clickedItem.isShouCang = false
-//                    MMKVConfig.removeGameEventList(clickedItem)
-//                } else {
-//                    clickedItem.isShouCang = true
-//                    Toaster.showReSuccess("1")
-//                    MMKVConfig.addGameEventList(clickedItem)
-//                }
-//                adapter.notifyItemChanged(position, "SHOUCANG_UPDATE")
-//
-//            }
-        }
 
         mDataBinding.refreshLayout.apply {
             setOnRefreshListener {
@@ -161,10 +146,20 @@ class ModFragmentMain : BaseTitleBarFragment<ModFragmentMain.Model, ModFragmentM
             addItemDecoration(SpacingItemDecorator((resources.displayMetrics.density * 5).toInt()))
             adapter = gameHotAdapter
         }
-
+        gameHotAdapter.addChildClickViewIds(R.id.commit)
         gameHotAdapter.setOnItemClickListener { adapter, view, position ->
             clickData = adapter.data[position] as ModDataBean
 
+        }
+
+
+        gameHotAdapter.setOnItemChildClickListener { adapter, view, position ->
+            val currentList = adapter.data
+            val clickedItem = currentList[position] as ModDataBean
+            if (view.id == R.id.commit) {
+                eventViewModel.setMainCurrentItem.value = 1
+                eventViewModel.guJiaStringCurrentItem.value = clickedItem.name
+            }
         }
 
 
@@ -189,7 +184,10 @@ class ModFragmentMain : BaseTitleBarFragment<ModFragmentMain.Model, ModFragmentM
                 resultState,
                 onSuccess = { data, msg ->
                     logsE(GsonUtils.toJson(data))
-                    setBanner(data ?: mutableListOf())
+                    if (data != null) {
+                        bannerList = data
+                        setBanner(data)
+                    }
                 },
                 onError = {
                     Toaster.show(it.msg)
@@ -308,6 +306,9 @@ class ModFragmentMain : BaseTitleBarFragment<ModFragmentMain.Model, ModFragmentM
             .setInterval(2000)
             .setAdapter(MainBannerAdapter()) // 链式调用
             .registerLifecycleObserver(viewLifecycleOwner.lifecycle)
+            .setOnPageClickListener { clickedView: View?, position: Int ->
+                ModActivityGuSuanXiangqing.start(appContext, bannerList[position].id.toString())
+            }
             .create(list)
     }
 
@@ -484,6 +485,7 @@ class ModFragmentMain : BaseTitleBarFragment<ModFragmentMain.Model, ModFragmentM
                 apiService.getValuationCommitTodayList()
             }, gameTodayListResult)
         }
+
         var gameBannerResult = MutableLiveData<ModResultStateWithMsg<MutableList<ModDataBean>>>()
         fun getGameBannerData() {
             modRequestWithMsg({
