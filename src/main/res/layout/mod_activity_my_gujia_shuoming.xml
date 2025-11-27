@@ -68,12 +68,13 @@
                             android:background="@drawable/shape_header_gradient_blue"
                             android:paddingHorizontal="@dimen/idp_20"
                             android:paddingVertical="@dimen/idp_5"
-                            android:text="基础估值方法"
+                            android:text="常见问答"
                             android:textColor="#FFFFFF"
                             android:textSize="@dimen/isp_16"
                             android:textStyle="bold" />
 
                         <LinearLayout
+                            android:visibility="gone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/idp_15"
@@ -118,7 +119,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="@dimen/idp_10"
-                                    android:text="Q1: 如何评估游戏账号的基础价值?"
+                                    android:text="Q1: 哪些账号属性对估值影响最大？"
                                     android:textColor="#333333"
                                     android:textSize="@dimen/isp_14"
                                     android:textStyle="bold" />
@@ -127,7 +128,10 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:lineSpacingExtra="@dimen/idp_3"
-                                    android:text="采用 &quot;资产总和 - 风险系数&quot; 框架：先计算账号可见资产（等级、稀有道具、皮肤等）的市场价值，再扣除账号安全风险、违规记录等不确定因素。"
+                                    android:text="1.稀有物品是溢价核心，限定皮肤、绝版载具、稀有角色 / 装备的增值幅度远高于普通道具，如和平精英特斯拉载具皮可多值 800-1200 元。
+\n2.段位与竞技表现对竞技类游戏至关重要，战神、荣耀王者等高端段位可增值 300-800 元，高胜率还能额外加分。
+\n3.账号安全是基础保障，可全解绑、无封禁记录的账号比有风险的贵 30%，违规记录会直接大幅贬值。
+\n4.等级与成就提供基础价值，满级账号比低等级账号多值 200-300 元，稀有成就如原神深渊满星也能提升价值。"
                                     android:textColor="#666666"
                                     android:textSize="@dimen/isp_13" />
                             </LinearLayout>
@@ -155,7 +159,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="@dimen/idp_10"
-                                    android:text="Q2: 有哪些常用的估值方法?"
+                                    android:text="Q2: 外部因素会影响账号价值吗？"
                                     android:textColor="#333333"
                                     android:textSize="@dimen/isp_14"
                                     android:textStyle="bold" />
@@ -164,7 +168,9 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:lineSpacingExtra="@dimen/idp_3"
-                                    android:text="☒市场比较法：在交易平台搜索相似账号（等级、装备相近）的成交价格作为参考\n☒装备价值法：单独计算稀有装备 / 皮肤价值，再加上账号等级基础价\n成本折旧法：统计充值总额，按游戏类型折旧（端游约 40-50%/3 年，手游约 60-70%/3 年）"
+                                    android:text="1.游戏热度直接关联需求，热门游戏账号交易频繁，价格更稳定；小众游戏即便账号优质，也难有高价。
+\n2.版本更新可能颠覆价值，英雄 / 道具被削弱会导致账号缩水，新增热门内容则可能让账号增值。
+\n3.市场周期有波动，赛季末、新内容上线前需求可能下降，成交价会低于平时。"
                                     android:textColor="#666666"
                                     android:textSize="@dimen/isp_13" />
                             </LinearLayout>
@@ -192,7 +198,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="@dimen/idp_10"
-                                    android:text="Q2: 免费估值工具准确吗?"
+                                    android:text="Q3: 最容易踩的估值坑有哪些？"
                                     android:textColor="#333333"
                                     android:textSize="@dimen/isp_14"
                                     android:textStyle="bold" />
@@ -201,7 +207,126 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:lineSpacingExtra="@dimen/idp_3"
-                                    android:text="☒市场比较法：在交易平台搜索相似账号（等级、装备相近）的成交价格作为参考\n☒装备价值法：单独计算稀有装备 / 皮肤价值，再加上账号等级基础价\n成本折旧法：统计充值总额，按游戏类型折旧（端游约 40-50%/3 年，手游约 60-70%/3 年）"
+                                    android:text="1.投入成本等价论：充值金额不代表账号价值，很多充值 2 万元的账号因内容过时，实际成交价仅为充值额的 15%。
+\n2.等级决定论：满级账号若缺乏稀有道具，价值可能低于等级稍低但核心资产突出的账号。
+\n3.单一工具依赖：不同平台估值标准不同，仅凭一款工具结果定价易脱离市场。"
+                                    android:textColor="#666666"
+                                    android:textSize="@dimen/isp_13" />
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/idp_13"
+                            android:layout_marginBottom="@dimen/idp_10"
+                            app:cardCornerRadius="@dimen/idp_10"
+                            app:cardElevation="@dimen/idp_1"
+                            app:cardPreventCornerOverlap="false"
+                            app:cardUseCompatPadding="true">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/shape_card_white_bg"
+                                android:orientation="vertical"
+                                android:padding="@dimen/idp_15">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/idp_10"
+                                    android:text="Q4: 如何规避这些误区？"
+                                    android:textColor="#333333"
+                                    android:textSize="@dimen/isp_14"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:lineSpacingExtra="@dimen/idp_3"
+                                    android:text="1.以市场成交价为核心参考，而非自身投入，通过多平台同款账号成交数据建立价格区间。
+\n2.采用 “等级 + 装备 + 成就” 三维评估，不忽视稀有道具和竞技表现的权重。
+\n3.结合 “系统初筛 + 人工复核”，高端账号或含唯一限定内容的账号，人工估值更精准。"
+                                    android:textColor="#666666"
+                                    android:textSize="@dimen/isp_13" />
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/idp_13"
+                            android:layout_marginBottom="@dimen/idp_10"
+                            app:cardCornerRadius="@dimen/idp_10"
+                            app:cardElevation="@dimen/idp_1"
+                            app:cardPreventCornerOverlap="false"
+                            app:cardUseCompatPadding="true">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/shape_card_white_bg"
+                                android:orientation="vertical"
+                                android:padding="@dimen/idp_15">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/idp_10"
+                                    android:text="Q5: 稀有账号怎么估值？"
+                                    android:textColor="#333333"
+                                    android:textSize="@dimen/isp_14"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:lineSpacingExtra="@dimen/idp_3"
+                                    android:text="1.稀有账号价值波动大，需重点参考近期同类稀有账号成交记录，而非普通估值标准。
+\n2.可通过平台高净值买家匹配功能，争取溢价空间，避免按普通账号定价错失收益。"
+                                    android:textColor="#666666"
+                                    android:textSize="@dimen/isp_13" />
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/idp_13"
+                            android:layout_marginBottom="@dimen/idp_10"
+                            app:cardCornerRadius="@dimen/idp_10"
+                            app:cardElevation="@dimen/idp_1"
+                            app:cardPreventCornerOverlap="false"
+                            app:cardUseCompatPadding="true">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/shape_card_white_bg"
+                                android:orientation="vertical"
+                                android:padding="@dimen/idp_15">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/idp_10"
+                                    android:text="Q6: 版本更新后账号价值缩水怎么办？"
+                                    android:textColor="#333333"
+                                    android:textSize="@dimen/isp_14"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:lineSpacingExtra="@dimen/idp_3"
+                                    android:text="1.及时关注版本动态，用平台 “版本波动预警” 功能调整定价。
+\n2.突出账号其他核心优势，如多稀有皮肤、高段位等，弥补单一内容削弱的影响。"
                                     android:textColor="#666666"
                                     android:textSize="@dimen/isp_13" />
                             </LinearLayout>
